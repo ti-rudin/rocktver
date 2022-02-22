@@ -11,6 +11,7 @@
     auth0Client = await auth.createClient()
     isAuthenticated.set(await auth0Client.isAuthenticated())
     user.set(await auth0Client.getUser())
+    
 
     await fetch(leadsurl)
     .then(r => r.text())
@@ -18,6 +19,9 @@
 
   })
 
+$: if ($isAuthenticated) {
+  console.log($user)
+}
 
   function login() {
     auth.loginWithPopup(auth0Client)
@@ -41,7 +45,10 @@
 </p>
 
 {#if $isAuthenticated}
-  <h2>Hey {$user.name} {t}!</h2>
+  {#if ($user.name == "Александр Рудин")}
+  <h2>dd {t}</h2>
+  {/if}
+  <h2>Hey {$user.name} !</h2>
   {#if $user.picture}
     <img src={$user.picture} alt={user.name} />
   {:else}
