@@ -1,0 +1,63 @@
+version: '3.7'
+
+services:
+
+  #backend:
+  #  container_name: strapi
+  #  image: strapi/strapi
+  #  ports:
+  #    - 1337:1337
+  #  volumes:
+  #    - ./backend:/srv/app
+  #  restart: always
+  #  networks:
+  #  - rocktver-network
+
+
+  #frontend:
+  #  container_name: svelte
+  #  build:
+  #    context: ./frontend
+  #    dockerfile: ./Dockerfile
+  #  ports:
+  #    - "3000:3000"
+    #depends_on:
+    #  - backend
+
+  node-red:
+    container_name: node-red
+    build:
+      context: .
+      dockerfile: ./nodered2.Dockerfile
+    env_file: .env
+    ports:
+      - "1880:1880"
+    networks:
+      - rocktver-network
+    depends_on:
+      - redis
+    volumes:
+      - ./node-red-data:/data 
+    restart: always
+
+  redis:
+    image: "redis:alpine"
+    container_name: redis
+    command: redis-server --requirepass YzRAdGgkFg
+    ports:
+     - "6379:6379"
+    environment:
+         - REDIS_REPLICATION_MODE=master
+    volumes:
+      - ./redis-data:/data
+    restart: always
+    networks:
+      - rocktver-network
+
+
+volumes:
+  node-red-data:
+
+networks:
+  rocktver-network:
+    driver: bridge
