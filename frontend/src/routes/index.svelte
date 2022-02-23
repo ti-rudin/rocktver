@@ -5,7 +5,34 @@
 
   let auth0Client
   let leadsurl="https://api.rocktver.ru/apites"
+  let apiurl="https://api.rocktver.ru/api"
   let t
+
+  let userset
+  function loadsettings(userid) {
+    let myHeaders = new Headers();
+    myHeaders.append("Content-Type", "application/json");
+
+    let raw = JSON.stringify({ id: userid });
+
+    let requestOptions = {
+      method: "POST",
+      headers: myHeaders,
+      body: raw,
+      redirect: "follow",
+    };
+
+    fetch(apiurl, requestOptions)
+      .then((response) => response.json())
+      .then((result) => {
+        console.log(result);
+        userset = result.id;
+
+      })
+      .catch((error) => console.log("error", error));
+  }
+
+
 
   onMount(async () => {
     auth0Client = await auth.createClient()
@@ -16,11 +43,14 @@
     await fetch(leadsurl)
     .then(r => r.text())
     .then(result=> t=result)
+  
 
   })
 
+
 $: if ($isAuthenticated) {
   console.log($user)
+  loadsettings($user.sub)
 }
 
   function login() {
@@ -31,8 +61,9 @@ $: if ($isAuthenticated) {
     auth.logout(auth0Client)
   }
  
-
-
+ 
+  
+  
 
 
 
@@ -46,9 +77,9 @@ $: if ($isAuthenticated) {
 
 {#if $isAuthenticated}
   {#if ($user.name == "Александр Рудин")}
-  <h2>dd {t}</h2>
+  <h2>dd {t} {userset}</h2>
   {/if}
-  <h2>Hey {$user.name} !</h2>
+  <h2>Hey {$user.name} {userset}!</h2>
   {#if $user.picture}
     <img src={$user.picture} alt={user.name} />
   {:else}

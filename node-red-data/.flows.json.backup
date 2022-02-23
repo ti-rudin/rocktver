@@ -52,7 +52,7 @@
         "type": "function",
         "z": "e6bc8fcb02c15518",
         "name": "",
-        "func": "\nlet topic = \"test\";\nmsg.payload = [topic, \"qq3555\"];\nmsg.topic = \"\";\n\nnode.status({fill: \"green\", shape: \"ring\"});\nreturn msg;",
+        "func": "\nlet topic = \"test\";\nmsg.payload = [topic, \"qq4777777\"];\nmsg.topic = \"\";\n\nnode.status({fill: \"green\", shape: \"ring\"});\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
@@ -196,5 +196,144 @@
                 "b2e2f901b401f316"
             ]
         ]
+    },
+    {
+        "id": "08eab6b51406d297",
+        "type": "http in",
+        "z": "e6bc8fcb02c15518",
+        "name": "",
+        "url": "/api",
+        "method": "post",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 180,
+        "y": 580,
+        "wires": [
+            [
+                "1cf1cedaf842cb84",
+                "2a67f2ef7a0cab52"
+            ]
+        ]
+    },
+    {
+        "id": "e5b8299d134cafcc",
+        "type": "http response",
+        "z": "e6bc8fcb02c15518",
+        "name": "",
+        "statusCode": "200",
+        "headers": {},
+        "x": 800,
+        "y": 620,
+        "wires": []
+    },
+    {
+        "id": "8c610814a99e3125",
+        "type": "debug",
+        "z": "e6bc8fcb02c15518",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 770,
+        "y": 560,
+        "wires": []
+    },
+    {
+        "id": "893c1f0c87f152d8",
+        "type": "function",
+        "z": "e6bc8fcb02c15518",
+        "name": "",
+        "func": "\nmsg.payload = [];\nmsg.topic = \"test\";\n\nnode.status({fill: \"green\", shape: \"ring\"});\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 400,
+        "y": 540,
+        "wires": [
+            [
+                "78cf3e06107ca7aa"
+            ]
+        ]
+    },
+    {
+        "id": "78cf3e06107ca7aa",
+        "type": "redis-command",
+        "z": "e6bc8fcb02c15518",
+        "server": "de2918815c34c8e3",
+        "command": "GET",
+        "name": "",
+        "topic": "",
+        "params": "[]",
+        "paramsType": "json",
+        "payloadType": "json",
+        "block": false,
+        "x": 600,
+        "y": 560,
+        "wires": [
+            [
+                "8c610814a99e3125"
+            ]
+        ]
+    },
+    {
+        "id": "1cf1cedaf842cb84",
+        "type": "debug",
+        "z": "e6bc8fcb02c15518",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 310,
+        "y": 660,
+        "wires": []
+    },
+    {
+        "id": "2a67f2ef7a0cab52",
+        "type": "function",
+        "z": "e6bc8fcb02c15518",
+        "name": "",
+        "func": "let id, idq\nid = msg.payload.id;\nlet response;\n\nif ((id == \"vkontakte|248618038\") || (id == \"google-oauth2|105330374900705899224\")){\n    idq =\"id-admin: \"+ id;\n} else {\n    idq =\"idqelse: \"+ id;\n}\n\n\n\n\nresponse = {\n    id: idq,\n    qq: \"qq\"\n}\nmsg.payload = response;\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 460,
+        "y": 600,
+        "wires": [
+            [
+                "e5b8299d134cafcc",
+                "64770c8838678f67"
+            ]
+        ]
+    },
+    {
+        "id": "64770c8838678f67",
+        "type": "debug",
+        "z": "e6bc8fcb02c15518",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 630,
+        "y": 680,
+        "wires": []
     }
 ]
