@@ -4,7 +4,7 @@
   import { onMount } from 'svelte'
 
   let auth0Client
-  let leadsurl="http://api.rocktver.ru/apites"
+  let leadsurl="https://api.rocktver.ru/apites"
   let t
 
   onMount(async () => {
