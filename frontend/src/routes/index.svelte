@@ -27,7 +27,6 @@
       .then((result) => {
         console.log(result);
         userset = result.id;
-
       })
       .catch((error) => console.log("error", error));
   }
