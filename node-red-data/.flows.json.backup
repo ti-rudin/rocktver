@@ -206,8 +206,8 @@
         "method": "post",
         "upload": false,
         "swaggerDoc": "",
-        "x": 180,
-        "y": 580,
+        "x": 220,
+        "y": 600,
         "wires": [
             [
                 "1cf1cedaf842cb84",
@@ -222,8 +222,8 @@
         "name": "",
         "statusCode": "200",
         "headers": {},
-        "x": 800,
-        "y": 620,
+        "x": 700,
+        "y": 600,
         "wires": []
     },
     {
@@ -239,8 +239,8 @@
         "targetType": "full",
         "statusVal": "",
         "statusType": "auto",
-        "x": 770,
-        "y": 560,
+        "x": 730,
+        "y": 520,
         "wires": []
     },
     {
@@ -255,7 +255,7 @@
         "finalize": "",
         "libs": [],
         "x": 400,
-        "y": 540,
+        "y": 520,
         "wires": [
             [
                 "78cf3e06107ca7aa"
@@ -274,8 +274,8 @@
         "paramsType": "json",
         "payloadType": "json",
         "block": false,
-        "x": 600,
-        "y": 560,
+        "x": 560,
+        "y": 520,
         "wires": [
             [
                 "8c610814a99e3125"
@@ -287,7 +287,7 @@
         "type": "debug",
         "z": "e6bc8fcb02c15518",
         "name": "",
-        "active": true,
+        "active": false,
         "tosidebar": true,
         "console": false,
         "tostatus": false,
@@ -295,7 +295,7 @@
         "targetType": "full",
         "statusVal": "",
         "statusType": "auto",
-        "x": 310,
+        "x": 230,
         "y": 660,
         "wires": []
     },
@@ -304,7 +304,7 @@
         "type": "function",
         "z": "e6bc8fcb02c15518",
         "name": "",
-        "func": "let id, idq\nid = msg.payload.id;\nlet response;\n\nif ((id == \"vkontakte|248618038\") || (id == \"google-oauth2|105330374900705899224\")){\n    idq =\"id-admin: \"+ id;\n} else {\n    idq =\"idqelse: \"+ id;\n}\n\n\n\n\nresponse = {\n    id: idq,\n    qq: \"qq\"\n}\nmsg.payload = response;\n\nreturn msg;",
+        "func": "let id, idq\nid = msg.payload.id;\nlet response;\n\nif ((id == \"vkontakte|248618038\") || (id == \"google-oauth2|105330374900705899224\")){\n    idq =\"admin\";\n} else {\n    idq =\"nonadmin\";\n}\n\n\n\n\nresponse = {\n    id: idq,\n    qq: \"qq\"\n}\nmsg.payload = response;\n\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
@@ -324,7 +324,7 @@
         "type": "debug",
         "z": "e6bc8fcb02c15518",
         "name": "",
-        "active": true,
+        "active": false,
         "tosidebar": true,
         "console": false,
         "tostatus": false,
@@ -332,8 +332,8 @@
         "targetType": "full",
         "statusVal": "",
         "statusType": "auto",
-        "x": 630,
-        "y": 680,
+        "x": 470,
+        "y": 660,
         "wires": []
     }
 ]
