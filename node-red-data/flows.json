@@ -52,7 +52,7 @@
         "type": "function",
         "z": "e6bc8fcb02c15518",
         "name": "",
-        "func": "\nlet topic = \"test\";\nmsg.payload = [topic, \"qq3\"];\nmsg.topic = \"\";\n\nnode.status({fill: \"green\", shape: \"ring\"});\nreturn msg;",
+        "func": "\nlet topic = \"test\";\nmsg.payload = [topic, \"qq4\"];\nmsg.topic = \"\";\n\nnode.status({fill: \"green\", shape: \"ring\"});\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
@@ -121,8 +121,8 @@
         "method": "get",
         "upload": false,
         "swaggerDoc": "",
-        "x": 210,
-        "y": 360,
+        "x": 150,
+        "y": 380,
         "wires": [
             [
                 "ec812f2a4ebddc9d"
@@ -168,8 +168,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 400,
-        "y": 360,
+        "x": 360,
+        "y": 380,
         "wires": [
             [
                 "1165f1e6e1b45e59"
