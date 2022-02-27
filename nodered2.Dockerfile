@@ -8,5 +8,6 @@ RUN npm install node-red-contrib-filter
 RUN npm install node-red-contrib-redis
 RUN npm install node-red-dashboard
 RUN npm install node-red-node-ui-table
+RUN npm install @notify.events/node-red
 
 WORKDIR /usr/src/node-red

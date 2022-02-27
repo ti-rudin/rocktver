@@ -8,12 +8,52 @@
         "env": []
     },
     {
+        "id": "373ede32454d5747",
+        "type": "group",
+        "z": "e6bc8fcb02c15518",
+        "style": {
+            "stroke": "#999999",
+            "stroke-opacity": "1",
+            "fill": "none",
+            "fill-opacity": "1",
+            "label": true,
+            "label-position": "nw",
+            "color": "#a4a4a4"
+        },
+        "nodes": [
+            "caa36ec009038d1a",
+            "85a473180350d074",
+            "cc432a8e0784b0f9",
+            "2e7a67404d21442a",
+            "d39d07fafbda681e"
+        ],
+        "x": 974,
+        "y": 39,
+        "w": 672,
+        "h": 142
+    },
+    {
         "id": "de2918815c34c8e3",
         "type": "redis-config",
         "name": "Local",
         "options": "redis://:YzRAdGgkFg@redis:6379",
         "cluster": false,
         "optionsType": "str"
+    },
+    {
+        "id": "f120eab2.0a60a8",
+        "type": "redis-config",
+        "name": "redis:6379",
+        "options": "redis://:YzRAdGgkFg@redis:6379",
+        "cluster": false,
+        "optionsType": "str"
+    },
+    {
+        "id": "8d62db31fd22cba6",
+        "type": "notify-events-channel",
+        "name": "test",
+        "token": "UXeAzMi3DPeue88Fk5r8mOzskYx574TE",
+        "tokenType": "str"
     },
     {
         "id": "b02b9e6ed72d8945",
@@ -335,5 +375,206 @@
         "x": 470,
         "y": 660,
         "wires": []
+    },
+    {
+        "id": "caa36ec009038d1a",
+        "type": "inject",
+        "z": "e6bc8fcb02c15518",
+        "g": "373ede32454d5747",
+        "name": "gettest",
+        "props": [],
+        "repeat": "",
+        "crontab": "",
+        "once": true,
+        "onceDelay": "1",
+        "topic": "",
+        "x": 1080,
+        "y": 140,
+        "wires": [
+            [
+                "85a473180350d074"
+            ]
+        ]
+    },
+    {
+        "id": "85a473180350d074",
+        "type": "function",
+        "z": "e6bc8fcb02c15518",
+        "g": "373ede32454d5747",
+        "name": "gettest(id)",
+        "func": "",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "\n// Code added here will be run once\n// whenever the node is deployed.\nlet gettest = function (id = msg.payload) {\n    \n    let promise = new Promise((resolve, reject) => {\n        msg.resolve = resolve;\n        msg.reject = reject;\n    });\n    \n\n    msg.topic = id;\n    msg.payload = [];\n\n    node.send(Object.assign({}, msg));\n    \n    return promise;\n};\n\nglobal.set('gettest', gettest);",
+        "finalize": "",
+        "libs": [],
+        "x": 1220,
+        "y": 140,
+        "wires": [
+            [
+                "cc432a8e0784b0f9"
+            ]
+        ]
+    },
+    {
+        "id": "cc432a8e0784b0f9",
+        "type": "redis-command",
+        "z": "e6bc8fcb02c15518",
+        "g": "373ede32454d5747",
+        "server": "f120eab2.0a60a8",
+        "command": "GET",
+        "name": "get test",
+        "topic": "msg.payload",
+        "params": "[]",
+        "paramsType": "json",
+        "payloadType": "json",
+        "block": false,
+        "x": 1400,
+        "y": 140,
+        "wires": [
+            [
+                "2e7a67404d21442a"
+            ]
+        ]
+    },
+    {
+        "id": "2e7a67404d21442a",
+        "type": "function",
+        "z": "e6bc8fcb02c15518",
+        "g": "373ede32454d5747",
+        "name": "resolve",
+        "func": "msg.resolve(msg.payload);\n\n// reject\n// setTimeout(function () {\n//     msg.reject({message: 'Could not request joke'});\n// }, 2000);",
+        "outputs": "0",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1560,
+        "y": 140,
+        "wires": []
+    },
+    {
+        "id": "c6f75d76df02c176",
+        "type": "function",
+        "z": "e6bc8fcb02c15518",
+        "name": "gettest (\"test\")",
+        "func": "let id = msg.payload;\nconst gbl = global.get('gettest')(id);\n\ngbl.then(gbl => {\n\n    msg.payload = gbl;\n\n\n    node.status({ fill: \"green\", shape: \"dot\" });\n    node.send(msg);\n\n}).catch(error => {\n\n\n    node.status({ fill: \"red\", shape: \"dot\" });\n\n    node.error(error);\n});\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1960,
+        "y": 140,
+        "wires": [
+            [
+                "fcf602c38fa398b2"
+            ]
+        ]
+    },
+    {
+        "id": "fcf602c38fa398b2",
+        "type": "debug",
+        "z": "e6bc8fcb02c15518",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 2130,
+        "y": 140,
+        "wires": []
+    },
+    {
+        "id": "308b3c2962aac698",
+        "type": "inject",
+        "z": "e6bc8fcb02c15518",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "test",
+        "payloadType": "str",
+        "x": 1770,
+        "y": 140,
+        "wires": [
+            [
+                "c6f75d76df02c176"
+            ]
+        ]
+    },
+    {
+        "id": "d39d07fafbda681e",
+        "type": "comment",
+        "z": "e6bc8fcb02c15518",
+        "g": "373ede32454d5747",
+        "name": "Функции",
+        "info": "",
+        "x": 1060,
+        "y": 80,
+        "wires": []
+    },
+    {
+        "id": "bc2e3fa8c1533580",
+        "type": "notify-events",
+        "z": "e6bc8fcb02c15518",
+        "name": "ку",
+        "channel": "8d62db31fd22cba6",
+        "title": "ку",
+        "titleType": "str",
+        "text": "payload",
+        "textType": "msg",
+        "priority": "normal",
+        "priorityType": "str",
+        "level": "info",
+        "levelType": "str",
+        "images": [],
+        "files": [],
+        "actionHost": "http://77.87.212.142:1880/",
+        "actions": [],
+        "outputs": 0,
+        "x": 910,
+        "y": 800,
+        "wires": []
+    },
+    {
+        "id": "72edd730bcad6ba3",
+        "type": "inject",
+        "z": "e6bc8fcb02c15518",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "Normal",
+        "payload": "re",
+        "payloadType": "str",
+        "x": 740,
+        "y": 800,
+        "wires": [
+            [
+                "bc2e3fa8c1533580"
+            ]
+        ]
     }
 ]
