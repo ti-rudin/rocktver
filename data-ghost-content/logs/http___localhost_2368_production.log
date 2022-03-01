@@ -257,3 +257,126 @@
 {"name":"Log","hostname":"58effd5fb7a5","pid":1,"level":30,"req":{"meta":{"requestId":"e5977933-215d-40b1-8c21-cacec40365c1","userId":null},"url":"/","method":"POST","originalUrl":"/","params":{},"headers":{"host":"77.87.212.142","x-real-ip":"34.211.23.161","x-forwarded-for":"34.211.23.161","connection":"close","content-length":"20","user-agent":"Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/81.0.4044.129 Safari/537.36","accept-encoding":"gzip, deflate","accept":"*/*","content-type":"application/x-www-form-urlencoded"},"query":{}},"res":{"_headers":{"x-powered-by":"Express","cache-control":"public, max-age=0","content-type":"text/html; charset=utf-8","etag":"W/\"2e16-JO4azQG3bxbnMMSm5tMFagsHD9E\"","vary":"Accept-Encoding","content-encoding":"gzip"},"statusCode":200,"responseTime":"92ms"},"msg":"","time":"2022-03-01T17:39:49.214Z","v":0}
 {"name":"Log","hostname":"58effd5fb7a5","pid":1,"level":30,"req":{"meta":{"requestId":"07e97f08-6aca-4ecf-874f-28aabb136ace","userId":null},"url":"/","method":"GET","originalUrl":"/","params":{},"headers":{"host":"77.87.212.142","x-real-ip":"167.94.138.44","x-forwarded-for":"167.94.138.44","connection":"close"},"query":{}},"res":{"_headers":{"x-powered-by":"Express","cache-control":"public, max-age=0","content-type":"text/html; charset=utf-8","content-length":"11798","etag":"W/\"2e16-JO4azQG3bxbnMMSm5tMFagsHD9E\"","vary":"Accept-Encoding"},"statusCode":200,"responseTime":"151ms"},"msg":"","time":"2022-03-01T17:51:58.434Z","v":0}
 {"name":"Log","hostname":"58effd5fb7a5","pid":1,"level":30,"req":{"meta":{"requestId":"6f1c02d5-294d-422c-80a3-e95065c52593","userId":null},"url":"/","method":"GET","originalUrl":"/","params":{},"headers":{"host":"77.87.212.142","x-real-ip":"167.94.138.44","x-forwarded-for":"167.94.138.44","connection":"close","user-agent":"Mozilla/5.0 (compatible; CensysInspect/1.1; +https://about.censys.io/)","accept":"*/*","accept-encoding":"gzip"},"query":{}},"res":{"_headers":{"x-powered-by":"Express","cache-control":"public, max-age=0","content-type":"text/html; charset=utf-8","etag":"W/\"2e16-JO4azQG3bxbnMMSm5tMFagsHD9E\"","vary":"Accept-Encoding","content-encoding":"gzip"},"statusCode":200,"responseTime":"56ms"},"msg":"","time":"2022-03-01T17:51:59.043Z","v":0}
+{"name":"Log","hostname":"58effd5fb7a5","pid":1,"level":30,"req":{"meta":{"requestId":"f01925fd-8b60-46e6-9dfe-dfda05f20897","userId":null},"url":"/","method":"GET","originalUrl":"/","params":{},"headers":{"host":"77.87.212.142","x-real-ip":"128.1.248.26","x-forwarded-for":"128.1.248.26","connection":"close","user-agent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.113 Safari/537.36","accept":"*/*","accept-encoding":"gzip"},"query":{}},"res":{"_headers":{"x-powered-by":"Express","cache-control":"public, max-age=0","content-type":"text/html; charset=utf-8","etag":"W/\"2e16-JO4azQG3bxbnMMSm5tMFagsHD9E\"","vary":"Accept-Encoding","content-encoding":"gzip"},"statusCode":200,"responseTime":"173ms"},"msg":"","time":"2022-03-01T18:11:34.274Z","v":0}
+{"name":"Log","hostname":"58effd5fb7a5","pid":1,"level":40,"msg":"Ghost is shutting down","time":"2022-03-01T19:21:12.292Z","v":0}
+{"name":"Log","hostname":"58effd5fb7a5","pid":1,"level":40,"msg":"Ghost has shut down","time":"2022-03-01T19:21:12.343Z","v":0}
+{"name":"Log","hostname":"58effd5fb7a5","pid":1,"level":40,"msg":"Your site is now offline","time":"2022-03-01T19:21:12.345Z","v":0}
+{"name":"Log","hostname":"58effd5fb7a5","pid":1,"level":40,"msg":"Ghost was running for 2 hours","time":"2022-03-01T19:21:12.356Z","v":0}
+{"name":"Log","hostname":"658f3aa36a9e","pid":1,"level":30,"msg":"Ghost is running in production...","time":"2022-03-01T19:23:59.270Z","v":0}
+{"name":"Log","hostname":"658f3aa36a9e","pid":1,"level":30,"msg":"Your site is now available on http://localhost:2368/","time":"2022-03-01T19:23:59.291Z","v":0}
+{"name":"Log","hostname":"658f3aa36a9e","pid":1,"level":30,"msg":"Ctrl+C to shut down","time":"2022-03-01T19:23:59.296Z","v":0}
+{"name":"Log","hostname":"658f3aa36a9e","pid":1,"level":30,"msg":"Ghost server started in 6.288s","time":"2022-03-01T19:23:59.403Z","v":0}
+{"name":"Log","hostname":"658f3aa36a9e","pid":1,"level":30,"msg":"Database is in a ready state.","time":"2022-03-01T19:24:01.263Z","v":0}
+{"name":"Log","hostname":"658f3aa36a9e","pid":1,"level":30,"msg":"Ghost database ready in 9.785s","time":"2022-03-01T19:24:02.896Z","v":0}
+{"name":"Log","hostname":"658f3aa36a9e","pid":1,"level":30,"msg":"Ghost URL Service Ready in 132.373s","time":"2022-03-01T19:26:05.511Z","v":0}
+{"name":"Log","hostname":"658f3aa36a9e","pid":1,"level":30,"msg":"Stripe not configured - skipping migrations","time":"2022-03-01T19:26:09.609Z","v":0}
+{"name":"Log","hostname":"658f3aa36a9e","pid":1,"level":30,"msg":"Ghost booted in 137.824s","time":"2022-03-01T19:26:10.945Z","v":0}
+{"name":"Log","hostname":"658f3aa36a9e","pid":1,"level":30,"msg":"Adding offloaded job to the queue","time":"2022-03-01T19:26:11.338Z","v":0}
+{"name":"Log","hostname":"658f3aa36a9e","pid":1,"level":30,"msg":"Scheduling job update-check at 12 31 7 * * *. Next run on: Wed Mar 02 2022 07:31:12 GMT+0000 (Coordinated Universal Time)","time":"2022-03-01T19:26:11.607Z","v":0}
+{"name":"Log","hostname":"658f3aa36a9e","pid":1,"level":30,"req":{"meta":{"requestId":"0b047e6d-2a9e-4290-ab92-9930ceef8263","userId":null},"url":"/favicon.ico","method":"GET","originalUrl":"/favicon.ico","params":{},"headers":{"host":"www.urtitan.ru","x-real-ip":"176.113.43.17","x-forwarded-for":"176.113.43.17","connection":"close","user-agent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/94.0.4606.61 Safari/537.36","accept":"*/*","accept-encoding":"gzip, deflate"},"query":{}},"res":{"_headers":{"x-powered-by":"Express"},"statusCode":200,"responseTime":"890ms"},"msg":"","time":"2022-03-01T19:54:32.655Z","v":0}
+{"name":"Log","hostname":"658f3aa36a9e","pid":1,"level":30,"req":{"meta":{"requestId":"e9b1d349-9409-4904-b91b-4816a8743611","userId":null},"url":"/favicon.ico","method":"GET","originalUrl":"/favicon.ico","params":{},"headers":{"host":"www.urtitan.ru","x-real-ip":"176.53.223.242","x-forwarded-for":"176.53.223.242","connection":"close","user-agent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/94.0.4606.61 Safari/537.36","accept":"*/*","accept-encoding":"gzip, deflate"},"query":{}},"res":{"_headers":{"x-powered-by":"Express","content-type":"image/x-icon","etag":"\"a9c6dbdcdc3ae568f4e0dad92149a0e3\"","cache-control":"public, max-age=86400","vary":"Accept-Encoding","content-encoding":"gzip"},"statusCode":200,"responseTime":"1110ms"},"msg":"","time":"2022-03-01T19:54:32.922Z","v":0}
+{"name":"Log","hostname":"658f3aa36a9e","pid":1,"level":30,"req":{"meta":{"requestId":"8ac3920d-b619-478d-88c2-cfe92c21b668","userId":null},"url":"/","method":"GET","originalUrl":"/","params":{},"headers":{"host":"www.urtitan.ru","x-real-ip":"176.53.221.158","x-forwarded-for":"176.53.221.158","connection":"close","user-agent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/94.0.4606.61 Safari/537.36","accept":"*/*","accept-encoding":"gzip, deflate"},"query":{}},"res":{"_headers":{"x-powered-by":"Express","cache-control":"public, max-age=0"},"statusCode":200,"responseTime":"120221ms"},"msg":"","time":"2022-03-01T19:56:31.937Z","v":0}
+{"name":"Log","hostname":"658f3aa36a9e","pid":1,"level":30,"req":{"meta":{"requestId":"457a34e2-0743-4d34-8fed-95b6f3e77960","userId":null},"url":"/","method":"GET","originalUrl":"/","params":{},"headers":{"host":"www.urtitan.ru","x-real-ip":"89.104.111.13","x-forwarded-for":"89.104.111.13","connection":"close","user-agent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/94.0.4606.61 Safari/537.36","accept":"*/*","accept-encoding":"gzip, deflate"},"query":{}},"res":{"_headers":{"x-powered-by":"Express","cache-control":"public, max-age=0"},"statusCode":200,"responseTime":"155357ms"},"msg":"","time":"2022-03-01T19:56:31.955Z","v":0}
+{"name":"Log","hostname":"658f3aa36a9e","pid":1,"level":30,"req":{"meta":{"requestId":"b94d5fbd-6376-4586-82d7-645eb1283661","userId":null},"url":"/favicon.ico","method":"GET","originalUrl":"/favicon.ico","params":{},"headers":{"user-agent":"Mozilla/5.0 Safari/537.36","accept-encoding":"gzip, deflate","host":"localhost:2368","connection":"close"},"query":{}},"res":{"_headers":{"x-powered-by":"Express","content-type":"image/x-icon","etag":"\"a9c6dbdcdc3ae568f4e0dad92149a0e3\"","cache-control":"public, max-age=86400","vary":"Accept-Encoding","content-encoding":"gzip"},"statusCode":200,"responseTime":"7ms"},"msg":"","time":"2022-03-01T19:56:32.098Z","v":0}
+{"name":"Log","hostname":"658f3aa36a9e","pid":1,"level":30,"req":{"meta":{"requestId":"cee2191e-6799-47d8-b44c-fb9ae1dd6d9e","userId":null},"url":"/favicon.ico","method":"GET","originalUrl":"/favicon.ico","params":{},"headers":{"user-agent":"Mozilla/5.0 Safari/537.36","accept-encoding":"gzip, deflate","host":"localhost:2368","connection":"close"},"query":{}},"res":{"_headers":{"x-powered-by":"Express","content-type":"image/x-icon","etag":"\"a9c6dbdcdc3ae568f4e0dad92149a0e3\"","cache-control":"public, max-age=86400","vary":"Accept-Encoding","content-encoding":"gzip"},"statusCode":200,"responseTime":"42ms"},"msg":"","time":"2022-03-01T19:56:32.196Z","v":0}
+{"name":"Log","hostname":"658f3aa36a9e","pid":1,"level":30,"req":{"meta":{"requestId":"6b753ffa-7f48-476b-8936-c83e47d94551","userId":null},"url":"/","method":"GET","originalUrl":"/","params":{},"headers":{"host":"www.urtitan.ru","x-real-ip":"207.46.13.41","x-forwarded-for":"207.46.13.41","connection":"close","cache-control":"no-cache","pragma":"no-cache","accept":"*/*","accept-encoding":"gzip, deflate","from":"bingbot(at)microsoft.com","user-agent":"Mozilla/5.0 (compatible; bingbot/2.0; +http://www.bing.com/bingbot.htm)"},"query":{}},"res":{"_headers":{"x-powered-by":"Express","cache-control":"public, max-age=0","content-type":"text/html; charset=utf-8","etag":"W/\"2e16-qcavJ9pQkNYVxmrh4PA7mPx+BYQ\"","vary":"Accept-Encoding","content-encoding":"gzip"},"statusCode":200,"responseTime":"105ms"},"msg":"","time":"2022-03-01T21:02:31.897Z","v":0}
+{"name":"Log","hostname":"658f3aa36a9e","pid":1,"level":40,"msg":"Ghost is shutting down","time":"2022-03-01T21:10:11.214Z","v":0}
+{"name":"Log","hostname":"658f3aa36a9e","pid":1,"level":40,"msg":"Ghost has shut down","time":"2022-03-01T21:10:11.234Z","v":0}
+{"name":"Log","hostname":"658f3aa36a9e","pid":1,"level":40,"msg":"Your site is now offline","time":"2022-03-01T21:10:11.242Z","v":0}
+{"name":"Log","hostname":"658f3aa36a9e","pid":1,"level":40,"msg":"Ghost was running for 2 hours","time":"2022-03-01T21:10:11.246Z","v":0}
+{"name":"Log","hostname":"3208c1941fe1","pid":1,"level":30,"msg":"Ghost is running in production...","time":"2022-03-01T21:28:51.150Z","v":0}
+{"name":"Log","hostname":"3208c1941fe1","pid":1,"level":30,"msg":"Your site is now available on http://localhost:2368/","time":"2022-03-01T21:28:51.160Z","v":0}
+{"name":"Log","hostname":"3208c1941fe1","pid":1,"level":30,"msg":"Ctrl+C to shut down","time":"2022-03-01T21:28:51.162Z","v":0}
+{"name":"Log","hostname":"3208c1941fe1","pid":1,"level":30,"msg":"Ghost server started in 6.241s","time":"2022-03-01T21:28:51.294Z","v":0}
+{"name":"Log","hostname":"3208c1941fe1","pid":1,"level":30,"msg":"Database is in a ready state.","time":"2022-03-01T21:28:54.416Z","v":0}
+{"name":"Log","hostname":"3208c1941fe1","pid":1,"level":30,"msg":"Ghost database ready in 9.807s","time":"2022-03-01T21:28:54.857Z","v":0}
+{"name":"Log","hostname":"3208c1941fe1","pid":1,"level":30,"msg":"Ghost URL Service Ready in 40.881s","time":"2022-03-01T21:29:25.945Z","v":0}
+{"name":"Log","hostname":"3208c1941fe1","pid":1,"level":30,"msg":"Stripe not configured - skipping migrations","time":"2022-03-01T21:29:27.139Z","v":0}
+{"name":"Log","hostname":"3208c1941fe1","pid":1,"level":30,"msg":"Ghost booted in 42.995s","time":"2022-03-01T21:29:28.065Z","v":0}
+{"name":"Log","hostname":"3208c1941fe1","pid":1,"level":30,"msg":"Adding offloaded job to the queue","time":"2022-03-01T21:29:28.421Z","v":0}
+{"name":"Log","hostname":"3208c1941fe1","pid":1,"level":30,"msg":"Scheduling job update-check at 48 13 8 * * *. Next run on: Wed Mar 02 2022 08:13:48 GMT+0000 (Coordinated Universal Time)","time":"2022-03-01T21:29:28.746Z","v":0}
+{"name":"Log","hostname":"3208c1941fe1","pid":1,"level":40,"msg":"Ghost is shutting down","time":"2022-03-01T21:30:28.644Z","v":0}
+{"name":"Log","hostname":"3208c1941fe1","pid":1,"level":40,"msg":"Ghost has shut down","time":"2022-03-01T21:30:28.707Z","v":0}
+{"name":"Log","hostname":"3208c1941fe1","pid":1,"level":40,"msg":"Your site is now offline","time":"2022-03-01T21:30:28.708Z","v":0}
+{"name":"Log","hostname":"3208c1941fe1","pid":1,"level":40,"msg":"Ghost was running for 2 minutes","time":"2022-03-01T21:30:28.715Z","v":0}
+{"name":"Log","hostname":"a35dc80930d9","pid":1,"level":30,"msg":"Ghost is running in production...","time":"2022-03-01T21:31:16.393Z","v":0}
+{"name":"Log","hostname":"a35dc80930d9","pid":1,"level":30,"msg":"Your site is now available on http://localhost:2368/","time":"2022-03-01T21:31:16.396Z","v":0}
+{"name":"Log","hostname":"a35dc80930d9","pid":1,"level":30,"msg":"Ctrl+C to shut down","time":"2022-03-01T21:31:16.405Z","v":0}
+{"name":"Log","hostname":"a35dc80930d9","pid":1,"level":30,"msg":"Ghost server started in 2.943s","time":"2022-03-01T21:31:16.500Z","v":0}
+{"name":"Log","hostname":"a35dc80930d9","pid":1,"level":30,"msg":"Database is in a ready state.","time":"2022-03-01T21:31:18.843Z","v":0}
+{"name":"Log","hostname":"a35dc80930d9","pid":1,"level":30,"msg":"Ghost database ready in 5.543s","time":"2022-03-01T21:31:19.098Z","v":0}
+{"name":"Log","hostname":"a35dc80930d9","pid":1,"level":30,"msg":"Ghost URL Service Ready in 24.098s","time":"2022-03-01T21:31:37.654Z","v":0}
+{"name":"Log","hostname":"a35dc80930d9","pid":1,"level":30,"msg":"Stripe not configured - skipping migrations","time":"2022-03-01T21:31:39.216Z","v":0}
+{"name":"Log","hostname":"a35dc80930d9","pid":1,"level":30,"msg":"Ghost booted in 26.67s","time":"2022-03-01T21:31:40.228Z","v":0}
+{"name":"Log","hostname":"a35dc80930d9","pid":1,"level":30,"msg":"Adding offloaded job to the queue","time":"2022-03-01T21:31:40.289Z","v":0}
+{"name":"Log","hostname":"a35dc80930d9","pid":1,"level":30,"msg":"Scheduling job update-check at 23 7 20 * * *. Next run on: Wed Mar 02 2022 20:07:23 GMT+0000 (Coordinated Universal Time)","time":"2022-03-01T21:31:40.506Z","v":0}
+{"name":"Log","hostname":"a35dc80930d9","pid":1,"level":40,"msg":"Ghost is shutting down","time":"2022-03-01T21:34:54.293Z","v":0}
+{"name":"Log","hostname":"a35dc80930d9","pid":1,"level":40,"msg":"Ghost has shut down","time":"2022-03-01T21:34:54.322Z","v":0}
+{"name":"Log","hostname":"a35dc80930d9","pid":1,"level":40,"msg":"Your site is now offline","time":"2022-03-01T21:34:54.323Z","v":0}
+{"name":"Log","hostname":"a35dc80930d9","pid":1,"level":40,"msg":"Ghost was running for 4 minutes","time":"2022-03-01T21:34:54.331Z","v":0}
+{"name":"Log","hostname":"787c833062b4","pid":1,"level":30,"msg":"Ghost is running in production...","time":"2022-03-01T21:35:43.558Z","v":0}
+{"name":"Log","hostname":"787c833062b4","pid":1,"level":30,"msg":"Your site is now available on http://localhost:2368/","time":"2022-03-01T21:35:43.588Z","v":0}
+{"name":"Log","hostname":"787c833062b4","pid":1,"level":30,"msg":"Ctrl+C to shut down","time":"2022-03-01T21:35:43.589Z","v":0}
+{"name":"Log","hostname":"787c833062b4","pid":1,"level":30,"msg":"Ghost server started in 4.521s","time":"2022-03-01T21:35:43.687Z","v":0}
+{"name":"Log","hostname":"787c833062b4","pid":1,"level":30,"msg":"Database is in a ready state.","time":"2022-03-01T21:35:46.222Z","v":0}
+{"name":"Log","hostname":"787c833062b4","pid":1,"level":30,"msg":"Ghost database ready in 7.513s","time":"2022-03-01T21:35:46.658Z","v":0}
+{"name":"Log","hostname":"787c833062b4","pid":1,"level":30,"msg":"Ghost URL Service Ready in 22.771s","time":"2022-03-01T21:36:01.916Z","v":0}
+{"name":"Log","hostname":"787c833062b4","pid":1,"level":30,"msg":"Stripe not configured - skipping migrations","time":"2022-03-01T21:36:03.812Z","v":0}
+{"name":"Log","hostname":"787c833062b4","pid":1,"level":30,"msg":"Ghost booted in 25.069s","time":"2022-03-01T21:36:04.213Z","v":0}
+{"name":"Log","hostname":"787c833062b4","pid":1,"level":30,"msg":"Adding offloaded job to the queue","time":"2022-03-01T21:36:04.233Z","v":0}
+{"name":"Log","hostname":"787c833062b4","pid":1,"level":30,"msg":"Scheduling job update-check at 52 8 5 * * *. Next run on: Wed Mar 02 2022 05:08:52 GMT+0000 (Coordinated Universal Time)","time":"2022-03-01T21:36:04.330Z","v":0}
+{"name":"Log","hostname":"787c833062b4","pid":1,"level":40,"msg":"Ghost is shutting down","time":"2022-03-01T21:37:44.416Z","v":0}
+{"name":"Log","hostname":"787c833062b4","pid":1,"level":40,"msg":"Ghost has shut down","time":"2022-03-01T21:37:44.440Z","v":0}
+{"name":"Log","hostname":"787c833062b4","pid":1,"level":40,"msg":"Your site is now offline","time":"2022-03-01T21:37:44.441Z","v":0}
+{"name":"Log","hostname":"787c833062b4","pid":1,"level":40,"msg":"Ghost was running for 2 minutes","time":"2022-03-01T21:37:44.444Z","v":0}
+{"name":"Log","hostname":"54659c4ba8ee","pid":1,"level":30,"msg":"Ghost is running in production...","time":"2022-03-01T21:38:29.203Z","v":0}
+{"name":"Log","hostname":"54659c4ba8ee","pid":1,"level":30,"msg":"Your site is now available on http://localhost:2368/","time":"2022-03-01T21:38:29.205Z","v":0}
+{"name":"Log","hostname":"54659c4ba8ee","pid":1,"level":30,"msg":"Ctrl+C to shut down","time":"2022-03-01T21:38:29.205Z","v":0}
+{"name":"Log","hostname":"54659c4ba8ee","pid":1,"level":30,"msg":"Ghost server started in 3.174s","time":"2022-03-01T21:38:29.394Z","v":0}
+{"name":"Log","hostname":"54659c4ba8ee","pid":1,"level":30,"msg":"Database is in a ready state.","time":"2022-03-01T21:38:31.233Z","v":0}
+{"name":"Log","hostname":"54659c4ba8ee","pid":1,"level":30,"msg":"Ghost database ready in 5.472s","time":"2022-03-01T21:38:31.691Z","v":0}
+{"name":"Log","hostname":"54659c4ba8ee","pid":1,"level":30,"msg":"Stripe not configured - skipping migrations","time":"2022-03-01T21:38:51.621Z","v":0}
+{"name":"Log","hostname":"54659c4ba8ee","pid":1,"level":30,"msg":"Ghost URL Service Ready in 25.447s","time":"2022-03-01T21:38:51.666Z","v":0}
+{"name":"Log","hostname":"54659c4ba8ee","pid":1,"level":30,"msg":"Ghost booted in 25.604s","time":"2022-03-01T21:38:51.823Z","v":0}
+{"name":"Log","hostname":"54659c4ba8ee","pid":1,"level":30,"msg":"Adding offloaded job to the queue","time":"2022-03-01T21:38:51.836Z","v":0}
+{"name":"Log","hostname":"54659c4ba8ee","pid":1,"level":30,"msg":"Scheduling job update-check at 47 57 12 * * *. Next run on: Wed Mar 02 2022 12:57:47 GMT+0000 (Coordinated Universal Time)","time":"2022-03-01T21:38:51.862Z","v":0}
+{"name":"Log","hostname":"54659c4ba8ee","pid":1,"level":40,"msg":"Ghost is shutting down","time":"2022-03-01T21:39:16.930Z","v":0}
+{"name":"Log","hostname":"54659c4ba8ee","pid":1,"level":40,"msg":"Ghost has shut down","time":"2022-03-01T21:39:16.941Z","v":0}
+{"name":"Log","hostname":"54659c4ba8ee","pid":1,"level":40,"msg":"Your site is now offline","time":"2022-03-01T21:39:16.943Z","v":0}
+{"name":"Log","hostname":"54659c4ba8ee","pid":1,"level":40,"msg":"Ghost was running for a minute","time":"2022-03-01T21:39:16.952Z","v":0}
+{"name":"Log","hostname":"084befdba783","pid":1,"level":30,"msg":"Ghost is running in production...","time":"2022-03-01T21:46:20.045Z","v":0}
+{"name":"Log","hostname":"084befdba783","pid":1,"level":30,"msg":"Your site is now available on http://localhost:2368/","time":"2022-03-01T21:46:20.062Z","v":0}
+{"name":"Log","hostname":"084befdba783","pid":1,"level":30,"msg":"Ctrl+C to shut down","time":"2022-03-01T21:46:20.063Z","v":0}
+{"name":"Log","hostname":"084befdba783","pid":1,"level":30,"msg":"Ghost server started in 6.102s","time":"2022-03-01T21:46:20.133Z","v":0}
+{"name":"Log","hostname":"084befdba783","pid":1,"level":30,"msg":"Database is in a ready state.","time":"2022-03-01T21:46:23.678Z","v":0}
+{"name":"Log","hostname":"084befdba783","pid":1,"level":30,"msg":"Ghost database ready in 10.122s","time":"2022-03-01T21:46:24.150Z","v":0}
+{"name":"Log","hostname":"084befdba783","pid":1,"level":40,"msg":"Ghost is shutting down","time":"2022-03-01T21:47:50.593Z","v":0}
+{"name":"Log","hostname":"084befdba783","pid":1,"level":40,"msg":"Ghost has shut down","time":"2022-03-01T21:47:50.624Z","v":0}
+{"name":"Log","hostname":"084befdba783","pid":1,"level":40,"msg":"Your site is now offline","time":"2022-03-01T21:47:50.637Z","v":0}
+{"name":"Log","hostname":"084befdba783","pid":1,"level":40,"msg":"Ghost was running for 2 minutes","time":"2022-03-01T21:47:50.645Z","v":0}
+{"name":"Log","hostname":"1379c72a2e47","pid":1,"level":30,"msg":"Ghost is running in production...","time":"2022-03-01T21:51:36.163Z","v":0}
+{"name":"Log","hostname":"1379c72a2e47","pid":1,"level":30,"msg":"Your site is now available on http://localhost:2368/","time":"2022-03-01T21:51:36.201Z","v":0}
+{"name":"Log","hostname":"1379c72a2e47","pid":1,"level":30,"msg":"Ctrl+C to shut down","time":"2022-03-01T21:51:36.202Z","v":0}
+{"name":"Log","hostname":"1379c72a2e47","pid":1,"level":30,"msg":"Ghost server started in 2.953s","time":"2022-03-01T21:51:36.384Z","v":0}
+{"name":"Log","hostname":"1379c72a2e47","pid":1,"level":30,"msg":"Database is in a ready state.","time":"2022-03-01T21:51:38.351Z","v":0}
+{"name":"Log","hostname":"1379c72a2e47","pid":1,"level":30,"msg":"Ghost database ready in 5.309s","time":"2022-03-01T21:51:38.739Z","v":0}
+{"name":"Log","hostname":"1379c72a2e47","pid":1,"level":30,"msg":"Ghost URL Service Ready in 19.333s","time":"2022-03-01T21:51:52.763Z","v":0}
+{"name":"Log","hostname":"1379c72a2e47","pid":1,"level":30,"msg":"Stripe not configured - skipping migrations","time":"2022-03-01T21:51:53.061Z","v":0}
+{"name":"Log","hostname":"1379c72a2e47","pid":1,"level":30,"msg":"Ghost booted in 19.778s","time":"2022-03-01T21:51:53.208Z","v":0}
+{"name":"Log","hostname":"1379c72a2e47","pid":1,"level":30,"msg":"Adding offloaded job to the queue","time":"2022-03-01T21:51:53.217Z","v":0}
+{"name":"Log","hostname":"1379c72a2e47","pid":1,"level":30,"msg":"Scheduling job update-check at 51 34 15 * * *. Next run on: Wed Mar 02 2022 15:34:51 GMT+0000 (Coordinated Universal Time)","time":"2022-03-01T21:51:53.244Z","v":0}
+{"name":"Log","hostname":"1379c72a2e47","pid":1,"level":40,"msg":"Ghost is shutting down","time":"2022-03-01T21:54:12.343Z","v":0}
+{"name":"Log","hostname":"1379c72a2e47","pid":1,"level":40,"msg":"Ghost has shut down","time":"2022-03-01T21:54:12.351Z","v":0}
+{"name":"Log","hostname":"1379c72a2e47","pid":1,"level":40,"msg":"Your site is now offline","time":"2022-03-01T21:54:12.352Z","v":0}
+{"name":"Log","hostname":"1379c72a2e47","pid":1,"level":40,"msg":"Ghost was running for 3 minutes","time":"2022-03-01T21:54:12.354Z","v":0}
+{"name":"Log","hostname":"d69650f3b69c","pid":1,"level":30,"msg":"Ghost is running in production...","time":"2022-03-01T22:15:40.321Z","v":0}
+{"name":"Log","hostname":"d69650f3b69c","pid":1,"level":30,"msg":"Your site is now available on http://localhost:2368/","time":"2022-03-01T22:15:40.330Z","v":0}
+{"name":"Log","hostname":"d69650f3b69c","pid":1,"level":30,"msg":"Ctrl+C to shut down","time":"2022-03-01T22:15:40.333Z","v":0}
+{"name":"Log","hostname":"d69650f3b69c","pid":1,"level":30,"msg":"Ghost server started in 5.075s","time":"2022-03-01T22:15:40.430Z","v":0}
+{"name":"Log","hostname":"d69650f3b69c","pid":1,"level":30,"msg":"Database is in a ready state.","time":"2022-03-01T22:15:42.255Z","v":0}
+{"name":"Log","hostname":"d69650f3b69c","pid":1,"level":30,"msg":"Ghost database ready in 7.191s","time":"2022-03-01T22:15:42.544Z","v":0}
+{"name":"Log","hostname":"d69650f3b69c","pid":1,"level":30,"msg":"Ghost URL Service Ready in 18.882s","time":"2022-03-01T22:15:54.236Z","v":0}
+{"name":"Log","hostname":"d69650f3b69c","pid":1,"level":30,"msg":"Stripe not configured - skipping migrations","time":"2022-03-01T22:15:54.675Z","v":0}
+{"name":"Log","hostname":"d69650f3b69c","pid":1,"level":30,"msg":"Ghost booted in 19.577s","time":"2022-03-01T22:15:54.930Z","v":0}
+{"name":"Log","hostname":"d69650f3b69c","pid":1,"level":30,"msg":"Adding offloaded job to the queue","time":"2022-03-01T22:15:54.972Z","v":0}
+{"name":"Log","hostname":"d69650f3b69c","pid":1,"level":30,"msg":"Scheduling job update-check at 37 21 4 * * *. Next run on: Wed Mar 02 2022 04:21:37 GMT+0000 (Coordinated Universal Time)","time":"2022-03-01T22:15:55.020Z","v":0}

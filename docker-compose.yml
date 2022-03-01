@@ -1,17 +1,14 @@
 version: '3.7'
-
 services:
-
-  #backend:
-  #  container_name: strapi
-  #  image: strapi/strapi
-  #  ports:
-  #    - 1337:1337
-  #  volumes:
-  #    - ./backend:/srv/app
-  #  restart: always
-  #  networks:
-  #  - rocktver-network
+  strapi:
+    image: strapi/strapi
+    ports:
+      - "1337:1337"
+    volumes:
+      - ./strapi:/srv/app
+    restart: always
+    networks:
+    - rocktver-network
 
 
   #frontend:
@@ -28,7 +25,7 @@ services:
     image: ghost:latest
     restart: always
     ports:
-      - 2368:2368
+      - "2368:2368"
     volumes:
     #  - ./data-ghost-content/config.production.json:/var/lib/ghost/config.production.json:z #overwrite default settings 
       - ./data-ghost-content:/var/lib/ghost/content
