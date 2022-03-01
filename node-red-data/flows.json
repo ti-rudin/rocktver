@@ -56,6 +56,10 @@
         "tokenType": "str"
     },
     {
+        "id": "8d22a1ef75f18657",
+        "type": "nexmobasic"
+    },
+    {
         "id": "b02b9e6ed72d8945",
         "type": "redis-instance",
         "z": "e6bc8fcb02c15518",
@@ -335,8 +339,8 @@
         "targetType": "full",
         "statusVal": "",
         "statusType": "auto",
-        "x": 230,
-        "y": 660,
+        "x": 270,
+        "y": 680,
         "wires": []
     },
     {
@@ -576,5 +580,68 @@
                 "bc2e3fa8c1533580"
             ]
         ]
+    },
+    {
+        "id": "6de412619eb8c252",
+        "type": "sendsms",
+        "z": "e6bc8fcb02c15518",
+        "creds": "8d22a1ef75f18657",
+        "to": "79651050211",
+        "fr": "79651050211",
+        "text": "q",
+        "unicode": false,
+        "x": 830,
+        "y": 900,
+        "wires": [
+            [
+                "a706c52d15358471"
+            ]
+        ]
+    },
+    {
+        "id": "b89b8befc0703c94",
+        "type": "inject",
+        "z": "e6bc8fcb02c15518",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 660,
+        "y": 900,
+        "wires": [
+            [
+                "6de412619eb8c252"
+            ]
+        ]
+    },
+    {
+        "id": "a706c52d15358471",
+        "type": "debug",
+        "z": "e6bc8fcb02c15518",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 990,
+        "y": 900,
+        "wires": []
     }
 ]

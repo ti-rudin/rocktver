@@ -24,6 +24,17 @@ services:
     #depends_on:
     #  - backend
 
+  ghost:
+    image: ghost:latest
+    restart: always
+    ports:
+      - 2368:2368
+    volumes:
+    #  - ./data-ghost-content/config.production.json:/var/lib/ghost/config.production.json:z #overwrite default settings 
+      - ./data-ghost-content:/var/lib/ghost/content
+    networks:
+    - rocktver-network
+
   node-red:
     container_name: node-red
     build:
@@ -57,6 +68,7 @@ services:
 
 volumes:
   node-red-data:
+  data-ghost-content:
 
 networks:
   rocktver-network:
