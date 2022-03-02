@@ -380,3 +380,7 @@
 {"name":"Log","hostname":"d69650f3b69c","pid":1,"level":30,"msg":"Ghost booted in 19.577s","time":"2022-03-01T22:15:54.930Z","v":0}
 {"name":"Log","hostname":"d69650f3b69c","pid":1,"level":30,"msg":"Adding offloaded job to the queue","time":"2022-03-01T22:15:54.972Z","v":0}
 {"name":"Log","hostname":"d69650f3b69c","pid":1,"level":30,"msg":"Scheduling job update-check at 37 21 4 * * *. Next run on: Wed Mar 02 2022 04:21:37 GMT+0000 (Coordinated Universal Time)","time":"2022-03-01T22:15:55.020Z","v":0}
+{"name":"Log","hostname":"d69650f3b69c","pid":1,"level":40,"msg":"Ghost is shutting down","time":"2022-03-01T22:52:28.761Z","v":0}
+{"name":"Log","hostname":"d69650f3b69c","pid":1,"level":40,"msg":"Ghost has shut down","time":"2022-03-01T22:52:28.773Z","v":0}
+{"name":"Log","hostname":"d69650f3b69c","pid":1,"level":40,"msg":"Your site is now offline","time":"2022-03-01T22:52:28.788Z","v":0}
+{"name":"Log","hostname":"d69650f3b69c","pid":1,"level":40,"msg":"Ghost was running for 37 minutes","time":"2022-03-01T22:52:28.792Z","v":0}
