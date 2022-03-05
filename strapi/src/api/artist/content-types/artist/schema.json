@@ -4,24 +4,32 @@
   "info": {
     "singularName": "artist",
     "pluralName": "artists",
-    "displayName": "artist"
+    "displayName": "artist",
+    "description": ""
   },
   "options": {
     "draftAndPublish": false
   },
-  "pluginOptions": {
-    "i18n": {
-      "localized": true
-    }
-  },
+  "pluginOptions": {},
   "attributes": {
     "name": {
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        }
-      },
+      "pluginOptions": {},
       "type": "string"
+    },
+    "avatar": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images"
+      ],
+      "pluginOptions": {}
+    },
+    "band": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::band.band",
+      "inversedBy": "artists"
     }
   }
 }

@@ -1,0 +1,304 @@
+{
+    "data": {
+      "id": "string",
+      "attributes": {
+        "band_name": "string",
+        "artists": {
+          "data": [
+            {
+              "id": "string",
+              "attributes": {
+                "name": "string",
+                "avatar": {
+                  "data": {
+                    "id": "string",
+                    "attributes": {
+                      "name": "string",
+                      "alternativeText": "string",
+                      "caption": "string",
+                      "width": 0,
+                      "height": 0,
+                      "formats": "string",
+                      "hash": "string",
+                      "ext": "string",
+                      "mime": "string",
+                      "size": 0,
+                      "url": "string",
+                      "previewUrl": "string",
+                      "provider": "string",
+                      "provider_metadata": "string",
+                      "related": {
+                        "data": [
+                          {
+                            "id": "string",
+                            "attributes": {}
+                          }
+                        ]
+                      },
+                      "createdAt": "2022-03-05T00:53:13.973Z",
+                      "updatedAt": "2022-03-05T00:53:13.973Z",
+                      "createdBy": {
+                        "data": {
+                          "id": "string",
+                          "attributes": {
+                            "firstname": "string",
+                            "lastname": "string",
+                            "username": "string",
+                            "email": "user@example.com",
+                            "resetPasswordToken": "string",
+                            "registrationToken": "string",
+                            "isActive": true,
+                            "roles": {
+                              "data": [
+                                {
+                                  "id": "string",
+                                  "attributes": {
+                                    "name": "string",
+                                    "code": "string",
+                                    "description": "string",
+                                    "users": {
+                                      "data": [
+                                        {
+                                          "id": "string",
+                                          "attributes": {}
+                                        }
+                                      ]
+                                    },
+                                    "permissions": {
+                                      "data": [
+                                        {
+                                          "id": "string",
+                                          "attributes": {
+                                            "action": "string",
+                                            "subject": "string",
+                                            "properties": "string",
+                                            "conditions": "string",
+                                            "role": {
+                                              "data": {
+                                                "id": "string",
+                                                "attributes": {}
+                                              }
+                                            },
+                                            "createdAt": "2022-03-05T00:53:13.973Z",
+                                            "updatedAt": "2022-03-05T00:53:13.973Z",
+                                            "createdBy": {
+                                              "data": {
+                                                "id": "string",
+                                                "attributes": {}
+                                              }
+                                            },
+                                            "updatedBy": {
+                                              "data": {
+                                                "id": "string",
+                                                "attributes": {}
+                                              }
+                                            }
+                                          }
+                                        }
+                                      ]
+                                    },
+                                    "createdAt": "2022-03-05T00:53:13.973Z",
+                                    "updatedAt": "2022-03-05T00:53:13.973Z",
+                                    "createdBy": {
+                                      "data": {
+                                        "id": "string",
+                                        "attributes": {}
+                                      }
+                                    },
+                                    "updatedBy": {
+                                      "data": {
+                                        "id": "string",
+                                        "attributes": {}
+                                      }
+                                    }
+                                  }
+                                }
+                              ]
+                            },
+                            "blocked": true,
+                            "preferedLanguage": "string",
+                            "createdAt": "2022-03-05T00:53:13.973Z",
+                            "updatedAt": "2022-03-05T00:53:13.973Z",
+                            "createdBy": {
+                              "data": {
+                                "id": "string",
+                                "attributes": {}
+                              }
+                            },
+                            "updatedBy": {
+                              "data": {
+                                "id": "string",
+                                "attributes": {}
+                              }
+                            }
+                          }
+                        }
+                      },
+                      "updatedBy": {
+                        "data": {
+                          "id": "string",
+                          "attributes": {}
+                        }
+                      }
+                    }
+                  }
+                },
+                "band": {
+                  "data": {
+                    "id": "string",
+                    "attributes": {
+                      "band_name": "string",
+                      "artists": {
+                        "data": [
+                          {
+                            "id": "string",
+                            "attributes": {}
+                          }
+                        ]
+                      },
+                      "createdAt": "2022-03-05T00:53:13.973Z",
+                      "updatedAt": "2022-03-05T00:53:13.973Z",
+                      "publishedAt": "2022-03-05T00:53:13.973Z",
+                      "createdBy": {
+                        "data": {
+                          "id": "string",
+                          "attributes": {
+                            "firstname": "string",
+                            "lastname": "string",
+                            "username": "string",
+                            "email": "user@example.com",
+                            "resetPasswordToken": "string",
+                            "registrationToken": "string",
+                            "isActive": true,
+                            "roles": {
+                              "data": [
+                                {
+                                  "id": "string",
+                                  "attributes": {
+                                    "name": "string",
+                                    "code": "string",
+                                    "description": "string",
+                                    "users": {
+                                      "data": [
+                                        {
+                                          "id": "string",
+                                          "attributes": {}
+                                        }
+                                      ]
+                                    },
+                                    "permissions": {
+                                      "data": [
+                                        {
+                                          "id": "string",
+                                          "attributes": {
+                                            "action": "string",
+                                            "subject": "string",
+                                            "properties": "string",
+                                            "conditions": "string",
+                                            "role": {
+                                              "data": {
+                                                "id": "string",
+                                                "attributes": {}
+                                              }
+                                            },
+                                            "createdAt": "2022-03-05T00:53:13.973Z",
+                                            "updatedAt": "2022-03-05T00:53:13.973Z",
+                                            "createdBy": {
+                                              "data": {
+                                                "id": "string",
+                                                "attributes": {}
+                                              }
+                                            },
+                                            "updatedBy": {
+                                              "data": {
+                                                "id": "string",
+                                                "attributes": {}
+                                              }
+                                            }
+                                          }
+                                        }
+                                      ]
+                                    },
+                                    "createdAt": "2022-03-05T00:53:13.973Z",
+                                    "updatedAt": "2022-03-05T00:53:13.973Z",
+                                    "createdBy": {
+                                      "data": {
+                                        "id": "string",
+                                        "attributes": {}
+                                      }
+                                    },
+                                    "updatedBy": {
+                                      "data": {
+                                        "id": "string",
+                                        "attributes": {}
+                                      }
+                                    }
+                                  }
+                                }
+                              ]
+                            },
+                            "blocked": true,
+                            "preferedLanguage": "string",
+                            "createdAt": "2022-03-05T00:53:13.973Z",
+                            "updatedAt": "2022-03-05T00:53:13.973Z",
+                            "createdBy": {
+                              "data": {
+                                "id": "string",
+                                "attributes": {}
+                              }
+                            },
+                            "updatedBy": {
+                              "data": {
+                                "id": "string",
+                                "attributes": {}
+                              }
+                            }
+                          }
+                        }
+                      },
+                      "updatedBy": {
+                        "data": {
+                          "id": "string",
+                          "attributes": {}
+                        }
+                      }
+                    }
+                  }
+                },
+                "createdAt": "2022-03-05T00:53:13.973Z",
+                "updatedAt": "2022-03-05T00:53:13.973Z",
+                "createdBy": {
+                  "data": {
+                    "id": "string",
+                    "attributes": {}
+                  }
+                },
+                "updatedBy": {
+                  "data": {
+                    "id": "string",
+                    "attributes": {}
+                  }
+                }
+              }
+            }
+          ]
+        },
+        "createdAt": "2022-03-05T00:53:13.973Z",
+        "updatedAt": "2022-03-05T00:53:13.973Z",
+        "publishedAt": "2022-03-05T00:53:13.973Z",
+        "createdBy": {
+          "data": {
+            "id": "string",
+            "attributes": {}
+          }
+        },
+        "updatedBy": {
+          "data": {
+            "id": "string",
+            "attributes": {}
+          }
+        }
+      }
+    },
+    "meta": {}
+  }

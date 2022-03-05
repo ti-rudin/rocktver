@@ -725,5 +725,132 @@
                 "file": "/data/node_modules/@notify.events/node-red/notify-events.js"
             }
         }
+    },
+    "node-red-contrib-nexmo": {
+        "name": "node-red-contrib-nexmo",
+        "version": "3.3.1",
+        "local": false,
+        "user": false,
+        "nodes": {
+            "ncco": {
+                "name": "ncco",
+                "types": [
+                    "talk",
+                    "stream",
+                    "input",
+                    "record",
+                    "conversation",
+                    "connect",
+                    "notify"
+                ],
+                "enabled": true,
+                "local": false,
+                "user": false,
+                "module": "node-red-contrib-nexmo",
+                "file": "/usr/src/node-red/node_modules/node-red-contrib-nexmo/nodes/ncco.js"
+            },
+            "nexmo_webhooks": {
+                "name": "nexmo_webhooks",
+                "types": [
+                    "voice webhook",
+                    "return ncco"
+                ],
+                "enabled": true,
+                "local": false,
+                "user": false,
+                "module": "node-red-contrib-nexmo",
+                "file": "/usr/src/node-red/node_modules/node-red-contrib-nexmo/nodes/webhooks.js"
+            },
+            "vapi_rest": {
+                "name": "vapi_rest",
+                "types": [
+                    "createcall",
+                    "getrecording",
+                    "earmuff",
+                    "mute",
+                    "hangup",
+                    "transfer",
+                    "playaudio",
+                    "playtts",
+                    "playdtmf"
+                ],
+                "enabled": true,
+                "local": false,
+                "user": false,
+                "module": "node-red-contrib-nexmo",
+                "file": "/usr/src/node-red/node_modules/node-red-contrib-nexmo/nodes/vapi_rest.js"
+            },
+            "sms_rest": {
+                "name": "sms_rest",
+                "types": [
+                    "sendsms"
+                ],
+                "enabled": true,
+                "local": false,
+                "user": false,
+                "module": "node-red-contrib-nexmo",
+                "file": "/usr/src/node-red/node_modules/node-red-contrib-nexmo/nodes/sms_rest.js"
+            },
+            "verify": {
+                "name": "verify",
+                "types": [
+                    "sendverify",
+                    "checkverify",
+                    "cancelverify",
+                    "nextverify",
+                    "searchverify"
+                ],
+                "enabled": true,
+                "local": false,
+                "user": false,
+                "module": "node-red-contrib-nexmo",
+                "file": "/usr/src/node-red/node_modules/node-red-contrib-nexmo/nodes/verify.js"
+            },
+            "insight": {
+                "name": "insight",
+                "types": [
+                    "numberinsight"
+                ],
+                "enabled": true,
+                "local": false,
+                "user": false,
+                "module": "node-red-contrib-nexmo",
+                "file": "/usr/src/node-red/node_modules/node-red-contrib-nexmo/nodes/insight.js"
+            },
+            "auth": {
+                "name": "auth",
+                "types": [
+                    "nexmovoiceapp",
+                    "nexmobasic"
+                ],
+                "enabled": true,
+                "local": false,
+                "user": false,
+                "module": "node-red-contrib-nexmo",
+                "file": "/usr/src/node-red/node_modules/node-red-contrib-nexmo/nodes/auth.js"
+            },
+            "nexmo_apps": {
+                "name": "nexmo_apps",
+                "types": [
+                    "updateNexmoApp"
+                ],
+                "enabled": true,
+                "local": false,
+                "user": false,
+                "module": "node-red-contrib-nexmo",
+                "file": "/usr/src/node-red/node_modules/node-red-contrib-nexmo/nodes/apps.js"
+            },
+            "number": {
+                "name": "number",
+                "types": [
+                    "updateNumber"
+                ],
+                "enabled": true,
+                "local": false,
+                "user": false,
+                "module": "node-red-contrib-nexmo",
+                "file": "/usr/src/node-red/node_modules/node-red-contrib-nexmo/nodes/number.js"
+            }
+        }
     }
 }

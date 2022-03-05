@@ -1,0 +1,25 @@
+{
+  "kind": "collectionType",
+  "collectionName": "bands",
+  "info": {
+    "singularName": "band",
+    "pluralName": "bands",
+    "displayName": "Band",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "band_name": {
+      "type": "string"
+    },
+    "artists": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::artist.artist",
+      "mappedBy": "band"
+    }
+  }
+}

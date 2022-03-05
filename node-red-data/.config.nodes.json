@@ -709,8 +709,8 @@
     "@notify.events/node-red": {
         "name": "@notify.events/node-red",
         "version": "1.1.0",
-        "local": true,
-        "user": true,
+        "local": false,
+        "user": false,
         "nodes": {
             "notify-events": {
                 "name": "notify-events",
@@ -719,10 +719,10 @@
                     "notify-events-channel"
                 ],
                 "enabled": true,
-                "local": true,
+                "local": false,
                 "user": false,
                 "module": "@notify.events/node-red",
-                "file": "/data/node_modules/@notify.events/node-red/notify-events.js"
+                "file": "/usr/src/node-red/node_modules/@notify.events/node-red/notify-events.js"
             }
         }
     },

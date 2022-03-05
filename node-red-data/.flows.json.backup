@@ -56,6 +56,10 @@
         "tokenType": "str"
     },
     {
+        "id": "8d22a1ef75f18657",
+        "type": "nexmobasic"
+    },
+    {
         "id": "b02b9e6ed72d8945",
         "type": "redis-instance",
         "z": "e6bc8fcb02c15518",
@@ -335,8 +339,8 @@
         "targetType": "full",
         "statusVal": "",
         "statusType": "auto",
-        "x": 230,
-        "y": 660,
+        "x": 270,
+        "y": 680,
         "wires": []
     },
     {
@@ -574,6 +578,193 @@
         "wires": [
             [
                 "bc2e3fa8c1533580"
+            ]
+        ]
+    },
+    {
+        "id": "6de412619eb8c252",
+        "type": "sendsms",
+        "z": "e6bc8fcb02c15518",
+        "creds": "8d22a1ef75f18657",
+        "to": "79651050211",
+        "fr": "79651050211",
+        "text": "q",
+        "unicode": false,
+        "x": 830,
+        "y": 900,
+        "wires": [
+            [
+                "a706c52d15358471"
+            ]
+        ]
+    },
+    {
+        "id": "b89b8befc0703c94",
+        "type": "inject",
+        "z": "e6bc8fcb02c15518",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 660,
+        "y": 900,
+        "wires": [
+            [
+                "6de412619eb8c252"
+            ]
+        ]
+    },
+    {
+        "id": "a706c52d15358471",
+        "type": "debug",
+        "z": "e6bc8fcb02c15518",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 990,
+        "y": 900,
+        "wires": []
+    },
+    {
+        "id": "ca376d4abfd01c4b",
+        "type": "http request",
+        "z": "e6bc8fcb02c15518",
+        "name": "",
+        "method": "GET",
+        "ret": "obj",
+        "paytoqs": "ignore",
+        "url": "https://admin.rocktver.ru/api/artists?populate=avatar",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "authType": "",
+        "senderr": false,
+        "x": 410,
+        "y": 1100,
+        "wires": [
+            [
+                "c6f8e477fe44d4b5",
+                "1188fe344bf433d3"
+            ]
+        ]
+    },
+    {
+        "id": "c6f8e477fe44d4b5",
+        "type": "debug",
+        "z": "e6bc8fcb02c15518",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 630,
+        "y": 1200,
+        "wires": []
+    },
+    {
+        "id": "032576dece827df6",
+        "type": "inject",
+        "z": "e6bc8fcb02c15518",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 240,
+        "y": 1100,
+        "wires": [
+            [
+                "ca376d4abfd01c4b"
+            ]
+        ]
+    },
+    {
+        "id": "c18c893de220818d",
+        "type": "split",
+        "z": "e6bc8fcb02c15518",
+        "name": "",
+        "splt": "\\n",
+        "spltType": "str",
+        "arraySplt": 1,
+        "arraySpltType": "len",
+        "stream": false,
+        "addname": "",
+        "x": 770,
+        "y": 1100,
+        "wires": [
+            [
+                "fe5f4a52a2917a32"
+            ]
+        ]
+    },
+    {
+        "id": "fe5f4a52a2917a32",
+        "type": "debug",
+        "z": "e6bc8fcb02c15518",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 930,
+        "y": 1100,
+        "wires": []
+    },
+    {
+        "id": "1188fe344bf433d3",
+        "type": "function",
+        "z": "e6bc8fcb02c15518",
+        "name": "",
+        "func": "let data = msg.payload.data;\nmsg = {};\nmsg.payload = data;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 600,
+        "y": 1100,
+        "wires": [
+            [
+                "c18c893de220818d"
             ]
         ]
     }
