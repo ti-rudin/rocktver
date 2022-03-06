@@ -39,11 +39,51 @@
       error: new Error(`Error fetching GraphQL data`),
     }
   }
+
+
 </script>
 
 <script>
   export let launches
   //console.log(this.artists.data[0].attributes.name)
+  $: launches = launches;
+
+  async function loadinterval() {
+  const res = await fetch('https://admin.rocktver.ru/graphql', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        query: ` {
+          artists { 
+                  data{
+                    id
+                    attributes{
+                      name
+                      avatar{
+                        data{
+                          attributes{
+                            url
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+        }`,
+      }),
+    })
+    if (res.ok) {
+      const { data } = await res.json()
+      console.log(data)
+      launches = data.artists.data
+    }
+    
+}
+
+  const timerId = setInterval(loadinterval, 5000);
+
 
 </script>
 
