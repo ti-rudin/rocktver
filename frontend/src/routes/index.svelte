@@ -117,7 +117,7 @@ function pad(n) {
 #countdown #tiles > span{
 	width: 92px;
 	max-width: 92px;
-	font: bold 48px 'Droid Sans', Arial, sans-serif;
+	font: bold 48px Arial, sans-serif;
 	text-align: center;
 	color: #111;
 	background-color: #ddd;
@@ -167,7 +167,7 @@ function pad(n) {
 
 #countdown .labels li{
 	width: 102px;
-	font: bold 15px 'Droid Sans', Arial, sans-serif;
+	font: bold 15px Arial, sans-serif;
 	color: #f47321;
 	text-shadow: 1px 1px 0px #000;
 	text-align: center;

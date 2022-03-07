@@ -7,23 +7,24 @@
       },
       body: JSON.stringify({
         query: `{
-  band (id:7)  {
-    data  {
-      id
-      attributes {
-        band_name
-        spisok {
-          ... on ComponentPesniTrack {
-            
-            id
-            name
-            text
+          bands {
+            data {
+              id
+
+              attributes {
+                band_name
+                spisok {
+                  ... on ComponentPesniTrack {
+
+                    id
+                    name
+                    text
+                  }
+                }
+              }
+            }
           }
-        }
-      }
-    }
-  }
-}`,
+        }`,
       }),
     })
     if (res.ok) {
@@ -31,7 +32,7 @@
       console.log(data)
       return {
         props: {
-          launch: data.band.data,
+          launches: data.bands.data,
         },
       }
     }
@@ -40,27 +41,81 @@
       error: new Error(`Error fetching GraphQL data`),
     }
   }
-
-  
-
 </script>
 
 <script>
-  export let launch
+  export let launches
   //console.log(this.artists.data[0].attributes.name)
 
+  $: launches = launches
+
+  async function loadinterval() {
+    const res = await fetch('https://admin.rocktver.ru/graphql', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        query: `{
+          bands {
+            data {
+              id
+              
+              attributes {
+                band_name
+                spisok {
+                  ... on ComponentPesniTrack {
+                    
+                    id
+                    name
+                    text
+                  }
+                }
+              }
+            }
+          }
+        }`,
+      }),
+    })
+    if (res.ok) {
+      const { data } = await res.json()
+      console.log('data5  ')
+
+      launches = data.bands.data
+      setTimeout(function () {loadinterval()}, 2000);
+    }
+
+  }
 
 
+    loadinterval()
 
+
+  function killt() {
+    console.log('kill')
+    clearInterval(timerId)
+  }
 </script>
 
 <h1>Команды</h1>
-<h1>{launch.id}</h1>
-<h1>{launch.attributes.band_name}</h1>
-<h2>{JSON.stringify(launch.attributes.spisok)}</h2>
+<div on:click={killt}>
 
+</div>
 <ul>
- 
+  {#each launches as launch}
+    <li>
+      <a
+        class="card-link"
+        target="_self"
+        rel="noopener"
+        href={'band/' + launch.attributes.band_name}
+      >
+        <h2>{launch.attributes.band_name}</h2>
+
+        <h2>{JSON.stringify(launch.attributes.spisok)}</h2>
+      </a>
+    </li>
+  {/each}
 </ul>
 <footer>
   <p>
@@ -130,7 +185,4 @@
   .link:hover {
     text-decoration: underline;
   }
-
-
-  
 </style>
