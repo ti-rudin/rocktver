@@ -125,7 +125,7 @@
 
 <style>
 	.countdown {
-		width: 465px;
+		width: auto;
 		height: 112px;
 		text-align: center;
 		background: #222;

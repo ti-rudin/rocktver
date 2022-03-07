@@ -58,7 +58,7 @@ function pad(n) {
 
 
 .countdown{
-	width: 465px;
+
 	height: 112px;
 	text-align: center;
 	background: #222;

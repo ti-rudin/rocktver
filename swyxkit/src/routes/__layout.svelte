@@ -16,7 +16,7 @@
 	/>
 </svelte:head>
 
-<div class="flex flex-col justify-center bg-gray-50 px-4 dark:bg-gray-900 sm:px-8">
+<div class="flex flex-col justify-center bg-gray-50 px-4 dark:bg-gray-900 ">
 	<Nav />
 </div>
 <main class="flex flex-col justify-center bg-gray-50 px-4 dark:bg-gray-900 sm:px-8">
