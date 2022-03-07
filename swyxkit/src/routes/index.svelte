@@ -116,10 +116,10 @@
 				<li>Secs</li>
 			</div>
 		</div>
-
 		<!-- <div
 				class="w-[80px] h-[80px] rounded-full sm:w-[176px] sm:h-[136px] relative mb-8 sm:mb-0 mr-auto bg-cyan-300 bg-opacity-25"
-			/> -->
+			/> 
+		-->
 	</div>
 </div>
 
@@ -129,7 +129,7 @@
 		height: 112px;
 		text-align: center;
 		background: #222;
-		background-image: -webkit-linear-gradient(top, #222, #333, #333, #222);
+		background-image: -webkit-linear-gradient(top, #222, #333, #333, #221);
 		background-image: -moz-linear-gradient(top, #222, #333, #333, #222);
 		background-image: -ms-linear-gradient(top, #222, #333, #333, #222);
 		background-image: -o-linear-gradient(top, #222, #333, #333, #222);
