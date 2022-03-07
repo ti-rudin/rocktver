@@ -188,8 +188,8 @@
 	}
 
 	.countdown .tiles > span {
-		width: 92px;
-		max-width: 92px;
+		width: 82px;
+		max-width: 82px;
 		font: bold 48px Arial, sans-serif;
 		text-align: center;
 		color: #111;
@@ -241,7 +241,7 @@
 	}
 
 	.countdown .labels li {
-		width: 102px;
+		width: 95px;
 		font: bold 15px Arial, sans-serif;
 		color: #f47321;
 		text-shadow: 1px 1px 0px #000;
