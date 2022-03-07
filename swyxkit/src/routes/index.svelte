@@ -136,7 +136,7 @@
 		text-align: center;
 	}
 	.countdown {
-		width: 340px;
+		width: 330px;
 		height: 112px;
 		text-align: center;
 		background: #222;
@@ -180,7 +180,7 @@
 		border-top: 1px solid #fff;
 		border-radius: 3px;
 		box-shadow: 0px 0px 12px rgba(0, 0, 0, 0.7);
-		margin: 0 7px;
+		margin: 0 4px;
 		padding: 12px 0;
 		display: inline-block;
 		position: relative;
