@@ -444,6 +444,30 @@
                                                             }
                                                           }
                                                         },
+                                                        "spisok": {
+                                                          "type": "array",
+                                                          "items": {
+                                                            "anyOf": [
+                                                              {
+                                                                "type": "object",
+                                                                "properties": {
+                                                                  "id": {
+                                                                    "type": "string"
+                                                                  },
+                                                                  "__component": {
+                                                                    "type": "string"
+                                                                  },
+                                                                  "text": {
+                                                                    "type": "string"
+                                                                  },
+                                                                  "name": {
+                                                                    "type": "string"
+                                                                  }
+                                                                }
+                                                              }
+                                                            ]
+                                                          }
+                                                        },
                                                         "createdAt": {
                                                           "type": "string",
                                                           "format": "date-time"
@@ -794,6 +818,30 @@
                                       }
                                     }
                                   }
+                                }
+                              },
+                              "spisok": {
+                                "type": "array",
+                                "items": {
+                                  "anyOf": [
+                                    {
+                                      "type": "object",
+                                      "properties": {
+                                        "id": {
+                                          "type": "string"
+                                        },
+                                        "__component": {
+                                          "type": "string"
+                                        },
+                                        "text": {
+                                          "type": "string"
+                                        },
+                                        "name": {
+                                          "type": "string"
+                                        }
+                                      }
+                                    }
+                                  ]
                                 }
                               },
                               "createdAt": {
@@ -1549,6 +1597,30 @@
                                                           }
                                                         }
                                                       },
+                                                      "spisok": {
+                                                        "type": "array",
+                                                        "items": {
+                                                          "anyOf": [
+                                                            {
+                                                              "type": "object",
+                                                              "properties": {
+                                                                "id": {
+                                                                  "type": "string"
+                                                                },
+                                                                "__component": {
+                                                                  "type": "string"
+                                                                },
+                                                                "text": {
+                                                                  "type": "string"
+                                                                },
+                                                                "name": {
+                                                                  "type": "string"
+                                                                }
+                                                              }
+                                                            }
+                                                          ]
+                                                        }
+                                                      },
                                                       "createdAt": {
                                                         "type": "string",
                                                         "format": "date-time"
@@ -1901,6 +1973,30 @@
                                 }
                               }
                             },
+                            "spisok": {
+                              "type": "array",
+                              "items": {
+                                "anyOf": [
+                                  {
+                                    "type": "object",
+                                    "properties": {
+                                      "id": {
+                                        "type": "string"
+                                      },
+                                      "__component": {
+                                        "type": "string"
+                                      },
+                                      "text": {
+                                        "type": "string"
+                                      },
+                                      "name": {
+                                        "type": "string"
+                                      }
+                                    }
+                                  }
+                                ]
+                              }
+                            },
                             "createdAt": {
                               "type": "string",
                               "format": "date-time"
@@ -2133,6 +2229,27 @@
                             }
                           ],
                           "example": "string or id"
+                        }
+                      },
+                      "spisok": {
+                        "type": "array",
+                        "items": {
+                          "anyOf": [
+                            {
+                              "type": "object",
+                              "properties": {
+                                "__component": {
+                                  "type": "string"
+                                },
+                                "text": {
+                                  "type": "string"
+                                },
+                                "name": {
+                                  "type": "string"
+                                }
+                              }
+                            }
+                          ]
                         }
                       },
                       "createdAt": {
@@ -2620,6 +2737,30 @@
                                                           }
                                                         }
                                                       },
+                                                      "spisok": {
+                                                        "type": "array",
+                                                        "items": {
+                                                          "anyOf": [
+                                                            {
+                                                              "type": "object",
+                                                              "properties": {
+                                                                "id": {
+                                                                  "type": "string"
+                                                                },
+                                                                "__component": {
+                                                                  "type": "string"
+                                                                },
+                                                                "text": {
+                                                                  "type": "string"
+                                                                },
+                                                                "name": {
+                                                                  "type": "string"
+                                                                }
+                                                              }
+                                                            }
+                                                          ]
+                                                        }
+                                                      },
                                                       "createdAt": {
                                                         "type": "string",
                                                         "format": "date-time"
@@ -2970,6 +3111,30 @@
                                     }
                                   }
                                 }
+                              }
+                            },
+                            "spisok": {
+                              "type": "array",
+                              "items": {
+                                "anyOf": [
+                                  {
+                                    "type": "object",
+                                    "properties": {
+                                      "id": {
+                                        "type": "string"
+                                      },
+                                      "__component": {
+                                        "type": "string"
+                                      },
+                                      "text": {
+                                        "type": "string"
+                                      },
+                                      "name": {
+                                        "type": "string"
+                                      }
+                                    }
+                                  }
+                                ]
                               }
                             },
                             "createdAt": {
@@ -3634,6 +3799,30 @@
                                                           }
                                                         }
                                                       },
+                                                      "spisok": {
+                                                        "type": "array",
+                                                        "items": {
+                                                          "anyOf": [
+                                                            {
+                                                              "type": "object",
+                                                              "properties": {
+                                                                "id": {
+                                                                  "type": "string"
+                                                                },
+                                                                "__component": {
+                                                                  "type": "string"
+                                                                },
+                                                                "text": {
+                                                                  "type": "string"
+                                                                },
+                                                                "name": {
+                                                                  "type": "string"
+                                                                }
+                                                              }
+                                                            }
+                                                          ]
+                                                        }
+                                                      },
                                                       "createdAt": {
                                                         "type": "string",
                                                         "format": "date-time"
@@ -3986,6 +4175,30 @@
                                 }
                               }
                             },
+                            "spisok": {
+                              "type": "array",
+                              "items": {
+                                "anyOf": [
+                                  {
+                                    "type": "object",
+                                    "properties": {
+                                      "id": {
+                                        "type": "string"
+                                      },
+                                      "__component": {
+                                        "type": "string"
+                                      },
+                                      "text": {
+                                        "type": "string"
+                                      },
+                                      "name": {
+                                        "type": "string"
+                                      }
+                                    }
+                                  }
+                                ]
+                              }
+                            },
                             "createdAt": {
                               "type": "string",
                               "format": "date-time"
@@ -4229,6 +4442,27 @@
                             }
                           ],
                           "example": "string or id"
+                        }
+                      },
+                      "spisok": {
+                        "type": "array",
+                        "items": {
+                          "anyOf": [
+                            {
+                              "type": "object",
+                              "properties": {
+                                "__component": {
+                                  "type": "string"
+                                },
+                                "text": {
+                                  "type": "string"
+                                },
+                                "name": {
+                                  "type": "string"
+                                }
+                              }
+                            }
+                          ]
                         }
                       },
                       "createdAt": {

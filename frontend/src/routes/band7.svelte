@@ -6,23 +6,24 @@
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        query: ` {
-          artists { 
-                  data{
-                    id
-                    attributes{
-                      name
-                      avatar{
-                        data{
-                          attributes{
-                            url
-                          }
-                        }
-                      }
-                    }
-                  }
-                }
-        }`,
+        query: `{
+  band (id:7)  {
+    data  {
+      id
+      attributes {
+        band_name
+        spisok {
+          ... on ComponentPesniTrack {
+            
+            id
+            name
+            text
+          }
+        }
+      }
+    }
+  }
+}`,
       }),
     })
     if (res.ok) {
@@ -30,7 +31,7 @@
       console.log(data)
       return {
         props: {
-          launches: data.artists.data,
+          launch: data.band.data,
         },
       }
     }
@@ -44,72 +45,21 @@
 </script>
 
 <script>
-  export let launches
+  export let launch
   //console.log(this.artists.data[0].attributes.name)
-  $: launches = launches;
 
-  async function loadinterval() {
-  const res = await fetch('https://admin.rocktver.ru/graphql', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        query: ` {
-          artists { 
-                  data{
-                    id
-                    attributes{
-                      name
-                      avatar{
-                        data{
-                          attributes{
-                            url
-                          }
-                        }
-                      }
-                    }
-                  }
-                }
-        }`,
-      }),
-    })
-    if (res.ok) {
-      const { data } = await res.json()
-      console.log(data)
-      launches = data.artists.data
-    }
-    
-}
 
-  const timerId = setInterval(loadinterval, 5000);
 
 
 </script>
 
-<h1>Артисты</h1>
+<h1>Команды</h1>
+<h1>{launch.id}</h1>
+<h1>{launch.attributes.band_name}</h1>
+<h2>{JSON.stringify(launch.attributes.spisok)}</h2>
 
 <ul>
-  {#each launches as launch}
-    <li>
-      <a
-        class="card-link"
-        target="_blank"
-        rel="noopener"
-        href={launch.attributes.name}
-      >
-        <h2>{launch.attributes.name}</h2>
-        <h2>{launch.id}</h2>
-
-        <img
-          src={'https://admin.rocktver.ru' +
-            launch.attributes.avatar.data.attributes.url}
-          alt=""
-        />
-      </a>
-      
-    </li>
-  {/each}
+ 
 </ul>
 <footer>
   <p>

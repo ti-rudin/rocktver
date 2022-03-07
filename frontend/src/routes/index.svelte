@@ -1,93 +1,178 @@
 <script>
-  import auth from '$lib/services/auth'
-  import { isAuthenticated, user } from '$lib/stores/auth'
-  import { onMount } from 'svelte'
-
-  let auth0Client
-  let leadsurl="https://api.rocktver.ru/apites"
-  let apiurl="https://api.rocktver.ru/api"
-  let t
-
-  let userset
-  function loadsettings(userid) {
-    let myHeaders = new Headers();
-    myHeaders.append("Content-Type", "application/json");
-
-    let raw = JSON.stringify({ id: userid });
-
-    let requestOptions = {
-      method: "POST",
-      headers: myHeaders,
-      body: raw,
-      redirect: "follow",
-    };
-
-    fetch(apiurl, requestOptions)
-      .then((response) => response.json())
-      .then((result) => {
-        console.log(result);
-        userset = result.id;
-      })
-      .catch((error) => console.log("error", error));
-  }
+var target_date = new Date(2022,7,29,10,0,0); // set the countdown date
+var days, hours, minutes, seconds; // variables for time units
 
 
+getCountdown();
 
-  onMount(async () => {
-    auth0Client = await auth.createClient()
-    isAuthenticated.set(await auth0Client.isAuthenticated())
-    user.set(await auth0Client.getUser())
-    
+setInterval(function () { getCountdown(); }, 1000);
 
-    await fetch(leadsurl)
-    .then(r => r.text())
-    .then(result=> t=result)
-  
+function getCountdown(){
 
-  })
+	// find the amount of "seconds" between now and target
+	var current_date = new Date().getTime();
+	var seconds_left = (target_date - current_date) / 1000;
 
+	days = pad( parseInt(seconds_left / 86400) );
+	seconds_left = seconds_left % 86400;
+		 
+	hours = pad( parseInt(seconds_left / 3600) );
+	seconds_left = seconds_left % 3600;
+		  
+	minutes = pad( parseInt(seconds_left / 60) );
+	seconds = pad( parseInt( seconds_left % 60 ) );
 
-$: if ($isAuthenticated) {
-  console.log($user)
-  loadsettings($user.sub)
+	// format countdown string + set tag value
+//	countdown.innerHTML = "<span>" + days + "</span><span>" + hours + "</span><span>" + minutes + "</span><span>" + seconds + "</span>"; 
 }
 
-  function login() {
-    auth.loginWithPopup(auth0Client)
-  }
-
-  function logout() {
-    auth.logout(auth0Client)
-  }
- 
- 
-  
-  
-
+function pad(n) {
+	return (n < 10 ? '0' : '') + n;
+}
 
 
 </script>
 
-<h1>Welcome to SvelteKit</h1>
-<p>
-  Visit <a href="https://kit.svelte.dev">kit.svelte.dev</a> to read the
-  documentation
-</p>
 
-{#if $isAuthenticated}
-  {#if ($user.name == "Александр Рудин")}
-  <h2>dd {t} {userset}</h2>
-  {/if}
-  <h2>Hey {$user.name} {userset}!</h2>
-  {#if $user.picture}
-    <img src={$user.picture} alt={user.name} />
-  {:else}
-    <img
-      src="https://source.unsplash.com/random/400x300"
-      alt="Random Photo"
-    />
-  {/if}
-  <button on:click={logout}>Logout</button>
-{:else}
-  <button on:click={login}>Login</button>
-{/if}
+<div id="countdown">
+  <div id='tiles'>
+    <span>{days}</span>
+    <span>{hours}</span>
+    <span>{minutes}</span>
+    <span>{seconds}</span>
+  </div>
+  <div class="labels">
+    <li>Days</li>
+    <li>Hours</li>
+    <li>Mins</li>
+    <li>Secs</li>
+  </div>
+</div>
+
+
+
+
+
+<style>
+
+
+#countdown{
+	width: 465px;
+	height: 112px;
+	text-align: center;
+	background: #222;
+	background-image: -webkit-linear-gradient(top, #222, #333, #333, #222); 
+	background-image:    -moz-linear-gradient(top, #222, #333, #333, #222);
+	background-image:     -ms-linear-gradient(top, #222, #333, #333, #222);
+	background-image:      -o-linear-gradient(top, #222, #333, #333, #222);
+	border: 1px solid #111;
+	border-radius: 5px;
+	box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.6);
+	margin: auto;
+	padding: 24px 0;
+	position: absolute;
+  top: 0; bottom: 0; left: 0; right: 0;
+}
+
+#countdown:before{
+	content:"";
+	width: 8px;
+	height: 65px;
+	background: #444;
+	background-image: -webkit-linear-gradient(top, #555, #444, #444, #555); 
+	background-image:    -moz-linear-gradient(top, #555, #444, #444, #555);
+	background-image:     -ms-linear-gradient(top, #555, #444, #444, #555);
+	background-image:      -o-linear-gradient(top, #555, #444, #444, #555);
+	border: 1px solid #111;
+	border-top-left-radius: 6px;
+	border-bottom-left-radius: 6px;
+	display: block;
+	position: absolute;
+	top: 48px; left: -10px;
+}
+
+#countdown:after{
+	content:"";
+	width: 8px;
+	height: 65px;
+	background: #444;
+	background-image: -webkit-linear-gradient(top, #555, #444, #444, #555); 
+	background-image:    -moz-linear-gradient(top, #555, #444, #444, #555);
+	background-image:     -ms-linear-gradient(top, #555, #444, #444, #555);
+	background-image:      -o-linear-gradient(top, #555, #444, #444, #555);
+	border: 1px solid #111;
+	border-top-right-radius: 6px;
+	border-bottom-right-radius: 6px;
+	display: block;
+	position: absolute;
+	top: 48px; right: -10px;
+}
+
+#countdown #tiles{
+	position: relative;
+	z-index: 1;
+  top:-40px
+}
+
+#countdown #tiles > span{
+	width: 92px;
+	max-width: 92px;
+	font: bold 48px 'Droid Sans', Arial, sans-serif;
+	text-align: center;
+	color: #111;
+	background-color: #ddd;
+	background-image: -webkit-linear-gradient(top, #bbb, #eee); 
+	background-image:    -moz-linear-gradient(top, #bbb, #eee);
+	background-image:     -ms-linear-gradient(top, #bbb, #eee);
+	background-image:      -o-linear-gradient(top, #bbb, #eee);
+	border-top: 1px solid #fff;
+	border-radius: 3px;
+	box-shadow: 0px 0px 12px rgba(0, 0, 0, 0.7);
+	margin: 0 7px;
+	padding: 18px 0;
+	display: inline-block;
+	position: relative;
+}
+
+#countdown #tiles > span:before{
+	content:"";
+	width: 100%;
+	height: 13px;
+	background: #111;
+	display: block;
+	padding: 0 3px;
+	position: absolute;
+	top: 41%; left: -3px;
+	z-index: -1;
+}
+
+#countdown #tiles > span:after{
+	content:"";
+	width: 100%;
+	height: 1px;
+	background: #eee;
+	border-top: 1px solid #333;
+	display: block;
+	position: absolute;
+	top: 48%; left: 0;
+}
+
+#countdown .labels{
+	width: 100%;
+	height: 25px;
+	text-align: center;
+	position: absolute;
+	bottom: 8px;
+}
+
+#countdown .labels li{
+	width: 102px;
+	font: bold 15px 'Droid Sans', Arial, sans-serif;
+	color: #f47321;
+	text-shadow: 1px 1px 0px #000;
+	text-align: center;
+	text-transform: uppercase;
+	display: inline-block;
+}
+</style>
+

@@ -13,13 +13,20 @@
   "pluginOptions": {},
   "attributes": {
     "band_name": {
-      "type": "string"
+      "type": "string",
+      "unique": true
     },
     "artists": {
       "type": "relation",
       "relation": "oneToMany",
       "target": "api::artist.artist",
       "mappedBy": "band"
+    },
+    "spisok": {
+      "type": "dynamiczone",
+      "components": [
+        "pesni.track"
+      ]
     }
   }
 }
