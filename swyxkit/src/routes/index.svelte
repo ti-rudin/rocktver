@@ -100,7 +100,7 @@
 </svg>
 <h1 class="slogan mx-auto bg-white text-black dark:bg-gray-900 dark:text-white">ЧЕстный праздник для ЧЕстных людей</h1>
 <div
-	class="mx-auto flex max-w-4xl flex-col items-start justify-center border-gray-200 px-4 pb-16 dark:border-gray-700 sm:px-8"
+	class="mx-auto flex max-w-4xl flex-col items-start justify-center border-gray-200 px-0 pb-16 dark:border-gray-700"
 >
 
 	<div class="flex flex-col-reverse items-start sm:flex-row">
@@ -136,7 +136,7 @@
 		text-align: center;
 	}
 	.countdown {
-		width: 365px;
+		width: 360px;
 		height: 112px;
 		text-align: center;
 		background: #222;
