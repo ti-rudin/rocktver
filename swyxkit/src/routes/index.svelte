@@ -139,48 +139,16 @@
 		box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.6);
 		margin: auto;
 		padding: 24px 0;
-		position: absolute;
+		position: relative;
 		top: 0;
 		bottom: 0;
 		left: 0;
 		right: 0;
 	}
 
-	.countdown:before {
-		content: '';
-		width: 8px;
-		height: 65px;
-		background: #444;
-		background-image: -webkit-linear-gradient(top, #555, #444, #444, #555);
-		background-image: -moz-linear-gradient(top, #555, #444, #444, #555);
-		background-image: -ms-linear-gradient(top, #555, #444, #444, #555);
-		background-image: -o-linear-gradient(top, #555, #444, #444, #555);
-		border: 1px solid #111;
-		border-top-left-radius: 6px;
-		border-bottom-left-radius: 6px;
-		display: block;
-		position: absolute;
-		top: 48px;
-		left: -10px;
-	}
 
-	.countdown:after {
-		content: '';
-		width: 8px;
-		height: 65px;
-		background: #444;
-		background-image: -webkit-linear-gradient(top, #555, #444, #444, #555);
-		background-image: -moz-linear-gradient(top, #555, #444, #444, #555);
-		background-image: -ms-linear-gradient(top, #555, #444, #444, #555);
-		background-image: -o-linear-gradient(top, #555, #444, #444, #555);
-		border: 1px solid #111;
-		border-top-right-radius: 6px;
-		border-bottom-right-radius: 6px;
-		display: block;
-		position: relative;
-		top: 48px;
-		right: -10px;
-	}
+
+
 
 	.countdown .tiles {
 		position: relative;
