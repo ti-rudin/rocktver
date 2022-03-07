@@ -87,10 +87,10 @@
 				<span>{seconds}</span>
 			</div>
 			<div class="labels">
-				<li>Days</li>
-				<li>Hours</li>
-				<li>Mins</li>
-				<li>Secs</li>
+				<li>Дней</li>
+				<li>Часов</li>
+				<li>Мин</li>
+				<li>Сек</li>
 			</div>
 		</div>
 		<!-- <div
