@@ -117,6 +117,7 @@
 			</div>
 		</div>
 		<!-- <div
+			
 				class="w-[80px] h-[80px] rounded-full sm:w-[176px] sm:h-[136px] relative mb-8 sm:mb-0 mr-auto bg-cyan-300 bg-opacity-25"
 			/> 
 		-->
@@ -125,7 +126,7 @@
 
 <style>
 	.countdown {
-		width: auto;
+		width: 465px;
 		height: 112px;
 		text-align: center;
 		background: #222;
@@ -188,8 +189,8 @@
 	}
 
 	.countdown .tiles > span {
-		width: 82px;
-		max-width: 82px;
+		width: 92px;
+		max-width: 92px;
 		font: bold 48px Arial, sans-serif;
 		text-align: center;
 		color: #111;
@@ -241,7 +242,7 @@
 	}
 
 	.countdown .labels li {
-		width: 95px;
+		width: 102px;
 		font: bold 15px Arial, sans-serif;
 		color: #f47321;
 		text-shadow: 1px 1px 0px #000;
