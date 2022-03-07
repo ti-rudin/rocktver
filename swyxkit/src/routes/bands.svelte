@@ -13,6 +13,16 @@
       
       attributes {
         band_name
+        town
+        small_text
+        group_logo{
+          data{
+            attributes{
+              url
+            }
+          }
+        }
+        group_link_vk
         spisok {
           ... on ComponentPesniTrack {
             
@@ -54,65 +64,92 @@
 
 </script>
 
-<h1>Команды</h1>
-
+<div class="mx-auto flex max-w-4xl flex-col items-start justify-center border-gray-200 px-0 pb-16 dark:border-gray-700">
 <ul>
   {#each launches as launch}
-    <li>
+  
       <a
         class="card-link"
         target="_self"
         rel="noopener"
         href={"band/"+launch.attributes.band_name}
       >
-        <h2>{launch.attributes.band_name}</h2>
+
         <h2>{launch.id}</h2>
-        <h2>{JSON.stringify(launch.attributes.spisok)}</h2>
+
         
 
     
-      </a>
+   
+
       
-    </li>
+  
+    <div class='w-full max-w-xl mx-auto bg-white rounded-lg shadow-xl'>
+      <div style="background-image: radial-gradient(
+      transparent 28px,
+      #ffffff 28px,
+      #ffffff 32px,
+      transparent 32px
+  );height: 50px;width: 100%; background-color: #00b5f7;
+  background-size: 53px 53px;" class="rounded-t-lg"></div>
+      <div>
+          <div class="text-left" style="margin-top: -44px">
+              <span class="border-4 border-white rounded-full mx-2 inline-block">
+                
+                {#if (launch.attributes.group_logo.data !== null)}
+                  <img class="rounded-full w-20 h-20" src={'https://admin.rocktver.ru' +
+                  launch.attributes.group_logo.data.attributes.url} alt="profile" />
+                {/if}
+               
+              </span>
+             
+          </div>
+          <p class="smtxt">{launch.attributes.small_text}</p>
+          <p class="text-center"><span class="font-bold">{launch.attributes.band_name}</p>
+          <p class="text-xs text-center mb-5">{launch.attributes.town}</p>
+          <hr />
+          <div class="flex justify-between px-10 py-5">
+              <div class="text-center">
+                  <p class="font-bold">100K</p>
+                  <p class="text-xs">Followers</p>
+              </div>
+              <div class="text-center">
+                  <p class="font-bold">903K</p>
+                  <p class="text-xs">Likes</p>
+                  
+              </div>
+              <div class="text-center">
+                  <p class="font-bold">104K</p>
+                  <p class="text-xs">Photos</p>
+                  
+              </div>
+          </div>
+      </div>
+  </div>
+</a>
   {/each}
 </ul>
-<footer>
-  <p>
-    Created with <a
-      class="link"
-      target="_blank"
-      rel="noopener"
-      href="https://svelte.dev">SvelteKit</a
-    >
-    and deployed with
-    <a
-      class="link"
-      target="_blank"
-      rel="noopener"
-      href="https://vercel.com">▲ Vercel</a
-    >.
-  </p>
-</footer>
 
+
+
+
+
+
+
+</div>
 <style>
-  :global(body) {
-    font-family: Menlo, Consolas, Monaco, Liberation Mono,
-      Lucida Console, monospace;
-    background-color: #fafafa;
-    max-width: 650px;
-    margin: 32px auto;
-    padding: 0 16px;
-  }
-  h1 {
-    letter-spacing: -0.025em;
-  }
-  h2 {
-    font-size: 18px;
-  }
+ .smtxt{
+   top: -40px;
+   left: 110px;
+   position: relative;
+   line-height: 0px;
+   min-width: 450px;
+ }
   ul {
     list-style: none;
     padding: 0;
     margin-top: 32px;
+    width: auto;
   }
   li {
     border: 1px solid #eaeaea;
@@ -129,10 +166,7 @@
     font-size: 14px;
     line-height: 1.75;
   }
-  a {
-    color: #0070f3;
-    text-decoration: none;
-  }
+  
   .card-link {
     padding: 8px 24px;
     display: block;

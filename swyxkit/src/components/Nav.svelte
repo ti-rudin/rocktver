@@ -29,7 +29,6 @@
 	bg-gray-50 bg-opacity-60 py-3 text-gray-900 dark:border-gray-700 dark:bg-gray-900
 	dark:text-gray-100 sm:pb-16"
 >
-	<a href="#skip" class="skip-nav">Skip to content</a>
 	<MobileMenu />
 	<ul class="ml-[-0.60rem] flex">
 		<li>
@@ -88,6 +87,19 @@
 			</svg>
 		</a>
 		-->
+
+		<a
+
+			class="text-black dark:text-white ml-1 flex h-9 px-3 items-center justify-center rounded-lg bg-yellow-400 ring-yellow-400
+			transition-all hover:ring-2 dark:bg-yellow-800"
+			href="https://che-tver.timepad.ru/event/1900315/"
+		>
+			{#if isDark}
+				Купить билет
+			{:else}
+				Купить билет
+			{/if}
+	</a>
 		<button
 			aria-label="Toggle Dark Mode"
 			class="ml-1 flex h-9 w-9 items-center justify-center rounded-lg bg-yellow-400 ring-yellow-400

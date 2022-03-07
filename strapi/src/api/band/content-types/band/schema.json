@@ -27,6 +27,32 @@
       "components": [
         "pesni.track"
       ]
+    },
+    "town": {
+      "type": "string",
+      "required": true
+    },
+    "small_text": {
+      "type": "string"
+    },
+    "big_text": {
+      "type": "richtext"
+    },
+    "group_link_vk": {
+      "type": "string"
+    },
+    "group_link_site": {
+      "type": "string"
+    },
+    "time_on_scene": {
+      "type": "datetime"
+    },
+    "group_logo": {
+      "allowedTypes": [
+        "images"
+      ],
+      "type": "media",
+      "multiple": false
     }
   }
 }
