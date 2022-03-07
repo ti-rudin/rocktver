@@ -1,11 +1,11 @@
 <script>
-var target_date = new Date(2022,7,29,10,0,0); // set the countdown date
-var days, hours, minutes, seconds; // variables for time units
+const target_date = new Date(2022,7,29,10,0,0); // set the countdown date
+let days, hours, minutes, seconds; // variables for time units
 
 
 getCountdown();
 
-setInterval(function () { getCountdown(); }, 1000);
+const timerId = setInterval(function () { getCountdown(); }, 1000);
 
 function getCountdown(){
 
@@ -31,11 +31,12 @@ function pad(n) {
 }
 
 
+
 </script>
 
 
-<div id="countdown">
-  <div id='tiles'>
+<div class="countdown">
+  <div class="tiles">
     <span>{days}</span>
     <span>{hours}</span>
     <span>{minutes}</span>
@@ -56,7 +57,7 @@ function pad(n) {
 <style>
 
 
-#countdown{
+.countdown{
 	width: 465px;
 	height: 112px;
 	text-align: center;
@@ -74,7 +75,7 @@ function pad(n) {
   top: 0; bottom: 0; left: 0; right: 0;
 }
 
-#countdown:before{
+.countdown:before{
 	content:"";
 	width: 8px;
 	height: 65px;
@@ -91,7 +92,7 @@ function pad(n) {
 	top: 48px; left: -10px;
 }
 
-#countdown:after{
+.countdown:after{
 	content:"";
 	width: 8px;
 	height: 65px;
@@ -108,13 +109,13 @@ function pad(n) {
 	top: 48px; right: -10px;
 }
 
-#countdown #tiles{
+.countdown .tiles{
 	position: relative;
 	z-index: 1;
   top:-40px
 }
 
-#countdown #tiles > span{
+.countdown .tiles > span{
 	width: 92px;
 	max-width: 92px;
 	font: bold 48px Arial, sans-serif;
@@ -134,7 +135,7 @@ function pad(n) {
 	position: relative;
 }
 
-#countdown #tiles > span:before{
+.countdown .tiles > span:before{
 	content:"";
 	width: 100%;
 	height: 13px;
@@ -146,7 +147,7 @@ function pad(n) {
 	z-index: -1;
 }
 
-#countdown #tiles > span:after{
+.countdown .tiles > span:after{
 	content:"";
 	width: 100%;
 	height: 1px;
@@ -157,7 +158,7 @@ function pad(n) {
 	top: 48%; left: 0;
 }
 
-#countdown .labels{
+.countdown .labels{
 	width: 100%;
 	height: 25px;
 	text-align: center;
@@ -165,7 +166,7 @@ function pad(n) {
 	bottom: 8px;
 }
 
-#countdown .labels li{
+.countdown .labels li{
 	width: 102px;
 	font: bold 15px Arial, sans-serif;
 	color: #f47321;
