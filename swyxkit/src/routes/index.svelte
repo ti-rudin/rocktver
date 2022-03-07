@@ -98,11 +98,15 @@
 		fill="#FF2E17"
 	/>
 </svg>
+<h1 class="slogan mx-auto bg-white text-black dark:bg-gray-900 dark:text-white">ЧЕстный праздник для ЧЕстных людей</h1>
 <div
 	class="mx-auto flex max-w-4xl flex-col items-start justify-center border-gray-200 px-4 pb-16 dark:border-gray-700 sm:px-8"
 >
+
 	<div class="flex flex-col-reverse items-start sm:flex-row">
+	
 		<div class="countdown">
+			
 			<div class="tiles">
 				<span>{days}</span>
 				<span>{hours}</span>
@@ -125,6 +129,12 @@
 </div>
 
 <style>
+	.slogan{
+		font: bold 24px Arial, sans-serif;
+		color: #FF2E17;
+		text-shadow: 1px 1px 0px #000;
+		text-align: center;
+	}
 	.countdown {
 		width: 365px;
 		height: 112px;
@@ -140,7 +150,7 @@
 		margin: auto;
 		padding: 24px 0;
 		position: relative;
-		top: 0;
+		top: 50px;
 		bottom: 0;
 		left: 0;
 		right: 0;
@@ -212,7 +222,7 @@
 	.countdown .labels li {
 		width: 86px;
 		font: bold 15px Arial, sans-serif;
-		color: #f47321;
+		color: #FF2E17;
 		text-shadow: 1px 1px 0px #000;
 		text-align: center;
 		text-transform: uppercase;
