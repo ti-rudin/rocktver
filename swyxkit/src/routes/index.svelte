@@ -147,13 +147,6 @@ import {
   {/if}
 <style>
 
-
-
-	.logo{
-
-	}
-
-
 	.slogan{
 		font: bold 24px Arial, sans-serif;
 		color: #FF2E17;
