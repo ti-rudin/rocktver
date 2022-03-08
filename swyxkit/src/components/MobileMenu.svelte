@@ -125,11 +125,11 @@
 	}
 
 	.menu {
-		padding: 0 28px 0 4px;
+		padding: 0 180px 0 4px;
 		margin: 0;
 		padding-top: 24px;
 		width: 100%;
-		height: 100vh;
+		height: 90vh;
 		z-index: 1000;
 		opacity: 0;
 		left: 0;
@@ -149,7 +149,7 @@
 	}
 
 	.menuRendered li {
-		@apply w-full border-gray-200 dark:border-gray-600;
+		@apply w-full border-gray-400 dark:border-gray-600;
 		transform: translateX(0);
 		opacity: 1;
 	}
