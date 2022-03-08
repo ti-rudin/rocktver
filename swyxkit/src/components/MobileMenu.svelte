@@ -129,7 +129,7 @@
 		margin: 0;
 		padding-top: 24px;
 		width: 100%;
-		height: 90vh;
+		height: 99vh;
 		z-index: 1000;
 		opacity: 0;
 		left: 0;

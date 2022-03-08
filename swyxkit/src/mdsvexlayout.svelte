@@ -18,7 +18,7 @@ import {
   onMount(() => {
     interval = setTimeout(() => {
       show = !show;
-    }, 1);
+    }, 100);
   })
 
   onDestroy(() => {
@@ -32,12 +32,12 @@ import {
 
 
 
-<article transition:blur="{{duration: 400 }}" 
+<article  transition:blur="{{duration: 400 }}"
 	class="container prose mx-auto mb-12 hover:prose-a:text-orange-300
 prose-ul:list-disc
 dark:prose-invert
 "
 >
-	<slot />
+	<slot  />
 </article>
 {/if}
