@@ -64,80 +64,53 @@
 
 </script>
 
-<div class="mx-auto flex max-w-4xl flex-col items-start justify-center border-gray-200 px-0 pb-16 dark:border-gray-700">
-<ul>
+<!-- component -->
+
+  <!--- more free and premium Tailwind CSS components at https://tailwinduikit.com/ --->
+<div class="w-full ">
   {#each launches as launch}
-  
-      <a
-        class="card-link"
-        target="_self"
-        rel="noopener"
-        href={"band/"+launch.attributes.band_name}
-      >
 
-        <h2>{launch.id}</h2>
-
-        
-
-    
    
 
       
   
-    <div class='w-full max-w-xl mx-auto bg-white rounded-lg shadow-xl'>
-      <div style="background-image: radial-gradient(
-      transparent 28px,
-      #ffffff 28px,
-      #ffffff 32px,
-      transparent 32px
-  );height: 50px;width: 100%; background-color: #00b5f7;
-  background-size: 53px 53px;" class="rounded-t-lg"></div>
-      <div>
-          <div class="text-left" style="margin-top: -44px">
-              <span class="border-4 border-white rounded-full mx-2 inline-block">
-                
-                {#if (launch.attributes.group_logo.data !== null)}
-                  <img class="rounded-full w-20 h-20" src={'https://admin.rocktver.ru' +
-                  launch.attributes.group_logo.data.attributes.url} alt="profile" />
-                {/if}
-               
-              </span>
-             
+
+<div aria-label="card 1" class="focus:outline-none mb-7 bg-white dark:bg-gray-500 p-6 shadow rounded max-w-2xl mx-auto">
+  <div class="flex items-center border-b border-gray-200 pb-6">
+    {#if (launch.attributes.group_logo.data !== null)}
+    <img class="rounded-full w-20 h-20" src={'https://admin.rocktver.ru' +
+    launch.attributes.group_logo.data.attributes.url} alt="profile" />
+  {/if}
+      <div class="flex items-start justify-between w-full">
+          <div class="pl-3 w-full">
+              <p tabindex="0" class="focus:outline-none text-2xl font-medium leading-5 text-gray-800 dark:text-gray-200">{launch.attributes.band_name}</p>
+              <p tabindex="0" class="focus:outline-none text-sm leading-normal pt-2 text-gray-500 dark:text-gray-200">{launch.attributes.town}</p>
           </div>
-          <p class="smtxt">{launch.attributes.small_text}</p>
-          <p class="text-center"><span class="font-bold">{launch.attributes.band_name}</p>
-          <p class="text-xs text-center mb-5">{launch.attributes.town}</p>
-          <hr />
-          <div class="flex justify-between px-10 py-5">
-              <div class="text-center">
-                  <p class="font-bold">100K</p>
-                  <p class="text-xs">Followers</p>
-              </div>
-              <div class="text-center">
-                  <p class="font-bold">903K</p>
-                  <p class="text-xs">Likes</p>
-                  
-              </div>
-              <div class="text-center">
-                  <p class="font-bold">104K</p>
-                  <p class="text-xs">Photos</p>
-                  
-              </div>
+          <div role="img" aria-label="bookmark">
+              <svg  class="focus:outline-none" width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M10.5001 4.66667H17.5001C18.1189 4.66667 18.7124 4.9125 19.15 5.35009C19.5876 5.78767 19.8334 6.38117 19.8334 7V23.3333L14.0001 19.8333L8.16675 23.3333V7C8.16675 6.38117 8.41258 5.78767 8.85017 5.35009C9.28775 4.9125 9.88124 4.66667 10.5001 4.66667Z" stroke="#2C3E50" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
           </div>
       </div>
   </div>
-</a>
-  {/each}
-</ul>
-
-
-
-
-
-
-
+  <div class="px-2">
+      <p tabindex="0" class="focus:outline-none text-sm leading-5 py-4 text-gray-600 dark:text-gray-200">{launch.attributes.small_text}</p>
+      <div tabindex="0" class="focus:outline-none flex">
+          <div class="py-2 px-4 text-xs leading-3 text-indigo-700 rounded-full bg-indigo-100">#dogecoin</div>
+          <div class="py-2 px-4 ml-3 text-xs leading-3 text-indigo-700 rounded-full bg-indigo-100">#crypto</div>
+      </div>
+  </div>
 </div>
+
+
+  {/each}
+</div>
+
+
 <style>
+.card{
+  min-width: 280px;
+}
  .smtxt{
    top: -40px;
    left: 110px;
