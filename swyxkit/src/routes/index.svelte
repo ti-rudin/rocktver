@@ -43,7 +43,7 @@ import {
     }  
   });
 
-	const target_date = new Date(2022, 7, 29, 10, 0, 0); // set the countdown date
+	const target_date = new Date(2022, 6, 29, 10, 0, 0); // set the countdown date
 	let days, hours, minutes, seconds; // variables for time units
 
 	getCountdown();
