@@ -35,9 +35,6 @@
 			<NavLink href="/">Главная</NavLink>
 		</li>
 
-		<li>
-			<NavLink href="/about">О фестивале</NavLink>
-		</li>
 	</ul>
 	<div class="flex items-center space-x-4">
 		<!-- RSS -->
