@@ -141,7 +141,6 @@ import {
 	</div>
 </div>
 
-
 <h2 class="mt-5 text-center mx-auto bg-white text-black dark:bg-gray-900 dark:text-white">Место проведения: </h2>
 
 <h1 transition:blur="{{duration: 600 }}" class="adr mx-auto bg-white text-black dark:bg-gray-900 dark:text-white">Тверская область, Калининский район, д. Тутань (на берегу р. Тьма)
