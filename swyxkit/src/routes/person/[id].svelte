@@ -7,24 +7,22 @@
       },
       body: JSON.stringify({
         query: `{
-  bands {
-    data {
-      id
-      
-      attributes {
-        band_name
-        spisok {
-          ... on ComponentPesniTrack {
-            
-            id
-            name
-            text
-          }
-        }
-      }
-    }
-  }
-}`,
+          artists{ 
+                  data{
+                    id
+                    attributes{
+                      name
+                      avatar{
+                        data{
+                          attributes{
+                            url
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+        }`,
       }),
     })
     if (res.ok) {
@@ -32,7 +30,7 @@
       console.log(data)
       return {
         props: {
-          launches: data.bands.data,
+          launches: data.artists.data,
           id: params.id,
         },
       }
@@ -48,17 +46,17 @@
   export let launches, launch, id
 
   launch = launches.filter(
-    launch => launch.attributes.band_name == id
+    launch => launch.attributes.name == id
   )[0]
 </script>
 
   <div class="text-gray-900 dark:text-white mx-auto">
-<h1>Команда</h1>
+<h1>Персона</h1>
 
 {#if launch}
-  <h2>{launch.attributes.band_name}</h2>
+  <h2>{launch.attributes.name}</h2>
   <h2>{launch.id}</h2>
-  <h2>{JSON.stringify(launch.attributes.spisok)}</h2>
+  
 {:else}
   <h1>Об этой команде информации нет</h1>
 {/if}

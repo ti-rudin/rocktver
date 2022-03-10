@@ -12,7 +12,7 @@
 	export const prerender = true; // index page is most visited, lets prerender
 
 	export async function load({ fetch }) {
-		const res = await fetch('https://admin.rocktver.ru/graphql', {
+	const res = await fetch('https://admin.rocktver.ru/graphql', {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json'
@@ -24,6 +24,20 @@
 	                id
 				
 	                attributes {
+                    artists{
+                      data{
+						id
+                        attributes{
+                          name
+                          avatar{
+                            data{
+                              attributes{url}
+                            }
+                          }
+                          
+                        }
+                      }
+                    }
 	                  band_name
 	                  town
 	                  small_text
@@ -49,6 +63,7 @@
 	          }`
 			})
 		});
+
 		if (res.ok) {
 			const { data } = await res.json();
 
@@ -65,23 +80,89 @@
 					container.path = 'rock-band-icon-9.jpg';
 				}
 				container.id = 'images'+item.id;
-				container.url = '/'+container.band_name;
+				container.url = 'band/'+container.band_name;
 				return container;
+
+				
 			})
-			console.log(data);
+
+	
+		//	const ready_artists_data = await comandes_data.map((item) => {
+		//		const container ={};
+		//		//if (item.attributes ){
+		//		//	container[item.path] = item.attributes.group_logo.data.attributes.url;
+		//		//}
+		//		if (item.attributes.artists.data !== null){
+//
+		//		container.name =  item.attributes.artists.data[i].attributes.name;
+		//		
+		//		} else {
+		//			container.name = '';
+		//		}
+//
+		//		if (item.attributes.artists.data[i] !==null) {
+		//			container.path = 'https://admin.rocktver.ru' +item.attributes.artists.data[i].attributes.avatar.data.url;
+		//		} else {
+		//			container.path = 'icon-person-10.jpg';
+		//		}
+		//		container.id = 'images'+item.id;
+		//		container.url = 'band/'+container.name;
+		//		return container;
+//
+		//		
+		//	})
+		let ready_artists_data = [];
+			comandes_data.forEach(item => {
+
+				let artists = item.attributes.artists.data;
+
+				artists.forEach(item => {
+					let url = 'icon-person-10.jpg';
+					if (item.attributes.avatar.data !== null){
+						url = 'https://admin.rocktver.ru' + item.attributes.avatar.data.attributes.url
+					}
+
+					const container = {
+						path: url,
+						id: item.id,
+						url: 'person/'+item.attributes.name,
+					};
+					ready_artists_data = [...ready_artists_data, container];
+
+
+				});
+
+				
+
+				//container.name =  item.attributes.artists.data.attributes.name;
+				
+			});
+
+			console.log(ready_artists_data);
+			//console.log(data);
 			console.log(ready_comandes_data);
 
 			return {
 				props: {
-					ready_comandes_data: ready_comandes_data
+					ready_comandes_data: ready_comandes_data,
+					ready_artists_data: ready_artists_data
 				}
 			};
 		}
 		return {
-			status: res.status,
+			status1: res.status,
+			status2: res2.status,
 			error: new Error(`Error fetching GraphQL data`)
 		};
+
+
+	
+		
 	}
+
+	
+
+
 </script>
 
 <script>
@@ -89,7 +170,7 @@
 	import { blur, crossfade, draw, fade, fly, scale, slide } from 'svelte/transition';
 	import Carousel from '../components/Carusel.svelte';
 	import { ChevronLeftIcon, ChevronRightIcon } from 'svelte-feather-icons';
-	export let launches, ready_comandes_data;
+	export let ready_comandes_data, ready_artists_data;
 	//console.log(this.artists.data[0].attributes.name)
 	onMount(() => {
 		//comandes_data = launches;
@@ -248,7 +329,7 @@
 <h1 class="adr mx-auto mt-5 mb-2 bg-white text-black dark:bg-gray-900 dark:text-white">Персоны</h1>
 
 <Carousel
-	images={personas}
+	images={ready_artists_data}
 	imageWidth={200}
 	imageSpacing={15}
 	controlScale={0.7}
