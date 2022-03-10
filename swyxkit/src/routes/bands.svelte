@@ -7,34 +7,34 @@
       },
       body: JSON.stringify({
         query: `{
-  bands {
-    data {
-      id
-      
-      attributes {
-        band_name
-        town
-        small_text
-        group_logo{
-          data{
-            attributes{
-              url
+            bands {
+              data {
+                id
+                
+                attributes {
+                  band_name
+                  town
+                  small_text
+                  group_logo{
+                    data{
+                      attributes{
+                        url
+                      }
+                    }
+                  }
+                  group_link_vk
+                  spisok {
+                    ... on ComponentPesniTrack {
+                      
+                      id
+                      name
+                      text
+                    }
+                  }
+                }
+              }
             }
-          }
-        }
-        group_link_vk
-        spisok {
-          ... on ComponentPesniTrack {
-            
-            id
-            name
-            text
-          }
-        }
-      }
-    }
-  }
-}`,
+          }`,
       }),
     })
     if (res.ok) {
