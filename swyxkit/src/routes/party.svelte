@@ -16,7 +16,7 @@
 	import { blur, crossfade, draw, fade, fly, scale, slide } from 'svelte/transition';
 	import Carousel from '../components/Carusel.svelte';
 	import { ChevronLeftIcon, ChevronRightIcon } from 'svelte-feather-icons';
-	const images = [
+	const personas = [
 
 		{path: 'android-chrome-256x256.png', id: 'image2', url: '/'},
 		{path: 'android-chrome-256x256.png', id: 'image3', url: '/'},
@@ -29,7 +29,18 @@
 		// {path: 'images/image6.jpg', id: 'image6'},
 	];
 
+	const comandes = [
 
+		{path: 'apple-icon-180x180.png', id: 'image2', url: '/'},
+		{path: 'apple-icon-180x180.png', id: 'image3', url: '/'},
+		{path: 'apple-icon-180x180.png', id: 'image4', url: '/'},
+		{path: 'apple-icon-180x180.png', id: 'image5', url: '/'},
+		{path: 'apple-icon-180x180.png', id: 'image6', url: '/'},
+		{path: 'apple-icon-180x180.png', id: 'image7', url: '/'},
+		{path: 'apple-icon-180x180.png', id: 'image8', url: '/'},
+
+		// {path: 'images/image6.jpg', id: 'image6'},
+	];
 
 
 </script>
@@ -97,10 +108,11 @@
 		/>
 	</svg>
 
+<h1 class="adr mx-auto mt-3 mb-2 bg-white text-black dark:bg-gray-900 dark:text-white">Команды</h1>
 
 <Carousel
-	{images}
-	imageWidth={250}
+	images={comandes}
+	imageWidth={200}
 	imageSpacing={15}
 	controlScale={0.2}
 	displayControls={true}
@@ -110,7 +122,25 @@
 		<span class="control" slot="right-control"><ChevronRightIcon /></span>
 </Carousel>
 
+<h1 class="adr mx-auto mt-3 mb-2 bg-white text-black dark:bg-gray-900 dark:text-white">Персоны</h1>
+
+<Carousel
+	images={personas}
+	imageWidth={200}
+	imageSpacing={15}
+	controlScale={0.2}
+	displayControls={true}
+	autoplay={true}
+	autoplaySpeed={3000}>
+		<span class="control" slot="left-control"><ChevronLeftIcon /></span>
+		<span class="control" slot="right-control"><ChevronRightIcon /></span>
+</Carousel>
+
 <style>
+	.adr{
+		font-size: 2rem;
+		
+	}
 	.control{
 		color:red;
 		width:150px;
