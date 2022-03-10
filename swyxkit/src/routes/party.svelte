@@ -22,26 +22,26 @@
 
 	const personas = [
 
-		{path: 'android-chrome-256x256.png', id: 'image2', url: '/'},
-		{path: 'android-chrome-256x256.png', id: 'image3', url: '/'},
-		{path: 'android-chrome-256x256.png', id: 'image4', url: '/'},
-		{path: 'android-chrome-256x256.png', id: 'image5', url: '/'},
-		{path: 'android-chrome-256x256.png', id: 'image6', url: '/'},
-		{path: 'android-chrome-256x256.png', id: 'image7', url: '/'},
-		{path: 'android-chrome-256x256.png', id: 'image8', url: '/'},
+		{path: 'icon-person-10.jpg', id: 'image2', url: '/'},
+		{path: 'icon-person-10.jpg', id: 'image3', url: '/'},
+		{path: 'icon-person-10.jpg', id: 'image4', url: '/'},
+		{path: 'icon-person-10.jpg', id: 'image5', url: '/'},
+		{path: 'icon-person-10.jpg', id: 'image6', url: '/'},
+		{path: 'icon-person-10.jpg', id: 'image7', url: '/'},
+		{path: 'icon-person-10.jpg', id: 'image8', url: '/'},
 
 		// {path: 'images/image6.jpg', id: 'image6'},
 	];
 
 	const comandes = [
 
-		{path: 'apple-icon-180x180.png', id: 'image2', url: '/'},
-		{path: 'apple-icon-180x180.png', id: 'image3', url: '/'},
-		{path: 'apple-icon-180x180.png', id: 'image4', url: '/'},
-		{path: 'apple-icon-180x180.png', id: 'image5', url: '/'},
-		{path: 'apple-icon-180x180.png', id: 'image6', url: '/'},
-		{path: 'apple-icon-180x180.png', id: 'image7', url: '/'},
-		{path: 'apple-icon-180x180.png', id: 'image8', url: '/'},
+		{path: 'rock-band-icon-9.jpg', id: 'image2', url: '/'},
+		{path: 'rock-band-icon-9.jpg', id: 'image3', url: '/'},
+		{path: 'rock-band-icon-9.jpg', id: 'image4', url: '/'},
+		{path: 'rock-band-icon-9.jpg', id: 'image5', url: '/'},
+		{path: 'rock-band-icon-9.jpg', id: 'image6', url: '/'},
+		{path: 'rock-band-icon-9.jpg', id: 'image7', url: '/'},
+		{path: 'rock-band-icon-9.jpg', id: 'image8', url: '/'},
 
 		// {path: 'images/image6.jpg', id: 'image6'},
 	];
