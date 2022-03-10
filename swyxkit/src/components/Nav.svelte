@@ -1,14 +1,27 @@
 <script>
+	import {
+		SITE_URL,
+		REPO_URL,
+		SITE_TITLE,
+		SITE_DESCRIPTION,
+		DEFAULT_OG_IMAGE,
+		MY_TWITTER_HANDLE,
+		isDarkFlag
+	} from '$lib/siteConfig';
+
 	import MobileMenu from './MobileMenu.svelte';
-	import { REPO_URL } from '$lib/siteConfig';
 	import NavLink from './NavLink.svelte';
+
+
 	let isDark = false;
+	$isDarkFlag = false;
 	if (typeof localStorage !== 'undefined') {
 		if (
 			localStorage.theme === 'dark' ||
 			(!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)
 		) {
 			isDark = true;
+			$isDarkFlag = true;
 		}
 	}
 	function toggleDarkMode() {
@@ -16,10 +29,12 @@
 			document.documentElement.classList.remove('dark');
 			localStorage.theme = 'light';
 			isDark = false;
+			$isDarkFlag = false;
 		} else {
 			document.documentElement.classList.add('dark');
 			localStorage.theme = 'dark';
 			isDark = true;
+			$isDarkFlag = true;
 		}
 	}
 </script>
