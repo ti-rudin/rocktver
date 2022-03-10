@@ -7,7 +7,7 @@
     export let imageSpacing = 20;
     export let speed = 500;
     export let controlColor= '#444';
-    export let controlScale = '0.5';
+    export let controlScale = '0.2';
     export let autoplay = false;
     export let autoplaySpeed = 5000;
     export let displayControls = true;

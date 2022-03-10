@@ -114,7 +114,7 @@
 	images={comandes}
 	imageWidth={200}
 	imageSpacing={15}
-	controlScale={0.2}
+
 	displayControls={true}
 	autoplay={true}
 	autoplaySpeed={3500}>
@@ -122,13 +122,13 @@
 		<span class="control" slot="right-control"><ChevronRightIcon /></span>
 </Carousel>
 
-<h1 class="adr mx-auto mt-3 mb-2 bg-white text-black dark:bg-gray-900 dark:text-white">Персоны</h1>
+<h1 class="adr mx-auto mt-5 mb-2 bg-white text-black dark:bg-gray-900 dark:text-white">Персоны</h1>
 
 <Carousel
 	images={personas}
 	imageWidth={200}
 	imageSpacing={15}
-	controlScale={0.2}
+	controlScale={0.7}
 	displayControls={true}
 	autoplay={true}
 	autoplaySpeed={3000}>
@@ -143,7 +143,7 @@
 	}
 	.control{
 		color:red;
-		width:150px;
+		width:70px;
 		opacity:0.3;
 	}
 	
