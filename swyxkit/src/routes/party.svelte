@@ -53,7 +53,6 @@
 
 
 	<svg
-		transition:blur={{ duration: 300 }}
 		class="logo"
 		width="auto"
 		height="117"
@@ -106,7 +105,7 @@
 	controlScale={0.2}
 	displayControls={true}
 	autoplay={true}
-	autoplaySpeed={3000}>
+	autoplaySpeed={3500}>
 		<span class="control" slot="left-control"><ChevronLeftIcon /></span>
 		<span class="control" slot="right-control"><ChevronRightIcon /></span>
 </Carousel>

@@ -34,6 +34,9 @@
 		<li>
 			<NavLink href="/">Главная</NavLink>
 		</li>
+		<li>
+			<NavLink href="/party">Участники</NavLink>
+		</li>
 
 	</ul>
 	<div class="flex items-center space-x-4">
