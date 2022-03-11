@@ -201,7 +201,7 @@
 
 		// {path: 'images/image6.jpg', id: 'image6'},
 	];
-    const comandes = [];
+  
 	//$: comandes = ready_comandes_data;
 </script>
 
