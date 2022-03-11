@@ -198,7 +198,6 @@
 		{ path: 'rock-band-icon-9.jpg', id: 'image6', url: '/' },
 		{ path: 'rock-band-icon-9.jpg', id: 'image7', url: '/' },
 		{ path: 'rock-band-icon-9.jpg', id: 'image8', url: '/' }
-
 		// {path: 'images/image6.jpg', id: 'image6'},
 	];
   
