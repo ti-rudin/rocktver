@@ -133,7 +133,6 @@
 				});
 
 				
-
 				//container.name =  item.attributes.artists.data.attributes.name;
 				
 			});
