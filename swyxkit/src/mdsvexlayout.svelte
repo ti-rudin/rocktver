@@ -31,7 +31,6 @@ import {
 {#if show}
 
 
-
 <article  transition:blur="{{duration: 400 }}"
 	class="container prose mx-auto mb-12 hover:prose-a:text-orange-300
 prose-ul:list-disc
