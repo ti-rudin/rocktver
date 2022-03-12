@@ -23,7 +23,7 @@ const rehypePlugins = [
 	]
 ];
 
-const allowedPosters = ['sw-yx'];
+const allowedPosters = ['ti-rudin'];
 const publishedTags = ['Published'];
 let allBlogposts = [];
 // let etag = null // todo - implmement etag header
