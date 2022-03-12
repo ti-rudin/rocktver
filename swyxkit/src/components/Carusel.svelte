@@ -1,5 +1,6 @@
 <script>
     import { flip } from 'svelte/animate';
+    import { sineIn } from 'svelte/easing';
     import { onDestroy } from 'svelte';
   
     export let images;
@@ -55,15 +56,16 @@
           alt={image.id}
           id={image.id}
         
-          style={`width:${imageWidth}px; margin: 0 ${imageSpacing}px; cursor:pointer`}
+          style={`width:${imageWidth}px; margin: 0 ${imageSpacing}px; cursor:pointer; background: transparent`}
           on:mouseover={stopAutoPlay}
           on:mouseout={startAutoPlay}
           on:click={window.location.href = image.url}
-          animate:flip={{duration: speed}}/>
+          animate:flip={{duration: speed, easing: sineIn}}/>
       {/each}
     </div>
     {#if displayControls}
-    <button id="left" on:click={rotateLeft}>
+    <button id="left" on:click={rotateLeft} on:mouseover={stopAutoPlay}
+    on:mouseout={startAutoPlay} >
       <slot name="left-control">
         <svg width="39px" height="110px" id="svg8" transform={`scale(${controlScale})`}>
           <g id="layer1" transform="translate(-65.605611,-95.36949)">
@@ -75,7 +77,8 @@
         </svg>
       </slot>
     </button>
-    <button id="right" on:click={rotateRight}>
+    <button id="right" on:click={rotateRight} on:mouseover={stopAutoPlay}
+    on:mouseout={startAutoPlay}>
       <slot name="right-control">
         <svg width="39px" height="110px" id="svg8" transform={`rotate(180) scale(${controlScale})`}>
           <g id="layer1" transform="translate(-65.605611,-95.36949)">
