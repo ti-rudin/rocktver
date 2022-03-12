@@ -188,17 +188,18 @@
 		// {path: 'images/image6.jpg', id: 'image6'},
 	];
 
-	const comandes = [
-		{ path: 'rock-band-icon-9.jpg', id: 'image2', url: '/' },
-		{ path: 'rock-band-icon-9.jpg', id: 'image3', url: '/' },
-		{ path: 'rock-band-icon-9.jpg', id: 'image4', url: '/' },
-		{ path: 'rock-band-icon-9.jpg', id: 'image5', url: '/' },
-		{ path: 'rock-band-icon-9.jpg', id: 'image6', url: '/' },
-		{ path: 'rock-band-icon-9.jpg', id: 'image7', url: '/' },
-		{ path: 'rock-band-icon-9.jpg', id: 'image8', url: '/' }
-		// {path: 'images/image6.jpg', id: 'image6'},
-	];
-  
+	//const comandes = [
+	//	{ path: 'rock-band-icon-9.jpg', id: 'image2', url: '/' },
+	//	{ path: 'rock-band-icon-9.jpg', id: 'image3', url: '/' },
+	//	{ path: 'rock-band-icon-9.jpg', id: 'image4', url: '/' },
+	//	{ path: 'rock-band-icon-9.jpg', id: 'image5', url: '/' },
+	//	{ path: 'rock-band-icon-9.jpg', id: 'image6', url: '/' },
+	//	{ path: 'rock-band-icon-9.jpg', id: 'image7', url: '/' },
+	//	{ path: 'rock-band-icon-9.jpg', id: 'image8', url: '/' }
+//
+	//	// {path: 'images/image6.jpg', id: 'image6'},
+	//];
+    const comandes = [];
 	//$: comandes = ready_comandes_data;
 </script>
 
@@ -312,7 +313,7 @@
 <h1 class="adr mx-auto mt-3 mb-2 bg-white text-black dark:bg-gray-900 dark:text-white">Команды</h1>
 
 <Carousel
-	images={comandes}
+	images={ready_comandes_data}
 	imageWidth={200}
 	imageSpacing={15}
 	displayControls={true}
@@ -326,7 +327,7 @@
 <h1 class="adr mx-auto mt-5 mb-2 bg-white text-black dark:bg-gray-900 dark:text-white">Персоны</h1>
 
 <Carousel
-	images={personas}
+	images={ready_artists_data}
 	imageWidth={200}
 	imageSpacing={15}
 	controlScale={0.7}
