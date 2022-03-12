@@ -95,7 +95,7 @@
 		//		if (item.attributes.artists.data !== null){
 //
 		//		container.name =  item.attributes.artists.data[i].attributes.name;
-		//	
+		//	hhhhhhhhh
 		//		} else {
 		//			container.name = '';
 		//		}
