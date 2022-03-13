@@ -1,13 +1,11 @@
 .DS_Store
-/node_modules/*
-/src/node_modules/*
-yarn-error.log
-/cypress/screenshots/
-/__sapper__/
-.firebase/
+node_modules
+/.svelte-kit
+/package
+/build
+/functions
+/static/tailwind.css
+/src/lib/sampledata.json
 
-!/node_modules/smelte/
-/node_modules/smelte/node_modules/
-/node-red-data/.npm/
-/node-red-data/node_modules/
-.env
+# Local Netlify folder
+.netlify
