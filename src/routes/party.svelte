@@ -149,7 +149,7 @@
 			};
 		}
 		return {
-			status1: res.status,
+			status: res.status,
 			error: new Error(`Error fetching GraphQL data`)
 		};
 
