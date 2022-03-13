@@ -150,7 +150,6 @@
 		}
 		return {
 			status1: res.status,
-			status2: res2.status,
 			error: new Error(`Error fetching GraphQL data`)
 		};
 
