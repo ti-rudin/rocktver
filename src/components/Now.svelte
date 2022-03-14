@@ -156,6 +156,22 @@
   $: if (track_now_data) {
         trackname = track_now_data.track_name;
     }
+
+	import { Swipe, SwipeItem } from "svelte-swipe";
+
+const swipeConfig = {
+  autoplay: false,
+  delay: 2000,
+  showIndicators: true,
+  transitionDuration: 1000,
+  defaultIndex: 0,
+};
+
+let SwipeComp;
+
+function changeSlide(i){
+    SwipeComp.goTo(i)
+  }
    
 </script>
 
@@ -253,6 +269,20 @@
 	Сейчас звучит
 </h1>
 
+<div class="swipe-holder mx-auto mt-3 mb-2 bg-white text-black dark:bg-gray-900 dark:text-white">
+	<Swipe {...swipeConfig} bind:this={SwipeComp}>
+
+		{#each ready_track_data as item}
+		<SwipeItem>
+			{item.track_name}
+		  </SwipeItem>
+			
+		{/each}
+
+	</Swipe>
+  </div>
+
+
 <h1 class="adr mx-auto mt-3 mb-2 bg-white text-black dark:bg-gray-900 dark:text-white">
     {trackname}
 </h1>
@@ -266,4 +296,9 @@
 		width: 70px;
 		opacity: 0.3;
 	}
+	.swipe-holder{
+    height: 30vh;
+    width: 100%;
+  }
+
 </style>
