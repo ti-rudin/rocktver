@@ -57,6 +57,7 @@
 	},
 	"type": "module",
 	"dependencies": {
+		"@slidy/core": "^3.0.5",
 		"date-fns": "^2.28.0",
 		"node-fetch": "^2.6.6",
 		"parse-link-header": "^2.0.0",
@@ -64,6 +65,7 @@
 		"shiki": "^0.10.0",
 		"slugify": "^1.6.5",
 		"snarkdown": "^2.0.0",
-		"svelte-feather-icons": "^3.5.1"
+		"svelte-feather-icons": "^3.5.1",
+		"thumb-ui": "^0.0.17"
 	}
 }
