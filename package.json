@@ -58,6 +58,7 @@
 	"type": "module",
 	"dependencies": {
 		"@slidy/core": "^3.0.5",
+		"@slidy/svelte": "^3.0.5",
 		"date-fns": "^2.28.0",
 		"node-fetch": "^2.6.6",
 		"parse-link-header": "^2.0.0",

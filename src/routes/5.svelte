@@ -10,6 +10,7 @@
 	import { slidy } from '@slidy/core';
 	//import pkg from '@slidy/core/package.json'
 	import { getItems } from '../components/api.js';
+	import { getIdTrackNow } from '../components/api.js';
 
 	let items = [],
 		imagable = true,
@@ -20,6 +21,15 @@
 		scrollPos = 0;
 
 	let page = Math.trunc(Math.random() * 10);
+
+    const timerId = setInterval(function () {
+		getCountdown();
+	}, 3000);
+
+	async function getCountdown() {
+        index = await getIdTrackNow();
+        if (index >= 10) { index = 0}
+    }
 </script>
 
 <p>index: [{index}] scrollPos: {Math.trunc(scrollPos)}px</p>
@@ -51,13 +61,15 @@
 			{#each items as item, i}
 				<li id={i} class:active={i === index}>
 					{#if imagable}
-						<img
-							alt={i}
-							loading="lazy"
-							width={item.width / 5}
-							height={item.height / 5}
-							src={item.download_url}
-						/>
+						<div
+							class="h-24 my-4 bg-gradient-to-r from-yellow-400 to-pink-500 flex justify-center items-center p-3 rounded-xl border-2 border-slate-100 shadow-lg transition-all transform-all hover:scale-105 cursor-pointer relative"
+							
+						>
+							<div class="text-slate-200 text-center">
+								<div>Alihossein</div>
+								<div class="font-mono text-xs">from-yellow-400 to-pink-500</div>
+							</div>
+						</div>
 					{/if}
 				</li>
 			{/each}
@@ -88,7 +100,7 @@
 <style>
 	section {
 		overflow: hidden;
-		height: 300px;
+		height: auto;
 		/* 		position: relative; */
 	}
 	ul {
