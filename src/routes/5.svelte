@@ -8,28 +8,34 @@
 
 <script>
 	import { slidy } from '@slidy/core';
-	//import pkg from '@slidy/core/package.json'
-	import { getItems } from '../components/api.js';
+
 	import { getIdTrackNow } from '../components/api.js';
 
 	let items = [],
 		imagable = true,
 		width = imagable ? 'auto' : '50%',
 		gap = 16,
-		index = 7,
+		index = 0,
 		length = 15,
 		scrollPos = 0;
 
 	let page = Math.trunc(Math.random() * 10);
 
-    const timerId = setInterval(function () {
-		getCountdown();
-	}, 3000);
-
 	async function getCountdown() {
         index = await getIdTrackNow();
-        if (index >= 10) { index = 0}
-    }
+        
+    };
+
+    const timerId = setInterval(function () {
+		getCountdown();
+	}, 2000);
+
+	const timerIdS = setTimeout(function () {
+		getCountdown();
+	}, 500);
+
+	
+	
 ///////////////////////////////////////////////////
 	export let ready_comandes_data = [];
 	export let ready_track_data = [];
@@ -173,6 +179,7 @@
 		//comandes_data = launches;
 		//	console.log(comandes_data);
 		load();
+		
         
 	});
     $: track_now_data = ready_track_data[track_now];
@@ -189,7 +196,6 @@
 </script>
 
 <p>index: [{index}] scrollPos: {Math.trunc(scrollPos)}px</p>
-
 
 <section style="--gap: {gap}px; --width: {width}" tab-index="0">
 
@@ -211,12 +217,12 @@
 				<li id={i} class:active={i === index}>
 					
 						<div
-							class="h-24 my-4 bg-gradient-to-r from-yellow-400 to-pink-500 flex justify-center items-center p-3 rounded-xl border-2 border-slate-100 shadow-lg transition-all transform-all hover:scale-105 cursor-pointer relative"
+							class="h-24 w-72 my-4 bg-gradient-to-r from-yellow-400 to-pink-500 flex justify-center items-center p-3 rounded-xl border-2 border-slate-100 shadow-lg transition-all transform-all hover:scale-105 cursor-pointer relative"
 							
 						>
 							<div class="text-slate-200 text-center">
-								<div>{item.track_name}</div>
-								<div class="font-mono text-xs">from-yellow-400 to-pink-500</div>
+								<div>{item.band_name}</div>
+								<div class="font-mono text-xs">{item.track_name}</div>
 							</div>
 						</div>
 				
@@ -269,12 +275,11 @@
 		max-width: 100%;
 		height: 100%;
 		position: relative;
-		background: whitesmoke;
+		
 	}
 	ul li:before {
 		content: attr(id);
 		position: absolute;
-		background: white;
 		padding: 1rem;
 		z-index: 1;
 	}
