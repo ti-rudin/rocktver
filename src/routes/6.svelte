@@ -11,7 +11,7 @@
 
 	import { getIdTrackNow } from '../components/api.js';
 
-	let items = [],
+	let 
 		imagable = true,
 		width = imagable ? 'auto' : '50%',
 		gap = 16,
@@ -28,6 +28,7 @@
 
     const timerId = setInterval(function () {
 		getCountdown();
+
 	}, 2000);
 
 	const timerIdS = setTimeout(function () {
@@ -195,7 +196,7 @@
 
 import {flip} from "svelte/animate";
     import {dndzone} from "svelte-dnd-action";
-    let itemss = [
+    let items = [
         {id: 1, name: "item1"},
         {id: 2, name: "item2"},
         {id: 3, name: "item3"},
@@ -204,76 +205,40 @@ import {flip} from "svelte/animate";
     const flipDurationMs = 300;
     function handleDndConsider(e) {
         items = e.detail.items;
+
     }
     function handleDndFinalize(e) {
-        items = e.detail.items;
+		const {items:newItems} = e.detail;
+		items = newItems
+		console.log(items)
     }
-
+	
 </script>
 
 <p>index: [{index}] scrollPos: {Math.trunc(scrollPos)}px</p>
 
-<section style="--gap: {gap}px; --width: {width}" tab-index="0">
 
-		<ul
-			use:slidy={{
-				index,
-				length,
-				axis: 'x',
-				align: 'middle',
-				duration: 375,
-				clamp: false,
-				snap: true,
-				gravity: 1.2,
-				indexer: (x) => (index = x),
-				scroller: (p) => (scrollPos = p)
-			}}
-		>
-			{#each ready_track_data as item, i}
-				<li id={i} class:active={i === index}>
-					
-						<div
-							class="h-24 w-72 my-4 bg-gradient-to-r from-yellow-400 to-pink-500 flex justify-center items-center p-3 rounded-xl border-2 border-slate-100 shadow-lg transition-all transform-all hover:scale-105 cursor-pointer relative"
-							
-						>
-							<div class="text-slate-200 text-center">
-								<div>{item.band_name}</div>
-								<div class="font-mono text-xs">{item.track_name}</div>
-							</div>
-						</div>
-				
-				</li>
-			{/each}
-		</ul>
-	
+<section use:dndzone="{{items, flipDurationMs}}" on:consider="{handleDndConsider}" on:finalize="{handleDndFinalize}">
+    {#each items as item(item.id)}
+    <div class="dcl" animate:flip="{{duration: flipDurationMs}}">{item.name}</div>
+    {/each}
 </section>
 
-<label
-	>{index}
-	<input type="range" min="0" max={length} step="1" bind:value={index} />
-</label>
-<label
-	>width
-	<input placeholder={width} step="1" bind:value={width} />
-</label>
-<nav id="dots">
-	{#if length > 0}
-		{#each { length } as dot, i}
-			<button on:click={() => (index = i)} class:active={i === index}>{i}</button>
-		{/each}
-	{/if}
-</nav>
-<nav>
-	<button on:click={() => index--}>←</button>
-	<button on:click={() => index++}>→</button>
-</nav>
-
 <style>
-	section {
-		overflow: hidden;
-		height: auto;
-		/* 		position: relative; */
-	}
+	 section {
+        width: 50%;
+        padding: 0.3em;
+        border: 1px solid black;
+        /* this will allow the dragged element to scroll the list */
+        overflow: scroll;
+        height: 200px;
+    }
+    .dcl {
+        width: 50%;
+        padding: 0.2em;
+        border: 1px solid blue;
+        margin: 0.15em 0;
+    }
 	ul {
 		list-style: none;
 		margin: 0;
