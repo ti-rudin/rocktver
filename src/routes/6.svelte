@@ -19,6 +19,8 @@
 		length = 15,
 		scrollPos = 0;
 
+		let items = [];
+
 	let page = Math.trunc(Math.random() * 10);
 
 	async function getCountdown() {
@@ -118,7 +120,7 @@
 				} else {
 					container.path = 'rock-band-icon-9.jpg';
 				}
-				container.id = 'images' + item.id;
+				container.id = item.id;
 				container.url = 'band/' + container.band_name;
 				return container;
 			});
@@ -144,6 +146,7 @@
 
 				tracks.forEach((track) => {
 					const container2 = {
+						id: Number(track.id),
 						band_name: item.attributes.band_name,
 						band_id: item.id,
 						track_id: track.id,
@@ -158,7 +161,7 @@
 			//console.log(ready_artists_data);
 			//console.log(data);
 			console.log(ready_track_data);
-
+			
 			return {
 				props: {
 					ready_comandes_data: ready_comandes_data,
@@ -185,7 +188,7 @@
 	});
     $: track_now_data = ready_track_data[track_now];
     
-    $: console.log(track_now_data);
+   // $: console.log(track_now_data);
 
     export let trackname = '';
   $: if (track_now_data) {
@@ -193,15 +196,12 @@
     }
 
 //////////////////////////////////////////////////////
-
+$: items = ready_comandes_data;
+$: console.log(items)
 import {flip} from "svelte/animate";
     import {dndzone} from "svelte-dnd-action";
-    let items = [
-        {id: 1, name: "item1"},
-        {id: 2, name: "item2"},
-        {id: 3, name: "item3"},
-        {id: 4, name: "item4"}
-    ];
+    
+	console.log(items)
     const flipDurationMs = 300;
     function handleDndConsider(e) {
         items = e.detail.items;
@@ -220,7 +220,7 @@ import {flip} from "svelte/animate";
 
 <section use:dndzone="{{items, flipDurationMs}}" on:consider="{handleDndConsider}" on:finalize="{handleDndFinalize}">
     {#each items as item(item.id)}
-    <div class="dcl" animate:flip="{{duration: flipDurationMs}}">{item.name}</div>
+    <div class="dcl" animate:flip="{{duration: flipDurationMs}}">{item.band_name}</div>
     {/each}
 </section>
 
