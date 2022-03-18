@@ -23,7 +23,7 @@ const rehypePlugins = [
 	]
 ];
 
-const allowedPosters = ['ti-rudin'];
+const allowedPosters = ['ti-rudin','AlexNovikov23'];
 const publishedTags = ['Published'];
 let allBlogposts = [];
 // let etag = null // todo - implmement etag header

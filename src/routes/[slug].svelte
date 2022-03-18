@@ -63,47 +63,26 @@
 </svelte:head>
 
 <article
-	class="mx-auto mb-16 flex w-full max-w-2xl flex-col items-start justify-center px-4 sm:px-8"
+	class="mx-auto mb-16 flex w-full max-w-2xl flex-col items-start justify-center px-3 sm:px-1"
 >
-	<h1 class="mb-8 text-3xl font-bold tracking-tight text-black dark:text-white md:text-5xl ">
+	<h1 class="mb-6 text-3xl font-bold tracking-tight text-black dark:text-white md:text-5xl ">
 		{json.title}
 	</h1>
 	<div
-		class="bg mt-2 flex w-full justify-between sm:flex-col sm:items-start md:flex-row md:items-center"
+		class="bg flex w-full justify-between sm:flex-col sm:items-start md:flex-row md:items-center"
 	>
-		<p class="flex items-center text-sm text-gray-700 dark:text-gray-300">swyx</p>
+		<p class="flex items-center text-sm text-gray-700 dark:text-gray-300">РОК-ОПОЛЧЕНИЕ</p>
 		<p class="min-w-32 flex items-center text-sm text-gray-600 dark:text-gray-400 md:mt-0">
-			<a href={json.ghMetadata.issueUrl} rel="external" class="no-underline" target="_blank">
-				<span class="mr-4 font-mono text-xs text-gray-700 text-opacity-70 dark:text-gray-300"
-					>{json.ghMetadata.reactions.total_count} reactions</span
-				>
-			</a>
+		
 			{new Date(json.date).toISOString().slice(0, 10)}
 		</p>
 	</div>
 	<div
-		class="-mx-4 my-2 flex h-1 w-[100vw] bg-gradient-to-r from-yellow-400 via-red-500 to-pink-500 sm:mx-0 sm:w-full"
+		class="-mx-1 my-2 flex h-1 w-[90vw] bg-gradient-to-r from-yellow-400 via-red-500 to-pink-500 sm:mx-0 sm:w-full"
 	/>
 
-	<div class="prose mt-16 mb-32 w-full max-w-none dark:prose-invert">
+	<div class="prose mt-6 mb-6 w-full max-w-none dark:prose-invert">
 		{@html json.content}
 	</div>
 </article>
-<div class="mx-auto max-w-2xl">
-	<div class="prose mb-12 border-t border-b border-blue-800 p-4 dark:prose-invert">
-		{#if json.ghMetadata.reactions.total_count > 0}
-			Reactions: <Reactions
-				issueUrl={json.ghMetadata.issueUrl}
-				reactions={json.ghMetadata.reactions}
-			/>
-		{:else}
-			<a href={json.ghMetadata.issueUrl}>Leave a reaction </a>
-			if you liked this post! 🧡
-		{/if}
-	</div>
-	<div class="mb-8">
-		<Comments ghMetadata={json.ghMetadata} />
-	</div>
 
-	<Newsletter />
-</div>
