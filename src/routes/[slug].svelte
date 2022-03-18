@@ -72,10 +72,12 @@
 		class="bg flex w-full justify-between sm:flex-col sm:items-start md:flex-row md:items-center"
 	>
 		<p class="flex items-center text-sm text-gray-700 dark:text-gray-300">РОК-ОПОЛЧЕНИЕ</p>
+		<!--
 		<p class="min-w-32 flex items-center text-sm text-gray-600 dark:text-gray-400 md:mt-0">
 		
 			{new Date(json.date).toISOString().slice(0, 10)}
 		</p>
+		-->
 	</div>
 	<div
 		class="-mx-1 my-2 flex h-1 w-[90vw] bg-gradient-to-r from-yellow-400 via-red-500 to-pink-500 sm:mx-0 sm:w-full"
