@@ -6,21 +6,26 @@
 	import '../tailwind.css';
 	import Nav from '../components/Nav.svelte';
 	import { isAuthenticated, user } from '$lib/stores/auth';
-	VK.Widgets.Auth('vk_auth', {
-			onAuth: function (data) {
-				//alert('user ' + data['uid'] + ' authorized');
-				$isAuthenticated = true;
 
-				let user_data = {
-					id: data['uid'],
-					name: data['first_name'] + " " + data['last_name'],
-					photo: data['photo'],
-					phot_rec: data['photo_rec'],
-					hash: data['hash']
-				}
-				user.set(user_data);
-			}});
+
 </script>
+<script>
+	VK.init({apiId: 8083840});
+	VK.Widgets.Auth('vk_auth', {
+		onAuth: function (data) {
+			//alert('user ' + data['uid'] + ' authorized');
+			$isAuthenticated = true;
+
+			let user_data = {
+				id: data['uid'],
+				name: data['first_name'] + " " + data['last_name'],
+				photo: data['photo'],
+				phot_rec: data['photo_rec'],
+				hash: data['hash']
+			}
+			user.set(user_data);
+		}});
+  </script>
 
 <svelte:head>
 	<link
