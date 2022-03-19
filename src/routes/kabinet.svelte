@@ -51,16 +51,10 @@
 
 	$: if ($isAuthenticated) {
 		console.log($user);
-		loadsettings($user.sub);
+		loadsettings($user.id);
 	}
 
-	function login() {
-		auth.loginWithPopup(auth0Client);
-	}
 
-	function logout() {
-		auth.logout(auth0Client);
-	}
 
 	import { slidy } from '@slidy/core';
 
@@ -234,6 +228,11 @@
 			onAuth: function (data) {
 				alert('user ' + data['uid'] + ' authorized');
 				$isAuthenticated = true;
+				$user.id = data['uid'];
+				$user.name = data['first_name'] + " " + data['last_name'];
+				$user.photo = data['photo'];
+				$user.photo_rec = data['photo_rec'];
+				$user.hash = data['hash'];
 			}
 		});
 	});
@@ -268,6 +267,7 @@
 
 {#if $isAuthenticated}
 	<p>qu</p>
+	{$user.photo}
 
 {:else}
 	<p>Авторизуйтесь</p>
