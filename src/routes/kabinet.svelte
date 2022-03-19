@@ -40,10 +40,7 @@
 	}
 
 	onMount(async () => {
-		auth0Client = await auth.createClient();
-		isAuthenticated.set(await auth0Client.isAuthenticated());
-		user.set(await auth0Client.getUser());
-
+		
 		await fetch(leadsurl)
 			.then((r) => r.text())
 			.then((result) => (t = result));
@@ -271,6 +268,7 @@
 {#if $isAuthenticated}
 	<p>qu</p>
 	{$user.photo}
+	{userset}
 
 {:else}
 	<p>Авторизуйтесь</p>
