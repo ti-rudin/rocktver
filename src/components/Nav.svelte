@@ -152,19 +152,19 @@
 				</svg>
 			{/if}
 		</button>
-		<a
-			class="ml-1 flex h-9 items-center justify-center rounded-lg bg-yellow-400 px-3 text-black ring-yellow-400 transition-all
-		hover:ring-2 dark:bg-yellow-800 dark:text-white"
-			href="/kabinet"
-		>
-			{#if $isAuthenticated}
-				
 
-				<img src={$user.photo_rec} alt={$user.name} id={$user.id} />
-			{:else}
-				Войти
-			{/if}
+		{#if $isAuthenticated}
+		<a href="/kabinet">
+			<img class="rounded-full w-20 h-20" src={$user.photo} alt={$user.name} id={$user.id} />
 		</a>
+		{:else}
+			<a
+				class="ml-1 flex h-9 items-center justify-center rounded-lg bg-yellow-400 px-3 text-black ring-yellow-400 transition-all
+		hover:ring-2 dark:bg-yellow-800 dark:text-white"
+				href="/kabinet"
+				>Войти
+			</a>
+		{/if}
 	</div>
 </nav>
 
