@@ -102,7 +102,7 @@
 			</svg>
 		</a>
 		-->
-		{user}
+		{user.id}
 		<a
 
 			class="text-black dark:text-white ml-1 flex h-9 px-3 items-center justify-center rounded-lg bg-yellow-400 ring-yellow-400
