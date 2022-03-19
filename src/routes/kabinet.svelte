@@ -51,7 +51,7 @@
 
 	$: if ($isAuthenticated) {
 		console.log($user);
-		loadsettings($user.id);
+		//loadsettings($user.id);
 	}
 
 
@@ -228,11 +228,14 @@
 			onAuth: function (data) {
 				alert('user ' + data['uid'] + ' authorized');
 				$isAuthenticated = true;
-				$user.id = data['uid'];
-				$user.name = data['first_name'] + " " + data['last_name'];
-				$user.photo = data['photo'];
-				$user.photo_rec = data['photo_rec'];
-				$user.hash = data['hash'];
+
+				$user = {
+					id: data['uid'],
+					name: data['first_name'] + " " + data['last_name'],
+					photo: data['photo'],
+					phot_rec: data['photo_rec'],
+					hash: data['hash']
+				}
 			}
 		});
 	});
