@@ -105,7 +105,7 @@
 			</svg>
 		</a>
 		-->
-		{$user.id}
+		
 		<a
 
 			class="text-black dark:text-white ml-1 flex h-9 px-3 items-center justify-center rounded-lg bg-yellow-400 ring-yellow-400
@@ -157,6 +157,18 @@
 				</svg>
 			{/if}
 		</button>
+		<a
+
+		class="text-black dark:text-white ml-1 flex h-9 px-3 items-center justify-center rounded-lg bg-yellow-400 ring-yellow-400
+		transition-all hover:ring-2 dark:bg-yellow-800"
+		href="/kabinet"
+	>
+		{#if $isAuthenticated}
+			Кабинет {$user.id}
+		{:else}
+			Войти
+		{/if}
+</a>
 	</div>
 </nav>
 

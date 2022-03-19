@@ -1,13 +1,11 @@
 
 
-<script context="module">
+<script>
 	import { isDarkFlag } from '$lib/siteConfig';
 
 	export const prerender = true; // index page is most visited, lets prerender
 	import { isAuthenticated, user } from '$lib/stores/auth';
-</script>
 
-<script>
 
 	
 	import { onMount } from 'svelte';
