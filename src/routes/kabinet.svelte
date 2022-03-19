@@ -4,11 +4,12 @@
 	import { isDarkFlag } from '$lib/siteConfig';
 
 	export const prerender = true; // index page is most visited, lets prerender
+	import { isAuthenticated, user } from '$lib/stores/auth';
 </script>
 
 <script>
 
-	import { isAuthenticated, user } from '$lib/stores/auth';
+	
 	import { onMount } from 'svelte';
 
 	let auth0Client;
@@ -221,20 +222,7 @@
 		//comandes_data = launches;
 		//	console.log(comandes_data);
 		load();
-		VK.Widgets.Auth('vk_auth', {
-			onAuth: function (data) {
-				//alert('user ' + data['uid'] + ' authorized');
-				$isAuthenticated = true;
-
-				let user_data = {
-					id: data['uid'],
-					name: data['first_name'] + " " + data['last_name'],
-					photo: data['photo'],
-					phot_rec: data['photo_rec'],
-					hash: data['hash']
-				}
-				user.set(user_data);
-			}
+		
 		});
 	});
 	$: track_now_data = ready_track_data[track_now];
@@ -269,7 +257,7 @@
 {#if $isAuthenticated}
 	<p>qu</p>
 	{$user.photo}
-	{userset}
+	{$user.name}
 
 {:else}
 	<p>Авторизуйтесь</p>

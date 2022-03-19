@@ -13,6 +13,9 @@
 	import NavLink from './NavLink.svelte';
 	import { isAuthenticated, user } from '$lib/stores/auth';
 
+
+
+
 	let isDark = false;
 	$isDarkFlag = false;
 	if (typeof localStorage !== 'undefined') {
