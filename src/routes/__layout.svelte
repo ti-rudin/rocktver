@@ -17,7 +17,7 @@
 					id: data['uid'],
 					name: data['first_name'] + ' ' + data['last_name'],
 					photo: data['photo'],
-					phot_rec: data['photo_rec'],
+					photo_rec: data['photo_rec'],
 					hash: data['hash']
 				};
 				user.set(user_data);

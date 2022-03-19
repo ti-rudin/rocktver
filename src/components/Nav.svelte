@@ -13,9 +13,6 @@
 	import NavLink from './NavLink.svelte';
 	import { isAuthenticated, user } from '$lib/stores/auth';
 
-
-
-
 	let isDark = false;
 	$isDarkFlag = false;
 	if (typeof localStorage !== 'undefined') {
@@ -55,7 +52,6 @@
 		<li>
 			<NavLink href="/party">Участники</NavLink>
 		</li>
-
 	</ul>
 	<div class="flex items-center space-x-4">
 		<!-- RSS -->
@@ -105,11 +101,10 @@
 			</svg>
 		</a>
 		-->
-		
-		<a
 
-			class="text-black dark:text-white ml-1 flex h-9 px-3 items-center justify-center rounded-lg bg-yellow-400 ring-yellow-400
-			transition-all hover:ring-2 dark:bg-yellow-800"
+		<a
+			class="ml-1 flex h-9 items-center justify-center rounded-lg bg-yellow-400 px-3 text-black ring-yellow-400 transition-all
+			hover:ring-2 dark:bg-yellow-800 dark:text-white"
 			href="https://che-tver.timepad.ru/event/1900315/"
 		>
 			{#if isDark}
@@ -117,7 +112,7 @@
 			{:else}
 				Купить билет
 			{/if}
-	</a>
+		</a>
 		<button
 			aria-label="Toggle Dark Mode"
 			class="ml-1 flex h-9 w-9 items-center justify-center rounded-lg bg-yellow-400 ring-yellow-400
@@ -158,17 +153,18 @@
 			{/if}
 		</button>
 		<a
+			class="ml-1 flex h-9 items-center justify-center rounded-lg bg-yellow-400 px-3 text-black ring-yellow-400 transition-all
+		hover:ring-2 dark:bg-yellow-800 dark:text-white"
+			href="/kabinet"
+		>
+			{#if $isAuthenticated}
+				
 
-		class="text-black dark:text-white ml-1 flex h-9 px-3 items-center justify-center rounded-lg bg-yellow-400 ring-yellow-400
-		transition-all hover:ring-2 dark:bg-yellow-800"
-		href="/kabinet"
-	>
-		{#if $isAuthenticated}
-			Кабинет {$user.id}
-		{:else}
-			Войти
-		{/if}
-</a>
+				<img src={$user.photo_rec} alt={$user.name} id={$user.id} />
+			{:else}
+				Войти
+			{/if}
+		</a>
 	</div>
 </nav>
 
