@@ -1,4 +1,4 @@
-<svelte:options immutable={true} />
+
 
 <script context="module">
 	import { isDarkFlag } from '$lib/siteConfig';
