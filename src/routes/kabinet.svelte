@@ -12,8 +12,8 @@
 	import { onMount } from 'svelte';
 
 	let auth0Client;
-	let leadsurl="https://api.rocktver.ru/track-now-id"
-  let apiurl="https://api.rocktver.ru/api"
+	let leadsurl = 'https://api.rocktver.ru/track-now-id';
+	let apiurl = 'https://api.rocktver.ru/api';
 	let t;
 
 	let userset;
@@ -89,7 +89,7 @@
 		getCountdown();
 	}, 500);
 
-///////////////////////////////////////////////////
+	///////////////////////////////////////////////////
 	export let ready_comandes_data = [];
 	export let ready_track_data = [];
 	export let track_now_data = {
@@ -226,13 +226,16 @@
 		};
 	}
 
-	
 	onMount(() => {
 		//comandes_data = launches;
 		//	console.log(comandes_data);
 		load();
-		VK.Widgets.Auth("vk_auth", {"onAuth":function(data) {alert('user '+data['uid']+' authorized');}});
-        
+		VK.Widgets.Auth('vk_auth', {
+			onAuth: function (data) {
+				alert('user ' + data['uid'] + ' authorized');
+				$isAuthenticated = true;
+			}
+		});
 	});
 	$: track_now_data = ready_track_data[track_now];
 
@@ -263,23 +266,13 @@
 
 <p>index: [{index}] scrollPos: {Math.trunc(scrollPos)}px</p>
 
-
 {#if $isAuthenticated}
-  {#if ($user.name == "Александр Рудин")}
-  <h2>dd {t} {userset}</h2>
-  {/if}
-  <h2>Hey {$user.name} {userset}!</h2>
-  {#if $user.picture}
-    {$user.picture} 
-  {:else}
-hu
-  {/if}
-  <button on:click={logout}>Logout</button>
-{:else}
+	<p>qu</p>
 
-	<p>Авторизуйтесь </p>
-  <button on:click={login}>Login</button>
-  <div id="vk_auth"></div>
+{:else}
+	<p>Авторизуйтесь</p>
+
+	<div id="vk_auth" />
 {/if}
 
 <section
