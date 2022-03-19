@@ -226,11 +226,13 @@
 		};
 	}
 
-
+	
 	onMount(() => {
 		//comandes_data = launches;
 		//	console.log(comandes_data);
 		load();
+		VK.Widgets.Auth("vk_auth", {"onAuth":function(data) {alert('user '+data['uid']+' authorized');}});
+        
 	});
 	$: track_now_data = ready_track_data[track_now];
 
@@ -261,6 +263,7 @@
 
 <p>index: [{index}] scrollPos: {Math.trunc(scrollPos)}px</p>
 
+
 {#if $isAuthenticated}
   {#if ($user.name == "Александр Рудин")}
   <h2>dd {t} {userset}</h2>
@@ -276,6 +279,7 @@ hu
 
 	<p>Авторизуйтесь </p>
   <button on:click={login}>Login</button>
+  <div id="vk_auth"></div>
 {/if}
 
 <section
