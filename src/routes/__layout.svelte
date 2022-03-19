@@ -5,6 +5,8 @@
 <script>
 	import '../tailwind.css';
 	import Nav from '../components/Nav.svelte';
+
+	
 </script>
 
 <svelte:head>

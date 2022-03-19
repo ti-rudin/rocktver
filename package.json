@@ -58,6 +58,7 @@
 	},
 	"type": "module",
 	"dependencies": {
+		"@auth0/auth0-spa-js": "^1.20.1",
 		"@slidy/core": "^3.0.5",
 		"date-fns": "^2.28.0",
 		"node-fetch": "^2.6.6",

@@ -63,9 +63,7 @@
 		//comandes_data = launches;
 		//	console.log(comandes_data);
 	
-        VK.init({ apiId: 8083840 });
-        VK.Widgets.Auth('vk_auth', {onAuth: function(data) {console.log('user '+data['uid']+' authorized');}});
-       
+    VK.Widgets.Auth("vk_auth", {"onAuth":function(data) {alert('user '+data['uid']+' authorized');}});
         
 	});
   
