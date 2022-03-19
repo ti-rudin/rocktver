@@ -223,7 +223,7 @@
 		//	console.log(comandes_data);
 		load();
 		
-		});
+		
 	});
 	$: track_now_data = ready_track_data[track_now];
 
