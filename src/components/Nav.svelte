@@ -11,7 +11,7 @@
 
 	import MobileMenu from './MobileMenu.svelte';
 	import NavLink from './NavLink.svelte';
-
+	import { isAuthenticated, user } from '$lib/stores/auth';
 
 	let isDark = false;
 	$isDarkFlag = false;
@@ -102,7 +102,7 @@
 			</svg>
 		</a>
 		-->
-
+		{user}
 		<a
 
 			class="text-black dark:text-white ml-1 flex h-9 px-3 items-center justify-center rounded-lg bg-yellow-400 ring-yellow-400

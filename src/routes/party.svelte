@@ -8,7 +8,7 @@
 		MY_TWITTER_HANDLE,
 		isDarkFlag
 	} from '$lib/siteConfig';
-
+	
 	export const prerender = true; // index page is most visited, lets prerender
 
 	export async function load({ fetch }) {

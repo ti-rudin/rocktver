@@ -7,7 +7,7 @@
 </script>
 
 <script>
-	import auth from '$lib/services/auth';
+
 	import { isAuthenticated, user } from '$lib/stores/auth';
 	import { onMount } from 'svelte';
 
@@ -223,16 +223,17 @@
 		load();
 		VK.Widgets.Auth('vk_auth', {
 			onAuth: function (data) {
-				alert('user ' + data['uid'] + ' authorized');
+				//alert('user ' + data['uid'] + ' authorized');
 				$isAuthenticated = true;
 
-				$user = {
+				let user_data = {
 					id: data['uid'],
 					name: data['first_name'] + " " + data['last_name'],
 					photo: data['photo'],
 					phot_rec: data['photo_rec'],
 					hash: data['hash']
 				}
+				user.set(user_data);
 			}
 		});
 	});
