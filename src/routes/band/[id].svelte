@@ -7,24 +7,24 @@
       },
       body: JSON.stringify({
         query: `{
-  bands {
-    data {
-      id
-      
-      attributes {
-        band_name
-        spisok {
-          ... on ComponentPesniTrack {
-            
-            id
-            name
-            text
+          bands {
+            data {
+              id
+              
+              attributes {
+                band_name
+                spisok {
+                  ... on ComponentPesniTrack {
+                    
+                    id
+                    name
+                    text
+                  }
+                }
+              }
+            }
           }
-        }
-      }
-    }
-  }
-}`,
+        }`,
       }),
     })
     if (res.ok) {
