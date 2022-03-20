@@ -8,6 +8,9 @@
 
 	onMount(() => {
 		VK.init({ apiId: 8083840 });
+		
+
+	
 		//VK.Widgets.Auth('vk_auth', {
 		//	onAuth: function (data) {
 		//		//alert('user ' + data['uid'] + ' authorized');

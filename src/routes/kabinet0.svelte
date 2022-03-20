@@ -1,9 +1,13 @@
+
+
 <script>
 	import { isDarkFlag } from '$lib/siteConfig';
 
 	export const prerender = true; // index page is most visited, lets prerender
 	import { isAuthenticated, user } from '$lib/stores/auth';
 
+
+	
 	import { onMount } from 'svelte';
 
 	let auth0Client;
@@ -35,6 +39,7 @@
 	}
 
 	onMount(async () => {
+		
 		await fetch(leadsurl)
 			.then((r) => r.text())
 			.then((result) => (t = result));
@@ -44,6 +49,8 @@
 		console.log($user);
 		//loadsettings($user.id);
 	}
+
+
 
 	import { slidy } from '@slidy/core';
 
@@ -213,18 +220,8 @@
 		//comandes_data = launches;
 		//	console.log(comandes_data);
 		load();
-		VK.UI.button('login_button');
-		function getit(response) {
-			if (response.session) {
-				var id = response.session.mid;
-			}
-			VK.Api.call('users.get', { uids: id, fields: 'sex,photo_big' }, function (r) {
-				if (r.response) {
-					//alert(r.response.sex);
-					console.log(r.response);
-				}
-			});
-		}
+		
+		
 	});
 	$: track_now_data = ready_track_data[track_now];
 
@@ -251,18 +248,6 @@
 		items = newItems;
 		console.log(items);
 	}
-
-	function getit(response) {
-		if (response.session) {
-			var id = response.session.mid;
-		}
-		VK.Api.call('users.get', { uids: id, fields: 'sex,photo_big' }, function (r) {
-			if (r.response) {
-				alert(r.response.sex);
-				console.log(r.response);
-			}
-		});
-	}
 </script>
 
 <p>index: [{index}] scrollPos: {Math.trunc(scrollPos)}px</p>
@@ -271,10 +256,11 @@
 	<p>qu</p>
 	{$user.photo}
 	{$user.name}
+
 {:else}
 	<p>Авторизуйтесь</p>
 
-	<div id="login_button" on:click={VK.Auth.login(getit)} />
+	<div id="vk_auth" />
 {/if}
 
 <section

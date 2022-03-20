@@ -155,7 +155,7 @@
 
 		{#if $isAuthenticated}
 		<a href="/kabinet">
-			<img class="rounded-full w-20 h-20" src={$user.photo_rec} alt={$user.name} id={$user.id} />
+			<img class="rounded-full w-10 h-10" src={$user.photo} alt={$user.name} id={$user.id} />
 		</a>
 		{:else}
 			<a
