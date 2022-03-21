@@ -36,7 +36,7 @@
 		);
 	}
 </script>
-<a href="/concert/1">Концерт</a>
+
 {#if $isAuthenticated}
 	{#if $isDarkFlag}
 		<svg

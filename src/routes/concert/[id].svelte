@@ -16,7 +16,6 @@
                 id
                 attributes {
                   start_date
-                  mc_id
                   show_name
 				  ploschadka
 				  bilet_ot
