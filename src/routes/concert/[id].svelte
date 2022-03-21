@@ -19,6 +19,7 @@
                   mc_id
                   show_name
 				  ploschadka
+				  bilet_ot
                   spisok {
                     ... on ComponentBandsTimeline {
                       id
@@ -207,6 +208,9 @@
 				>
 					{concert.attributes.ploschadka}
 				</a>
+				<div class="my-3 py-2 px-4  text-center text-lg leading-3 text-black dark:text-white">
+					{concert.attributes.bilet_ot}
+				</div>
 			</div>
 		</div>
 	</div>

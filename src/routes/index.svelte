@@ -241,10 +241,11 @@
 	<h1 class="adr mx-auto bg-white text-black dark:bg-gray-900 dark:text-white">
 		КЛУБ BIG BEN
 	</h1>
+	<h1 class="otbor mx-auto bg-white text-black dark:bg-gray-900 dark:text-white">Вход бесплатный</h1>
 </a>
 
 
-<a href = "/concert/1" class="ramka flex p-2 mx-auto my-2 text-center flex-col rounded ring-yellow-600  ring-1 hover:ring-4">
+<a href = "/concert/2" class="ramka flex p-2 mx-auto my-2 text-center flex-col rounded ring-yellow-600  ring-1 hover:ring-4">
 	<h2 class="mx-auto mt-2 bg-white text-center text-black dark:bg-gray-900 dark:text-white">
 		Дата проведения:
 	</h2>
