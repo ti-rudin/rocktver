@@ -20,6 +20,7 @@
                   show_name
 				  ploschadka
 				  bilet_ot
+				  url_website
                   spisok {
                     ... on ComponentBandsTimeline {
                       id
@@ -200,7 +201,7 @@
 					Концертная площадка
 				</div>
 				<a
-					href="https://bigbclub.ru/"
+					href="{concert.attributes.url_website}"
 					target="blank"
 					tabindex="0"
 					class="mx-auto w-fit rounded-full bg-yellow-400 p-2 px-4  px-3 text-xl text-black ring-yellow-400 transition-all
