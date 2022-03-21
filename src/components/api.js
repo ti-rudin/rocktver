@@ -10,8 +10,3 @@ export async function getIdTrackNow() {
 	return await res.json()
 }
 
-export async function getUserData(user) {
-	const path = `https://api.rocktver.ru/getuserdata`
-	const res = await fetch(path)
-	return await res.json()
-}

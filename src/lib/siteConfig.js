@@ -15,3 +15,5 @@ export const MY_YOUTUBE = 'https://youtube.com/swyxTV';
 import { writable } from 'svelte/store';
 
 export const isDarkFlag = writable(0);
+export const isMngr = writable();
+export const isAdmin = writable();
