@@ -10,8 +10,7 @@
 			'users.get',
 			{
 				uids: id,
-				fields:
-					'photo_max, first_name,last_name, sex, bdate, city, country, followers_count',
+				fields: 'photo_max, first_name,last_name, sex, bdate, city, country, followers_count',
 				v: '5.131'
 			},
 			function (r) {
@@ -30,7 +29,13 @@
 						sex: r.response[0].sex
 					};
 					user.set(user_data);
-					
+
+					// This is an example script - don't forget to change it!
+					LogRocket.identify(user_data.id, {
+						name: user_data.name,
+						vk_id: user_data.id,
+						city: user_data.city
+					});
 				}
 			}
 		);

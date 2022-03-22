@@ -1,11 +1,9 @@
 <script context="module">
 	import {
 		SITE_URL,
-		REPO_URL,
 		SITE_TITLE,
 		SITE_DESCRIPTION,
 		DEFAULT_OG_IMAGE,
-		MY_TWITTER_HANDLE,
 		isDarkFlag
 	} from '$lib/siteConfig';
 
@@ -86,7 +84,6 @@
 <svelte:head>
 	<title>{SITE_TITLE}</title>
 	<link rel="canonical" href={SITE_URL} />
-	<link rel="alternate" type="application/rss+xml" href={SITE_URL + '/api/rss.xml'} />
 	<meta property="og:url" content={SITE_URL} />
 	<meta property="og:type" content="article" />
 	<meta property="og:title" content={SITE_TITLE} />
@@ -103,7 +100,6 @@
 {#if $isDarkFlag}
 	<svg
 		class="logo"
-		width="auto"
 		height="117"
 		viewBox="0 0 583 117"
 		fill="none"
@@ -148,7 +144,7 @@
 {:else}
 	<svg
 		class="logo"
-		width="auto"
+
 		height="117"
 		viewBox="0 0 583 117"
 		fill="none"
@@ -287,6 +283,9 @@
 </a>
 
 <style>
+	.logo{
+		width: auto;
+	}
 	.ramka{
 		text-decoration: none;
 		cursor: pointer;

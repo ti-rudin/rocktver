@@ -1,11 +1,5 @@
 <script>
 	import {
-		SITE_URL,
-		REPO_URL,
-		SITE_TITLE,
-		SITE_DESCRIPTION,
-		DEFAULT_OG_IMAGE,
-		MY_TWITTER_HANDLE,
 		isDarkFlag
 	} from '$lib/siteConfig';
 
@@ -54,29 +48,7 @@
 		</li>
 	</ul>
 	<div class="flex items-center space-x-4">
-		<!-- RSS -->
-		<!-- <a
-			class="rounded-lg text-gray-700 hover:bg-yellow-200 dark:text-gray-200 dark:hover:bg-yellow-800"
-			rel="external"
-			href={origin + '/api/rss.xml'}
-			aria-label="RSS"
-		>
-			<svg
-				aria-hidden="true"
-				xmlns="http://www.w3.org/2000/svg"
-				class="h-9 w-9 p-1"
-				fill="currentColor"
-				viewBox="0 0 24 24"
-				stroke="currentColor"
-			>
-				<path
-					stroke-linecap="round"
-					stroke-linejoin="round"
-					stroke-width="2"
-					d="M6 5c7.18 0 13 5.82 13 13M6 11a7 7 0 017 7m-6 0a1 1 0 11-2 0 1 1 0 012 0z"
-				/>
-			</svg>
-		</a> -->
+	
 		<!-- Github 
 		<a
 			class="rounded-lg text-gray-700 hover:bg-yellow-200 dark:text-gray-200
@@ -182,14 +154,5 @@
 </nav>
 
 <style>
-	.skip-nav {
-		position: absolute;
-		left: -25%;
-		top: -2rem;
-		--tw-translate-y: -3rem;
-		padding: 0.75rem 1rem;
-		transition-property: transform;
-		transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-		transition-duration: 0.2s;
-	}
+
 </style>

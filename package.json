@@ -62,6 +62,7 @@
 		"@slidy/core": "^3.0.5",
 		"date-fns": "^2.28.0",
 		"dateformat": "^5.0.3",
+		"logrocket": "^2.2.1",
 		"node-fetch": "^2.6.6",
 		"parse-link-header": "^2.0.0",
 		"prism-themes": "^1.9.0",

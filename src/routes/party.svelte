@@ -5,7 +5,6 @@
 		SITE_TITLE,
 		SITE_DESCRIPTION,
 		DEFAULT_OG_IMAGE,
-		MY_TWITTER_HANDLE,
 		isDarkFlag
 	} from '$lib/siteConfig';
 	
@@ -212,7 +211,7 @@
 	<meta property="og:description" content={SITE_DESCRIPTION} />
 	<meta property="og:image" content={DEFAULT_OG_IMAGE} />
 	<meta name="twitter:card" content="summary" />
-	<meta name="twitter:creator" content={'@' + MY_TWITTER_HANDLE} />
+
 	<meta name="twitter:title" content={SITE_TITLE} />
 	<meta name="twitter:description" content={SITE_DESCRIPTION} />
 	<meta name="twitter:image" content={DEFAULT_OG_IMAGE} />
