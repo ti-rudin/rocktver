@@ -18,7 +18,7 @@
 			},
 			body: JSON.stringify({
 				query: `{
-	            bands {
+	            bands (pagination:{pageSize:100}) {
 	              data {
 	                id
 				
