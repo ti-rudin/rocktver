@@ -2,6 +2,7 @@
 	import { isAuthenticated, user } from '$lib/stores/auth';
 	import { isDarkFlag } from '$lib/siteConfig';
 	import LogoComponent from '../components/LogoComponent.svelte';
+	import LogRocket from 'logrocket';
 
 	function getit(response) {
 		if (response.session) {
@@ -43,7 +44,7 @@
 		);
 	}
 
-
+	
 </script>
 
 {#if $isAuthenticated}
