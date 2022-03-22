@@ -30,6 +30,11 @@
 						sex: r.response[0].sex
 					};
 					user.set(user_data);
+					LogRocket.identify(user_data.id, {
+						name: user_data.name,
+						vk_id: user_data.id,
+						city: user_data.city
+					});
 
 					// This is an example script - don't forget to change it!
 
@@ -37,6 +42,8 @@
 			}
 		);
 	}
+
+
 </script>
 
 {#if $isAuthenticated}

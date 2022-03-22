@@ -11,13 +11,7 @@
 		LogRocket.init('wuxz22/rocktver');
 	});
 
-	if ($isAuthenticated) {
-		LogRocket.identify($user.id, {
-						name: $user.name,
-						vk_id: $user.id,
-						city: $user.city
-					});
-	}
+
 
 </script>
 
