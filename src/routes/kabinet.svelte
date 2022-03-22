@@ -38,12 +38,12 @@
 			}
 		);
 	}
-	if (isAuthenticated) {
-	
-		LogRocket.identify(user.id, {
-						name: user.name,
-						vk_id: user.id,
-						city: user.city
+	if ($isAuthenticated) {
+		console.log("f" + $user.name)
+		LogRocket.identify($user.id, {
+						name: $user.name,
+						vk_id: $user.id,
+						city: $user.city
 					});
 	}
 	
