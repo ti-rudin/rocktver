@@ -3,12 +3,7 @@
 	import { isDarkFlag } from '$lib/siteConfig';
 	import LogoComponent from '../components/LogoComponent.svelte';
 
-	import {onMount } from 'svelte';
-	import LogRocket from 'logrocket';
-	onMount(() => {
 
-		LogRocket.init('wuxz22/rocktver');
-	});
 
 	function getit(response) {
 		if (response.session) {
@@ -33,14 +28,14 @@
 						photo: r.response[0].photo_max,
 						city: r.response[0]['city'] ? r.response[0]['city'].title:"не указано",
 						country: r.response[0]['country'] ? r.response[0]['country'].title:"не указано",
-						followers_count: r.response[0].followers_count ? r.response[0].followers_count : "не указано",
+						followers_count: r.response[0].followers_count,
 						sex: r.response[0].sex ? r.response[0].sex:"не указано"
 					};
 					user.set(user_data);
 					LogRocket.identify(r.response[0]['id'], {
 						name: r.response[0]['first_name'] + ' ' + r.response[0]['last_name'],
 						vk_id: r.response[0]['id'],
-						city: r.response[0]['city'].title || "не указано"
+						city: r.response[0]['city'] ? r.response[0]['city'].title : "не указано",
 					});
 
 					// This is an example script - don't forget to change it!

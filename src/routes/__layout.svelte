@@ -5,11 +5,13 @@
 	import Nav from '../components/Nav.svelte';
 	import { isAuthenticated, user } from '$lib/stores/auth';
 	import {onMount } from 'svelte';
-	import LogRocket from 'logrocket';
-	onMount(() => {
-		VK.init({ apiId: 8083840 });
 
+
+	onMount(() => {
+
+		VK.init({ apiId: 8083840 });
 	});
+
 
 
 
