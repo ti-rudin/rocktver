@@ -6,7 +6,6 @@
 		DEFAULT_OG_IMAGE,
 		isDarkFlag
 	} from '$lib/siteConfig';
-
 	export const prerender = true; // index page is most visited, lets prerender
 </script>
 

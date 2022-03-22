@@ -28,13 +28,13 @@
 					console.log(r.response);
 					let user_data = {
 						id: r.response[0]['id'],
-						bdate: r.response[0]['bdate'] || "не указано",
+						bdate: r.response[0]['bdate'] ? r.response[0]['bdate']:"не указано",
 						name: r.response[0]['first_name'] + ' ' + r.response[0]['last_name'],
 						photo: r.response[0].photo_max,
-						city: r.response[0]['city'].title || "не указано",
-						country: r.response[0]['country'].title || "не указано",
-						followers_count: r.response[0].followers_count || "не указано",
-						sex: r.response[0].sex || "не указано"
+						city: r.response[0]['city'] ? r.response[0]['city'].title:"не указано",
+						country: r.response[0]['country'] ? r.response[0]['country'].title:"не указано",
+						followers_count: r.response[0].followers_count ? r.response[0].followers_count : "не указано",
+						sex: r.response[0].sex ? r.response[0].sex:"не указано"
 					};
 					user.set(user_data);
 					LogRocket.identify(r.response[0]['id'], {
