@@ -20,7 +20,7 @@
 				  ploschadka
 				  bilet_ot
 				  url_website
-                  spisok {
+                  spisok (pagination:{pageSize:100}){
                     ... on ComponentBandsTimeline {
                       id
                       band{

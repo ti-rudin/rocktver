@@ -1,13 +1,13 @@
 <script context="module">
-  export async function load({ params, fetch }) {
-    const res = await fetch('https://admin.rocktver.ru/graphql', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        query: `{
-          bands {
+	export async function load({ params, fetch }) {
+		const res = await fetch('https://admin.rocktver.ru/graphql', {
+			method: 'POST',
+			headers: {
+				'Content-Type': 'application/json'
+			},
+			body: JSON.stringify({
+				query: `{
+          bands (pagination:{pageSize:100}) {
             data {
               id
               
@@ -24,48 +24,164 @@
               }
             }
           }
-        }`,
-      }),
-    })
-    if (res.ok) {
-      const { data } = await res.json()
-      console.log(data)
-      return {
-        props: {
-          launches: data.bands.data,
-          id: params.id,
-        },
-      }
-    }
-    return {
-      status: res.status,
-      error: new Error(`Error fetching GraphQL data`),
-    }
-  }
+        }`
+			})
+		});
+		if (res.ok) {
+			const { data } = await res.json();
+			console.log(data);
+			return {
+				props: {
+					launches: data.bands.data,
+					id: params.id
+				}
+			};
+		}
+		return {
+			status: res.status,
+			error: new Error(`Error fetching GraphQL data`)
+		};
+	}
 </script>
 
 <script>
-  export let launches, launch, id
+	import LogoComponent from '../../components/LogoComponent.svelte';
+	import { onDestroy, onMount } from 'svelte';
+	async function load_open_status() {
+		let myHeaders = new Headers();
+		myHeaders.append('Content-Type', 'application/json');
+		let requestOptions = {
+			method: 'GET',
+			headers: myHeaders
+		};
 
-  launch = launches.filter(
-    launch => launch.attributes.band_name == id
-  )[0]
+		fetch('https://api.rocktver.ru/open-status/', requestOptions)
+			.then((response) => response.json())
+			.then((result) => {
+				console.log(result);
+        status = result;
+        isshowgo = status.is_show_go;
+				return result;
+			})
+			.catch((error) => console.log('error', error));
+	}
+	onMount(() => {
+		load_open_status();
+	});
+  export let launches, launch, id, spisok, status, isshowgo;
+
+  
+
+	
+	launch = launches.filter((launch) => launch.attributes.band_name == id)[0];
+
+	if (launch.attributes.spisok) {
+		spisok = launch.attributes.spisok;
+	}
 </script>
 
-  <div class="text-gray-900 dark:text-white mx-auto">
-<h1>Команда</h1>
+<LogoComponent />
+<div class="mx-auto text-gray-900 dark:text-white">
+	<h1>Команда</h1>
 
-{#if launch}
-  <h2>{launch.attributes.band_name}</h2>
-  <h2>{launch.id}</h2>
-  <h2>{JSON.stringify(launch.attributes.spisok)}</h2>
-{:else}
-  <h1>Об этой команде информации нет</h1>
-{/if}
-<ul />
+	{#if launch}
+		<h2>{launch.attributes.band_name}</h2>
+		<h2>{launch.id}</h2>
 
+    {isshowgo}
+	{:else}
+		<h1>Об этой команде информации нет</h1>
+	{/if}
+	<ul />
 </div>
 
+
+<div class="w-full ">
+	<div
+		aria-label="card 1"
+		class="mx-auto max-w-2xl rounded bg-red-400/40 p-6 shadow focus:outline-none dark:bg-red-500"
+	>
+		<div class="flex items-center border-b border-gray-200 pb-6">
+			<div class="flex w-full items-start justify-between">
+				<div class="w-full pl-3">
+					<h1 tabindex="0" class="text-2xl text-black focus:outline-none dark:text-gray-200">
+						{launch.attributes.band_name}
+					</h1>
+					<h1 tabindex="0" class="pt-2 text-xl text-gray-800 focus:outline-none dark:text-gray-200">
+						{#if isshowgo}
+       Сейчас на сцене
+            {/if}
+					</h1>
+				</div>
+				<div role="img" aria-label="bookmark">
+					<svg
+						class="focus:outline-none"
+						width="28"
+						height="28"
+						viewBox="0 0 28 28"
+						fill="red"
+						xmlns="http://www.w3.org/2000/svg"
+					>
+						<path
+							d="M10.5001 4.66667H17.5001C18.1189 4.66667 18.7124 4.9125 19.15 5.35009C19.5876 5.78767 19.8334 6.38117 19.8334 7V23.3333L14.0001 19.8333L8.16675 23.3333V7C8.16675 6.38117 8.41258 5.78767 8.85017 5.35009C9.28775 4.9125 9.88124 4.66667 10.5001 4.66667Z"
+							stroke="#2C3E50"
+							stroke-width="1.25"
+							stroke-linecap="round"
+							stroke-linejoin="round"
+						/>
+					</svg>
+				</div>
+			</div>
+		</div>
+		<div class="px-2">
+			<p
+				tabindex="0"
+				class="py-4 text-sm leading-5 text-gray-600 focus:outline-none dark:text-gray-200"
+			/>
+			<div tabindex="0" class="flex flex-col focus:outline-none">
+				<div class="mb-3 py-2 px-4  text-center text-lg leading-3 text-black dark:text-white">
+					Концертная площадка
+				</div>
+				<a
+					href="/"
+					target="blank"
+					tabindex="0"
+					class="mx-auto w-fit rounded-full bg-yellow-400 p-2 px-4  px-3 text-xl text-black ring-yellow-400 transition-all
+				hover:ring-2 dark:bg-yellow-800 dark:text-white"
+				>
+					площадка
+				</a>
+				<div class="my-3 py-2 px-4  text-center text-lg leading-3 text-black dark:text-white">
+					стоимость билета
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+{#each spisok as track}
+<div class="relative mx-auto w-10/12 py-2 md:w-9/12 lg:w-7/12">
+	<div class="mt-10 border-l-2">
+		<div
+			class="items-left relative ml-10 mb-10 flex transform cursor-pointer flex-col space-y-4 rounded bg-yellow-600 px-6 py-4 text-white transition hover:-translate-y-2 md:flex-row md:space-y-0"
+		>
+			<div
+				class="absolute -left-10 z-10 mt-2 h-5 w-5 -translate-x-2/4 transform rounded-full bg-yellow-600 md:mt-2"
+			/>
+			<div class="absolute -left-10 z-0 h-1 w-10 bg-yellow-600 md:top-8" />
+
+			<!-- Content that showing in the box -->
+			<div class="flex-auto">
+				<h1 class="text-lg">{track.name}</h1>
+				{#if true}
+					<h1 class="text-xl font-bold">{track.id}</h1>
+				{:else}
+					<h1 class="text-xl font-bold">title</h1>
+				{/if}
+			</div>
+		</div>
+	</div>
+</div>
+{/each}
 <style>
-  
 </style>
