@@ -8,7 +8,7 @@
 	import LogRocket from 'logrocket';
 	onMount(() => {
 		VK.init({ apiId: 8083840 });
-		LogRocket.init('wuxz22/rocktver');
+
 	});
 
 

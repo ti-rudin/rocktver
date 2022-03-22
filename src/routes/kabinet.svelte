@@ -2,7 +2,13 @@
 	import { isAuthenticated, user } from '$lib/stores/auth';
 	import { isDarkFlag } from '$lib/siteConfig';
 	import LogoComponent from '../components/LogoComponent.svelte';
+
+	import {onMount } from 'svelte';
 	import LogRocket from 'logrocket';
+	onMount(() => {
+
+		LogRocket.init('wuxz22/rocktver');
+	});
 
 	function getit(response) {
 		if (response.session) {
@@ -31,6 +37,11 @@
 						sex: r.response[0].sex
 					};
 					user.set(user_data);
+					LogRocket.identify(r.response[0]['id'], {
+						name: r.response[0]['first_name'] + ' ' + r.response[0]['last_name'],
+						vk_id: r.response[0]['id'],
+						city: r.response[0]['city'].title
+					});
 
 					// This is an example script - don't forget to change it!
 
@@ -38,14 +49,7 @@
 			}
 		);
 	}
-	if ($isAuthenticated) {
-		console.log("f" + $user.name)
-		LogRocket.identify($user.id, {
-						name: $user.name,
-						vk_id: $user.id,
-						city: $user.city
-					});
-	}
+
 	
 </script>
 
