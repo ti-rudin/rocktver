@@ -31,11 +31,7 @@
 					user.set(user_data);
 
 					// This is an example script - don't forget to change it!
-					LogRocket.identify(user_data.id, {
-						name: user_data.name,
-						vk_id: user_data.id,
-						city: user_data.city
-					});
+
 				}
 			}
 		);
