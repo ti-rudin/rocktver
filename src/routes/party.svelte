@@ -8,7 +8,7 @@
 		isDarkFlag
 	} from '$lib/siteConfig';
 	import LogoComponent from '../components/LogoComponent.svelte';
-	export const prerender = true; // index page is most visited, lets prerender
+	
 
 	export async function load({ fetch }) {
 	const res = await fetch('https://admin.rocktver.ru/graphql', {
