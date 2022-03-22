@@ -107,50 +107,6 @@
 
 
 <style>
-.card{
-  min-width: 280px;
-}
- .smtxt{
-   top: -40px;
-   left: 110px;
-   position: relative;
-   line-height: 0px;
-   min-width: 450px;
- }
-  ul {
-    list-style: none;
-    padding: 0;
-    margin-top: 32px;
-    width: auto;
-  }
-  li {
-    border: 1px solid #eaeaea;
-    border-radius: 8px;
-    margin-bottom: 16px;
-    background-color: white;
-    transition: 0.15s box-shadow ease-in-out;
-  }
-  li:hover {
-    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.12);
-  }
-  p {
-    color: #666;
-    font-size: 14px;
-    line-height: 1.75;
-  }
-  
-  .card-link {
-    padding: 8px 24px;
-    display: block;
-  }
-  .link {
-    transition: 0.15s text-decoration ease-in-out;
-    color: #0761d1;
-  }
-  .link:hover {
-    text-decoration: underline;
-  }
-
 
   
 </style>
