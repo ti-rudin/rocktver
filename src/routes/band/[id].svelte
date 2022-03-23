@@ -47,6 +47,9 @@
 <script>
 	import LogoComponent from '../../components/LogoComponent.svelte';
 	import { onDestroy, onMount } from 'svelte';
+
+  export let status, isshowgo, band_on_scene;
+  
 	async function load_open_status() {
 		let myHeaders = new Headers();
 		myHeaders.append('Content-Type', 'application/json');
@@ -61,6 +64,7 @@
 				console.log(result);
         status = result;
         isshowgo = status.is_show_go;
+        band_on_scene = status.now_on_scene.band_rtid
 				return result;
 			})
 			.catch((error) => console.log('error', error));
@@ -68,8 +72,8 @@
 	onMount(() => {
 		load_open_status();
 	});
-  export let launches, launch, id, spisok, status, isshowgo;
-
+ 
+  export let isonscene, launches, launch, id, spisok;
   
 
 	
@@ -78,6 +82,11 @@
 	if (launch.attributes.spisok) {
 		spisok = launch.attributes.spisok;
 	}
+
+  $: if (band_on_scene == launch.id){
+    console.log("re");
+    isonscene = true;
+  }else{isonscene=false}
 </script>
 
 <LogoComponent />
@@ -90,7 +99,7 @@
 
     {isshowgo}
 	{:else}
-		<h1>Об этой команде информации нет</h1>
+		<h1>Что-то пошло не так. Информация о группе не загрузилась.</h1>
 	{/if}
 	<ul />
 </div>
@@ -108,7 +117,7 @@
 						{launch.attributes.band_name}
 					</h1>
 					<h1 tabindex="0" class="pt-2 text-xl text-gray-800 focus:outline-none dark:text-gray-200">
-						{#if isshowgo}
+						{#if isonscene}
        Сейчас на сцене
             {/if}
 					</h1>

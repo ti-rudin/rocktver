@@ -68,6 +68,7 @@
 	$: concert = concert;
 	import dateFormat, { masks } from 'dateformat';
 	import { i18n } from 'dateformat';
+	import KnobEfir from '../../components/KnobEfir.svelte';
 
 	i18n.dayNames = [
 		'Sun',
@@ -148,11 +149,19 @@
 
 
 {#if $isAuthenticated}
-	Авторизованный
+
 	{#if $isAdmin}
-		админ
+	<div class="flex flex-col mx-auto my-3  max-w-2xl rounded ring-yellow-600  ring-1 p-6 shadow focus:outline-none">
+		<h1 class="text-xl mx-auto mb-2">Администрирование</h1>
+		<p>Нажмите и удерживайте 2сек</p>
+		<div class="mx-auto">
+			<KnobEfir idtogo = {concert.id}/>
+		</div>
+		
+	</div>
 	{/if}
 {/if}
+
 
 <!--- more free and premium Tailwind CSS components at https://tailwinduikit.com/ --->
 <div class="w-full ">
@@ -333,9 +342,10 @@
 				{/if}
 				</div>
 			{:else}
-				<div
-					class="relative ml-10 mb-10 flex transform cursor-pointer flex-col items-left space-y-4 rounded bg-pink-600 px-6 py-4 text-white transition hover:-translate-y-2 md:flex-row md:space-y-0"
-				>
+				<a
+					class="bandurl relative ml-10 mb-10 flex transform cursor-pointer flex-col items-left space-y-4 rounded bg-pink-600 px-6 py-4 text-white dark:text-white transition hover:-translate-y-2 md:flex-row md:space-y-0"
+				href={'/band/'+ event.band.data.attributes.band_name}
+					>
 					<div
 						class="absolute -left-10 z-10 mt-2 h-5 w-5 -translate-x-2/4 transform rounded-full bg-pink-600 md:mt-2"
 					/>
@@ -357,7 +367,7 @@
 							<a href="#" class="text-center text-white hover:text-gray-300">Управление</a>
 						{/if}
 					{/if}
-				</div>
+				</a>
 			{/if}
 		{/each}
 	</div>
@@ -366,4 +376,14 @@
 <!-- component -->
 <style>
 
+	.bandurl {
+		text-decoration: none;
+
+	
+	}
+	.bandurl:hover {
+		text-decoration: none;
+		color: white;
+	
+	}
 </style>

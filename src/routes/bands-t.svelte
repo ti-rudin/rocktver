@@ -82,7 +82,7 @@
       console.log('data5  ')
 
       launches = data.bands.data
-      setTimeout(function () {loadinterval()}, 2000);
+      
     }
 
   }

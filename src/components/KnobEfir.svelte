@@ -1,0 +1,128 @@
+<script>
+	import { onDestroy, onMount } from 'svelte';
+
+	let status, isshowgo, band_on_scene, concertid;
+
+	function load_efir() {
+		console.log('ssdd');
+		let myHeaders = new Headers();
+		myHeaders.append('Content-Type', 'application/json');
+		let requestOptions = {
+			method: 'GET',
+			headers: myHeaders
+		};
+
+		fetch('https://api.rocktver.ru/open-status/', requestOptions)
+			.then((response) => response.json())
+			.then((result) => {
+				console.log(result);
+				status = result;
+				isshowgo = status.is_show_go;
+                concertid = status.concert_id;
+				band_on_scene = status.now_on_scene.band_rtid;
+				return result;
+			})
+			.catch((error) => console.log('error', error));
+	}
+
+	function longpress(node, duration) {
+		let timer;
+
+		const handleMousedown = () => {
+			timer = setTimeout(() => {
+				node.dispatchEvent(new CustomEvent('longpress'));
+			}, duration);
+		};
+
+		const handleMouseup = () => {
+			clearTimeout(timer);
+		};
+
+		node.addEventListener('mousedown', handleMousedown);
+		node.addEventListener('mouseup', handleMouseup);
+
+		return {
+			update(newDuration) {
+				duration = newDuration;
+			},
+			destroy() {
+				node.removeEventListener('mousedown', handleMousedown);
+				node.removeEventListener('mouseup', handleMouseup);
+			}
+		};
+	}
+
+	let pressed = false;
+	let duration = 2000;
+	let isactive;
+	export let idtogo;
+
+
+	function change_efir(x) {
+		let myHeaders = new Headers();
+		myHeaders.append('Content-Type', 'application/json');
+
+		let raw = JSON.stringify({ id: x, isshowgo: !isshowgo });
+
+		let requestOptions = {
+			method: 'POST',
+			headers: myHeaders,
+			body: raw,
+			redirect: 'follow'
+		};
+
+		fetch('https://api.rocktver.ru/change-efir/', requestOptions)
+			.then((response) => response.json())
+			.then((result) => {
+				return result;
+			})
+			.catch((error) => console.log('error', error));
+	}
+
+	load_efir();
+	
+
+
+	$: if (isshowgo) {
+		if (concertid == idtogo) {
+			isactive = false;
+		}
+	} else {
+		isactive = true;
+	}
+    $: if (pressed) {
+		change_efir(idtogo);
+		load_efir();
+	}
+
+</script>
+
+{#if isactive}
+	<button
+		class="ml-1 flex h-9 w-40 items-center justify-center rounded-lg bg-green-400 ring-green-400
+			transition-all hover:ring-2 dark:bg-green-800"
+		use:longpress={duration}
+		on:longpress={() => {
+			pressed = true;
+			
+			isactive = !isactive;
+            change_efir(idtogo);
+		}}
+	>
+		Запустить
+	</button>
+{:else}
+	<button
+		class="ml-1 flex h-9 w-40 items-center justify-center rounded-lg bg-red-400 ring-yellow-400
+			transition-all hover:ring-2 dark:bg-red-800"
+		use:longpress={duration}
+		on:longpress={() => {
+			pressed = true;
+			
+			isactive = !isactive;
+            change_efir(idtogo);
+		}}
+	>
+		Остановить
+	</button>
+{/if}
