@@ -35,9 +35,9 @@
 	});
     
 </script>
-
+{#if isshowgo}
 {#if status}
-<div class="w-full ">
+<div class="w-full">
 	<div
 		aria-label="card 1"
 		class="mx-auto max-w-2xl rounded bg-red-400/40 p-6 shadow focus:outline-none dark:bg-red-500"
@@ -46,14 +46,9 @@
 			<div class="flex w-full items-start justify-between">
 				<div class="w-full pl-3">
                     <h1 tabindex="0" class="text-2xl text-black focus:outline-none dark:text-gray-200">
-						{show_name}
+						{status.show_name}
 					</h1>
-					<h1 tabindex="0" class="text-2xl text-black focus:outline-none dark:text-gray-200">
-						{status.now_on_scene.band_name}
-					</h1>
-					<h1 tabindex="0" class="pt-2 text-xl text-gray-800 focus:outline-none dark:text-gray-200">
-						{status.event_name}
-					</h1>
+					
 				</div>
 				<div role="img" aria-label="bookmark">
 					<svg
@@ -79,4 +74,49 @@
 	</div>
 </div>
 
+{/if}
+
+
+<div class="w-full mt-4">
+	<div
+		aria-label="card 1"
+		class="mx-auto max-w-2xl rounded bg-blue-400/40 p-6 shadow focus:outline-none dark:bg-blue-500"
+	>
+		<div class="flex items-center pb-2">
+			<div class="flex w-full items-start justify-between">
+				<div class="mx-auto  pl-3">
+                  
+					<h1 tabindex="0" class="pt-2 text-xl text-gray-800 focus:outline-none dark:text-gray-200">
+						{status.event_name}
+					</h1>
+				</div>
+			
+			</div>
+		</div>
+
+	</div>
+</div>
+
+
+{:else}
+<div class="w-full mt-4">
+	<div
+		aria-label="card 1"
+		class="mx-auto max-w-2xl rounded bg-blue-400/40 p-6 shadow focus:outline-none dark:bg-blue-500"
+	>
+		<div class="flex items-center pb-2">
+			<div class="flex w-full items-start justify-between">
+				<div class="mx-auto  pl-3">
+                  
+					<h1 tabindex="0" class="pt-2 text-xl text-gray-800 focus:outline-none dark:text-gray-200">
+						Виджет "Сейчас на сцене" сейчас не работает. Зайдите попозже) 
+							
+					</h1>
+				</div>
+			
+			</div>
+		</div>
+
+	</div>
+</div>
 {/if}

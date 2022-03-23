@@ -63,6 +63,8 @@
 		myHeaders.append('Content-Type', 'application/json');
 		status.event_id = 0;
 		status.show_name = show_name;
+		status.event_id = 0;
+		status.event_name = "ключ на старт"
 		let raw = JSON.stringify({ id: x, isshowgo: !isshowgo, status: status });
 
 		let requestOptions = {

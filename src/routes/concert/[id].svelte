@@ -1,5 +1,4 @@
 <script context="module">
-	
 	export async function load({ params, fetch }) {
 		const res = await fetch('https://admin.rocktver.ru/graphql', {
 			method: 'POST',
@@ -62,13 +61,13 @@
 </script>
 
 <script>
-
 	export let concert, timeline;
 	//console.log(this.artists.data[0].attributes.name)
 	$: concert = concert;
 	import dateFormat, { masks } from 'dateformat';
 	import { i18n } from 'dateformat';
 	import KnobEfir from '../../components/KnobEfir.svelte';
+	import KnobTimeline from '../../components/KnobTimeline.svelte';
 
 	i18n.dayNames = [
 		'Sun',
@@ -147,21 +146,19 @@
 	}
 </script>
 
-
 {#if $isAuthenticated}
-
 	{#if $isAdmin}
-	<div class="flex flex-col mx-auto my-3  max-w-2xl rounded ring-yellow-600  ring-1 p-6 shadow focus:outline-none">
-		<h1 class="text-xl mx-auto mb-2">Администрирование</h1>
-		<p>Нажмите и удерживайте 2сек</p>
-		<div class="mx-auto">
-			<KnobEfir idtogo = {concert.id} show_name = {concert.attributes.show_name}/>
+		<div
+			class="mx-auto my-3 flex max-w-2xl  flex-col rounded p-6  shadow ring-1 ring-yellow-600 focus:outline-none"
+		>
+			<h1 class="mx-auto mb-2 text-xl">Администрирование</h1>
+			<p>Нажмите и удерживайте 2сек</p>
+			<div class="mx-auto">
+				<KnobEfir idtogo={concert.id} show_name={concert.attributes.show_name} />
+			</div>
 		</div>
-		
-	</div>
 	{/if}
 {/if}
-
 
 <!--- more free and premium Tailwind CSS components at https://tailwinduikit.com/ --->
 <div class="w-full ">
@@ -209,7 +206,7 @@
 					Концертная площадка
 				</div>
 				<a
-					href="{concert.attributes.url_website}"
+					href={concert.attributes.url_website}
 					target="blank"
 					tabindex="0"
 					class="mx-auto w-fit rounded-full bg-yellow-400 p-2 px-4  px-3 text-xl text-black ring-yellow-400 transition-all
@@ -245,47 +242,7 @@
 					</div>
 					{#if $isAuthenticated}
 						{#if $isAdmin}
-						<button
-						aria-label="Toggle Dark Mode"
-						class="ml-1 flex h-9 w-9 items-center justify-center rounded-lg bg-yellow-400 ring-yellow-400
-						transition-all hover:ring-2 dark:bg-yellow-800"
-						
-					>
-						{#if $isDarkFlag}
-						<svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-						viewBox="0 0 419.11 419.11" style="enable-background:new 0 0 419.11 419.11;" xml:space="preserve">
-				   <g>
-					   <g>
-						   <rect x="65.074" y="24" style="fill:red;" width="25.21" height="15.154"/>
-						   <rect x="65.074" y="63.154" style="fill:blue;" width="25.21" height="331.956"/>
-						   <path style="fill:#73D0F4;" d="M303.736,137.84l41.826-74.686H114.284v161.098h231.278l-41.826-74.685
-							   C301.696,145.925,301.695,141.483,303.736,137.84z"/>
-						   <path style="fill:#3D6889;" d="M327.96,143.704l48.547-86.686c2.081-3.717,2.036-8.257-0.116-11.932
-							   c-2.154-3.675-6.094-5.933-10.354-5.933H114.284V12c0-6.628-5.372-12-12-12h-49.21c-6.628,0-12,5.372-12,12v395.11
-							   c0,6.627,5.372,12,12,12h49.21c6.628,0,12-5.373,12-12V248.252h251.753c4.26,0,8.199-2.258,10.354-5.933
-							   c2.152-3.675,2.197-8.215,0.116-11.932L327.96,143.704z M90.284,395.11h-25.21V63.154h25.21V395.11z M90.284,39.154h-25.21V24
-							   h25.21V39.154z M114.284,224.252V63.154h231.278l-41.826,74.686c-2.041,3.643-2.04,8.085,0,11.727l41.826,74.685H114.284z"/>
-					   </g>
-				   </g>
-				   </svg>
-				   
-						{:else}
-							<svg
-								xmlns="http://www.w3.org/2000/svg"
-								viewBox="0 0 24 24"
-								fill="none"
-								stroke="currentColor"
-								class="w-5 h-5 text-gray-800 dark:text-gray-200"
-							>
-								<path
-									stroke-linecap="round"
-									stroke-linejoin="round"
-									stroke-width="2"
-									d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"
-								/>
-							</svg>
-						{/if}
-					</button>
+						<KnobTimeline idtogo={event.id} show_name={concert.attributes.show_name} />
 						{/if}
 					{/if}
 				</div>
@@ -336,16 +293,16 @@
 						{/if}
 					</div>
 					{#if $isAuthenticated}
-					{#if $isAdmin}
-						<a href="#" class="text-center text-white hover:text-gray-300">Управление</a>
+						{#if $isAdmin}
+							<a href="#" class="text-center text-white hover:text-gray-300">Управление</a>
+						{/if}
 					{/if}
-				{/if}
 				</div>
 			{:else}
 				<a
 					class="bandurl relative ml-10 mb-10 flex transform cursor-pointer flex-col items-left space-y-4 rounded bg-pink-600 px-6 py-4 text-white dark:text-white transition hover:-translate-y-2 md:flex-row md:space-y-0"
-				href={'/band/'+ event.band.data.attributes.band_name}
-					>
+					href={'/band/' + event.band.data.attributes.band_name}
+				>
 					<div
 						class="absolute -left-10 z-10 mt-2 h-5 w-5 -translate-x-2/4 transform rounded-full bg-pink-600 md:mt-2"
 					/>
@@ -375,15 +332,11 @@
 
 <!-- component -->
 <style>
-
 	.bandurl {
 		text-decoration: none;
-
-	
 	}
 	.bandurl:hover {
 		text-decoration: none;
 		color: white;
-	
 	}
 </style>
