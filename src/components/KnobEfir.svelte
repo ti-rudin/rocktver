@@ -93,10 +93,7 @@
 	} else {
 		isactive = true;
 	}
-    $: if (pressed) {
-		change_efir(idtogo);
-		load_efir();
-	}
+  
 
 </script>
 
@@ -110,6 +107,7 @@
 			
 			isactive = !isactive;
             change_efir(idtogo);
+			load_efir();
 		}}
 	>
 		Запустить
@@ -124,6 +122,7 @@
 			
 			isactive = !isactive;
             change_efir(idtogo);
+			load_efir();
 		}}
 	>
 		Остановить

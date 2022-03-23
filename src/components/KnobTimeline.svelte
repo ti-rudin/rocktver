@@ -1,29 +1,7 @@
 <script>
 	import { onDestroy, onMount } from 'svelte';
 
-	let status, isshowgo, band_on_scene, concertid;
 
-	function load_efir() {
-		console.log('ssdd');
-		let myHeaders = new Headers();
-		myHeaders.append('Content-Type', 'application/json');
-		let requestOptions = {
-			method: 'GET',
-			headers: myHeaders
-		};
-
-		fetch('https://api.rocktver.ru/open-status/', requestOptions)
-			.then((response) => response.json())
-			.then((result) => {
-				console.log(result);
-				status = result;
-				isshowgo = status.is_show_go;
-				concertid = status.concert_id;
-				band_on_scene = status.now_on_scene.band_rtid;
-				return result;
-			})
-			.catch((error) => console.log('error', error));
-	}
 
 	function longpress(node, duration) {
 		let timer;
@@ -55,16 +33,19 @@
 	let pressed = false;
 	let duration = 2000;
 	let isactive;
-	export let idtogo, show_name;
+	let isshowgo, band_on_scene, concertid, eventid;
+	export let idtogo, state, event;
 
-	function change_timeline(x) {
+
+	function change_timeline(event, state) {
+
+		console.log(event);
+		console.log(state);
 		let myHeaders = new Headers();
 		myHeaders.append('Content-Type', 'application/json');
-		status.event_id = 0;
-		status.show_name = show_name;
-		status.event_id = 0;
-		status.event_name = 'ключ на старт';
-		let raw = JSON.stringify({ id: x, isshowgo: !isshowgo, status: status });
+	
+
+		let raw = JSON.stringify({event:event, state:state});
 
 		let requestOptions = {
 			method: 'POST',
@@ -73,7 +54,7 @@
 			redirect: 'follow'
 		};
 
-		fetch('https://api.rocktver.ru/change-efir/', requestOptions)
+		fetch('https://api.rocktver.ru/change-timeline/', requestOptions)
 			.then((response) => response.json())
 			.then((result) => {
 				return result;
@@ -81,27 +62,27 @@
 			.catch((error) => console.log('error', error));
 	}
 
-	load_efir();
+	
 
-	$: if (isshowgo) {
-		if (concertid == idtogo) {
-			isactive = false;
-		}
+	$: if (eventid == idtogo) {
+			isactive = true;
 	} else {
-		isactive = true;
+		isactive = false;
 	}
-	$: if (pressed) {
-		change_timeline(idtogo);
-		load_efir();
-	}
+
 </script>
 
 {#if isactive}
 	<button
 		aria-label="Toggle Dark Mode"
-		class="ml-1 flex h-14 w-14 items-center justify-center rounded-lg border ring-yellow-400
-transition-all hover:ring-2"
-	>
+		class="ml-1 flex h-14 w-14 items-center justify-center rounded-lg border ring-yellow-400 transition-all hover:ring-2"
+		use:longpress={duration}
+		on:click={() => {
+			pressed = true;
+			
+			isactive = !isactive;
+            change_timeline(event, state);}}
+		>
 		<svg
 			version="1.1"
 			id="Capa_1"
@@ -111,7 +92,7 @@ transition-all hover:ring-2"
 			y="0px"
 			viewBox="-70 -70 600 600"
 			xml:space="preserve"
-		>
+			>
 			<rect x="65.074" y="24" style="fill:red;" width="25.21" height="15.154" />
 			<rect x="65.074" y="63.154" style="fill:blue;" width="25.21" height="331.956" />
 			<path
@@ -136,8 +117,13 @@ transition-all hover:ring-2"
 {:else}
 	<button
 		aria-label="Toggle Dark Mode"
-		class="ml-1 flex h-14 w-14 items-center justify-center rounded-lg ring-yellow-400
-transition-all hover:ring-2"
+		class="ml-1 flex h-14 w-14 items-center justify-center rounded-lg ring-yellow-400 transition-all hover:ring-2"
+		use:longpress={duration}
+		on:click={() => {
+			pressed = true;
+			
+			isactive = !isactive;
+            change_timeline(event, state);}}
 	>
 		<svg
 			version="1.1"
@@ -148,7 +134,7 @@ transition-all hover:ring-2"
 			y="0px"
 			viewBox="-70 -70 600 600"
 			xml:space="preserve"
-		>
+			>
 			<rect x="65.074" y="24" style="fill:red;" width="25.21" height="15.154" />
 			<rect x="65.074" y="63.154" style="fill:blue;" width="25.21" height="331.956" />
 			<path

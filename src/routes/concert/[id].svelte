@@ -1,5 +1,6 @@
 <script context="module">
 	export async function load({ params, fetch }) {
+
 		const res = await fetch('https://admin.rocktver.ru/graphql', {
 			method: 'POST',
 			headers: {
@@ -45,11 +46,13 @@
 		});
 		if (res.ok) {
 			const { data } = await res.json();
-			console.log(data);
+			console.log("concert - "+data);
+
 			return {
 				props: {
 					concert: data.concert.data,
-					timeline: data.concert.data.attributes.spisok
+					timeline: data.concert.data.attributes.spisok,
+
 				}
 			};
 		}
@@ -58,12 +61,15 @@
 			error: new Error(`Error fetching GraphQL data`)
 		};
 	}
+
 </script>
 
 <script>
-	export let concert, timeline;
+		import { onDestroy, onMount } from 'svelte';
+	export let concert, timeline, state;
 	//console.log(this.artists.data[0].attributes.name)
-	$: concert = concert;
+
+	
 	import dateFormat, { masks } from 'dateformat';
 	import { i18n } from 'dateformat';
 	import KnobEfir from '../../components/KnobEfir.svelte';
@@ -144,8 +150,30 @@
 	if ($isAuthenticated) {
 		loaduser($user.id);
 	}
-</script>
 
+	async function load_open_status() {
+		let myHeaders = new Headers();
+		myHeaders.append('Content-Type', 'application/json');
+		let requestOptions = {
+			method: 'GET',
+			headers: myHeaders
+		};
+
+		fetch('https://api.rocktver.ru/open-status/', requestOptions)
+			.then((response) => response.json())
+			.then((result) => {
+				console.log(result);
+				state = result;
+				return result;
+			})
+			.catch((error) => console.log('error', error));
+	}
+	onMount(() => {
+		load_open_status();
+	});
+	$: state = state;
+</script>
+{state}
 {#if $isAuthenticated}
 	{#if $isAdmin}
 		<div
@@ -242,7 +270,7 @@
 					</div>
 					{#if $isAuthenticated}
 						{#if $isAdmin}
-						<KnobTimeline idtogo={event.id} show_name={concert.attributes.show_name} />
+						<KnobTimeline event={event} state={state}/>
 						{/if}
 					{/if}
 				</div>
@@ -268,7 +296,7 @@
 					</div>
 					{#if $isAuthenticated}
 						{#if $isAdmin}
-							<a href="#" class="text-center text-white hover:text-gray-300">Управление</a>
+						<KnobTimeline event={event} state={state}/>
 						{/if}
 					{/if}
 				</div>
@@ -294,37 +322,57 @@
 					</div>
 					{#if $isAuthenticated}
 						{#if $isAdmin}
-							<a href="#" class="text-center text-white hover:text-gray-300">Управление</a>
+						<KnobTimeline event={event} state={state}/>
 						{/if}
 					{/if}
 				</div>
-			{:else}
-				<a
-					class="bandurl relative ml-10 mb-10 flex transform cursor-pointer flex-col items-left space-y-4 rounded bg-pink-600 px-6 py-4 text-white dark:text-white transition hover:-translate-y-2 md:flex-row md:space-y-0"
-					href={'/band/' + event.band.data.attributes.band_name}
-				>
+			{:else if $isAuthenticated}
+				{#if $isAdmin}
 					<div
-						class="absolute -left-10 z-10 mt-2 h-5 w-5 -translate-x-2/4 transform rounded-full bg-pink-600 md:mt-2"
-					/>
-					<div class="absolute -left-10 md:top-8 z-0 h-1 w-10 bg-pink-600" />
+						class="bandurl relative ml-10 mb-10 flex transform cursor-pointer flex-col items-left space-y-4 rounded bg-pink-600 px-6 py-4 text-white dark:text-white transition hover:-translate-y-2 md:flex-row md:space-y-0"
+					>
+						<div
+							class="absolute -left-10 z-10 mt-2 h-5 w-5 -translate-x-2/4 transform rounded-full bg-pink-600 md:mt-2"
+						/>
+						<div class="absolute -left-10 md:top-8 z-0 h-1 w-10 bg-pink-600" />
 
-					<!-- Content that showing in the box -->
-					<div class="flex-auto">
-						<h1 class="text-lg">
-							{event.start_time.split(':00.000')[0]}
-						</h1>
-						{#if event.band.data}
-							<h1 class="text-xl font-bold">{event.band.data.attributes.band_name}</h1>
-						{:else}
-							<h1 class="text-xl font-bold">{event.title}</h1>
-						{/if}
+						<!-- Content that showing in the box -->
+						<div class="flex-auto">
+							<h1 class="text-lg">
+								{event.start_time.split(':00.000')[0]}
+							</h1>
+							{#if event.band.data}
+								<h1 class="text-xl font-bold">{event.band.data.attributes.band_name}</h1>
+							{:else}
+								<h1 class="text-xl font-bold">{event.title}</h1>
+							{/if}
+						</div>
+
+						<KnobTimeline event={event} state={state}/>
 					</div>
-					{#if $isAuthenticated}
-						{#if $isAdmin}
-							<a href="#" class="text-center text-white hover:text-gray-300">Управление</a>
-						{/if}
-					{/if}
-				</a>
+				{:else}
+					<a
+						class="bandurl relative ml-10 mb-10 flex transform cursor-pointer flex-col items-left space-y-4 rounded bg-pink-600 px-6 py-4 text-white dark:text-white transition hover:-translate-y-2 md:flex-row md:space-y-0"
+						href={'/band/' + event.band.data.attributes.band_name}
+					>
+						<div
+							class="absolute -left-10 z-10 mt-2 h-5 w-5 -translate-x-2/4 transform rounded-full bg-pink-600 md:mt-2"
+						/>
+						<div class="absolute -left-10 md:top-8 z-0 h-1 w-10 bg-pink-600" />
+
+						<!-- Content that showing in the box -->
+						<div class="flex-auto">
+							<h1 class="text-lg">
+								{event.start_time.split(':00.000')[0]}
+							</h1>
+							{#if event.band.data}
+								<h1 class="text-xl font-bold">{event.band.data.attributes.band_name}</h1>
+							{:else}
+								<h1 class="text-xl font-bold">{event.title}</h1>
+							{/if}
+						</div>
+					</a>
+				{/if}
 			{/if}
 		{/each}
 	</div>
