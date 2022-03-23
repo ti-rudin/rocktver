@@ -155,7 +155,7 @@
 		<h1 class="text-xl mx-auto mb-2">Администрирование</h1>
 		<p>Нажмите и удерживайте 2сек</p>
 		<div class="mx-auto">
-			<KnobEfir idtogo = {concert.id}/>
+			<KnobEfir idtogo = {concert.id} show_name = {concert.attributes.show_name}/>
 		</div>
 		
 	</div>

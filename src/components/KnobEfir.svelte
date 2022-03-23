@@ -55,14 +55,15 @@
 	let pressed = false;
 	let duration = 2000;
 	let isactive;
-	export let idtogo;
+	export let idtogo, show_name;
 
 
 	function change_efir(x) {
 		let myHeaders = new Headers();
 		myHeaders.append('Content-Type', 'application/json');
-
-		let raw = JSON.stringify({ id: x, isshowgo: !isshowgo });
+		status.event_id = 0;
+		status.show_name = show_name;
+		let raw = JSON.stringify({ id: x, isshowgo: !isshowgo, status: status });
 
 		let requestOptions = {
 			method: 'POST',

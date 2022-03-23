@@ -16,6 +16,7 @@
 				status = result;
 				isshowgo = status.is_show_go;
 				concertid = status.concert_id;
+				show_name =status.show_name;
 				band_on_scene = status.now_on_scene.band_rtid;
                 setTimeout(function () {load_efir()}, 2000);
 				
@@ -24,7 +25,7 @@
 	}
 
 
-	export let isshowgo, band_on_scene, concert, timeline, status, concertid;
+	export let isshowgo, band_on_scene, concert, timeline, status, concertid, show_name;
 	import { onDestroy, onMount } from 'svelte';
    
 
@@ -45,7 +46,7 @@
 			<div class="flex w-full items-start justify-between">
 				<div class="w-full pl-3">
                     <h1 tabindex="0" class="text-2xl text-black focus:outline-none dark:text-gray-200">
-						{status.concert_id}
+						{show_name}
 					</h1>
 					<h1 tabindex="0" class="text-2xl text-black focus:outline-none dark:text-gray-200">
 						{status.now_on_scene.band_name}
