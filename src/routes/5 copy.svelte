@@ -191,10 +191,27 @@
         trackname = track_now_data.track_name;
     }
 
+//////////////////////////////////////////////////////
+
+import {flip} from "svelte/animate";
+    import {dndzone} from "svelte-dnd-action";
+    let itemss = [
+        {id: 1, name: "item1"},
+        {id: 2, name: "item2"},
+        {id: 3, name: "item3"},
+        {id: 4, name: "item4"}
+    ];
+    const flipDurationMs = 300;
+    function handleDndConsider(e) {
+        items = e.detail.items;
+    }
+    function handleDndFinalize(e) {
+        items = e.detail.items;
+    }
 
 </script>
 
-
+<p>index: [{index}] scrollPos: {Math.trunc(scrollPos)}px</p>
 
 <section style="--gap: {gap}px; --width: {width}" tab-index="0">
 
@@ -231,7 +248,25 @@
 	
 </section>
 
-
+<label
+	>{index}
+	<input type="range" min="0" max={length} step="1" bind:value={index} />
+</label>
+<label
+	>width
+	<input placeholder={width} step="1" bind:value={width} />
+</label>
+<nav id="dots">
+	{#if length > 0}
+		{#each { length } as dot, i}
+			<button on:click={() => (index = i)} class:active={i === index}>{i}</button>
+		{/each}
+	{/if}
+</nav>
+<nav>
+	<button on:click={() => index--}>←</button>
+	<button on:click={() => index++}>→</button>
+</nav>
 
 <style>
 	section {

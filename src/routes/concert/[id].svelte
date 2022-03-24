@@ -24,8 +24,11 @@
                     ... on ComponentBandsTimeline {
                       id
                       band{
+						  
                         data{
+							id
                           attributes{
+							  
                             band_name
                           }
                         }
@@ -173,7 +176,7 @@
 	});
 	$: state = state;
 </script>
-{state}
+
 {#if $isAuthenticated}
 	{#if $isAdmin}
 		<div
@@ -270,7 +273,7 @@
 					</div>
 					{#if $isAuthenticated}
 						{#if $isAdmin}
-						<KnobTimeline event={event} state={state}/>
+						<KnobTimeline event={event} state={state} concert = {concert}/>
 						{/if}
 					{/if}
 				</div>
@@ -296,7 +299,7 @@
 					</div>
 					{#if $isAuthenticated}
 						{#if $isAdmin}
-						<KnobTimeline event={event} state={state}/>
+						<KnobTimeline event={event} state={state} concert = {concert}/>
 						{/if}
 					{/if}
 				</div>
@@ -322,7 +325,7 @@
 					</div>
 					{#if $isAuthenticated}
 						{#if $isAdmin}
-						<KnobTimeline event={event} state={state}/>
+						<KnobTimeline event={event} state={state} concert = {concert}/>
 						{/if}
 					{/if}
 				</div>
@@ -348,7 +351,7 @@
 							{/if}
 						</div>
 
-						<KnobTimeline event={event} state={state}/>
+						<KnobTimeline event={event} state={state} concert = {concert}/>
 					</div>
 				{:else}
 					<a

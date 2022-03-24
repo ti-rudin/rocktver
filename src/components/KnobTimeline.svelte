@@ -34,10 +34,10 @@
 	let duration = 2000;
 	let isactive;
 	let isshowgo, band_on_scene, concertid, eventid;
-	export let idtogo, state, event;
+	export let idtogo, state, event, concert;
 
 
-	function change_timeline(event, state) {
+	function change_timeline(event, state, concert) {
 
 		console.log(event);
 		console.log(state);
@@ -45,7 +45,7 @@
 		myHeaders.append('Content-Type', 'application/json');
 	
 
-		let raw = JSON.stringify({event:event, state:state});
+		let raw = JSON.stringify({event:event, state:state, concert:concert});
 
 		let requestOptions = {
 			method: 'POST',
@@ -81,7 +81,7 @@
 			pressed = true;
 			
 			isactive = !isactive;
-            change_timeline(event, state);}}
+            change_timeline(event, state, concert);}}
 		>
 		<svg
 			version="1.1"
@@ -123,7 +123,7 @@
 			pressed = true;
 			
 			isactive = !isactive;
-            change_timeline(event, state);}}
+            change_timeline(event, state, concert);}}
 	>
 		<svg
 			version="1.1"
