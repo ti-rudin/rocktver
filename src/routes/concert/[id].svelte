@@ -363,7 +363,7 @@
 						/>
 						<div class="absolute -left-10 md:top-8 z-0 h-1 w-10 bg-pink-600" />
 
-						<!-- Content that showing in the box -->
+						
 						<div class="flex-auto">
 							<h1 class="text-lg">
 								{event.start_time.split(':00.000')[0]}

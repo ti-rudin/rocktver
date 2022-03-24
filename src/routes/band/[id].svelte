@@ -47,9 +47,10 @@
 <script>
 	import LogoComponent from '../../components/LogoComponent.svelte';
 	import { onDestroy, onMount } from 'svelte';
+	import { isAuthenticated, user } from '$lib/stores/auth';
+	export let status, isshowgo, band_on_scene;
+	export let concert, timeline, concertid, show_name, have_spisok, actual_spisok_pesen;
 
-  export let status, isshowgo, band_on_scene;
-  
 	async function load_open_status() {
 		let myHeaders = new Headers();
 		myHeaders.append('Content-Type', 'application/json');
@@ -62,9 +63,9 @@
 			.then((response) => response.json())
 			.then((result) => {
 				console.log(result);
-        status = result;
-        isshowgo = status.is_show_go;
-        band_on_scene = status.now_on_scene.band_rtid
+				status = result;
+				isshowgo = status.is_show_go;
+				band_on_scene = status.now_on_scene.band_rtid;
 				return result;
 			})
 			.catch((error) => console.log('error', error));
@@ -72,22 +73,96 @@
 	onMount(() => {
 		load_open_status();
 	});
- 
-  export let isonscene, launches, launch, id, spisok;
-  
 
-	
+	export let isonscene, launches, launch, id, spisok;
+
 	launch = launches.filter((launch) => launch.attributes.band_name == id)[0];
 
 	if (launch.attributes.spisok) {
 		spisok = launch.attributes.spisok;
 	}
 
-  $: if (band_on_scene == launch.id){
-    console.log("re");
-    isonscene = true;
-  }else{isonscene=false}
+	$: if (band_on_scene == launch.id) {
+		console.log('re');
+		isonscene = true;
+	} else {
+		isonscene = false;
+	}
+
+	//////////////////
+
+	async function load_efir() {
+		console.log('ssdd');
+		let myHeaders = new Headers();
+		myHeaders.append('Content-Type', 'application/json');
+		let requestOptions = {
+			method: 'GET',
+			headers: myHeaders
+		};
+
+		fetch('https://api.rocktver.ru/open-status/', requestOptions)
+			.then((response) => response.json())
+			.then((result) => {
+				console.log(result);
+				status = result;
+				isshowgo = status.is_show_go;
+				have_spisok = status.now_on_scene.have_spisok;
+				concertid = status.concert_id;
+				show_name = status.show_name;
+				band_on_scene = status.now_on_scene.band_rtid;
+				actual_spisok_pesen = status.now_on_scene.actual_spisok_pesen;
+				
+			})
+			.catch((error) => console.log('error', error));
+	}
+
+	onMount(() => {
+		load_efir();
+	});
+
+	import { slidy } from '@slidy/core';
+	import { getIdTrackNow } from '../../components/api.js';
+import { isAdmin } from '$lib/siteConfig';
+	let index = 0,
+		imagable = true,
+		width = imagable ? 'auto' : '50%',
+		gap = 16,
+		length = 15,
+		scrollPos = 0;
+
+
+
+	function change_track(userid,x) {
+		let myHeaders = new Headers();
+		myHeaders.append('Content-Type', 'application/json');
+		
+
+		let raw = JSON.stringify({ userid: userid, x:x, bandid: launch.id });
+
+		let requestOptions2 = {
+			method: 'POST',
+			headers: myHeaders,
+			body: raw
+		};
+
+		fetch('https://api.rocktver.ru/change-track', requestOptions2)
+			.then((response) => response.json())
+			.then((result) => {
+				return result;
+			})
+			.catch((error) => console.log('error', error));
+	}
+
+	$: if ($isAuthenticated) {
+			let userid = $user.id;
+			console.log("index"+userid);
+			
+			change_track(userid, index)
+		}
+		
+	
 </script>
+{$isAuthenticated}
 
 <LogoComponent />
 <div class="mx-auto text-gray-900 dark:text-white">
@@ -97,13 +172,12 @@
 		<h2>{launch.attributes.band_name}</h2>
 		<h2>{launch.id}</h2>
 
-    {isshowgo}
+		{isshowgo}
 	{:else}
 		<h1>Что-то пошло не так. Информация о группе не загрузилась.</h1>
 	{/if}
 	<ul />
 </div>
-
 
 <div class="w-full ">
 	<div
@@ -118,8 +192,8 @@
 					</h1>
 					<h1 tabindex="0" class="pt-2 text-xl text-gray-800 focus:outline-none dark:text-gray-200">
 						{#if isonscene}
-       Сейчас на сцене
-            {/if}
+							Сейчас на сцене
+						{/if}
 					</h1>
 				</div>
 				<div role="img" aria-label="bookmark">
@@ -168,29 +242,88 @@
 	</div>
 </div>
 
-{#each spisok as track}
-<div class="relative mx-auto w-10/12 py-2 md:w-9/12 lg:w-7/12">
-	<div class="mt-10 border-l-2">
-		<div
-			class="items-left relative ml-10 mb-10 flex transform cursor-pointer flex-col space-y-4 rounded bg-yellow-600 px-6 py-4 text-white transition hover:-translate-y-2 md:flex-row md:space-y-0"
-		>
-			<div
-				class="absolute -left-10 z-10 mt-2 h-5 w-5 -translate-x-2/4 transform rounded-full bg-yellow-600 md:mt-2"
-			/>
-			<div class="absolute -left-10 z-0 h-1 w-10 bg-yellow-600 md:top-8" />
 
-			<!-- Content that showing in the box -->
-			<div class="flex-auto">
-				<h1 class="text-lg">{track.name}</h1>
-				{#if true}
-					<h1 class="text-xl font-bold">{track.id}</h1>
-				{:else}
-					<h1 class="text-xl font-bold">title</h1>
-				{/if}
-			</div>
-		</div>
-	</div>
-</div>
-{/each}
+<section style="--gap: {gap}px; --width: {width}" tab-index="0">
+	<ul
+		use:slidy={{
+			index,
+			length,
+			axis: 'x',
+			align: 'middle',
+			duration: 375,
+			clamp: false,
+			snap: true,
+			gravity: 1.2,
+			indexer: (x) => (index = x),
+			scroller: (p) => (scrollPos = p)
+		}}
+	>
+		{#each spisok as item, i}
+			<li id={i} class:active={i === index}>
+				<div
+					class="transform-all relative my-4 flex h-24 w-72 cursor-pointer items-center justify-center rounded-xl border-2 border-slate-100 bg-gradient-to-r from-yellow-400 to-pink-500 p-3 shadow-lg transition-all hover:scale-105"
+				>
+					<div class="text-center text-slate-200">
+						<div>{item.name}</div>
+						<div class="font-mono text-xs">{item.id}</div>
+					</div>
+				</div>
+			</li>
+		{/each}
+	</ul>
+</section>
+{index}
 <style>
+	section {
+		overflow: hidden;
+		height: auto;
+		/* 		position: relative; */
+	}
+	ul {
+		list-style: none;
+		margin: 0;
+		padding: 0;
+		display: flex;
+		gap: var(--gap);
+		width: 100%;
+		height: 100%;
+		min-width: 0;
+		/* 		position: relative; */
+	}
+	ul li {
+		flex: 1 0 var(--width);
+		width: var(--width);
+		max-width: 100%;
+		height: 100%;
+		position: relative;
+	}
+	ul li:before {
+		content: attr(id);
+		position: absolute;
+		padding: 1rem;
+		z-index: 1;
+	}
+	ul li img {
+		width: 100%;
+		width: auto;
+		height: 100%;
+		display: flex;
+		object-fit: cover;
+		max-width: 100%;
+		will-change: transform;
+	}
+	nav,
+	label {
+		display: flex;
+		justify-content: start;
+		margin: 1rem 0;
+		flex-wrap: wrap;
+		align-items: center;
+	}
+	.active {
+		color: red;
+	}
+	input {
+		margin: 0;
+	}
 </style>

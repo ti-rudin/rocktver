@@ -140,25 +140,7 @@ import { flip } from 'svelte/animate';
 		</div>
 	</div>
 	{#if have_spisok}
-		<div class="mt-4 w-full">
-			<div
-				aria-label="card 1"
-				class="mx-auto max-w-2xl rounded bg-blue-400/40 p-6 shadow focus:outline-none dark:bg-blue-500"
-			>
-				<div class="flex items-center pb-2">
-					<div class="flex w-full items-start justify-between">
-						<div class="mx-auto  pl-3">
-							<h1
-								tabindex="0"
-								class="pt-2 text-xl text-gray-800 focus:outline-none dark:text-gray-200"
-							>
-								{status.now_on_scene.track_name}
-							</h1>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
+
 		<section style="--gap: {gap}px; --width: {width}" tab-index="0">
 
 			<ul
