@@ -32,11 +32,11 @@
 						sex: r.response[0].sex ? r.response[0].sex:"не указано"
 					};
 					user.set(user_data);
-					LogRocket.identify(r.response[0]['id'], {
-						name: r.response[0]['first_name'] + ' ' + r.response[0]['last_name'],
-						vk_id: r.response[0]['id'],
-						city: r.response[0]['city'] ? r.response[0]['city'].title : "не указано",
-					});
+					//LogRocket.identify(r.response[0]['id'], {
+					//	name: r.response[0]['first_name'] + ' ' + r.response[0]['last_name'],
+					//	vk_id: r.response[0]['id'],
+					//	city: r.response[0]['city'] ? r.response[0]['city'].title : "не указано",
+					//});
 
 					// This is an example script - don't forget to change it!
 
@@ -69,16 +69,23 @@
 			</div>
 		</div>
 	</div>
-	<div
-		class="logoutbut m-5 mx-auto cursor-pointer rounded-lg bg-yellow-400/95 p-2 px-3 text-black ring-yellow-800 transition-all hover:ring-2 dark:bg-yellow-800/95 dark:text-white"
+	<a
+		class="tomain m-5 mx-auto cursor-pointer rounded-lg bg-yellow-400/95 p-2 px-3 text-black ring-yellow-800 transition-all hover:ring-2 dark:bg-yellow-800/95 dark:text-white"
 		id="logout_button"
-		on:click={() => {
-			VK.Auth.logout(getit);
-			$isAuthenticated = false;
-		}}
+		href="/"
 	>
-		<p class="mx-auto">Выйти</p>
-	</div>
+		<p class="mx-auto">Перейти на главную </p>
+	</a>
+	<div
+	class="logoutbut m-5 mx-auto cursor-pointer rounded-lg bg-red-400/95 p-2 px-3 text-white ring-red-800 transition-all hover:ring-2 dark:bg-red-800/95 dark:text-white"
+	id="logout_button"
+	on:click={() => {
+		VK.Auth.logout(getit);
+		$isAuthenticated = false;
+	}}
+>
+	<p class="mx-auto">Выйти</p>
+</div>
 {:else}
 	<h1 class="txt mx-auto text-lg mt-3 mb-2 bg-white text-black dark:bg-gray-900 dark:text-white">
 		Авторизуйтесь без лишних анкет.
@@ -90,7 +97,7 @@
 	</h2>
 
 	<div
-		class="loginbut cursor-pointer p-3 mx-auto mb-8 flex w-full max-w-2xl flex-col items-start rounded-lg bg-yellow-400/25 px-3 text-black ring-yellow-800 transition-all hover:ring-2 dark:bg-yellow-800/25 dark:text-white"
+		class="loginbut cursor-pointer p-3 mx-auto mb-8 flex w-full max-w-2xl flex-col items-start rounded-lg bg-yellow-400/25 px-3 text-black ring-yellow-400 transition-all hover:ring-2 dark:bg-yellow-800/25 dark:text-white"
 		id="login_button"
 		on:click={() => {
 			VK.Auth.login(getit);
@@ -119,6 +126,18 @@
 {/if}
 
 <style>
+	.tomain {
+		width: 200px;
+		font-size: 20px;
+		text-align: center;
+		text-decoration: none;
+	}
+	.logoutbut {
+		width: 200px;
+		font-size: 20px;
+		text-align: center;
+		text-decoration: none;
+	}
 	.loginbut {
 		width: 200px;
 		font-size: 20px;
