@@ -42,6 +42,7 @@
 
 	import { slidy } from '@slidy/core';
 	import { getIdTrackNow } from '../components/api.js';
+	import KnobHeart from '../components/KnobHeart.svelte'
 	let index = 0,
 			imagable = true,
 		width = imagable ? 'auto' : '50%',
@@ -198,7 +199,7 @@ import { flip } from 'svelte/animate';
 	</div>
 {/if}
 
-
+<KnobHeart/>
 
 
 <style>
