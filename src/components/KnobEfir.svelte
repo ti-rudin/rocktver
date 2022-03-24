@@ -1,10 +1,10 @@
 <script>
 	import { onDestroy, onMount } from 'svelte';
 
-	let status, isshowgo, band_on_scene, concertid;
+	let status, isshowgo, band_on_scene, concertid, concert;
 
 	function load_efir() {
-		console.log('ssdd');
+		
 		let myHeaders = new Headers();
 		myHeaders.append('Content-Type', 'application/json');
 		let requestOptions = {
@@ -64,7 +64,8 @@
 		status.event_id = 0;
 		status.show_name = show_name;
 		status.event_id = 0;
-		status.event_name = "ключ на старт"
+		status.event_name = "ключ на старт";
+
 		let raw = JSON.stringify({ id: x, isshowgo: !isshowgo, status: status });
 
 		let requestOptions = {

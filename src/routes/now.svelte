@@ -64,13 +64,14 @@
 $: ready_track_data = actual_spisok_pesen;
 
 	
-	
+import { blur, crossfade, draw, fade, fly, scale, slide } from 'svelte/transition';	
+import { flip } from 'svelte/animate';
 	
 </script>
 
 {#if isshowgo}
-	<div class="w-full">
-		<div
+	<div  class="w-full">
+		<div transition:scale={{ duration: 300 }}
 			aria-label="card 1"
 			class="mx-auto max-w-2xl rounded bg-red-400/40 p-6 shadow focus:outline-none dark:bg-red-500"
 		>
@@ -123,7 +124,7 @@ $: ready_track_data = actual_spisok_pesen;
 		>
 			<div class="flex items-center pb-2">
 				<div class="flex w-full items-start justify-between">
-					<div class="mx-auto  pl-3">
+					<div  class="mx-auto  pl-3">
 						<h1
 							tabindex="0"
 							class="pt-2 text-xl text-gray-800 focus:outline-none dark:text-gray-200"
@@ -174,8 +175,8 @@ $: ready_track_data = actual_spisok_pesen;
 					scroller: (p) => (scrollPos = p)
 				}}
 			>
-				{#each ready_track_data as item, i}
-					<li id={i} class:active={i === index}>
+				{#each actual_spisok_pesen as item, i}
+					<li  id={i} class:active={i === index}>
 						
 							<div
 								class="h-24 w-72 my-4 bg-gradient-to-r from-yellow-400 to-pink-500 flex justify-center items-center p-3 rounded-xl border-2 border-slate-100 shadow-lg transition-all transform-all hover:scale-105 cursor-pointer relative"

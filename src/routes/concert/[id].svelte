@@ -185,7 +185,7 @@
 			<h1 class="mx-auto mb-2 text-xl">Администрирование</h1>
 			<p>Нажмите и удерживайте 2сек</p>
 			<div class="mx-auto">
-				<KnobEfir idtogo={concert.id} show_name={concert.attributes.show_name} />
+				<KnobEfir idtogo={concert.id} show_name={concert.attributes.show_name} concert= {concert} />
 			</div>
 		</div>
 	{/if}
@@ -256,7 +256,7 @@
 	<div class="mt-10 border-l-2">
 		{#each timeline as event}
 			{#if event.open_speache || event.finish_speache}
-				<div
+				<div 
 					class="items-left relative ml-10 mb-10 flex transform cursor-pointer flex-col space-y-4 rounded bg-blue-600 px-6 py-4 text-white transition hover:-translate-y-2 md:flex-row md:space-y-0"
 				>
 					<div
@@ -265,7 +265,7 @@
 					<div class="absolute -left-10 z-0 h-1 w-10 bg-blue-300 md:top-8" />
 
 					<!-- Content that showing in the box -->
-					<div class="flex-auto">
+					<div  class="flex-auto">
 						<h1 class="text-lg">
 							{event.start_time.split(':00.000')[0]}
 						</h1>
@@ -329,8 +329,8 @@
 						{/if}
 					{/if}
 				</div>
-			{:else if $isAuthenticated}
-				{#if $isAdmin}
+			{:else if $isAdmin}
+		
 					<div
 						class="bandurl relative ml-10 mb-10 flex transform cursor-pointer flex-col items-left space-y-4 rounded bg-pink-600 px-6 py-4 text-white dark:text-white transition hover:-translate-y-2 md:flex-row md:space-y-0"
 					>
@@ -375,7 +375,7 @@
 							{/if}
 						</div>
 					</a>
-				{/if}
+		
 			{/if}
 		{/each}
 	</div>
