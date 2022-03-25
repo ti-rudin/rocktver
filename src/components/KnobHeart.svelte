@@ -7,12 +7,13 @@
 	let timerId;
 	export let tim = 30;
 	export let eventobj;
+	export let index;
 
 	function sendliketoserver(x) {
 		let myHeaders = new Headers();
 		myHeaders.append('Content-Type', 'application/json');
 
-		let raw = JSON.stringify({ x: x });
+		let raw = JSON.stringify({ x: x, trackindex:index });
 
 		let requestOptions = {
 			method: 'POST',
@@ -50,8 +51,6 @@
 		easing: bounceIn
 	});
 
-	onMount(() => {});
-
 	onDestroy(() => {
 		if (timerId) {
 			clearInterval(timerId);
@@ -59,10 +58,18 @@
 	});
 
 	let likes = 'load';
+	let tracklikes = 'load';
 	$: if (eventobj.status) {
 		likes = eventobj.status.likes;
 		if (likes == null) {likes = ""}
 	}
+
+	
+	$: if (eventobj.status) {
+		tracklikes = eventobj.status.tracklikes;
+		//if (tracklikes == null) {tracklikes = ""}
+	}
+	
 </script>
 
 {#if !issend}
@@ -88,10 +95,23 @@
 					/>
 				</svg>
 			</button>
+		<div>
+
+		</div>
 			<h1 out:blur={{ duration: 900 }} class="like-btn pt-12 pl-6 text-4xl">
-				{likes}
+				{likes} 
 			</h1>
 		</div>
+		{#if (+tracklikes > 0)}
+		<h1 out:blur={{ duration: 900 }} class="like-btn pt-12 pl-6 text-4xl">
+			{likes} / {tracklikes}
+		</h1>
+		{/if}
+		{#if (tracklikes == null)}
+		<h1 out:blur={{ duration: 900 }} class="like-btn pt-12 pl-6 text-4xl">
+			{likes}
+		</h1>
+		{/if}
 	{/key}
 {:else}
 	{#key 2}
@@ -118,7 +138,7 @@
 				</svg>
 			</button>
 			<h1 in:blur={{ delay: 1900, duration: 900 }} class="text-4xl pt-12 pl-6 like-btn">
-				{eventobj.status.likes}
+				{likes} / {tracklikes}
 			</h1>
 		</div>
 		<div in:blur={{ delay: 900, duration: 900 }} class="flex flex-col mx-auto m-2">

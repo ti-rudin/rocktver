@@ -19,7 +19,8 @@
 				concertid = status.concert_id;
 				show_name = status.show_name;
 				band_on_scene = status.now_on_scene.band_rtid;
-				actual_spisok_pesen = status.now_on_scene.actual_spisok_pesen
+				actual_spisok_pesen = status.now_on_scene.actual_spisok_pesen;
+				status.
 				setTimeout(function () {
 					load_efir();
 				}, 2000);
@@ -64,7 +65,6 @@
 
 $: ready_track_data = actual_spisok_pesen;
 
-	
 import { blur, crossfade, draw, fade, fly, scale, slide } from 'svelte/transition';	
 import { flip } from 'svelte/animate';
 	
@@ -199,7 +199,7 @@ import { flip } from 'svelte/animate';
 	</div>
 {/if}
 
-<KnobHeart eventobj={{status}}/>
+<KnobHeart eventobj={{status}} index={index}/>
 
 
 <style>
