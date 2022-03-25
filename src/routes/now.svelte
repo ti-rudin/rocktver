@@ -199,7 +199,7 @@ import { flip } from 'svelte/animate';
 	</div>
 {/if}
 
-<KnobHeart/>
+<KnobHeart eventobj={{status}}/>
 
 
 <style>

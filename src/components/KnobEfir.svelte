@@ -53,7 +53,7 @@
 	}
 
 	let pressed = false;
-	let duration = 2000;
+
 	let isactive;
 	export let idtogo, show_name;
 
@@ -102,8 +102,8 @@
 	<button
 		class="ml-1 flex h-9 w-40 items-center justify-center rounded-lg bg-green-400 ring-green-400
 			transition-all hover:ring-2 dark:bg-green-800"
-		use:longpress={duration}
-		on:longpress={() => {
+		
+		on:click={() => {
 			pressed = true;
 			
 			isactive = !isactive;
@@ -117,8 +117,8 @@
 	<button
 		class="ml-1 flex h-9 w-40 items-center justify-center rounded-lg bg-red-400 ring-yellow-400
 			transition-all hover:ring-2 dark:bg-red-800"
-		use:longpress={duration}
-		on:longpress={() => {
+		
+		on:click={() => {
 			pressed = true;
 			
 			isactive = !isactive;
