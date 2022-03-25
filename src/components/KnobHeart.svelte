@@ -117,7 +117,7 @@
 	{#key 2}
 		<div class="flex mx-auto">
 			<button
-				on:click={sendlike}
+				
 				in:blur={{ delay: 900, duration: 900 }}
 				class="liked-btn m-6 mx-auto rounded-full bg-pink-400/50 p-4 
 				transition-all  "
