@@ -1,35 +1,4 @@
 <script>
-	import { getIdTrackNow } from '../components/api.js';
-	import { getIdTrackNowLikes } from '../components/api.js';
-	import { getNow } from '../components/api.js';
-	import KnobHeart from '../components/KnobHeart.svelte'
-	let index = 0,
-			imagable = true,
-		width = imagable ? 'auto' : '50%',
-		gap = 16,
-		length = 15,
-		scrollPos = 0;
-	export let now;
-
-
-
-	async function getData() {
-        index = await getIdTrackNow();
-		tracklikes = await getIdTrackNowLikes();
-		now = await getNow();
-	
-    };
-
-    const timerId = setInterval(function () {
-		getData();
-	}, 2000);
-	
-	onDestroy(() =>{
-		clearInterval(timerId);
-		
-	});
-
-
 	import dateFormat, { masks } from 'dateformat';
 	async function load_efir() {
 		console.log('ssdd');
@@ -51,7 +20,7 @@
 				show_name = status.show_name;
 				band_on_scene = status.now_on_scene.band_rtid;
 				actual_spisok_pesen = status.now_on_scene.actual_spisok_pesen;
-				
+				status.
 				setTimeout(function () {
 					load_efir();
 				}, 2000);
@@ -65,19 +34,43 @@
 	onMount(() => {
 		load_efir();
 	});
+	onDestroy(() =>{
+		clearInterval(timerId);
+		
+	}
 
+	);
 
 	import { slidy } from '@slidy/core';
+	import { getIdTrackNow } from '../components/api.js';
+	import { getIdTrackNowLikes } from '../components/api.js';
+	import KnobHeart from '../components/KnobHeart.svelte'
+	let index = 0,
+			imagable = true,
+		width = imagable ? 'auto' : '50%',
+		gap = 16,
+		length = 15,
+		scrollPos = 0;
+
+
+
+	async function getCountdown() {
+        index = await getIdTrackNow();
+		tracklikes = await getIdTrackNowLikes();
+	
+    };
+
+    const timerId = setInterval(function () {
+		getCountdown();
+	}, 2000);
 
 
 $: ready_track_data = actual_spisok_pesen;
 
 import { blur, crossfade, draw, fade, fly, scale, slide } from 'svelte/transition';	
 import { flip } from 'svelte/animate';
-import LogoComponent from '../components/LogoComponent.svelte';	
+	
 </script>
-<LogoComponent/>
-
 
 {#if isshowgo}
 	<div  class="w-full">
@@ -115,7 +108,11 @@ import LogoComponent from '../components/LogoComponent.svelte';
 
 			<div class="px-2">
 				<div tabindex="0" class="flex flex-col focus:outline-none">
-					<div class="px-4 pt-3 text-center text-xl  text-black dark:text-white">
+					<div class="mb-3 py-2 px-4  text-center text-lg leading-3 text-black dark:text-white">
+						{status.ploschadka_type}
+					</div>
+
+					<div class="mb-3 py-2 px-4  text-center text-2xl leading-3 text-black dark:text-white">
 						{status.ploschadka}
 					</div>
 				</div>
@@ -145,68 +142,6 @@ import LogoComponent from '../components/LogoComponent.svelte';
 			</div>
 		</div>
 	</div>
-	{#if now}
-	<div class="mt-4 w-full">
-		<div
-			aria-label="card 1"
-			class="mx-auto max-w-2xl rounded bg-blue-400/40 p-3 pt-4 shadow focus:outline-none dark:bg-blue-500/25"
-		>
-			<div class=" items-center pb-2">
-				<div class="flex  items-start justify-between">
-					<h1 tabindex="0" class="pt-2 text-xl text-gray-800 focus:outline-none dark:text-gray-200">
-						ВСЕГО
-					</h1>
-					<div  class="mx-auto  px-3">
-						<svg
-						
-						xmlns="http://www.w3.org/2000/svg"
-						width="37"
-						height="37"
-						viewBox="-2 -3 28 28"
-						stroke="red"
-						fill="red"
-						stroke-width="1"
-					>
-						<path
-							d="M12 4.4119c-2.826-5.695-11.999-4.064-11.999 3.27 0 7.27 9.903 10.938 11.999 15.311 2.096-4.373 12-8.041 12-15.311 0-7.327-9.17-8.972-12-3.27z"
-						/>
-					</svg>
-					</div>
-					<h1 tabindex="0" class="text-4xl like-btn">
-						{now.now_event_likes}
-					</h1>
-					<div class="mx-auto w-full"></div>
-					<h1 tabindex="0" class="pt-2 text-xl text-gray-800 focus:outline-none dark:text-gray-200">
-						ТРЕК
-					</h1>
-					<div  class="mx-auto  px-3">
-						<svg
-						
-						xmlns="http://www.w3.org/2000/svg"
-						width="37"
-						height="37"
-						opacity="80%"
-						viewBox="-2 -3 28 28"
-						stroke="red"
-						fill="red"
-						stroke-width="1"
-					>
-						<path
-							d="M12 4.4119c-2.826-5.695-11.999-4.064-11.999 3.27 0 7.27 9.903 10.938 11.999 15.311 2.096-4.373 12-8.041 12-15.311 0-7.327-9.17-8.972-12-3.27z"
-						/>
-					</svg>
-					</div>
-					<h1 tabindex="0" class="text-4xl like-btn">
-						{now.now_track_likes}
-					</h1>
-				</div>
-			</div>
-		</div>
-	</div>
-	<KnobHeart eventobj={{status}} index={index} />
-	{/if}
-
-
 	{#if have_spisok}
 
 		<section style="--gap: {gap}px; --width: {width}" tab-index="0">
@@ -243,7 +178,6 @@ import LogoComponent from '../components/LogoComponent.svelte';
 			</ul>
 		
 		</section>
-
 	{/if}
 {:else}
 	<div class="w-full mt-4">
@@ -266,15 +200,11 @@ import LogoComponent from '../components/LogoComponent.svelte';
 		</div>
 	</div>
 {/if}
-
+{tracklikes}
+<KnobHeart eventobj={{status}} index={index} />
 
 
 <style>
-		.like-btn {
-		color: red;
-		display: flex;
-		justify-content: center;
-	}
 section {
 	overflow: hidden;
 	height: auto;

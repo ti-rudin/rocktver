@@ -95,23 +95,9 @@
 					/>
 				</svg>
 			</button>
-		<div>
+		</div>
 
-		</div>
-			<h1 out:blur={{ duration: 900 }} class="like-btn pt-12 pl-6 text-4xl">
-				{likes} 
-			</h1>
-		</div>
-		{#if (+tracklikes > 0)}
-		<h1 out:blur={{ duration: 900 }} class="like-btn pt-12 pl-6 text-4xl">
-			{likes} / {tracklikes}
-		</h1>
-		{/if}
-		{#if (tracklikes == null)}
-		<h1 out:blur={{ duration: 900 }} class="like-btn pt-12 pl-6 text-4xl">
-			{likes}
-		</h1>
-		{/if}
+
 	{/key}
 {:else}
 	{#key 2}
@@ -137,9 +123,6 @@
 					/>
 				</svg>
 			</button>
-			<h1 in:blur={{ delay: 1900, duration: 900 }} class="text-4xl pt-12 pl-6 like-btn">
-				{likes} / {tracklikes}
-			</h1>
 		</div>
 		<div in:blur={{ delay: 900, duration: 900 }} class="flex flex-col mx-auto m-2">
 			<h1 class="text-xl mx-auto text-center">Благодарим за отклик!</h1>
