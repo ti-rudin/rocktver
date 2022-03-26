@@ -5,18 +5,15 @@
 	import { bounceIn } from 'svelte/easing';
 	let issend = false;
 	let timerId;
-	export let tim = 5;
+	export let tim = 30;
 	export let eventobj;
 	export let index;
-	export let now;
-	export let user;
-	export let efir;
 
 	function sendliketoserver(x) {
 		let myHeaders = new Headers();
 		myHeaders.append('Content-Type', 'application/json');
 
-		let raw = JSON.stringify(x);
+		let raw = JSON.stringify({ x: x, trackindex:index });
 
 		let requestOptions = {
 			method: 'POST',
@@ -25,7 +22,7 @@
 			redirect: 'follow'
 		};
 
-		fetch('https://api.rocktver.ru/like/', requestOptions)
+		fetch('https://api.rocktver.ru/send-like/', requestOptions)
 			.then((response) => response.json())
 			.then((result) => {
 				return result;
@@ -35,8 +32,7 @@
 
 	function sendlike() {
 		issend = true;
-		sendliketoserver({ u: user, now: now, efir: efir });
-		console.log("now"+now);
+		sendliketoserver({ u: eventobj });
 		//setTimeout(function () {
 		//	issend = false;
 		//}, 2500);
@@ -46,7 +42,7 @@
 			if (tim == 0) {
 				clearInterval(timerId);
 				issend = false;
-				tim = 5;
+				tim = 30;
 			}
 		}, 1000);
 	}

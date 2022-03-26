@@ -21,3 +21,8 @@ export async function getNow() {
 	const res = await fetch(path)
 	return await res.json()
 }
+export async function getEfir() {
+	const path = `https://api.rocktver.ru/get-efir`
+	const res = await fetch(path)
+	return await res.json()
+}

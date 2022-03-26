@@ -1,34 +1,31 @@
 <script>
-	import { getIdTrackNow } from '../components/api.js';
-	import { getIdTrackNowLikes } from '../components/api.js';
-	import { getNow } from '../components/api.js';
-	import KnobHeart from '../components/KnobHeart.svelte'
+
+	import { getEfir, getNow } from '../components/api.js';
+	import { isAuthenticated, user } from '$lib/stores/auth';
+	import KnobHeart from '../components/KnobHeart.svelte';
 	let index = 0,
-			imagable = true,
+		imagable = true,
 		width = imagable ? 'auto' : '50%',
 		gap = 16,
 		length = 15,
 		scrollPos = 0;
 	export let now;
-
-
+	export let efir;
 
 	async function getData() {
-        index = await getIdTrackNow();
-		tracklikes = await getIdTrackNowLikes();
+		//index = await getIdTrackNow();
 		now = await getNow();
-	
-    };
+		efir = await getEfir();
+		index = now.now_track_id;
+	}
 
-    const timerId = setInterval(function () {
+	const timerId = setInterval(function () {
 		getData();
 	}, 2000);
-	
-	onDestroy(() =>{
-		clearInterval(timerId);
-		
-	});
 
+	onDestroy(() => {
+		clearInterval(timerId);
+	});
 
 	import dateFormat, { masks } from 'dateformat';
 	async function load_efir() {
@@ -51,7 +48,7 @@
 				show_name = status.show_name;
 				band_on_scene = status.now_on_scene.band_rtid;
 				actual_spisok_pesen = status.now_on_scene.actual_spisok_pesen;
-				
+
 				setTimeout(function () {
 					load_efir();
 				}, 2000);
@@ -59,29 +56,36 @@
 			.catch((error) => console.log('error', error));
 	}
 
-	export let isshowgo, band_on_scene, concert, timeline, status, concertid, show_name, have_spisok, actual_spisok_pesen, tracklikes;
+	export let isshowgo,
+		band_on_scene,
+		concert,
+		timeline,
+		status,
+		concertid,
+		show_name,
+		have_spisok,
+		actual_spisok_pesen;
 	import { onDestroy, onMount } from 'svelte';
 
 	onMount(() => {
 		load_efir();
 	});
 
-
 	import { slidy } from '@slidy/core';
 
+	$: ready_track_data = actual_spisok_pesen;
 
-$: ready_track_data = actual_spisok_pesen;
-
-import { blur, crossfade, draw, fade, fly, scale, slide } from 'svelte/transition';	
-import { flip } from 'svelte/animate';
-import LogoComponent from '../components/LogoComponent.svelte';	
+	import { blur, crossfade, draw, fade, fly, scale, slide } from 'svelte/transition';
+	import { flip } from 'svelte/animate';
+	import LogoComponent from '../components/LogoComponent.svelte';
 </script>
-<LogoComponent/>
 
+<LogoComponent />
 
 {#if isshowgo}
-	<div  class="w-full">
-		<div transition:scale={{ duration: 300 }}
+	<div class="w-full">
+		<div
+			transition:scale={{ duration: 300 }}
 			aria-label="card 1"
 			class="mx-auto max-w-2xl rounded bg-red-400/40 p-6 shadow focus:outline-none dark:bg-red-500"
 		>
@@ -130,7 +134,7 @@ import LogoComponent from '../components/LogoComponent.svelte';
 		>
 			<div class="flex items-center pb-2">
 				<div class="flex w-full items-start justify-between">
-					<div  class="mx-auto  pl-3">
+					<div class="mx-auto  pl-3">
 						<h1
 							tabindex="0"
 							class="pt-2 text-xl text-gray-800 focus:outline-none dark:text-gray-200"
@@ -146,71 +150,80 @@ import LogoComponent from '../components/LogoComponent.svelte';
 		</div>
 	</div>
 	{#if now}
-	<div class="mt-4 w-full">
-		<div
-			aria-label="card 1"
-			class="mx-auto max-w-2xl rounded bg-blue-400/40 p-3 pt-4 shadow focus:outline-none dark:bg-blue-500/25"
-		>
-			<div class=" items-center pb-2">
-				<div class="flex  items-start justify-between">
-					<h1 tabindex="0" class="pt-2 text-xl text-gray-800 focus:outline-none dark:text-gray-200">
-						ВСЕГО
-					</h1>
-					<div  class="mx-auto  px-3">
-						<svg
-						
-						xmlns="http://www.w3.org/2000/svg"
-						width="37"
-						height="37"
-						viewBox="-2 -3 28 28"
-						stroke="red"
-						fill="red"
-						stroke-width="1"
-					>
-						<path
-							d="M12 4.4119c-2.826-5.695-11.999-4.064-11.999 3.27 0 7.27 9.903 10.938 11.999 15.311 2.096-4.373 12-8.041 12-15.311 0-7.327-9.17-8.972-12-3.27z"
-						/>
-					</svg>
+		{#if now.now_event_likes !== 'null'}
+			<div class="mt-4 w-full">
+				<div
+					aria-label="card 1"
+					class="mx-auto max-w-2xl rounded bg-blue-400/40 p-3 pt-4 shadow focus:outline-none dark:bg-blue-500/25"
+				>
+					<div class=" items-center pb-2">
+						<div class="flex  items-start justify-between">
+							<div class="mx-auto w-full" />
+							<h1
+								tabindex="0"
+								class="mx-auto pt-2 text-xl text-gray-800 focus:outline-none dark:text-gray-200"
+							>
+								ВСЕГО
+							</h1>
+							<div class="mx-auto  px-3">
+								<svg
+									xmlns="http://www.w3.org/2000/svg"
+									width="37"
+									height="37"
+									viewBox="-2 -3 28 28"
+									stroke="red"
+									fill="red"
+									stroke-width="1"
+								>
+									<path
+										d="M12 4.4119c-2.826-5.695-11.999-4.064-11.999 3.27 0 7.27 9.903 10.938 11.999 15.311 2.096-4.373 12-8.041 12-15.311 0-7.327-9.17-8.972-12-3.27z"
+									/>
+								</svg>
+							</div>
+
+							<h1 tabindex="0" class="like-btn mx-auto text-4xl">
+								{now.now_event_likes}
+							</h1>
+							{#if now.now_track_likes !== 'null'}
+								<div class="mx-auto w-full" />
+								<h1
+									tabindex="0"
+									class="pt-2 text-xl text-gray-800 focus:outline-none dark:text-gray-200"
+								>
+									ТРЕК
+								</h1>
+								<div class="mx-auto  px-3">
+									<svg
+										xmlns="http://www.w3.org/2000/svg"
+										width="37"
+										height="37"
+										opacity="80%"
+										viewBox="-2 -3 28 28"
+										stroke="red"
+										fill="red"
+										stroke-width="1"
+									>
+										<path
+											d="M12 4.4119c-2.826-5.695-11.999-4.064-11.999 3.27 0 7.27 9.903 10.938 11.999 15.311 2.096-4.373 12-8.041 12-15.311 0-7.327-9.17-8.972-12-3.27z"
+										/>
+									</svg>
+								</div>
+								<h1 tabindex="0" class="like-btn text-4xl">
+									{now.now_track_likes}
+								</h1>
+								
+							{/if}
+							<div class="mx-auto w-full" />
+						</div>
 					</div>
-					<h1 tabindex="0" class="text-4xl like-btn">
-						{now.now_event_likes}
-					</h1>
-					<div class="mx-auto w-full"></div>
-					<h1 tabindex="0" class="pt-2 text-xl text-gray-800 focus:outline-none dark:text-gray-200">
-						ТРЕК
-					</h1>
-					<div  class="mx-auto  px-3">
-						<svg
-						
-						xmlns="http://www.w3.org/2000/svg"
-						width="37"
-						height="37"
-						opacity="80%"
-						viewBox="-2 -3 28 28"
-						stroke="red"
-						fill="red"
-						stroke-width="1"
-					>
-						<path
-							d="M12 4.4119c-2.826-5.695-11.999-4.064-11.999 3.27 0 7.27 9.903 10.938 11.999 15.311 2.096-4.373 12-8.041 12-15.311 0-7.327-9.17-8.972-12-3.27z"
-						/>
-					</svg>
-					</div>
-					<h1 tabindex="0" class="text-4xl like-btn">
-						{now.now_track_likes}
-					</h1>
 				</div>
 			</div>
-		</div>
-	</div>
-	<KnobHeart eventobj={{status}} index={index} />
+			<KnobHeart user = {$user} now = {now} efir = {efir} eventobj={{ status }} {index} />
+		{/if}
 	{/if}
 
-
 	{#if have_spisok}
-
 		<section style="--gap: {gap}px; --width: {width}" tab-index="0">
-
 			<ul
 				use:slidy={{
 					index,
@@ -226,24 +239,19 @@ import LogoComponent from '../components/LogoComponent.svelte';
 				}}
 			>
 				{#each actual_spisok_pesen as item, i}
-					<li  id={i} class:active={i === index}>
-						
-							<div
-								class="h-24 w-72 my-4 bg-gradient-to-r from-yellow-400 to-pink-500 flex justify-center items-center p-3 rounded-xl border-2 border-slate-100 shadow-lg transition-all transform-all hover:scale-105 cursor-pointer relative"
-								
-							>
-								<div class="text-slate-200 text-center">
-									<div>{item.name}</div>
-									<div class="font-mono text-xs">{item.track_name}</div>
-								</div>
+					<li id={i} class:active={i === index}>
+						<div
+							class="transform-all relative my-4 flex h-24 w-72 cursor-pointer items-center justify-center rounded-xl border-2 border-slate-100 bg-gradient-to-r from-yellow-400 to-pink-500 p-3 shadow-lg transition-all hover:scale-105"
+						>
+							<div class="text-center text-slate-200">
+								<div>{item.name}</div>
+								<div class="font-mono text-xs">{item.track_name}</div>
 							</div>
-					
+						</div>
 					</li>
 				{/each}
 			</ul>
-		
 		</section>
-
 	{/if}
 {:else}
 	<div class="w-full mt-4">
@@ -258,7 +266,8 @@ import LogoComponent from '../components/LogoComponent.svelte';
 							tabindex="0"
 							class="pt-2 text-xl text-gray-800 focus:outline-none dark:text-gray-200"
 						>
-							Виджет "Сейчас на сцене" сейчас не работает. Попробуйте обновить страницу или зайдите попозже)
+							Виджет "Сейчас на сцене" сейчас не работает. Попробуйте обновить страницу или зайдите
+							попозже)
 						</h1>
 					</div>
 				</div>
@@ -267,65 +276,62 @@ import LogoComponent from '../components/LogoComponent.svelte';
 	</div>
 {/if}
 
-
-
 <style>
-		.like-btn {
+	.like-btn {
 		color: red;
 		display: flex;
 		justify-content: center;
 	}
-section {
-	overflow: hidden;
-	height: auto;
-	/* 		position: relative; */
-}
-ul {
-	list-style: none;
-	margin: 0;
-	padding: 0;
-	display: flex;
-	gap: var(--gap);
-	width: 100%;
-	height: 100%;
-	min-width: 0;
-	/* 		position: relative; */
-}
-ul li {
-	flex: 1 0 var(--width);
-	width: var(--width);
-	max-width: 100%;
-	height: 100%;
-	position: relative;
-	
-}
-ul li:before {
-	content: attr(id);
-	position: absolute;
-	padding: 1rem;
-	z-index: 1;
-}
-ul li img {
-	width: 100%;
-	width: auto;
-	height: 100%;
-	display: flex;
-	object-fit: cover;
-	max-width: 100%;
-	will-change: transform;
-}
-nav,
-label {
-	display: flex;
-	justify-content: start;
-	margin: 1rem 0;
-	flex-wrap: wrap;
-	align-items: center;
-}
-.active {
-	color: red;
-}
-input {
-	margin: 0;
-}
+	section {
+		overflow: hidden;
+		height: auto;
+		/* 		position: relative; */
+	}
+	ul {
+		list-style: none;
+		margin: 0;
+		padding: 0;
+		display: flex;
+		gap: var(--gap);
+		width: 100%;
+		height: 100%;
+		min-width: 0;
+		/* 		position: relative; */
+	}
+	ul li {
+		flex: 1 0 var(--width);
+		width: var(--width);
+		max-width: 100%;
+		height: 100%;
+		position: relative;
+	}
+	ul li:before {
+		content: attr(id);
+		position: absolute;
+		padding: 1rem;
+		z-index: 1;
+	}
+	ul li img {
+		width: 100%;
+		width: auto;
+		height: 100%;
+		display: flex;
+		object-fit: cover;
+		max-width: 100%;
+		will-change: transform;
+	}
+	nav,
+	label {
+		display: flex;
+		justify-content: start;
+		margin: 1rem 0;
+		flex-wrap: wrap;
+		align-items: center;
+	}
+	.active {
+		color: red;
+	}
+	input {
+		margin: 0;
+	}
 </style>
