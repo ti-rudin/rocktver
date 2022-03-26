@@ -162,7 +162,7 @@
 			headers: myHeaders
 		};
 
-		fetch('https://api.rocktver.ru/open-status/', requestOptions)
+		fetch('https://api.rocktver.ru/get-efir/', requestOptions)
 			.then((response) => response.json())
 			.then((result) => {
 				console.log(result);
