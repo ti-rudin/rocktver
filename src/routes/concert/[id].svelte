@@ -183,9 +183,9 @@
 			class="mx-auto my-3 flex max-w-2xl  flex-col rounded p-6  shadow ring-1 ring-yellow-600 focus:outline-none"
 		>
 			<h1 class="mx-auto mb-2 text-xl">Администрирование</h1>
-			<p>Нажмите и удерживайте 2сек</p>
+			
 			<div class="mx-auto">
-				<KnobEfir idtogo={concert.id} show_name={concert.attributes.show_name} concert= {concert} />
+				<KnobEfir idtogo={concert.id} user = {$user.id}/>
 			</div>
 		</div>
 	{/if}
@@ -254,7 +254,7 @@
 </div>
 <div class="relative mx-auto w-10/12 py-2 md:w-9/12 lg:w-7/12">
 	<div class="mt-10 border-l-2">
-		{#each timeline as event}
+		{#each timeline as event,i}
 			{#if event.open_speache || event.finish_speache}
 				<div 
 					class="items-left relative ml-10 mb-10 flex transform cursor-pointer flex-col space-y-4 rounded bg-blue-600 px-6 py-4 text-white transition hover:-translate-y-2 md:flex-row md:space-y-0"
@@ -273,7 +273,7 @@
 					</div>
 					{#if $isAuthenticated}
 						{#if $isAdmin}
-						<KnobTimeline event={event} state={state} concert = {concert}/>
+						<KnobTimeline user = {$user.id} event_i = {i} event={event} concert = {concert}/>
 						{/if}
 					{/if}
 				</div>
@@ -299,7 +299,7 @@
 					</div>
 					{#if $isAuthenticated}
 						{#if $isAdmin}
-						<KnobTimeline event={event} state={state} concert = {concert}/>
+						<KnobTimeline user = {$user.id} event_i = {i} event={event} concert = {concert}/>
 						{/if}
 					{/if}
 				</div>
@@ -325,7 +325,7 @@
 					</div>
 					{#if $isAuthenticated}
 						{#if $isAdmin}
-						<KnobTimeline event={event} state={state} concert = {concert}/>
+						<KnobTimeline user = {$user.id} event_i = {i} event={event} concert = {concert}/>
 						{/if}
 					{/if}
 				</div>
@@ -351,7 +351,7 @@
 							{/if}
 						</div>
 
-						<KnobTimeline event={event} state={state} concert = {concert}/>
+						<KnobTimeline user = {$user.id} event_i = {i} event={event} concert = {concert}/>
 					</div>
 				{:else}
 					<a

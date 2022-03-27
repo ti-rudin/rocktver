@@ -11,51 +11,6 @@
 		scrollPos = 0;
 	export let now;
 	export let efir;
-
-	async function getData() {
-		//index = await getIdTrackNow();
-		now = await getNow();
-		efir = await getEfir();
-		index = now.now_track_id;
-	}
-
-	const timerId = setInterval(function () {
-		getData();
-	}, 2000);
-
-	onDestroy(() => {
-		clearInterval(timerId);
-	});
-
-	import dateFormat, { masks } from 'dateformat';
-	async function load_efir() {
-		console.log('ssdd');
-		let myHeaders = new Headers();
-		myHeaders.append('Content-Type', 'application/json');
-		let requestOptions = {
-			method: 'GET',
-			headers: myHeaders
-		};
-
-		fetch('https://api.rocktver.ru/open-status/', requestOptions)
-			.then((response) => response.json())
-			.then((result) => {
-				console.log(result);
-				status = result;
-				isshowgo = status.is_show_go;
-				have_spisok = status.now_on_scene.have_spisok;
-				concertid = status.concert_id;
-				show_name = status.show_name;
-				band_on_scene = status.now_on_scene.band_rtid;
-				actual_spisok_pesen = status.now_on_scene.actual_spisok_pesen;
-
-				setTimeout(function () {
-					load_efir();
-				}, 2000);
-			})
-			.catch((error) => console.log('error', error));
-	}
-
 	export let isshowgo,
 		band_on_scene,
 		concert,
@@ -65,18 +20,46 @@
 		show_name,
 		have_spisok,
 		actual_spisok_pesen;
+	export let 	displaylikes = false;
+
+	async function getData() {
+		//index = await getIdTrackNow();
+		now = await getNow();
+		efir = await getEfir();
+		index = now.now_track_id;
+		status = efir;
+				isshowgo = status.is_show_go;
+				have_spisok = status.now_on_scene.have_spisok;
+				concertid = +status.concert_id;
+				show_name = status.show_name;
+				band_on_scene = status.now_on_scene.band_rtid;
+				actual_spisok_pesen = status.now_on_scene.actual_spisok_pesen;
+				have_spisok = status.now_on_scene.have_spisok;
+				console.log(now);
+				console.log(status);
+				if (now.now_event_id !== "null") { displaylikes = true;}
+	}			
+$: displaylikes = displaylikes;
+
+	const timerId = setInterval(function () {
+		getData();
+	}, 2000);
+
+	onDestroy(() => {
+		clearInterval(timerId);
+	});
+
+	
 	import { onDestroy, onMount } from 'svelte';
 
-	onMount(() => {
-		load_efir();
-	});
+
 
 	import { slidy } from '@slidy/core';
 
-	$: ready_track_data = actual_spisok_pesen;
+	
 
 	import { blur, crossfade, draw, fade, fly, scale, slide } from 'svelte/transition';
-	import { flip } from 'svelte/animate';
+
 	import LogoComponent from '../components/LogoComponent.svelte';
 </script>
 
@@ -139,7 +122,7 @@
 							tabindex="0"
 							class="pt-2 text-xl text-gray-800 focus:outline-none dark:text-gray-200"
 						>
-							{status.event_name}
+							{status.now_on_scene.band_name}
 						</h1>
 					</div>
 					<h1 tabindex="0" class="pt-2 text-xl text-gray-800 focus:outline-none dark:text-gray-200">
@@ -149,8 +132,8 @@
 			</div>
 		</div>
 	</div>
-	{#if now}
-		{#if now.now_event_likes !== 'null'}
+	{#if displaylikes}
+		
 			<div class="mt-4 w-full">
 				<div
 					aria-label="card 1"
@@ -219,7 +202,7 @@
 				</div>
 			</div>
 			<KnobHeart user = {$user} now = {now} efir = {efir} eventobj={{ status }} {index} />
-		{/if}
+		
 	{/if}
 
 	{#if have_spisok}

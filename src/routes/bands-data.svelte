@@ -9,55 +9,88 @@
 			},
 			body: JSON.stringify({
 				query: `{
-			  bands(pagination: { pageSize: 100 }) {
-			    data {
-			      id
-			      attributes {
-			        band_name
-			        town
-			        small_text
-			        big_text
-			        group_logo{
-			          data{
-			            attributes{
-			              url
-			            }
-			          }
-			        }
-			        group_link_vk
-			        group_link_rocktver
-			        mngr_id
-			        time_on_scene
-			        artists {
-			          data {
-			            attributes {
-			              name
-			              avatar {
-			                data {
-			                  attributes {
-			                    url
-			                  }
-			                }
-			              }
-			              role
-			              vk_link
-			            }
-			          }
-			        }
-			        spisok {
-			          ... on ComponentPesniTrack {
-			            name
-			            text
-						words_rights
-                  music_rights
-                  is_premiere
-                  id
-			          }
-			        }
-			      }
-			    }
-			  }
-			}`
+  bands(pagination: { pageSize: 100 }) {
+    data {
+      id
+      attributes {
+        band_name
+        town
+        small_text
+        big_text
+        group_logo {
+          data {
+            attributes {
+              url
+            }
+          }
+        }
+        group_link_vk
+        group_link_rocktver
+        mngr_id
+        time_on_scene
+        artists {
+          data {
+            attributes {
+              name
+              avatar {
+                data {
+                  attributes {
+                    url
+                  }
+                }
+              }
+              role
+              vk_link
+            }
+          }
+        }
+        spisok {
+          ... on ComponentPesniTrack {
+            name
+            text
+            words_rights
+            music_rights
+            is_premiere
+            id
+          }
+        }
+      }
+    }
+  }
+  concerts {
+    data {
+      id
+      attributes {
+        start_date
+		ploschadka
+        bilet_ot
+        url_website
+        show_name
+        spisok (pagination: { pageSize: 100 }) {
+          ... on ComponentBandsTimeline {
+            id
+            band {
+              data {
+				  id
+                attributes {
+                  band_name
+				  
+                }
+              }
+            }
+			title
+            slovo_vedusch
+            tech_pause
+            open_speache
+            finish_speache
+          }
+        }
+      }
+    }
+  }
+}
+
+`
 			})
 		});
 		if (res.ok) {

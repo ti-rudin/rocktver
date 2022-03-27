@@ -2,39 +2,11 @@
 	import { onDestroy, onMount } from 'svelte';
 
 
-
-	function longpress(node, duration) {
-		let timer;
-
-		const handleMousedown = () => {
-			timer = setTimeout(() => {
-				node.dispatchEvent(new CustomEvent('longpress'));
-			}, duration);
-		};
-
-		const handleMouseup = () => {
-			clearTimeout(timer);
-		};
-
-		node.addEventListener('mousedown', handleMousedown);
-		node.addEventListener('mouseup', handleMouseup);
-
-		return {
-			update(newDuration) {
-				duration = newDuration;
-			},
-			destroy() {
-				node.removeEventListener('mousedown', handleMousedown);
-				node.removeEventListener('mouseup', handleMouseup);
-			}
-		};
-	}
-
 	let pressed = false;
 	let duration = 2000;
 	let isactive;
 	let isshowgo, band_on_scene, concertid, eventid;
-	export let idtogo, state, event, concert;
+	export let idtogo, state, event, concert, user, event_i;
 
 
 	function change_timeline(event, state, concert) {
@@ -45,7 +17,7 @@
 		myHeaders.append('Content-Type', 'application/json');
 	
 
-		let raw = JSON.stringify({event:event, state:state, concert:concert});
+		let raw = JSON.stringify({userid: user, event_i:event_i, event:event, state:state, concert:concert, cmd: "change-event"});
 
 		let requestOptions = {
 			method: 'POST',
@@ -54,7 +26,7 @@
 			redirect: 'follow'
 		};
 
-		fetch('https://api.rocktver.ru/change-timeline/', requestOptions)
+		fetch('https://api.rocktver.ru/change-event/', requestOptions)
 			.then((response) => response.json())
 			.then((result) => {
 				return result;
@@ -76,7 +48,7 @@
 	<button
 		aria-label="Toggle Dark Mode"
 		class="ml-1 flex h-14 w-14 items-center justify-center rounded-lg border ring-yellow-400 transition-all hover:ring-2"
-		use:longpress={duration}
+		
 		on:click={() => {
 			pressed = true;
 			
@@ -100,7 +72,7 @@
 				stroke-width="1.25"
 				stroke-linecap="round"
 				stroke-linejoin="round"
-				style="fill:red;"
+				fill="red"
 				d="M303.736,137.84l41.826-74.686H114.284v161.098h231.278l-41.826-74.685
 			   C301.696,145.925,301.695,141.483,303.736,137.84z"
 			/>
@@ -118,7 +90,7 @@
 	<button
 		aria-label="Toggle Dark Mode"
 		class="ml-1 flex h-14 w-14 items-center justify-center rounded-lg ring-yellow-400 transition-all hover:ring-2"
-		use:longpress={duration}
+		
 		on:click={() => {
 			pressed = true;
 			

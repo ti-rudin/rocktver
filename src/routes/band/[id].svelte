@@ -45,34 +45,59 @@
 </script>
 
 <script>
+    import { getEfir, getNow } from '../../components/api.js';
 	import LogoComponent from '../../components/LogoComponent.svelte';
 	import { onDestroy, onMount } from 'svelte';
 	import { isAuthenticated, user } from '$lib/stores/auth';
 	export let status, isshowgo, band_on_scene;
 	export let concert, timeline, concertid, show_name, have_spisok, actual_spisok_pesen;
 
-	async function load_open_status() {
-		let myHeaders = new Headers();
-		myHeaders.append('Content-Type', 'application/json');
-		let requestOptions = {
-			method: 'GET',
-			headers: myHeaders
-		};
 
-		fetch('https://api.rocktver.ru/open-status/', requestOptions)
-			.then((response) => response.json())
-			.then((result) => {
-				console.log(result);
-				status = result;
+
+	export let now, efir;
+	async function load_open_status() {
+		//index = await getIdTrackNow();
+		now = await getNow();
+		efir = await getEfir();
+		index = now.now_track_id;
+		status = efir;
 				isshowgo = status.is_show_go;
+				have_spisok = status.now_on_scene.have_spisok;
+				concertid = +status.concert_id;
+				show_name = status.show_name;
 				band_on_scene = status.now_on_scene.band_rtid;
-				return result;
-			})
-			.catch((error) => console.log('error', error));
+				actual_spisok_pesen = status.now_on_scene.actual_spisok_pesen;
+				have_spisok = status.now_on_scene.have_spisok;
+				console.log(now);
+				console.log(status);
+			
 	}
+
+//
+	//async function load_open_status() {
+	//	let myHeaders = new Headers();
+	//	myHeaders.append('Content-Type', 'application/json');
+	//	let requestOptions = {
+	//		method: 'GET',
+	//		headers: myHeaders
+	//	};
+//
+	//	fetch('https://api.rocktver.ru/open-status/', requestOptions)
+	//		.then((response) => response.json())
+	//		.then((result) => {
+	//			console.log(result);
+	//			status = result;
+	//			isshowgo = status.is_show_go;
+	//			band_on_scene = status.now_on_scene.band_rtid;
+	//			return result;
+	//		})
+	//		.catch((error) => console.log('error', error));
+	//}
 	onMount(() => {
 		load_open_status();
 	});
+
+	
 
 	export let isonscene, launches, launch, id, spisok;
 
@@ -91,35 +116,35 @@
 
 	//////////////////
 
-	async function load_efir() {
-		console.log('ssdd');
-		let myHeaders = new Headers();
-		myHeaders.append('Content-Type', 'application/json');
-		let requestOptions = {
-			method: 'GET',
-			headers: myHeaders
-		};
-
-		fetch('https://api.rocktver.ru/open-status/', requestOptions)
-			.then((response) => response.json())
-			.then((result) => {
-				console.log(result);
-				status = result;
-				isshowgo = status.is_show_go;
-				have_spisok = status.now_on_scene.have_spisok;
-				concertid = status.concert_id;
-				show_name = status.show_name;
-				band_on_scene = status.now_on_scene.band_rtid;
-				actual_spisok_pesen = status.now_on_scene.actual_spisok_pesen;
-				
-			})
-			.catch((error) => console.log('error', error));
-	}
-
-	onMount(() => {
-		load_efir();
-	});
-
+	//async function load_efir() {
+	//	console.log('ssdd');
+	//	let myHeaders = new Headers();
+	//	myHeaders.append('Content-Type', 'application/json');
+	//	let requestOptions = {
+	//		method: 'GET',
+	//		headers: myHeaders
+	//	};
+//
+	//	fetch('https://api.rocktver.ru/open-status/', requestOptions)
+	//		.then((response) => response.json())
+	//		.then((result) => {
+	//			console.log(result);
+	//			status = result;
+	//			isshowgo = status.is_show_go;
+	//			have_spisok = status.now_on_scene.have_spisok;
+	//			concertid = status.concert_id;
+	//			show_name = status.show_name;
+	//			band_on_scene = status.now_on_scene.band_rtid;
+	//			actual_spisok_pesen = status.now_on_scene.actual_spisok_pesen;
+	//			
+	//		})
+	//		.catch((error) => console.log('error', error));
+	//}
+//
+	//onMount(() => {
+	//	load_efir();
+	//});
+//
 	import { slidy } from '@slidy/core';
 	import { getIdTrackNow } from '../../components/api.js';
 import { isAdmin } from '$lib/siteConfig';
@@ -137,7 +162,7 @@ import { isAdmin } from '$lib/siteConfig';
 		myHeaders.append('Content-Type', 'application/json');
 		
 
-		let raw = JSON.stringify({ userid: userid, x:x, bandid: launch.id });
+		let raw = JSON.stringify({ userid: userid, track_i:x, bandid: launch.id, cmd: "change-track" });
 
 		let requestOptions2 = {
 			method: 'POST',

@@ -1,5 +1,5 @@
 <script>
-	import { onDestroy, onMount } from 'svelte';
+
 
 	let status, isshowgo, band_on_scene, concertid, concert;
 
@@ -12,7 +12,7 @@
 			headers: myHeaders
 		};
 
-		fetch('https://api.rocktver.ru/open-status/', requestOptions)
+		fetch('https://api.rocktver.ru/get-efir/', requestOptions)
 			.then((response) => response.json())
 			.then((result) => {
 				console.log(result);
@@ -25,57 +25,26 @@
 			.catch((error) => console.log('error', error));
 	}
 
-	function longpress(node, duration) {
-		let timer;
 
-		const handleMousedown = () => {
-			timer = setTimeout(() => {
-				node.dispatchEvent(new CustomEvent('longpress'));
-			}, duration);
-		};
-
-		const handleMouseup = () => {
-			clearTimeout(timer);
-		};
-
-		node.addEventListener('mousedown', handleMousedown);
-		node.addEventListener('mouseup', handleMouseup);
-
-		return {
-			update(newDuration) {
-				duration = newDuration;
-			},
-			destroy() {
-				node.removeEventListener('mousedown', handleMousedown);
-				node.removeEventListener('mouseup', handleMouseup);
-			}
-		};
-	}
-
-	let pressed = false;
 
 	let isactive;
-	export let idtogo, show_name;
+	export let idtogo, user;
 
 
 	function change_efir(x) {
 		let myHeaders = new Headers();
 		myHeaders.append('Content-Type', 'application/json');
-		status.event_id = 0;
-		status.show_name = show_name;
-		status.event_id = 0;
-		status.event_name = "ключ на старт";
 
-		let raw = JSON.stringify({ id: x, isshowgo: !isshowgo, status: status });
+
+		let raw = JSON.stringify({ id: x, isshowgo: !isshowgo, userid: user, cmd:"change-concert" });
 
 		let requestOptions = {
 			method: 'POST',
 			headers: myHeaders,
-			body: raw,
-			redirect: 'follow'
+			body: raw
 		};
 
-		fetch('https://api.rocktver.ru/change-efir/', requestOptions)
+		fetch('https://api.rocktver.ru/change-concert/', requestOptions)
 			.then((response) => response.json())
 			.then((result) => {
 				return result;
@@ -104,7 +73,7 @@
 			transition-all hover:ring-2 dark:bg-green-800"
 		
 		on:click={() => {
-			pressed = true;
+			
 			
 			isactive = !isactive;
             change_efir(idtogo);
@@ -119,7 +88,7 @@
 			transition-all hover:ring-2 dark:bg-red-800"
 		
 		on:click={() => {
-			pressed = true;
+			
 			
 			isactive = !isactive;
             change_efir(idtogo);
