@@ -221,7 +221,7 @@
 	{/if}
 
 	{#if have_spisok}
-		<section class="mx-auto" style="--gap: {gap}px; --width: {width}" tab-index="0">
+		<section class="" style="--gap: {gap}px; --width: {width}" tab-index="0">
 			<ul class="pb-0"
 				use:slidy={{
 					index,
@@ -237,7 +237,7 @@
 				}}
 			>
 				{#each actual_spisok_pesen as item, i}
-					<li  class:active={i === index} class="">
+					<li  class:active={i === index} class="trackcard">
 						<div
 							class="transform-all relative mt-3 mb-2 flex h-48 cursor-pointer flex-col items-center justify-top rounded-xl border-2 border-slate-100 bg-gradient-to-r from-blue-400 to-pink-500 p-3 shadow-lg transition-all hover:scale-105"
 						>
@@ -330,7 +330,7 @@
 
 	}
 	.trackcard {
-		min-width: 20rem;
+		
 	}
 	.like {
 		color: red;
@@ -373,29 +373,12 @@
 		padding: 1rem;
 		z-index: 1;
 	}
-	ul li img {
-		width: 100%;
-		width: auto;
-		height: 100%;
-		display: flex;
-		object-fit: cover;
-		max-width: 100%;
-		will-change: transform;
-	}
-	nav,
-	label {
-		display: flex;
-		justify-content: start;
-		margin: 1rem 0;
-		flex-wrap: wrap;
-		align-items: center;
-	}
+
+
 	.active {
 		color: red;
 		opacity: 100%;
 		
 	}
-	input {
-		margin: 0;
-	}
+
 </style>
