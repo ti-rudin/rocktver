@@ -122,7 +122,7 @@ $: displaylikes = displaylikes;
 							tabindex="0"
 							class="pt-2 text-xl text-gray-800 focus:outline-none dark:text-gray-200"
 						>
-							{status.now_on_scene.band_name}
+							{status.event_name}
 						</h1>
 					</div>
 					<h1 tabindex="0" class="pt-2 text-xl text-gray-800 focus:outline-none dark:text-gray-200">
@@ -167,7 +167,7 @@ $: displaylikes = displaylikes;
 							<h1 tabindex="0" class="like-btn mx-auto text-4xl">
 								{now.now_event_likes}
 							</h1>
-							{#if now.now_track_likes !== 'null'}
+							{#if (now.now_track_likes != 0)}
 								<div class="mx-auto w-full" />
 								<h1
 									tabindex="0"
