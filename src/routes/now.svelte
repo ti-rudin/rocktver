@@ -1,5 +1,4 @@
 <script>
-
 	import { getEfir, getNow } from '../components/api.js';
 	import { isAuthenticated, user } from '$lib/stores/auth';
 	import KnobHeart from '../components/KnobHeart.svelte';
@@ -20,7 +19,7 @@
 		show_name,
 		have_spisok,
 		actual_spisok_pesen;
-	export let 	displaylikes = false;
+	export let displaylikes = false;
 
 	async function getData() {
 		//index = await getIdTrackNow();
@@ -28,18 +27,20 @@
 		efir = await getEfir();
 		index = now.now_track_id;
 		status = efir;
-				isshowgo = status.is_show_go;
-				have_spisok = status.now_on_scene.have_spisok;
-				concertid = +status.concert_id;
-				show_name = status.show_name;
-				band_on_scene = status.now_on_scene.band_rtid;
-				actual_spisok_pesen = status.now_on_scene.actual_spisok_pesen;
-				have_spisok = status.now_on_scene.have_spisok;
-				console.log(now);
-				console.log(status);
-				if (now.now_event_id !== "null") { displaylikes = true;}
-	}			
-$: displaylikes = displaylikes;
+		isshowgo = status.is_show_go;
+		have_spisok = status.now_on_scene.have_spisok;
+		concertid = +status.concert_id;
+		show_name = status.show_name;
+		band_on_scene = status.now_on_scene.band_rtid;
+		actual_spisok_pesen = status.now_on_scene.actual_spisok_pesen;
+		have_spisok = status.now_on_scene.have_spisok;
+		console.log(now);
+		console.log(status);
+		if (now.now_event_id !== 'null') {
+			displaylikes = true;
+		}
+	}
+	$: displaylikes = displaylikes;
 
 	const timerId = setInterval(function () {
 		getData();
@@ -49,18 +50,52 @@ $: displaylikes = displaylikes;
 		clearInterval(timerId);
 	});
 
-	
 	import { onDestroy, onMount } from 'svelte';
 
-
-
 	import { slidy } from '@slidy/core';
-
-	
 
 	import { blur, crossfade, draw, fade, fly, scale, slide } from 'svelte/transition';
 
 	import LogoComponent from '../components/LogoComponent.svelte';
+
+	function getit(response) {
+		if (response.session) {
+			var id = response.session.mid;
+		}
+		VK.Api.call(
+			'users.get',
+			{
+				uids: id,
+				fields: 'photo_max, first_name,last_name, sex, bdate, city, country, followers_count',
+				v: '5.131'
+			},
+			function (r) {
+				if (r.response) {
+					//alert(r.response.sex);
+					$isAuthenticated = true;
+					console.log(r.response);
+					let user_data = {
+						id: r.response[0]['id'],
+						bdate: r.response[0]['bdate'] ? r.response[0]['bdate'] : 'не указано',
+						name: r.response[0]['first_name'] + ' ' + r.response[0]['last_name'],
+						photo: r.response[0].photo_max,
+						city: r.response[0]['city'] ? r.response[0]['city'].title : 'не указано',
+						country: r.response[0]['country'] ? r.response[0]['country'].title : 'не указано',
+						followers_count: r.response[0].followers_count,
+						sex: r.response[0].sex ? r.response[0].sex : 'не указано'
+					};
+					user.set(user_data);
+					//LogRocket.identify(r.response[0]['id'], {
+					//	name: r.response[0]['first_name'] + ' ' + r.response[0]['last_name'],
+					//	vk_id: r.response[0]['id'],
+					//	city: r.response[0]['city'] ? r.response[0]['city'].title : "не указано",
+					//});
+
+					// This is an example script - don't forget to change it!
+				}
+			}
+		);
+	}
 </script>
 
 <LogoComponent />
@@ -133,26 +168,53 @@ $: displaylikes = displaylikes;
 		</div>
 	</div>
 	{#if displaylikes}
-		
-			<div class="mt-4 w-full">
-				<div
-					aria-label="card 1"
-					class="mx-auto max-w-2xl rounded bg-blue-400/40 p-3 pt-4 shadow focus:outline-none dark:bg-blue-500/25"
-				>
-					<div class=" items-center pb-2">
-						<div class="flex  items-start justify-between">
+		<div class="mt-4 w-full">
+			<div
+				aria-label="card 1"
+				class="mx-auto max-w-2xl rounded bg-blue-400/40 p-3 pt-4 shadow focus:outline-none dark:bg-blue-500/25"
+			>
+				<div class=" items-center pb-2">
+					<div class="flex  items-start justify-between">
+						<div class="mx-auto w-full" />
+						<h1
+							tabindex="0"
+							class="mx-auto pt-2 text-xl text-gray-800 focus:outline-none dark:text-gray-200"
+						>
+							ВСЕГО
+						</h1>
+						<div class="mx-auto  px-3">
+							<svg
+								xmlns="http://www.w3.org/2000/svg"
+								width="37"
+								height="37"
+								viewBox="-2 -3 28 28"
+								stroke="red"
+								fill="red"
+								stroke-width="1"
+							>
+								<path
+									d="M12 4.4119c-2.826-5.695-11.999-4.064-11.999 3.27 0 7.27 9.903 10.938 11.999 15.311 2.096-4.373 12-8.041 12-15.311 0-7.327-9.17-8.972-12-3.27z"
+								/>
+							</svg>
+						</div>
+
+						<h1 tabindex="0" class="like mx-auto text-4xl">
+							{now.now_event_likes}
+						</h1>
+						{#if now.now_track_likes != 0}
 							<div class="mx-auto w-full" />
 							<h1
 								tabindex="0"
-								class="mx-auto pt-2 text-xl text-gray-800 focus:outline-none dark:text-gray-200"
+								class="pt-2 text-xl text-gray-800 focus:outline-none dark:text-gray-200"
 							>
-								ВСЕГО
+								ТРЕК
 							</h1>
 							<div class="mx-auto  px-3">
 								<svg
 									xmlns="http://www.w3.org/2000/svg"
 									width="37"
 									height="37"
+									opacity="80%"
 									viewBox="-2 -3 28 28"
 									stroke="red"
 									fill="red"
@@ -163,46 +225,65 @@ $: displaylikes = displaylikes;
 									/>
 								</svg>
 							</div>
-
-							<h1 tabindex="0" class="like-btn mx-auto text-4xl">
-								{now.now_event_likes}
+							<h1 tabindex="0" class="like text-4xl">
+								{now.now_track_likes}
 							</h1>
-							{#if (now.now_track_likes != 0)}
-								<div class="mx-auto w-full" />
-								<h1
-									tabindex="0"
-									class="pt-2 text-xl text-gray-800 focus:outline-none dark:text-gray-200"
-								>
-									ТРЕК
-								</h1>
-								<div class="mx-auto  px-3">
-									<svg
-										xmlns="http://www.w3.org/2000/svg"
-										width="37"
-										height="37"
-										opacity="80%"
-										viewBox="-2 -3 28 28"
-										stroke="red"
-										fill="red"
-										stroke-width="1"
-									>
-										<path
-											d="M12 4.4119c-2.826-5.695-11.999-4.064-11.999 3.27 0 7.27 9.903 10.938 11.999 15.311 2.096-4.373 12-8.041 12-15.311 0-7.327-9.17-8.972-12-3.27z"
-										/>
-									</svg>
-								</div>
-								<h1 tabindex="0" class="like-btn text-4xl">
-									{now.now_track_likes}
-								</h1>
-								
-							{/if}
-							<div class="mx-auto w-full" />
-						</div>
+						{/if}
+						<div class="mx-auto w-full" />
 					</div>
 				</div>
 			</div>
-			<KnobHeart user = {$user} now = {now} efir = {efir} eventobj={{ status }} {index} />
-		
+		</div>
+
+		{#if user.id}
+			<KnobHeart user={$user} {now} {efir} eventobj={{ status }} {index} />
+		{:else}
+			<div class="mx-auto flex mt-4">
+				<button class=" animate-pulse like-btn m-2 mx-auto rounded-full bg-pink-400/50  p-4">
+					<svg
+						
+						xmlns="http://www.w3.org/2000/svg"
+						width="54"
+						height="54"
+						viewBox="-2 -3 28 28"
+						stroke="red"
+						stroke-width="1"
+						fill="red"
+					>
+						<path
+							d="M12 4.4119c-2.826-5.695-11.999-4.064-11.999 3.27 0 7.27 9.903 10.938 11.999 15.311 2.096-4.373 12-8.041 12-15.311 0-7.327-9.17-8.972-12-3.27z"
+						/>
+					</svg>
+				</button>
+				<div class="cursor-pointer  ml-4 p-2 pb-0 mx-auto flex w-full max-w-2xl flex-col items-start rounded-lg bg-yellow-400/50 px-3 text-black ring-yellow-400 transition-all hover:ring-2 dark:bg-yellow-800/25 dark:text-white"
+				id="login_button"
+						on:click={() => {
+							VK.Auth.login(getit);
+						}}>
+					<p class="mx-auto text-lg">Войдите, чтобы голосовать</p>
+					<div class = "flex mx-auto">
+						<svg
+							class="mx-auto mt-2 opacity-100"
+							width="48"
+							height="48"
+							viewBox="0 0 48 48"
+							fill="none"
+							xmlns="http://www.w3.org/2000/svg"
+						>
+							<path
+								d="M0 23.04C0 12.1788 0 6.74826 3.37413 3.37413C6.74826 0 12.1788 0 23.04 0H24.96C35.8212 0 41.2517 0 44.6259 3.37413C48 6.74826 48 12.1788 48 23.04V24.96C48 35.8212 48 41.2517 44.6259 44.6259C41.2517 48 35.8212 48 24.96 48H23.04C12.1788 48 6.74826 48 3.37413 44.6259C0 41.2517 0 35.8212 0 24.96V23.04Z"
+								fill="#0077FF"
+							/>
+							<path
+								d="M25.54 34.5801C14.6 34.5801 8.3601 27.0801 8.1001 14.6001H13.5801C13.7601 23.7601 17.8 27.6401 21 28.4401V14.6001H26.1602V22.5001C29.3202 22.1601 32.6398 18.5601 33.7598 14.6001H38.9199C38.0599 19.4801 34.4599 23.0801 31.8999 24.5601C34.4599 25.7601 38.5601 28.9001 40.1201 34.5801H34.4399C33.2199 30.7801 30.1802 27.8401 26.1602 27.4401V34.5801H25.54Z"
+								fill="white"
+							/>
+						</svg>
+						<p class="mx-auto p-5 text-lg">ВКОНТАКТЕ</p>
+					</div>
+				</div>
+			</div>
+		{/if}
 	{/if}
 
 	{#if have_spisok}
@@ -260,10 +341,16 @@ $: displaylikes = displaylikes;
 {/if}
 
 <style>
+	.like {
+		color: red;
+		display: flex;
+		justify-content: center;
+	}
 	.like-btn {
 		color: red;
 		display: flex;
 		justify-content: center;
+		height: 5.4rem;
 	}
 	section {
 		overflow: hidden;
