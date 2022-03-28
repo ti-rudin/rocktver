@@ -324,8 +324,8 @@
 							tabindex="0"
 							class="pt-2 text-xl text-gray-800 focus:outline-none dark:text-gray-200"
 						>
-							Виджет "Сейчас на сцене" сейчас не работает. Попробуйте обновить страницу или зайдите
-							попозже)
+						На старт, внимание, марш!
+						<Flower/>
 						</h1>
 					</div>
 				</div>
@@ -333,7 +333,7 @@
 		</div>
 	</div>
 {/if}
-<Flower/>
+
 <style>
 	.prem{
 		color: rgb(235, 222, 46);
