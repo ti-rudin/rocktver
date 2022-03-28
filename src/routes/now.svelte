@@ -2,6 +2,7 @@
 	import { getEfir, getItems, getNow } from '../components/api.js';
 	import { isAuthenticated, user } from '$lib/stores/auth';
 	import KnobHeart from '../components/KnobHeart.svelte';
+	import Flower from '../components/Flower.svelte';
 	let index = 0,
 		imagable = true,
 		width = imagable ? 'auto' : '50%',
@@ -332,7 +333,7 @@
 		</div>
 	</div>
 {/if}
-
+<Flower/>
 <style>
 	.prem{
 		color: rgb(235, 222, 46);

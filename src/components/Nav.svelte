@@ -46,6 +46,9 @@
 		<li>
 			<NavLink href="/party">Участники</NavLink>
 		</li>
+		<li>
+			<NavLink href="/now">Эфир</NavLink>
+		</li>
 	</ul>
 	<div class="flex items-center space-x-4">
 	
