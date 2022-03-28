@@ -148,19 +148,16 @@
 	<div class="mt-4 w-full">
 		<div
 			aria-label="card 1"
-			class="mx-auto max-w-2xl rounded bg-blue-400/40 p-6 shadow focus:outline-none dark:bg-blue-500"
+			class="mx-auto max-w-2xl rounded bg-blue-400/70 p-6 shadow focus:outline-none dark:bg-blue-500"
 		>
 			<div class="flex items-center pb-2">
 				<div class="flex w-full items-start justify-between">
 					<div class="mx-auto  pl-3">
-						<h1
-							tabindex="0"
-							class="pt-2 text-xl text-gray-800 focus:outline-none dark:text-gray-200"
-						>
+						<h1 tabindex="0" class="pt-2 text-2xl text-gray-800 focus:outline-none dark:text-white">
 							{status.event_name}
 						</h1>
 					</div>
-					<h1 tabindex="0" class="pt-2 text-xl text-gray-800 focus:outline-none dark:text-gray-200">
+					<h1 tabindex="0" class="pt-2 text-xl text-gray-600 focus:outline-none dark:text-gray-300">
 						{status.now_on_scene.band_town}
 					</h1>
 				</div>
@@ -168,80 +165,12 @@
 		</div>
 	</div>
 	{#if displaylikes}
-		<div class="mt-4 w-full">
-			<div
-				aria-label="card 1"
-				class="mx-auto max-w-2xl rounded bg-blue-400/40 p-3 pt-4 shadow focus:outline-none dark:bg-blue-500/25"
-			>
-				<div class=" items-center pb-2">
-					<div class="flex  items-start justify-between">
-						<div class="mx-auto w-full" />
-						<h1
-							tabindex="0"
-							class="mx-auto pt-2 text-xl text-gray-800 focus:outline-none dark:text-gray-200"
-						>
-							ВСЕГО
-						</h1>
-						<div class="mx-auto  px-3">
-							<svg
-								xmlns="http://www.w3.org/2000/svg"
-								width="37"
-								height="37"
-								viewBox="-2 -3 28 28"
-								stroke="red"
-								fill="red"
-								stroke-width="1"
-							>
-								<path
-									d="M12 4.4119c-2.826-5.695-11.999-4.064-11.999 3.27 0 7.27 9.903 10.938 11.999 15.311 2.096-4.373 12-8.041 12-15.311 0-7.327-9.17-8.972-12-3.27z"
-								/>
-							</svg>
-						</div>
-
-						<h1 tabindex="0" class="like mx-auto text-4xl">
-							{now.now_event_likes}
-						</h1>
-						{#if now.now_track_likes != 0}
-							<div class="mx-auto w-full" />
-							<h1
-								tabindex="0"
-								class="pt-2 text-xl text-gray-800 focus:outline-none dark:text-gray-200"
-							>
-								ТРЕК
-							</h1>
-							<div class="mx-auto  px-3">
-								<svg
-									xmlns="http://www.w3.org/2000/svg"
-									width="37"
-									height="37"
-									opacity="80%"
-									viewBox="-2 -3 28 28"
-									stroke="red"
-									fill="red"
-									stroke-width="1"
-								>
-									<path
-										d="M12 4.4119c-2.826-5.695-11.999-4.064-11.999 3.27 0 7.27 9.903 10.938 11.999 15.311 2.096-4.373 12-8.041 12-15.311 0-7.327-9.17-8.972-12-3.27z"
-									/>
-								</svg>
-							</div>
-							<h1 tabindex="0" class="like text-4xl">
-								{now.now_track_likes}
-							</h1>
-						{/if}
-						<div class="mx-auto w-full" />
-					</div>
-				</div>
-			</div>
-		</div>
-
-		{#if user.id}
+		{#if $isAuthenticated}
 			<KnobHeart user={$user} {now} {efir} eventobj={{ status }} {index} />
 		{:else}
 			<div class="mx-auto flex mt-4">
 				<button class=" animate-pulse like-btn m-2 mx-auto rounded-full bg-pink-400/50  p-4">
 					<svg
-						
 						xmlns="http://www.w3.org/2000/svg"
 						width="54"
 						height="54"
@@ -255,13 +184,18 @@
 						/>
 					</svg>
 				</button>
-				<div class="cursor-pointer  ml-4 p-2 pb-0 mx-auto flex w-full max-w-2xl flex-col items-start rounded-lg bg-yellow-400/50 px-3 text-black ring-yellow-400 transition-all hover:ring-2 dark:bg-yellow-800/25 dark:text-white"
-				id="login_button"
-						on:click={() => {
-							VK.Auth.login(getit);
-						}}>
+				<h1 tabindex="0" class="like mx-auto pl-2 pt-7 text-4xl">
+					{now.now_event_likes}
+				</h1>
+				<div
+					class="cursor-pointer  ml-4 p-2 pb-0 mx-auto flex w-full max-w-2xl flex-col items-start rounded-lg bg-yellow-400/50 px-3 text-black ring-yellow-400 transition-all hover:ring-2 dark:bg-yellow-800/25 dark:text-white"
+					id="login_button"
+					on:click={() => {
+						VK.Auth.login(getit);
+					}}
+				>
 					<p class="mx-auto text-lg">Войдите, чтобы голосовать</p>
-					<div class = "flex mx-auto">
+					<div class="flex mx-auto">
 						<svg
 							class="mx-auto mt-2 opacity-100"
 							width="48"
@@ -287,8 +221,8 @@
 	{/if}
 
 	{#if have_spisok}
-		<section style="--gap: {gap}px; --width: {width}" tab-index="0">
-			<ul
+		<section class="mx-auto" style="--gap: {gap}px; --width: {width}" tab-index="0">
+			<ul class="pb-0"
 				use:slidy={{
 					index,
 					length,
@@ -303,19 +237,65 @@
 				}}
 			>
 				{#each actual_spisok_pesen as item, i}
-					<li id={i} class:active={i === index}>
+					<li  class:active={i === index} class="">
 						<div
-							class="transform-all relative my-4 flex h-24 w-72 cursor-pointer items-center justify-center rounded-xl border-2 border-slate-100 bg-gradient-to-r from-yellow-400 to-pink-500 p-3 shadow-lg transition-all hover:scale-105"
+							class="transform-all relative mt-3 mb-2 flex h-48 cursor-pointer flex-col items-center justify-top rounded-xl border-2 border-slate-100 bg-gradient-to-r from-blue-400 to-pink-500 p-3 shadow-lg transition-all hover:scale-105"
 						>
-							<div class="text-center text-slate-200">
+							<div class="text-center text-slate-200 text-xl">
 								<div>{item.name}</div>
-								<div class="font-mono text-xs">{item.track_name}</div>
 							</div>
+							<div class="flex w-full">
+								<div class="mx-auto"></div>
+								<div class="flex flex-col  text-slate-200">
+									<div class="mx-auto font-mono text-xs">Музыка:</div>
+									<div class="mx-auto ">{item.music_rights}</div>
+								</div>
+								<div class="mx-auto text-slate-200">|</div>
+								<div class="flex flex-col  text-slate-200">
+									<div class="mx-auto font-mono text-xs">Слова:</div>
+									<div class=" mx-auto">{item.words_rights}</div>
+								</div>
+								<div class="mx-auto"></div>
+							</div>
+							
 						</div>
 					</li>
 				{/each}
+				
 			</ul>
+			<div class="flex mx-auto">
+				<div class="mx-auto"></div>
+				<svg
+					xmlns="http://www.w3.org/2000/svg"
+					width="31"
+					height="31"
+					opacity="80%"
+					viewBox="-2 -3 28 28"
+					stroke="red"
+					fill="red"
+					stroke-width="1"
+				>
+					<path
+						d="M12 4.4119c-2.826-5.695-11.999-4.064-11.999 3.27 0 7.27 9.903 10.938 11.999 15.311 2.096-4.373 12-8.041 12-15.311 0-7.327-9.17-8.972-12-3.27z"
+					/>
+				</svg>
+				<h1 class="pl-4 like text-2xl">
+					{now.now_track_likes}
+				</h1>
+				<div class="mx-auto"></div>
+			</div>
+			
 		</section>
+		<div class="m-4 mx-auto ">
+			<div
+				aria-label="card 1"
+				class="mx-auto flex rounded bg-blue-100/30 p-6 shadow focus:outline-none dark:bg-blue-500"
+			>
+				<pre class="textcard">
+					{status.now_on_scene.actual_spisok_pesen[index].text}
+				</pre>
+			</div>
+		</div>
 	{/if}
 {:else}
 	<div class="w-full mt-4">
@@ -341,6 +321,17 @@
 {/if}
 
 <style>
+	.textcard{
+		max-width: 30rem;
+		height: 100%;
+		justify-content: left;
+		display: flex;
+		overflow: hidden;
+
+	}
+	.trackcard {
+		min-width: 20rem;
+	}
 	.like {
 		color: red;
 		display: flex;
@@ -374,6 +365,7 @@
 		max-width: 100%;
 		height: 100%;
 		position: relative;
+		opacity: 20%;
 	}
 	ul li:before {
 		content: attr(id);
@@ -400,6 +392,8 @@
 	}
 	.active {
 		color: red;
+		opacity: 100%;
+		
 	}
 	input {
 		margin: 0;

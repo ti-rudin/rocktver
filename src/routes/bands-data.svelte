@@ -50,6 +50,7 @@
             text
             words_rights
             music_rights
+			year_born
             is_premiere
             id
           }
