@@ -322,7 +322,7 @@
 
 <style>
 	.textcard{
-		max-width: 30rem;
+		max-width: 20rem;
 		height: 100%;
 		justify-content: left;
 		display: flex;
