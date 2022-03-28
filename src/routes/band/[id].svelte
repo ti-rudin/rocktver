@@ -50,7 +50,7 @@
 	import { onDestroy, onMount } from 'svelte';
 	import { isAuthenticated, user } from '$lib/stores/auth';
 	export let status, isshowgo, band_on_scene;
-	export let concert, timeline, concertid, show_name, have_spisok, actual_spisok_pesen;
+	export let concert, timeline, concertid, show_name, have_spisok, actual_spisok_pesen, ploschadka;
 
 
 
@@ -68,6 +68,7 @@
 				band_on_scene = status.now_on_scene.band_rtid;
 				actual_spisok_pesen = status.now_on_scene.actual_spisok_pesen;
 				have_spisok = status.now_on_scene.have_spisok;
+				ploschadka = status.ploschadka
 				console.log(now);
 				console.log(status);
 			
@@ -102,6 +103,8 @@
 	export let isonscene, launches, launch, id, spisok;
 
 	launch = launches.filter((launch) => launch.attributes.band_name == id)[0];
+
+	$:efir =efir;
 
 	if (launch.attributes.spisok) {
 		spisok = launch.attributes.spisok;
@@ -187,22 +190,10 @@ import { isAdmin } from '$lib/siteConfig';
 		
 	
 </script>
-{$isAuthenticated}
+
 
 <LogoComponent />
-<div class="mx-auto text-gray-900 dark:text-white">
-	<h1>Команда</h1>
 
-	{#if launch}
-		<h2>{launch.attributes.band_name}</h2>
-		<h2>{launch.id}</h2>
-
-		{isshowgo}
-	{:else}
-		<h1>Что-то пошло не так. Информация о группе не загрузилась.</h1>
-	{/if}
-	<ul />
-</div>
 
 <div class="w-full ">
 	<div
@@ -257,7 +248,7 @@ import { isAdmin } from '$lib/siteConfig';
 					class="mx-auto w-fit rounded-full bg-yellow-400 p-2 px-4  px-3 text-xl text-black ring-yellow-400 transition-all
 				hover:ring-2 dark:bg-yellow-800 dark:text-white"
 				>
-					площадка
+				{ploschadka}
 				</a>
 				<div class="my-3 py-2 px-4  text-center text-lg leading-3 text-black dark:text-white">
 					стоимость билета
