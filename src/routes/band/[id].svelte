@@ -7,24 +7,56 @@
 			},
 			body: JSON.stringify({
 				query: `{
-          bands (pagination:{pageSize:100}) {
-            data {
-              id
-              
-              attributes {
-                band_name
-                spisok {
-                  ... on ComponentPesniTrack {
-                    
-                    id
-                    name
-                    text
-                  }
-                }
-              }
-            }
-          }
-        }`
+			  bands(pagination: { pageSize: 100 }) {
+			    data {
+			      id
+			      attributes {
+			        band_name
+			        town
+			        small_text
+			        big_text
+			        group_logo{
+			          data{
+			            attributes{
+			              url
+			            }
+			          }
+			        }
+			        group_link_vk
+			        group_link_rocktver
+			        mngr_id
+			        time_on_scene
+			        artists {
+			          data {
+			            attributes {
+			              name
+			              avatar {
+			                data {
+			                  attributes {
+			                    url
+			                  }
+			                }
+			              }
+			              role
+			              vk_link
+			            }
+			          }
+			        }
+			        spisok {
+			          ... on ComponentPesniTrack {
+			            name
+			            text
+                  words_rights
+                  music_rights
+				  year_born
+                  is_premiere
+                  id
+			          }
+			        }
+			      }
+			    }
+			  }
+			}`
 			})
 		});
 		if (res.ok) {
@@ -73,27 +105,6 @@
 				console.log(status);
 			
 	}
-
-//
-	//async function load_open_status() {
-	//	let myHeaders = new Headers();
-	//	myHeaders.append('Content-Type', 'application/json');
-	//	let requestOptions = {
-	//		method: 'GET',
-	//		headers: myHeaders
-	//	};
-//
-	//	fetch('https://api.rocktver.ru/open-status/', requestOptions)
-	//		.then((response) => response.json())
-	//		.then((result) => {
-	//			console.log(result);
-	//			status = result;
-	//			isshowgo = status.is_show_go;
-	//			band_on_scene = status.now_on_scene.band_rtid;
-	//			return result;
-	//		})
-	//		.catch((error) => console.log('error', error));
-	//}
 	onMount(() => {
 		load_open_status();
 	});
@@ -117,40 +128,9 @@
 		isonscene = false;
 	}
 
-	//////////////////
-
-	//async function load_efir() {
-	//	console.log('ssdd');
-	//	let myHeaders = new Headers();
-	//	myHeaders.append('Content-Type', 'application/json');
-	//	let requestOptions = {
-	//		method: 'GET',
-	//		headers: myHeaders
-	//	};
-//
-	//	fetch('https://api.rocktver.ru/open-status/', requestOptions)
-	//		.then((response) => response.json())
-	//		.then((result) => {
-	//			console.log(result);
-	//			status = result;
-	//			isshowgo = status.is_show_go;
-	//			have_spisok = status.now_on_scene.have_spisok;
-	//			concertid = status.concert_id;
-	//			show_name = status.show_name;
-	//			band_on_scene = status.now_on_scene.band_rtid;
-	//			actual_spisok_pesen = status.now_on_scene.actual_spisok_pesen;
-	//			
-	//		})
-	//		.catch((error) => console.log('error', error));
-	//}
-//
-	//onMount(() => {
-	//	load_efir();
-	//});
-//
 	import { slidy } from '@slidy/core';
-	import { getIdTrackNow } from '../../components/api.js';
-import { isAdmin } from '$lib/siteConfig';
+
+
 	let index = 0,
 		imagable = true,
 		width = imagable ? 'auto' : '50%',
@@ -187,15 +167,15 @@ import { isAdmin } from '$lib/siteConfig';
 			
 			change_track(userid, index)
 		}
+		$: console.log("launch"+launch.attributes.spisok[index].text);
 		
-	
 </script>
 
 
 <LogoComponent />
 
 
-<div class="w-full ">
+<div class="w-full mt-4 ">
 	<div
 		aria-label="card 1"
 		class="mx-auto max-w-2xl rounded bg-red-400/40 p-6 shadow focus:outline-none dark:bg-red-500"
@@ -275,21 +255,78 @@ import { isAdmin } from '$lib/siteConfig';
 		}}
 	>
 		{#each spisok as item, i}
-			<li id={i} class:active={i === index}>
-				<div
-					class="transform-all relative my-4 flex h-24 w-72 cursor-pointer items-center justify-center rounded-xl border-2 border-slate-100 bg-gradient-to-r from-yellow-400 to-pink-500 p-3 shadow-lg transition-all hover:scale-105"
-				>
-					<div class="text-center text-slate-200">
-						<div>{item.name}</div>
-						<div class="font-mono text-xs">{item.id}</div>
-					</div>
+		<li  class:active={i === index} class="">
+			<div
+				class="transform-all relative mt-3 mb-2 flex trackcard cursor-pointer flex-col items-center justify-top rounded-xl border-2 border-slate-100 bg-gradient-to-r from-blue-400 to-pink-500 p-3 shadow-lg transition-all hover:scale-105"
+			>
+				<div class="text-center text-slate-200 text-2xl">
+					<div>{item.name}</div>
+				
 				</div>
-			</li>
+				<div class="flex flex-col text-left w-full">
+					<div class="mx-auto"></div>
+					<div class="flex flex-col mt-1 text-slate-200">
+						<div class="font-mono text-xs">Музыка:</div>
+						<div class="">{item.music_rights}</div>
+					</div>
+				
+					<div class="flex flex-col mt-1 text-slate-200">
+						<div class="font-mono text-xs">Слова:</div>
+						<div class="">{item.words_rights}</div>
+					</div>
+					<div class="flex flex-col  mt-1 text-slate-200">
+						<div class="font-mono text-xs">Год создания:</div>
+						<div class="">{item.year_born}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
+					</div>
+					{#if item.is_premiere}
+					<div class="text-center prem text-xl">ПРЕМЬЕРА</div>
+					{/if}
+					<div class="mx-auto"></div>
+					
+				</div>
+			
+			</div>
+		</li>
 		{/each}
 	</ul>
 </section>
-{index}
+<div class="mt-2 mx-auto ">
+	<div
+		aria-label="card 1"
+		class="mx-auto flex rounded bg-blue-100/30 p-6 shadow focus:outline-none dark:bg-blue-500"
+	>
+		<pre class="textcard">
+			{launch.attributes.spisok[index].text}
+		</pre>
+	</div>
+</div>
 <style>
+	.prem{
+		color: rgb(235, 222, 46);
+	}
+	.textcard{
+		max-width: 20rem;
+		height: 100%;
+		justify-content: left;
+		display: flex;
+		overflow: hidden;
+
+	}
+	.trackcard {
+		height: 13.5rem;
+		
+	}
+	.like {
+		color: red;
+		display: flex;
+		justify-content: center;
+	}
+	.like-btn {
+		color: red;
+		display: flex;
+		justify-content: center;
+		height: 5.4rem;
+	}
 	section {
 		overflow: hidden;
 		height: auto;
@@ -312,6 +349,7 @@ import { isAdmin } from '$lib/siteConfig';
 		max-width: 100%;
 		height: 100%;
 		position: relative;
+		opacity: 20%;
 	}
 	ul li:before {
 		content: attr(id);
@@ -319,27 +357,11 @@ import { isAdmin } from '$lib/siteConfig';
 		padding: 1rem;
 		z-index: 1;
 	}
-	ul li img {
-		width: 100%;
-		width: auto;
-		height: 100%;
-		display: flex;
-		object-fit: cover;
-		max-width: 100%;
-		will-change: transform;
-	}
-	nav,
-	label {
-		display: flex;
-		justify-content: start;
-		margin: 1rem 0;
-		flex-wrap: wrap;
-		align-items: center;
-	}
+
+
 	.active {
 		color: red;
-	}
-	input {
-		margin: 0;
+		opacity: 100%;
+		
 	}
 </style>
