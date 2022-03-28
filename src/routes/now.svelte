@@ -268,7 +268,9 @@
 								<div class="mx-auto"></div>
 								
 							</div>
-						
+							{#if item.is_premiere}
+							<div class="prem ml-10 text-lg rounded-xl border-1 px-2">ПРЕМЬЕРА</div>
+							{/if}
 						</div>
 					</li>
 					
@@ -335,11 +337,18 @@
 {/if}
 
 <style>
-	.prem{
+.prem{
 		color: rgb(235, 222, 46);
+		position: absolute;
+		right:0.5rem;
+		bottom:0.5rem;
+		background-color: rgb(255, 127, 191);
+		
+		
+		
 	}
 	.textcard{
-		max-width: 20rem;
+		width: 80vw;
 		height: 100%;
 		justify-content: left;
 		display: flex;
@@ -380,8 +389,8 @@
 	ul li {
 		flex: 1 0 var(--width);
 		width: var(--width);
-		max-width: 100%;
-		height: 100%;
+		max-width: 85%;
+		height: auto;
 		position: relative;
 		opacity: 20%;
 	}

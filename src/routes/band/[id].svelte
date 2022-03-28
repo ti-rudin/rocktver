@@ -256,15 +256,18 @@
 	>
 		{#each spisok as item, i}
 		<li  class:active={i === index} class="">
+		
 			<div
 				class="transform-all relative mt-3 mb-2 flex trackcard cursor-pointer flex-col items-center justify-top rounded-xl border-2 border-slate-100 bg-gradient-to-r from-blue-400 to-pink-500 p-3 shadow-lg transition-all hover:scale-105"
 			>
+			
 				<div class="text-center text-slate-200 text-2xl">
 					<div>{item.name}</div>
 				
 				</div>
 				<div class="flex flex-col text-left w-full">
 					<div class="mx-auto"></div>
+					
 					<div class="flex flex-col mt-1 text-slate-200">
 						<div class="font-mono text-xs">Музыка:</div>
 						<div class="">{item.music_rights}</div>
@@ -278,13 +281,13 @@
 						<div class="font-mono text-xs">Год создания:</div>
 						<div class="">{item.year_born}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
 					</div>
-					{#if item.is_premiere}
-					<div class="text-center prem text-xl">ПРЕМЬЕРА</div>
-					{/if}
-					<div class="mx-auto"></div>
 					
-				</div>
+					<div class="mx-auto"></div>
 			
+				</div>
+				{#if item.is_premiere}
+				<div class="prem ml-10 text-lg rounded-xl border-1 px-2">ПРЕМЬЕРА</div>
+				{/if}
 			</div>
 		</li>
 		{/each}
@@ -303,9 +306,16 @@
 <style>
 	.prem{
 		color: rgb(235, 222, 46);
+		position: absolute;
+		right:0.5rem;
+		bottom:0.5rem;
+		background-color: rgb(255, 127, 191);
+		
+		
+		
 	}
 	.textcard{
-		max-width: 20rem;
+		width: 80vw;
 		height: 100%;
 		justify-content: left;
 		display: flex;
@@ -346,8 +356,8 @@
 	ul li {
 		flex: 1 0 var(--width);
 		width: var(--width);
-		max-width: 100%;
-		height: 100%;
+		max-width: 85%;
+		height: auto;
 		position: relative;
 		opacity: 20%;
 	}
