@@ -1,5 +1,5 @@
 <script>
-	import { getEfir, getNow } from '../components/api.js';
+	import { getEfir, getItems, getNow } from '../components/api.js';
 	import { isAuthenticated, user } from '$lib/stores/auth';
 	import KnobHeart from '../components/KnobHeart.svelte';
 	let index = 0,
@@ -237,29 +237,42 @@
 				}}
 			>
 				{#each actual_spisok_pesen as item, i}
-					<li  class:active={i === index} class="trackcard">
+			
+					<li  class:active={i === index} class="">
 						<div
-							class="transform-all relative mt-3 mb-2 flex h-48 cursor-pointer flex-col items-center justify-top rounded-xl border-2 border-slate-100 bg-gradient-to-r from-blue-400 to-pink-500 p-3 shadow-lg transition-all hover:scale-105"
+							class="transform-all relative mt-3 mb-2 flex trackcard cursor-pointer flex-col items-center justify-top rounded-xl border-2 border-slate-100 bg-gradient-to-r from-blue-400 to-pink-500 p-3 shadow-lg transition-all hover:scale-105"
 						>
-							<div class="text-center text-slate-200 text-xl">
+							<div class="text-center text-slate-200 text-2xl">
 								<div>{item.name}</div>
-							</div>
-							<div class="flex w-full">
-								<div class="mx-auto"></div>
-								<div class="flex flex-col  text-slate-200">
-									<div class="mx-auto font-mono text-xs">Музыка:</div>
-									<div class="mx-auto ">{item.music_rights}</div>
-								</div>
-								<div class="mx-auto text-slate-200">|</div>
-								<div class="flex flex-col  text-slate-200">
-									<div class="mx-auto font-mono text-xs">Слова:</div>
-									<div class=" mx-auto">{item.words_rights}</div>
-								</div>
-								<div class="mx-auto"></div>
-							</div>
 							
+							</div>
+							<div class="flex flex-col text-left w-full">
+								<div class="mx-auto"></div>
+								<div class="flex flex-col mt-1 text-slate-200">
+									<div class="font-mono text-xs">Музыка:</div>
+									<div class="">{item.music_rights}</div>
+								</div>
+							
+								<div class="flex flex-col mt-1 text-slate-200">
+									<div class="font-mono text-xs">Слова:</div>
+									<div class="">{item.words_rights}</div>
+								</div>
+								<div class="flex flex-col  mt-1 text-slate-200">
+									<div class="font-mono text-xs">Год создания:</div>
+									<div class="">{item.year_born}</div>
+								</div>
+								{#if item.is_premiere}
+								<div class="text-center prem text-xl">ПРЕМЬЕРА</div>
+								{/if}
+								<div class="mx-auto"></div>
+								
+							</div>
+						
 						</div>
 					</li>
+					
+							
+							
 				{/each}
 				
 			</ul>
@@ -321,6 +334,9 @@
 {/if}
 
 <style>
+	.prem{
+		color: rgb(235, 222, 46);
+	}
 	.textcard{
 		max-width: 20rem;
 		height: 100%;
@@ -330,6 +346,7 @@
 
 	}
 	.trackcard {
+		height: 13.5rem;
 		
 	}
 	.like {
