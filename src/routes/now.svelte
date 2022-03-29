@@ -162,7 +162,12 @@
 						{status.now_on_scene.band_town}
 					</h1>
 				</div>
+				
 			</div>
+			{#if status.now_on_scene.band_rtid}
+				<img class="h-28 w-28 w-full rounded shadow" src={status.now_on_scene.bandlogo} alt={status.event_name} />
+				
+				{/if}
 		</div>
 	</div>
 	{#if displaylikes}
@@ -170,24 +175,7 @@
 			<KnobHeart user={$user} {now} {efir} eventobj={{ status }} {index} />
 		{:else}
 			<div class="mx-auto flex mt-4">
-				<button class=" animate-pulse like-btn m-2 mx-auto rounded-full bg-pink-400/50  p-4">
-					<svg
-						xmlns="http://www.w3.org/2000/svg"
-						width="54"
-						height="54"
-						viewBox="-2 -3 28 28"
-						stroke="red"
-						stroke-width="1"
-						fill="red"
-					>
-						<path
-							d="M12 4.4119c-2.826-5.695-11.999-4.064-11.999 3.27 0 7.27 9.903 10.938 11.999 15.311 2.096-4.373 12-8.041 12-15.311 0-7.327-9.17-8.972-12-3.27z"
-						/>
-					</svg>
-				</button>
-				<h1 tabindex="0" class="like mx-auto pl-2 pt-7 text-4xl">
-					{now.now_event_likes}
-				</h1>
+				
 				<div
 					class="cursor-pointer  ml-4 p-2 pb-0 mx-auto flex w-full max-w-2xl flex-col items-start rounded-lg bg-yellow-400/50 px-3 text-black ring-yellow-400 transition-all hover:ring-2 dark:bg-yellow-800/25 dark:text-white"
 					id="login_button"
@@ -215,15 +203,37 @@
 							/>
 						</svg>
 						<p class="mx-auto p-5 text-lg">ВКОНТАКТЕ</p>
+						<button class=" animate-pulse like-btn-nonauth m-2 mx-auto rounded-full bg-pink-400/50  p-3">
+							<svg
+								xmlns="http://www.w3.org/2000/svg"
+								width="25"
+								height="25"
+								viewBox="-2 -3 28 28"
+								stroke="red"
+								stroke-width="1"
+								fill="red"
+								
+							>
+								<path
+									d="M12 4.4119c-2.826-5.695-11.999-4.064-11.999 3.27 0 7.27 9.903 10.938 11.999 15.311 2.096-4.373 12-8.041 12-15.311 0-7.327-9.17-8.972-12-3.27z"
+								/>
+							</svg>
+						</button>
+						<h1 tabindex="0" class="like mx-auto pl-2 pt-5 text-xl">
+							{now.now_event_likes}
+						</h1>
 					</div>
+					
 				</div>
+
 			</div>
 		{/if}
 	{/if}
 
 	{#if have_spisok}
 		<section class="" style="--gap: {gap}px; --width: {width}" tab-index="0">
-			<ul class="pb-0"
+			<ul
+				class="pb-0"
 				use:slidy={{
 					index,
 					length,
@@ -238,78 +248,73 @@
 				}}
 			>
 				{#each actual_spisok_pesen as item, i}
-			
-					<li  class:active={i === index} class="">
+					<li class:active={i === index} class="">
 						<div
-							class="transform-all relative mt-3 mb-2 flex trackcard cursor-pointer flex-col items-center justify-top rounded-xl border-2 border-slate-100 bg-gradient-to-r from-blue-400 to-pink-500 p-3 shadow-lg transition-all hover:scale-105"
+							class="transform-all trackcard justify-top relative mt-3 mb-2 flex cursor-pointer flex-col items-center rounded-xl border-2 border-slate-100 bg-gradient-to-r from-blue-400 to-pink-500 p-3 shadow-lg transition-all hover:scale-105"
 						>
-							<div class="text-center text-slate-200 text-2xl">
-								<div>{item.name}</div>
-							
+							<div class="text-center text-2xl text-slate-200">
+								<div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{item.name}</div>
 							</div>
-							<div class="flex flex-col text-left w-full">
-								<div class="mx-auto"></div>
-								<div class="flex flex-col mt-1 text-slate-200">
+							<div class="flex w-full flex-col text-left">
+								<div class="mx-auto" />
+								<div class="mt-1 flex flex-col text-slate-200">
 									<div class="font-mono text-xs">Музыка:</div>
 									<div class="">{item.music_rights}</div>
 								</div>
-							
-								<div class="flex flex-col mt-1 text-slate-200">
+
+								<div class="mt-1 flex flex-col text-slate-200">
 									<div class="font-mono text-xs">Слова:</div>
 									<div class="">{item.words_rights}</div>
 								</div>
-								<div class="flex flex-col  mt-1 text-slate-200">
+								<div class="mt-1 flex  flex-col text-slate-200">
 									<div class="font-mono text-xs">Год создания:</div>
-									<div class="">{item.year_born}</div>
+									<div class="">
+										{item.year_born}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+									</div>
 								</div>
-								{#if item.is_premiere}
-								<div class="text-center prem text-xl">ПРЕМЬЕРА</div>
-								{/if}
-								<div class="mx-auto"></div>
-								
+
+								<div class="mx-auto" />
 							</div>
+							{#if now.now_track_likes > 0}
+								<div class="likestrackblock mx-auto flex">
+									<div class="mx-auto" />
+									<svg
+										xmlns="http://www.w3.org/2000/svg"
+										width="25"
+										height="25"
+										opacity="80%"
+										viewBox="-2 -3 28 28"
+										stroke="red"
+										fill="#ff7fbf"
+										stroke-width="1"
+									>
+										<path
+											d="M12 4.4119c-2.826-5.695-11.999-4.064-11.999 3.27 0 7.27 9.903 10.938 11.999 15.311 2.096-4.373 12-8.041 12-15.311 0-7.327-9.17-8.972-12-3.27z"
+										/>
+									</svg>
+									<h1 class="like pl-1 text-lg">
+										{now.now_track_likes}
+									</h1>
+									<div class="mx-auto" />
+								</div>
+							{/if}
 							{#if item.is_premiere}
-							<div class="prem ml-10 text-lg rounded-xl border-1 px-2">ПРЕМЬЕРА</div>
+								<div class="prem rounded-lg px-2 text-lg">ПРЕМЬЕРА</div>
 							{/if}
 						</div>
 					</li>
-					
-							
-							
 				{/each}
-				
 			</ul>
-			<div class="flex mx-auto">
-				<div class="mx-auto"></div>
-				<svg
-					xmlns="http://www.w3.org/2000/svg"
-					width="31"
-					height="31"
-					opacity="80%"
-					viewBox="-2 -3 28 28"
-					stroke="red"
-					fill="red"
-					stroke-width="1"
-				>
-					<path
-						d="M12 4.4119c-2.826-5.695-11.999-4.064-11.999 3.27 0 7.27 9.903 10.938 11.999 15.311 2.096-4.373 12-8.041 12-15.311 0-7.327-9.17-8.972-12-3.27z"
-					/>
-				</svg>
-				<h1 class="pl-4 like text-2xl">
-					{now.now_track_likes}
-				</h1>
-				<div class="mx-auto"></div>
-			</div>
-			
 		</section>
-		<div class="m-4 mx-auto ">
+		<div class="mx-auto ">
 			<div
 				aria-label="card 1"
-				class="mx-auto flex rounded bg-blue-100/30 p-6 shadow focus:outline-none dark:bg-blue-500"
-			>
+				class="mx-auto flex items-center rounded bg-blue-100/30 p-6 shadow focus:outline-none dark:bg-blue-500"
+			><div class="mx-auto "></div>
 				<pre class="textcard">
 					{status.now_on_scene.actual_spisok_pesen[index].text}
 				</pre>
+				<div class="mx-auto "></div>
 			</div>
 		</div>
 	{/if}
@@ -326,8 +331,8 @@
 							tabindex="0"
 							class="pt-2 text-xl text-gray-800 focus:outline-none dark:text-gray-200"
 						>
-						На старт, внимание, марш!
-						<Flower/>
+							На старт, внимание, марш!
+							<Flower />
 						</h1>
 					</div>
 				</div>
@@ -337,30 +342,30 @@
 {/if}
 
 <style>
-.prem{
+	.likestrackblock {
+		left: 0.5rem;
+		top: 0.3rem;
+		position: absolute;
+	}
+	.prem {
 		color: rgb(235, 222, 46);
 		position: absolute;
-		right:0.5rem;
-		bottom:0.5rem;
-		background-color: rgb(255, 127, 191);
-		
-		
-		
+		right: 0.5rem;
+		bottom: 0.5rem;
+		background-color: #ff7fbf;
 	}
-	.textcard{
+	.textcard {
 		width: 80vw;
 		height: 100%;
 		justify-content: left;
 		display: flex;
 		overflow: hidden;
-
 	}
 	.trackcard {
 		height: 13.5rem;
-		
 	}
 	.like {
-		color: red;
+		color: #ca327e;
 		display: flex;
 		justify-content: center;
 	}
@@ -368,7 +373,13 @@
 		color: red;
 		display: flex;
 		justify-content: center;
-		height: 5.4rem;
+		height: 3.1rem;
+	}
+	.like-btn-nonauth {
+		color: red;
+		display: flex;
+		justify-content: center;
+		height: 3.1rem;
 	}
 	section {
 		overflow: hidden;
@@ -401,11 +412,8 @@
 		z-index: 1;
 	}
 
-
 	.active {
 		color: red;
 		opacity: 100%;
-		
 	}
-
 </style>
