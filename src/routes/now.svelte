@@ -35,6 +35,10 @@
 		band_on_scene = status.now_on_scene.band_rtid;
 		actual_spisok_pesen = status.now_on_scene.actual_spisok_pesen;
 		have_spisok = status.now_on_scene.have_spisok;
+		band_rtid = status.now_on_scene.band_rtid;
+		artists = status.now_on_scene.artists;
+		logobandurl = 'https://admin.rocktver.ru' + status.now_on_scene.bandlogo;
+		
 		console.log(now);
 		console.log(status);
 		if (now.now_event_id !== 'null') {
@@ -97,9 +101,9 @@
 			}
 		);
 	}
+	export let logobandurl;
+	export let band_rtid, artists;
 </script>
-
-<LogoComponent />
 
 {#if isshowgo}
 	<div class="w-full">
@@ -110,7 +114,7 @@
 		>
 			<div class="flex items-center border-b border-gray-200 pb-6">
 				<div class="flex w-full items-start justify-between">
-					<div class="w-full pl-3">
+					<div class="w-full">
 						<h1 tabindex="0" class="text-2xl text-black focus:outline-none dark:text-gray-200">
 							{status.show_name}
 						</h1>
@@ -145,7 +149,7 @@
 			</div>
 		</div>
 	</div>
-
+	<LogoComponent />
 	<div class="mt-4 w-full">
 		<div
 			aria-label="card 1"
@@ -153,7 +157,7 @@
 		>
 			<div class="flex items-center pb-2">
 				<div class="flex w-full items-start justify-between">
-					<div class="mx-auto  pl-3">
+					<div class="mx-auto">
 						<h1 tabindex="0" class="pt-2 text-2xl text-gray-800 focus:outline-none dark:text-white">
 							{status.event_name}
 						</h1>
@@ -162,12 +166,28 @@
 						{status.now_on_scene.band_town}
 					</h1>
 				</div>
-				
 			</div>
 			{#if status.now_on_scene.band_rtid}
-				<img class="h-28 w-28 w-full rounded shadow" src={status.now_on_scene.bandlogo} alt={status.event_name} />
-				
-				{/if}
+				<div class="flex">
+					<img class="h-28 w-28 w-full rounded shadow mb-4" src={logobandurl} alt={status.event_name} />
+					<p class="pl-4">{status.now_on_scene.small_text}</p>
+				</div>
+				<div class="border-b h-1 mb-2 border-white/30"></div>
+				<div class="flex flex-col">
+			
+					{#each artists as artist}
+					
+					<div class="flex">
+							<p class="text-right  mt-2 border-b lblock border-white/30">{artist.attributes.role}</p>
+							<img class="rounded-full w-12 h-12 ml-4 mr-2 mb-4 " src={'https://admin.rocktver.ru' + artist.attributes.avatar.data.attributes.url}  />
+
+							<p class="border-b  mt-2 lblock border-white/30">{artist.attributes.name}</p>
+							
+						</div>
+					{/each}
+
+				</div>
+			{/if}
 		</div>
 	</div>
 	{#if displaylikes}
@@ -175,7 +195,6 @@
 			<KnobHeart user={$user} {now} {efir} eventobj={{ status }} {index} />
 		{:else}
 			<div class="mx-auto flex mt-4">
-				
 				<div
 					class="cursor-pointer  ml-4 p-2 pb-0 mx-auto flex w-full max-w-2xl flex-col items-start rounded-lg bg-yellow-400/50 px-3 text-black ring-yellow-400 transition-all hover:ring-2 dark:bg-yellow-800/25 dark:text-white"
 					id="login_button"
@@ -203,7 +222,9 @@
 							/>
 						</svg>
 						<p class="mx-auto p-5 text-lg">ВКОНТАКТЕ</p>
-						<button class=" animate-pulse like-btn-nonauth m-2 mx-auto rounded-full bg-pink-400/50  p-3">
+						<button
+							class=" animate-pulse like-btn-nonauth m-2 mx-auto rounded-full bg-pink-400/50  p-3"
+						>
 							<svg
 								xmlns="http://www.w3.org/2000/svg"
 								width="25"
@@ -212,7 +233,6 @@
 								stroke="red"
 								stroke-width="1"
 								fill="red"
-								
 							>
 								<path
 									d="M12 4.4119c-2.826-5.695-11.999-4.064-11.999 3.27 0 7.27 9.903 10.938 11.999 15.311 2.096-4.373 12-8.041 12-15.311 0-7.327-9.17-8.972-12-3.27z"
@@ -223,9 +243,7 @@
 							{now.now_event_likes}
 						</h1>
 					</div>
-					
 				</div>
-
 			</div>
 		{/if}
 	{/if}
@@ -310,11 +328,12 @@
 			<div
 				aria-label="card 1"
 				class="mx-auto flex items-center rounded bg-blue-100/30 p-6 shadow focus:outline-none dark:bg-blue-500"
-			><div class="mx-auto "></div>
+			>
+				<div class="mx-auto " />
 				<pre class="textcard">
 					{status.now_on_scene.actual_spisok_pesen[index].text}
 				</pre>
-				<div class="mx-auto "></div>
+				<div class="mx-auto " />
 			</div>
 		</div>
 	{/if}
@@ -342,6 +361,9 @@
 {/if}
 
 <style>
+	.lblock{
+		width: 40vw;
+	}
 	.likestrackblock {
 		left: 0.5rem;
 		top: 0.3rem;
