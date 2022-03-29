@@ -38,7 +38,7 @@
 		band_rtid = status.now_on_scene.band_rtid;
 		artists = status.now_on_scene.artists;
 		logobandurl = 'https://admin.rocktver.ru' + status.now_on_scene.bandlogo;
-		
+
 		console.log(now);
 		console.log(status);
 		if (now.now_event_id !== 'null') {
@@ -155,37 +155,58 @@
 			aria-label="card 1"
 			class="mx-auto max-w-2xl rounded bg-blue-400/70 p-6 shadow focus:outline-none dark:bg-blue-500"
 		>
-			<div class="flex items-center pb-2">
-				<div class="flex w-full items-start justify-between">
-					<div class="mx-auto">
-						<h1 tabindex="0" class="pt-2 text-2xl text-gray-800 focus:outline-none dark:text-white">
-							{status.event_name}
-						</h1>
-					</div>
-					<h1 tabindex="0" class="pt-2 text-xl text-gray-600 focus:outline-none dark:text-gray-300">
-						{status.now_on_scene.band_town}
-					</h1>
-				</div>
-			</div>
 			{#if status.now_on_scene.band_rtid}
 				<div class="flex">
-					<img class="h-28 w-28 w-full rounded shadow mb-4" src={logobandurl} alt={status.event_name} />
+					<img
+						class="mb-4 h-28 w-28 w-full rounded shadow"
+						src={logobandurl}
+						alt={status.event_name}
+					/>
+					<div>
+					<h1 tabindex="0" class="pl-4 text-2xl text-gray-800 focus:outline-none dark:text-white">
+						{status.event_name}
+					</h1>
+					<h1 tabindex="0" class="pl-4 text-xl text-pink-600 focus:outline-none dark:text-pink-300">
+						{status.now_on_scene.band_town}
+					</h1>
 					<p class="pl-4">{status.now_on_scene.small_text}</p>
 				</div>
-				<div class="border-b h-1 mb-2 border-white/30"></div>
+				</div>
+				<div class="mb-2 h-1 border-b border-white/30" />
 				<div class="flex flex-col">
-			
 					{#each artists as artist}
-					
-					<div class="flex">
-							<p class="text-right  mt-2 border-b lblock border-white/30">{artist.attributes.role}</p>
-							<img class="rounded-full w-12 h-12 ml-4 mr-2 mb-4 " src={'https://admin.rocktver.ru' + artist.attributes.avatar.data.attributes.url}  />
+						<div class="flex">
+							<p class="lblock  mt-2 border-b border-white/30 text-right">
+								{artist.attributes.role}
+							</p>
+							<img
+								class="ml-4 mr-2 mb-4 h-12 w-12 rounded-full "
+								src={'https://admin.rocktver.ru' + artist.attributes.avatar.data.attributes.url}
+								alt=""
+							/>
 
-							<p class="border-b  mt-2 lblock border-white/30">{artist.attributes.name}</p>
-							
+							<p class="lblock  mt-2 border-b border-white/30">{artist.attributes.name}</p>
 						</div>
 					{/each}
-
+				</div>
+			{:else}
+				<div class="flex items-center pb-2">
+					<div class="flex w-full items-start justify-between">
+						<div class="mx-auto">
+							<h1
+								tabindex="0"
+								class="pt-2 text-2xl text-gray-800 focus:outline-none dark:text-white"
+							>
+								{status.event_name}
+							</h1>
+						</div>
+						<h1
+							tabindex="0"
+							class="pt-2 text-xl text-gray-600 focus:outline-none dark:text-gray-300"
+						>
+							{status.now_on_scene.band_town}
+						</h1>
+					</div>
 				</div>
 			{/if}
 		</div>
@@ -361,7 +382,7 @@
 {/if}
 
 <style>
-	.lblock{
+	.lblock {
 		width: 40vw;
 	}
 	.likestrackblock {
