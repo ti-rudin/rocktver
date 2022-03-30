@@ -193,14 +193,14 @@
 					alt=""
 				/>
 				<div>
-					<h1 class="pl-4 text-2xl text-gray-800 focus:outline-none dark:text-white">
+					<h1 class="pl-4 text-xl text-gray-800 focus:outline-none dark:text-white">
 						{launch.attributes.band_name}
 					</h1>
 
-					<h1 class="pl-4 text-xl text-pink-600 focus:outline-none dark:text-pink-300">
+					<h1 class="pl-4 text-lg text-pink-600 focus:outline-none dark:text-pink-300">
 						{launch.attributes.town}
 					</h1>
-					<p class="pl-4">{launch.attributes.small_text}</p>
+				
 				</div>
 			</div>
 			<div class="mb-5 mt-2">{launch.attributes.big_text}</div>
@@ -224,7 +224,8 @@
 
 	</div>
 </div>
-
+{#if launch.attributes.spisok[0]}
+<h1 class="mt-3 text-2xl mx-auto ">Программа выступления</h1>
 <section style="--gap: {gap}px; --width: {width}" tab-index="0">
 	<ul
 		use:slidy={{
@@ -279,7 +280,7 @@
 		{/each}
 	</ul>
 </section>
-{#if launch.attributes.spisok[0]}
+
 <div class="mt-2 mx-auto ">
 	<div
 		aria-label="card 1"

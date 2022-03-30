@@ -218,16 +218,17 @@
 						alt={status.event_name}
 					/>
 					<div>
-						<h1 class="pl-4 text-2xl text-gray-800 focus:outline-none dark:text-white">
+						<h1 class="pl-4 text-xl text-gray-800 focus:outline-none dark:text-white">
 							{status.event_name}
 						</h1>
 
-						<h1 class="pl-4 text-xl text-pink-600 focus:outline-none dark:text-pink-300">
+						<h1 class="pl-4 text-lg text-pink-600 focus:outline-none dark:text-pink-300">
 							{status.now_on_scene.band_town}
 						</h1>
-						<p class="pl-4">{status.now_on_scene.small_text}</p>
+						
 					</div>
 				</div>
+				<p class="">{status.now_on_scene.small_text}</p>
 				<div class="mb-2 h-1 border-b border-white/30" />
 				<div class="flex flex-col">
 					{#each artists as artist}

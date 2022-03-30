@@ -22,7 +22,7 @@
 
 <footer class="mx-auto mt-2 mb-4 flex  max-w-2xl flex-col items-start justify-center">
 	<hr class="border-1 w-full border-gray-200 dark:border-gray-800" />
-	<div class="flex w-full p-3 px-6">
+	<div class="flex w-full p-3 px-4">
 		<div class="flex flex-col">
 			<a href="/" class="pt-4"> Главная </a>
 			<a href="/now" class="pt-4"> Эфир </a>

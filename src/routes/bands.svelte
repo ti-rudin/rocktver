@@ -129,11 +129,9 @@
 
 <LogoComponent />
 <h1 class="text-2xl mx-auto max-w-2xl">
-  Все участвующие команды
+  Все участники отборочного тура
 </h1>
-<h2 class="text-xl mx-auto max-w-2xl">
-  (участники отборочного тура и утвержденные)
-</h2>
+
 <div class="w-full ">
 	{#each bands as band}
 		<div class="mt-3 w-full  ">
