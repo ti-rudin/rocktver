@@ -281,7 +281,7 @@
 	</ul>
 </section>
 
-<div class="mt-2 mx-auto ">
+<div class="mt-2 mx-auto max-w-2xl">
 	<div
 		aria-label="card 1"
 		class="mx-auto flex rounded bg-blue-100/30 p-6 shadow focus:outline-none dark:bg-blue-500"
