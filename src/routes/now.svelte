@@ -200,6 +200,9 @@
 		</div>
 	</div>
 	<LogoComponent />
+	<h1 class="mx-auto max-w-2xl pl-4 text-xl text-gray-800 focus:outline-none dark:text-white">
+		Сейчас на сцене
+	</h1>
 	<div class="mt-1 w-full ">
 		<div
 			aria-label="card 1"
@@ -402,7 +405,7 @@
 				{/each}
 			</ul>
 		</section>
-		<div class="mx-auto ">
+		<div class="mx-auto max-w-2xl ">
 			<div
 				aria-label="card 1"
 				class="mx-auto flex items-center rounded bg-blue-100/30 p-6 shadow focus:outline-none dark:bg-blue-500"

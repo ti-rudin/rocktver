@@ -120,7 +120,7 @@
 	
 	import KnobEfir from '../../components/KnobEfir.svelte';
 	import KnobTimeline from '../../components/KnobTimeline.svelte';
-
+	import LogoComponent from '../../components/LogoComponent.svelte';
 
 	import { isAuthenticated, user } from '$lib/stores/auth';
 	import { isDarkFlag, isMngr, isAdmin } from '$lib/siteConfig';
@@ -178,7 +178,7 @@
 	});
 	$: state = state;
 </script>
-
+<LogoComponent />
 {#if $isAuthenticated}
 	{#if $isAdmin}
 		<div
