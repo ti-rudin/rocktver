@@ -1,112 +1,193 @@
 <script context="module">
-  export async function load({ fetch }) {
-    const res = await fetch('https://admin.rocktver.ru/graphql', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        query: `{
-            bands {
-              data {
-                id
-                
-                attributes {
-                  band_name
-                  town
-                  small_text
-                  group_logo{
-                    data{
-                      attributes{
-                        url
-                      }
-                    }
-                  }
-                  group_link_vk
-                  spisok {
-                    ... on ComponentPesniTrack {
-                      
-                      id
-                      name
-                      text
-                    }
+	export async function load({ fetch }) {
+		const res = await fetch('https://admin.rocktver.ru/graphql', {
+			method: 'POST',
+			headers: {
+				'Content-Type': 'application/json'
+			},
+			body: JSON.stringify({
+				query: `{
+  bands(pagination: { pageSize: 100 }) {
+    data {
+      id
+      attributes {
+        band_name
+        town
+        small_text
+        big_text
+        group_logo {
+          data {
+            attributes {
+              url
+            }
+          }
+        }
+        group_link_vk
+        group_link_rocktver
+        mngr_id
+        time_on_scene
+        artists {
+          data {
+            attributes {
+              name
+              avatar {
+                data {
+                  attributes {
+                    url
                   }
                 }
               }
+              role
+              vk_link
             }
-          }`,
-      }),
-    })
-    if (res.ok) {
-      const { data } = await res.json()
-      console.log(data)
-      return {
-        props: {
-          launches: data.bands.data,
-        },
+          }
+        }
+        spisok  {
+          ... on ComponentPesniTrack {
+            name
+            text
+            words_rights
+            music_rights
+            year_born
+            is_premiere
+            id
+          }
+        }
       }
     }
-    return {
-      status: res.status,
-      error: new Error(`Error fetching GraphQL data`),
+  }
+  concerts {
+    data {
+      id
+      attributes {
+        start_date
+				ploschadka
+
+        bilet_ot
+        url_website
+        show_name
+        spisok (pagination: { pageSize: 100 }) {
+          ... on ComponentBandsTimeline {
+            id
+            band {
+              data {
+                id
+                attributes {
+                  band_name
+                  
+                }
+              }
+            }
+            title
+            slovo_vedusch
+            tech_pause
+            open_speache
+            finish_speache
+          }
+        }
+      }
     }
   }
+}
 
-
+`
+			})
+		});
+		if (res.ok) {
+			const { data } = await res.json();
+			console.log(data);
+			let bandsdata = data.bands.data;
+			let bandsobj = [];
+			bandsdata.forEach((band, id) => {
+				bandsobj[band.id] = band;
+			});
+			bandsobj = bandsobj.filter(function (el) {
+				return (el != null && el != '') || el === 0;
+			});
+			console.log('bands ---' + JSON.stringify(bandsobj));
+			return {
+				props: {
+					bands: bandsobj,
+					concerts: data.concerts.data
+				}
+			};
+		}
+		return {
+			status: res.status,
+			error: new Error(`Error fetching GraphQL data`)
+		};
+	}
 </script>
 
 <script>
-  export let launches
-  //console.log(this.artists.data[0].attributes.name)
-  $: launches = launches;
-
-
+	import { goto } from '$app/navigation';
+  import LogoComponent from '../components/LogoComponent.svelte';
+	export let concerts, bands, artists;
+	//console.log(this.artists.data[0].attributes.name)
+	$: launches = launches;
 </script>
 
-<!-- component -->
+<LogoComponent />
+<h1 class="text-2xl mx-auto max-w-2xl">
+  Все участники отборочного тура
+</h1>
 
-  <!--- more free and premium Tailwind CSS components at https://tailwinduikit.com/ --->
 <div class="w-full ">
-  {#each launches as launch}
+	{#each bands as band}
+		<div class="mt-3 w-full  ">
+			<div
+				aria-label="card 1"
+				class="mx-auto max-w-2xl cursor-pointer rounded-lg bg-blue-400/70 p-6 shadow ring-yellow-400 transition-all hover:ring-2 focus:outline-none dark:bg-blue-500 "
+			>
+				{#if band}
+					<div
+						class="flex"
+						on:click={() => {
+							goto('/band/' + band.attributes.band_name);
+						}}
+					>
+						<img
+							class="mb-4 h-28 w-28 w-full rounded shadow"
+							src={'https://admin.rocktver.ru' + band.attributes.group_logo.data.attributes.url}
+							alt=""
+						/>
+						<div>
+							<h1 class="pl-4 text-2xl text-gray-800 focus:outline-none dark:text-white">
+								{band.attributes.band_name}
+							</h1>
 
-   
+							<h1 class="pl-4 text-xl text-pink-600 focus:outline-none dark:text-pink-300">
+								{band.attributes.town}
+							</h1>
+							<p class="pl-4">{band.attributes.small_text}</p>
+						</div>
+					</div>
+					<div class="mb-2 h-1 border-b border-white/30" />
+					<div class="flex flex-col">
+						{#each band.attributes.artists.data as artist}
+							<div class="flex"
+              >
+								<p class="lblock  mt-3 border-b border-white/30 text-right">
+									{artist.attributes.role}
+								</p>
+								<img
+									class="ml-4 mr-2 mb-4 h-12 w-12 rounded-full "
+									src={'https://admin.rocktver.ru' + artist.attributes.avatar.data.attributes.url}
+									alt=""
+								/>
 
-      
-  
-
-<div aria-label="card 1" class="focus:outline-none mb-7 bg-white dark:bg-gray-500 p-6 shadow rounded max-w-2xl mx-auto">
-  <div class="flex items-center border-b border-gray-200 pb-6">
-    {#if (launch.attributes.group_logo.data !== null)}
-    <img class="rounded-full w-20 h-20" src={'https://admin.rocktver.ru' +
-    launch.attributes.group_logo.data.attributes.url} alt="profile" />
-  {/if}
-      <div class="flex items-start justify-between w-full">
-          <div class="pl-3 w-full">
-              <p tabindex="0" class="focus:outline-none text-2xl font-medium leading-5 text-gray-800 dark:text-gray-200">{launch.attributes.band_name}</p>
-              <p tabindex="0" class="focus:outline-none text-sm leading-normal pt-2 text-gray-500 dark:text-gray-200">{launch.attributes.town}</p>
-          </div>
-          <div role="img" aria-label="bookmark">
-              <svg  class="focus:outline-none" width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M10.5001 4.66667H17.5001C18.1189 4.66667 18.7124 4.9125 19.15 5.35009C19.5876 5.78767 19.8334 6.38117 19.8334 7V23.3333L14.0001 19.8333L8.16675 23.3333V7C8.16675 6.38117 8.41258 5.78767 8.85017 5.35009C9.28775 4.9125 9.88124 4.66667 10.5001 4.66667Z" stroke="#2C3E50" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round" />
-              </svg>
-          </div>
-      </div>
-  </div>
-  <div class="px-2">
-      <p tabindex="0" class="focus:outline-none text-sm leading-5 py-4 text-gray-600 dark:text-gray-200">{launch.attributes.small_text}</p>
-      <div tabindex="0" class="focus:outline-none flex">
-          <div class="py-2 px-4 text-xs leading-3 text-indigo-700 rounded-full bg-indigo-100">#dogecoin</div>
-          <div class="py-2 px-4 ml-3 text-xs leading-3 text-indigo-700 rounded-full bg-indigo-100">#crypto</div>
-      </div>
-  </div>
+								<p class="lblock  mt-3 border-b border-white/30">{artist.attributes.name}</p>
+							</div>
+						{/each}
+					</div>
+				{/if}
+			</div>
+		</div>
+	{/each}
 </div>
-
-
-  {/each}
-</div>
-
 
 <style>
-
-  
+  	.lblock {
+		width: 40vw;
+	}
 </style>

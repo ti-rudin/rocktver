@@ -35,8 +35,8 @@
 
 <nav
 	class="relative mx-auto flex w-full max-w-2xl items-center justify-between border-gray-200
-	bg-gray-50 bg-opacity-60 py-3 text-gray-900 dark:border-gray-700 dark:bg-gray-900
-	dark:text-gray-100 sm:pb-16"
+	bg-gray-50 bg-opacity-60 pt-3 text-gray-900 dark:border-gray-700 dark:bg-gray-900
+	dark:text-gray-100 pb-4"
 >
 	<MobileMenu />
 	<ul class="ml-[-0.60rem] flex">
@@ -44,7 +44,10 @@
 			<NavLink href="/">Главная</NavLink>
 		</li>
 		<li>
-			<NavLink href="/party">Участники</NavLink>
+			<NavLink href="/bands">Участники</NavLink>
+		</li>
+		<li>
+			<NavLink href="/now">Эфир</NavLink>
 		</li>
 	</ul>
 	<div class="flex items-center space-x-4">
