@@ -3,6 +3,7 @@
 	import { isAuthenticated, user } from '$lib/stores/auth';
 	import KnobHeart from '../components/KnobHeart.svelte';
 	import Flower from '../components/Flower.svelte';
+	import { goto } from '$app/navigation';
 	let index = 0,
 		imagable = true,
 		width = imagable ? 'auto' : '50%',
@@ -58,7 +59,50 @@
 	import { onDestroy, onMount } from 'svelte';
 
 	import { slidy } from '@slidy/core';
-
+	import dateFormat, { masks } from 'dateformat';
+	import { i18n } from 'dateformat';
+	i18n.dayNames = [
+		'Sun',
+		'Mon',
+		'Tue',
+		'Wed',
+		'Thu',
+		'Fri',
+		'Sat',
+		'Воскресенье',
+		'Понедельник',
+		'Вторник',
+		'Среда',
+		'Четверг',
+		'Пятница',
+		'Суббота'
+	];
+	i18n.monthNames = [
+		'Jan',
+		'Feb',
+		'Mar',
+		'Apr',
+		'May',
+		'Jun',
+		'Jul',
+		'Aug',
+		'Sep',
+		'Oct',
+		'Nov',
+		'Dec',
+		'Января',
+		'Февраля',
+		'Марта',
+		'Апреля',
+		'Мая',
+		'Июня',
+		'Июля',
+		'Августа',
+		'Сентября',
+		'Октября',
+		'Ноября',
+		'Декабря'
+	];
 	import { blur, crossfade, draw, fade, fly, scale, slide } from 'svelte/transition';
 
 	import LogoComponent from '../components/LogoComponent.svelte';
@@ -110,13 +154,19 @@
 		<div
 			transition:scale={{ duration: 300 }}
 			aria-label="card 1"
-			class="mx-auto max-w-2xl rounded bg-red-400/40 p-6 shadow focus:outline-none dark:bg-red-500"
+			class="mx-auto mt-1 max-w-2xl rounded-lg bg-red-400/40 p-4 shadow ring-yellow-400 transition-all hover:ring-2 focus:outline-none dark:bg-red-500"
+			on:click={() => {
+				goto('/concert/' + status.event_id);
+			}}
 		>
-			<div class="flex items-center border-b border-gray-200 pb-6">
+			<div class="flex cursor-pointer items-center border-b border-gray-200 pb-6 ">
 				<div class="flex w-full items-start justify-between">
 					<div class="w-full">
 						<h1 tabindex="0" class="text-2xl text-black focus:outline-none dark:text-gray-200">
 							{status.show_name}
+						</h1>
+						<h1 class="pt-2 text-xl text-gray-800 focus:outline-none dark:text-gray-200">
+							{dateFormat(status.start, 'd mmmm, dddd')}
 						</h1>
 					</div>
 					<div role="img" aria-label="bookmark">
@@ -150,33 +200,39 @@
 		</div>
 	</div>
 	<LogoComponent />
-	<div class="mt-4 w-full">
+	<div class="mt-1 w-full ">
 		<div
 			aria-label="card 1"
-			class="mx-auto max-w-2xl rounded bg-blue-400/70 p-6 shadow focus:outline-none dark:bg-blue-500"
+			class="mx-auto max-w-2xl cursor-pointer rounded-lg bg-blue-400/70 p-6 shadow ring-yellow-400 transition-all hover:ring-2 focus:outline-none dark:bg-blue-500 "
 		>
 			{#if status.now_on_scene.band_rtid}
-				<div class="flex">
+				<div
+					class="flex"
+					on:click={() => {
+						goto('/band/' + status.event_name);
+					}}
+				>
 					<img
 						class="mb-4 h-28 w-28 w-full rounded shadow"
 						src={logobandurl}
 						alt={status.event_name}
 					/>
 					<div>
-					<h1 tabindex="0" class="pl-4 text-2xl text-gray-800 focus:outline-none dark:text-white">
-						{status.event_name}
-					</h1>
-					<h1 tabindex="0" class="pl-4 text-xl text-pink-600 focus:outline-none dark:text-pink-300">
-						{status.now_on_scene.band_town}
-					</h1>
-					<p class="pl-4">{status.now_on_scene.small_text}</p>
-				</div>
+						<h1 class="pl-4 text-2xl text-gray-800 focus:outline-none dark:text-white">
+							{status.event_name}
+						</h1>
+
+						<h1 class="pl-4 text-xl text-pink-600 focus:outline-none dark:text-pink-300">
+							{status.now_on_scene.band_town}
+						</h1>
+						<p class="pl-4">{status.now_on_scene.small_text}</p>
+					</div>
 				</div>
 				<div class="mb-2 h-1 border-b border-white/30" />
 				<div class="flex flex-col">
 					{#each artists as artist}
 						<div class="flex">
-							<p class="lblock  mt-2 border-b border-white/30 text-right">
+							<p class="lblock  mt-3 border-b border-white/30 text-right">
 								{artist.attributes.role}
 							</p>
 							<img
@@ -185,7 +241,7 @@
 								alt=""
 							/>
 
-							<p class="lblock  mt-2 border-b border-white/30">{artist.attributes.name}</p>
+							<p class="lblock  mt-3 border-b border-white/30">{artist.attributes.name}</p>
 						</div>
 					{/each}
 				</div>
@@ -362,7 +418,7 @@
 	<div class="w-full mt-4">
 		<div
 			aria-label="card 1"
-			class="mx-auto max-w-2xl rounded bg-blue-400/40 p-6 shadow focus:outline-none dark:bg-blue-500"
+			class="mx-auto max-w-2xl rounded-lg bg-blue-400/40 p-6 shadow focus:outline-none dark:bg-blue-500"
 		>
 			<div class="flex items-center pb-2">
 				<div class="flex w-full items-start justify-between">

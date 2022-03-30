@@ -75,9 +75,6 @@
 	
 	import dateFormat, { masks } from 'dateformat';
 	import { i18n } from 'dateformat';
-	import KnobEfir from '../../components/KnobEfir.svelte';
-	import KnobTimeline from '../../components/KnobTimeline.svelte';
-
 	i18n.dayNames = [
 		'Sun',
 		'Mon',
@@ -120,6 +117,11 @@
 		'Ноября',
 		'Декабря'
 	];
+	
+	import KnobEfir from '../../components/KnobEfir.svelte';
+	import KnobTimeline from '../../components/KnobTimeline.svelte';
+
+
 	import { isAuthenticated, user } from '$lib/stores/auth';
 	import { isDarkFlag, isMngr, isAdmin } from '$lib/siteConfig';
 

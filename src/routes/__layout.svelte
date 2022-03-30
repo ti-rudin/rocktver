@@ -4,22 +4,14 @@
 	import '../tailwind.css';
 	import Nav from '../components/Nav.svelte';
 	import { isAuthenticated, user } from '$lib/stores/auth';
-	import {onMount } from 'svelte';
-
+	import { onMount } from 'svelte';
 
 	onMount(() => {
-
 		VK.init({ apiId: 8083840 });
 	});
-
-
-
-
 </script>
 
-<svelte:head>
-
-</svelte:head>
+<svelte:head />
 
 <div class="flex flex-col justify-center bg-gray-50 px-4 dark:bg-gray-900 ">
 	<Nav />
@@ -28,7 +20,108 @@
 	<slot />
 </main>
 
-<footer class="mx-auto mt-2 mb-8 flex w-full max-w-2xl flex-col items-start justify-center">
-	<hr class="border-1 mb-8 w-full border-gray-200 dark:border-gray-800" />
+<footer class="mx-auto mt-2 mb-4 flex  max-w-2xl flex-col items-start justify-center">
+	<hr class="border-1 w-full border-gray-200 dark:border-gray-800" />
+	<div class="flex w-full p-3 px-6">
+		<div class="flex flex-col">
+			<a href="/" class="pt-4"> Главная </a>
+			<a href="/now" class="pt-4"> Эфир </a>
+			<a href="/" class="pt-4"> Спонсорам </a>
+		</div>
+		<div class="ml-4 flex flex-col">
+			<a href="/bands" class="pt-4"> Участники </a>
+			<a href="/kabinet" class="pt-4"> Кабинет </a>
+		</div>
+	
 
+		<div class="mx-auto" />
+		<div class="container_develop pt-0 pl-20">
+			<a href="http://ti-units.ru/">
+				<div class="cub_container">
+					<div class="front side">
+						<svg
+							width="40"
+							height="40"
+							viewBox="0 0 52 53"
+							fill="none"
+							xmlns="http://www.w3.org/2000/svg"
+						>
+							<path
+								fill-rule="evenodd"
+								clip-rule="evenodd"
+								d="M0 0H52V53H0V0ZM50 19V25.4059H41.9062V19H50ZM50 51V27.0985H41.9062V40.8481C41.4843 46.5375 45.0535 50.7028 50 51ZM40.0361 25.479V19.0964H16V25.4785H24.1913V51H32.2826V25.479H40.0361Z"
+								fill="#1A80D3"
+							/>
+						</svg>
+					</div>
+					<div class="right side"><p>Создание<br />и поддержка<br />Ti-UNITS.RU</p></div>
+				</div>
+			</a>
+		</div>
+	</div>
+	<div class="flex w-full mt-3">
+		<div class="mx-auto" />
+		<div class="lblock text-right">2022 РОКТВЕРЬ</div>
+		<a href="/privacy" class="ml-3 lblock text-sm pt-1"> Политика конфиденциальности</a>
+		<div class="mx-auto" />
+	</div>
 </footer>
+
+<style>
+	  	.lblock {
+		width: 40vw;
+	}
+	.container_develop a {
+		display: block;
+	}
+	.container_develop {
+		-webkit-perspective-origin: center 40px;
+		perspective-origin: center 40px;
+	}
+	.cub_container .side,
+	.cub_container {
+		width: 40px;
+		height: 40px;
+		text-align: left;
+		color: #465ee0;
+	}
+	.cub_containerdark {
+		width: 40px;
+		height: 40px;
+		text-align: left;
+		color: rgb(0, 8, 51);
+	}
+	.cub_container p {
+		font-size: 12px;
+		line-height: 14px;
+	}
+	.cub_container {
+		margin: 20px auto 0;
+		-webkit-transition: ease-in-out 0.4s all;
+		transition: ease-in-out 0.4s all;
+		-webkit-transform-style: preserve-3d;
+		transform-style: preserve-3d;
+	}
+	.cub_container:hover {
+		-webkit-transform: rotateY(-90deg);
+		transform: rotateY(-90deg);
+	}
+	.cub_container .side {
+		position: absolute;
+		width: 40px;
+		height: 40px;
+	}
+	.cub_container .front {
+		-webkit-transform: translateZ(100px);
+		transform: translateZ(100px);
+		background-color:rgba(0, 8, 51,0);
+		
+	}
+	.cub_container .right {
+		padding: 0;
+		margin: 0 -5em;
+		width: 180px;
+		-webkit-transform: translateX(40px) translateZ(10px) rotateY(90deg);
+		transform: translateX(40px) translateZ(10px) rotateY(90deg);
+	}
+</style>

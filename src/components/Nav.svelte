@@ -44,7 +44,7 @@
 			<NavLink href="/">Главная</NavLink>
 		</li>
 		<li>
-			<NavLink href="/party">Участники</NavLink>
+			<NavLink href="/bands">Участники</NavLink>
 		</li>
 		<li>
 			<NavLink href="/now">Эфир</NavLink>
