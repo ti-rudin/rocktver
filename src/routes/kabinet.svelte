@@ -37,7 +37,7 @@
 						vk_id: r.response[0]['id'],
 						city: r.response[0]['city'] ? r.response[0]['city'].title : "не указано",
 					})
-					 This is an example script - don't forget to change it!
+					 
 
 				}
 			}
