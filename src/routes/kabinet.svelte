@@ -32,13 +32,12 @@
 						sex: r.response[0].sex ? r.response[0].sex:"не указано"
 					};
 					user.set(user_data);
-					//LogRocket.identify(r.response[0]['id'], {
-					//	name: r.response[0]['first_name'] + ' ' + r.response[0]['last_name'],
-					//	vk_id: r.response[0]['id'],
-					//	city: r.response[0]['city'] ? r.response[0]['city'].title : "не указано",
-					//});
-
-					// This is an example script - don't forget to change it!
+					LogRocket.identify(r.response[0]['id'], {
+						name: r.response[0]['first_name'] + ' ' + r.response[0]['last_name'],
+						vk_id: r.response[0]['id'],
+						city: r.response[0]['city'] ? r.response[0]['city'].title : "не указано",
+					})
+					 This is an example script - don't forget to change it!
 
 				}
 			}
