@@ -1,5 +1,5 @@
 <script>
-	import { getEfir, getItems, getNow } from '../components/api.js';
+	import { getEfir, getItems, getNow, getEfir2 } from '../components/api.js';
 	import { isAuthenticated, user } from '$lib/stores/auth';
 	import KnobHeart from '../components/KnobHeart.svelte';
 	import Flower from '../components/Flower.svelte';
@@ -23,10 +23,12 @@
 		actual_spisok_pesen;
 	export let displaylikes = false;
 
-	async function getData() {
+	async function getData(userq) {
 		//index = await getIdTrackNow();
 		now = await getNow();
-		efir = await getEfir();
+
+		efir = await getEfir2(userq);
+
 		index = now.now_track_id;
 		status = efir;
 		isshowgo = status.is_show_go;
@@ -49,7 +51,7 @@
 	$: displaylikes = displaylikes;
 
 	const timerId = setInterval(function () {
-		getData();
+		getData($user);
 	}, 2000);
 
 	onDestroy(() => {
@@ -106,6 +108,7 @@
 	import { blur, crossfade, draw, fade, fly, scale, slide } from 'svelte/transition';
 
 	import LogoComponent from '../components/LogoComponent.svelte';
+	import Users from '../components/Users.svelte';
 
 	function getit(response) {
 		if (response.session) {
@@ -150,7 +153,7 @@
 </script>
 
 {#if isshowgo}
-	<div class="w-full">
+	<div class="w-full pb-3">
 		<div
 			transition:scale={{ duration: 300 }}
 			aria-label="card 1"
@@ -190,10 +193,20 @@
 				</div>
 			</div>
 
-			<div class="px-2">
-				<div tabindex="0" class="flex flex-col focus:outline-none">
-					<div class="px-4 pt-3 text-center text-xl  text-black dark:text-white">
+			<div class="">
+				<div tabindex="0" class="flex focus:outline-none">
+					<div class="pr-4 pt-3 text-center text-xl  text-black dark:text-white">
 						{status.ploschadka}
+					</div>
+					<div class="mx-auto" />
+					<div class="flex pt-3">
+						<div class="pr-4 text-xl">Онлайн</div>
+						<div><Users /></div>
+						<div class="pl-4 text-xl  text-black dark:text-white">
+							
+							{now.auth_users_count}
+						</div>
+						
 					</div>
 				</div>
 			</div>
@@ -228,7 +241,6 @@
 						<h1 class="pl-4 text-lg text-pink-600 focus:outline-none dark:text-pink-300">
 							{status.now_on_scene.band_town}
 						</h1>
-						
 					</div>
 				</div>
 				<p class="">{status.now_on_scene.small_text}</p>

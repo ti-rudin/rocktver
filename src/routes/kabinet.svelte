@@ -71,9 +71,9 @@
 	<a
 		class="tomain m-5 mx-auto cursor-pointer rounded-lg bg-yellow-400/95 p-2 px-3 text-black ring-yellow-800 transition-all hover:ring-2 dark:bg-yellow-800/95 dark:text-white"
 		id="logout_button"
-		href="/"
+		href="/now"
 	>
-		<p class="mx-auto">Перейти на главную </p>
+		<p class="mx-auto">Перейти на страницу прямого эфир </p>
 	</a>
 	<div
 	class="logoutbut m-5 mx-auto cursor-pointer rounded-lg bg-red-400/95 p-2 px-3 text-white ring-red-800 transition-all hover:ring-2 dark:bg-red-800/95 dark:text-white"
