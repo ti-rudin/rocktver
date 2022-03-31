@@ -30,6 +30,7 @@
 		</div>
 		<div class="ml-4 flex flex-col">
 			<a href="/bands" class="pt-4"> Участники </a>
+			<a href="/manual" class="pt-4"> Инструкция </a>
 			<a href="/kabinet" class="pt-4"> Кабинет </a>
 		</div>
 	
