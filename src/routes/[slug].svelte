@@ -35,6 +35,7 @@
 
 <script>
 	import 'prism-themes/themes/prism-shades-of-purple.min.css';
+
 	import Newsletter from '../components/Newsletter.svelte';
 	import Reactions from '../components/Reactions.svelte';
 
