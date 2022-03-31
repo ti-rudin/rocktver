@@ -125,7 +125,7 @@
 				if (r.response) {
 					//alert(r.response.sex);
 					$isAuthenticated = true;
-					console.log(r.response);
+					ym(88086612,'reachGoal','vk-auth');
 					let user_data = {
 						id: r.response[0]['id'],
 						bdate: r.response[0]['bdate'] ? r.response[0]['bdate'] : 'не указано',
@@ -292,6 +292,7 @@
 					class="cursor-pointer  ml-4 p-2 pb-0 mx-auto flex w-full max-w-2xl flex-col items-start rounded-lg bg-yellow-400/50 px-3 text-black ring-yellow-400 transition-all hover:ring-2 dark:bg-yellow-800/25 dark:text-white"
 					id="login_button"
 					on:click={() => {
+						ym(88086612,'reachGoal','vk-auth-start')
 						VK.Auth.login(getit);
 					}}
 				>
@@ -340,7 +341,9 @@
 			</div>
 		{/if}
 	{/if}
-
+	<h1 class="mx-auto max-w-2xl pt-2 pl-4 text-xl text-gray-800 focus:outline-none dark:text-white">
+		Сейчас звучит
+	</h1>
 	{#if have_spisok}
 		<section class="" style="--gap: {gap}px; --width: {width}" tab-index="0">
 			<ul
