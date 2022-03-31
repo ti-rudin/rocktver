@@ -38,7 +38,7 @@
 		<div class="mx-auto" />
 		<div class="container_develop pb-0 pl-20">
 			<a href="http://ti-units.ru/"
-			on:click={ym(88086612,'reachGoal','clickti-units')}
+			
 		
 			>
 				<div class="cub_container">

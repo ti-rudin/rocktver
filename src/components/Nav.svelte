@@ -81,7 +81,7 @@
 			class="ml-1 flex h-9 items-center justify-center rounded-lg bg-yellow-400 px-3 text-black ring-yellow-400 transition-all
 			hover:ring-2 dark:bg-yellow-800 dark:text-white"
 			href="https://che-tver.timepad.ru/event/1900315/"
-			on:click={ym(88086612,'reachGoal','clickbuyticket')}
+		
 		>
 			{#if isDark}
 				Купить билет
