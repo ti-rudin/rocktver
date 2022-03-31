@@ -57,6 +57,7 @@
 <script>
 	import { goto } from '$app/navigation';
   import LogoComponent from '../components/LogoComponent.svelte';
+  import VideoPlayer from 'svelte-video-player';
 
 	export let posts, post;
 	console.log(posts[0].attributes.big_text)
@@ -68,10 +69,17 @@ import snarkdown from 'snarkdown';
 let p;
 $: p = snarkdown(post);
 
+/uploads/Moi_video_b9f6f58b38.mp4?updated_at=2022-03-31T13:19:32.881Z
+const poster = 'https://admin.roktver.ru/uploads/Screenshot_12_bdb038b323.png?updated_at=2022-03-31T13:20:10.390Z';
+  const source = [
+    'https://admin.roktver.ru/uploads/Moi_video_b9f6f58b38.mp4?updated_at=2022-03-31T13:19:32.881Z',
+  ];
+
+
 </script>
 
 
-
+<VideoPlayer poster="poster_url" source="video_url" />
 {@html p}
 
 
