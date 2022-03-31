@@ -308,7 +308,7 @@
 						</h1>
 					</div>
 				</div>
-				<p class="dark: text-gray-300">{status.now_on_scene.small_text}</p>
+				<p class="dark:text-gray-300 text-gray-700">{status.now_on_scene.small_text}</p>
 				
 				<div class="flex flex-col pt-2">
 					{#each artists as artist}
@@ -319,7 +319,7 @@
 							alt=""
 						/>
 						<p class="lblock  mt-1 border-t border-white/30">{artist.attributes.name}</p>
-							<p class="lblock dark: text-gray-300  ml-1 mt-1 border-t border-white/30 text-left">
+							<p class="lblock dark:text-gray-300 text-gray-700 ml-1 mt-1 border-t border-white/30 text-left">
 								{artist.attributes.role}
 							</p>
 						

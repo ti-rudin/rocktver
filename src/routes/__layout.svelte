@@ -27,6 +27,7 @@
 			<a href="/" class="pt-4"> Главная </a>
 			<a href="/now" class="pt-4"> Эфир </a>
 			<a href="/" class="pt-4"> Спонсорам </a>
+
 		</div>
 		<div class="ml-4 flex flex-col">
 			<a href="/bands" class="pt-4"> Участники </a>
@@ -63,15 +64,19 @@
 			</a>
 		</div>
 	</div>
-	<div class="flex w-full mt-3">
-		<div class="mx-auto" />
+	<div class="flex flex-col w-full  mt-3">
+		<a href="/feedback" class="py-2 mx-auto feedback"> Отзывы и предложения </a>
+		<div class="mx-auto flex">
 		<div class="lblock text-right">2022 РОКТВЕРЬ</div>
 		<a href="/privacy" class="ml-3 lblock text-sm pt-1"> Политика конфиденциальности</a>
-		<div class="mx-auto" />
+		</div>
 	</div>
 </footer>
 
 <style>
+	.feedback{
+		color: orange;
+	}
 	  	.lblock {
 		width: 40vw;
 	}

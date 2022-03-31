@@ -115,7 +115,7 @@
 					class="flex w-auto pb-4"
 					sveltekit:prefetch
 					on:click={() => setTimeout(() => (isOpen = false), 300)}
-					href="/manual">Инструкция</a
+					href="/feedback">Обратная связь</a
 				>
 			</li>
 
