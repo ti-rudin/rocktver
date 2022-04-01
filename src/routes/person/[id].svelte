@@ -64,6 +64,7 @@
 	import { toPng, toJpeg, toSvg } from 'html-to-image';
 
 	import { onDestroy, onMount } from 'svelte';
+import { goto } from '$app/navigation';
 
 	export let launches, launch, id, htmlimg, imgurl;
 
@@ -92,21 +93,20 @@
 		});
 	}
 
-	let s = 'http://vk.com/share.php?url=https://dev--rocktver.netlify.app/person/' + String(launch.attributes.name) + '&image='+ imgurl + '&noparse=true';
-	const postres =  fetch(s, {
-			method: 'GET',
-			headers: {
-				'Content-Type': 'application/json'
-			}
-		});
+	
+
 	onMount(() => {
 		repost();
 		//console.log(imgurl);
 		document.getElementById(
 			'vk_share_button'
-		).innerHTML = VK.Share.button(false,{type: "round", text: "Сохранить"});
+		).innerHTML = VK.Share.button(false,{type: "round", text: "Поделиться"});
 	});
 	$: imgurl = imgurl;
+	export let s;
+
+	$: s = 'http://vk.com/share.php?url=https://dev--rocktver.netlify.app/person/' + String(launch.attributes.name) + '&image='+ imgurl + '&noparse=true';
+
 	//$: console.log(imgurl);
 </script>
 
@@ -150,15 +150,15 @@
 		</div>
 	</div>
 	<div class="mt-3 w-full ">
-		<div
+		<a
 			aria-label="card 1"
 			class="mx-auto max-w-2xl cursor-pointer rounded-lg bg-blue-400/70 p-6 shadow ring-yellow-400 transition-all hover:ring-2 focus:outline-none dark:bg-blue-500 "
-			on:click={() => {
-			
-			}}
+		
+			href = {s}
+
 		>
 			ghjhg
-		</div>
+	</a>
 	</div>
 	<div class="mx-auto text-gray-900 dark:text-white">
 		<h1>Персона</h1>
@@ -183,4 +183,7 @@
 {/if}
 
 <style>
+	#vk_share_button{
+		width: 50vw;
+	}
 </style>
