@@ -91,7 +91,7 @@
 	onMount(() => {
 		document.getElementById(
 			'vk_share_button'
-		).innerHTML = VK.Share.button('https://rocktver.ru/person/' + launch.attributes.name, {
+		).innerHTML = VK.Share.button('https://dev--rocktver.netlify.app/person/' + launch.attributes.name, {
 			type: 'round_nocount',
 			text: 'Опубликовать на своей странице'
 		});
@@ -99,7 +99,7 @@
 </script>
 
 <svelte:head>
-	<meta property="og:url" content={'https://rocktver.ru/person/' + launch.attributes.name} />
+	<meta property="og:url" content={'https://dev--rocktver.netlify.app/person/' + launch.attributes.name} />
 	<meta property="og:title" content={launch.attributes.name + ' - РОКОПОЛЧЕНИЕ 2022'} />
     <meta property="og:image"  content={imgurl} />
 </svelte:head>
