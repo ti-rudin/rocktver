@@ -247,7 +247,7 @@
 				</h1>
 			</div>
 		</div>
-		<div class="mb-5 mt-2">{launch.attributes.big_text}</div>
+		<pre class="mb-5 mt-2">{launch.attributes.big_text}</pre>
 		<div class="mb-2 h-1 border-b border-white/30" />
 		<div class="flex flex-col">
 			{#if launch.attributes.artists.data[0]}
