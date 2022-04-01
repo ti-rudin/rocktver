@@ -285,17 +285,17 @@
 	<div class="mt-1 w-full ">
 		<div
 			aria-label="card 1"
-			class="mx-auto max-w-2xl cursor-pointer rounded-lg bg-blue-400/70 p-6 shadow ring-yellow-400 transition-all hover:ring-2 focus:outline-none dark:bg-blue-500 "
+			class="mx-auto max-w-2xl  rounded-lg bg-blue-400/70 p-6 shadow  dark:bg-blue-500 "
 		>
 			{#if status.now_on_scene.band_rtid}
 				<div
-					class="flex"
+					class="flex cursor-pointer rounded ring-yellow-400 transition-all hover:ring-2 focus:outline-none"
 					on:click={() => {
 						goto('/band/' + status.event_name);
 					}}
 				>
 					<img
-						class="mb-1 h-28 w-28 w-full rounded shadow"
+						class="h-28 w-28 w-full rounded shadow"
 						src={logobandurl}
 						alt={status.event_name}
 					/>
@@ -309,7 +309,7 @@
 						</h1>
 					</div>
 				</div>
-				<p class="dark:text-gray-300 text-gray-700">{status.now_on_scene.small_text}</p>
+				<p class="">{status.now_on_scene.small_text}</p>
 				
 				<div class="flex flex-col pt-2">
 					{#each artists as artist}
@@ -437,9 +437,9 @@
 				class="mx-auto flex items-center rounded bg-blue-100/30 p-6 shadow focus:outline-none dark:bg-blue-500"
 			>
 				<div class="mx-auto " />
-				<pre class="textcard">
+				<div class="textcard">
 					{status.now_on_scene.actual_spisok_pesen[index].text}
-				</pre>
+				</div>
 				<div class="mx-auto " />
 			</div>
 		</div>
@@ -484,11 +484,8 @@
 		background-color: #ff7fbf;
 	}
 	.textcard {
-		width: 80vw;
-		height: 100%;
-		justify-content: left;
-		display: flex;
-		overflow: hidden;
+		white-space: pre-wrap;
+		word-wrap: break-word;
 	}
 	.trackcard {
 		height: 13.5rem;
