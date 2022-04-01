@@ -93,15 +93,15 @@
 			})
 		});
 		if (res.ok) {
-      const { data } = await res.json();
+			const { data } = await res.json();
 			console.log(data);
 			let bandsdata = data.bands.data;
 			let bandsobj = [];
-      //транспонируем масив
+			//транспонируем масив
 			bandsdata.forEach((band, id) => {
 				bandsobj[band.id] = band;
 			});
-      //чистим нули
+			//чистим нули
 			bandsobj = bandsobj.filter(function (el) {
 				return (el != null && el != '') || el === 0;
 			});
@@ -112,13 +112,12 @@
 					bands: bandsobj,
 					concerts: data.concerts.data,
 
-          launches: bandsobj,
+					launches: bandsobj,
 					id: params.id
 				}
 			};
 		}
-					
-			
+
 		return {
 			status: res.status,
 			error: new Error(`Error fetching GraphQL data`)
@@ -233,7 +232,7 @@
 			}}
 		>
 			<img
-				class="mb-4 h-28 w-28 w-full rounded shadow"
+				class=" h-28 w-28 w-full rounded shadow"
 				src={'https://admin.rocktver.ru' + launch.attributes.group_logo.data.attributes.url}
 				alt=""
 			/>
@@ -247,25 +246,29 @@
 				</h1>
 			</div>
 		</div>
-		<pre class="mb-5 mt-2">{launch.attributes.big_text}</pre>
-		<div class="mb-2 h-1 border-b border-white/30" />
+		<div class="mx-auto my-3">
+			<div class="textcard">
+			{launch.attributes.big_text}
+			</div>
+		</div>
+
+	
 		<div class="flex flex-col">
 			{#if launch.attributes.artists.data[0]}
 				{#each artists as artist}
-        <div class="flex">
-          <img
-          class="mr-2 mb-1 h-12 w-12 rounded-full "
-          src={'https://admin.rocktver.ru' + artist.attributes.avatar.data.attributes.url}
-          alt=""
-        />
-        <p class="lblock  mt-1 border-t border-white/30">{artist.attributes.name}</p>
-          <p class="lblock dark:text-gray-300 text-gray-700 ml-1 mt-1 border-t border-white/30 text-left">
-            {artist.attributes.role}
-          </p>
-        
-
-          
-        </div>
+					<div class="flex">
+						<img
+							class="mr-2 mb-1 h-14 w-14 rounded-full "
+							src={'https://admin.rocktver.ru' + artist.attributes.avatar.data.attributes.url}
+							alt=""
+						/>
+						<p class="lblock  mt-1 border-t border-white/30">{artist.attributes.name}</p>
+						<p
+							class="lblock ml-1 mt-1 border-t border-white/30 text-left text-gray-700 dark:text-gray-300"
+						>
+							{artist.attributes.role}
+						</p>
+					</div>
 				{/each}
 			{/if}
 		</div>
@@ -331,14 +334,15 @@
 			aria-label="card 1"
 			class="mx-auto flex rounded bg-blue-100/30 p-6 shadow focus:outline-none dark:bg-blue-500"
 		>
-			<pre class="textcard">
+			<div class="textcard">
 			{launch.attributes.spisok[index].text}
-		</pre>
+			</div>
 		</div>
 	</div>
 {/if}
 
 <style>
+
 	.prem {
 		color: rgb(235, 222, 46);
 		position: absolute;
@@ -347,11 +351,10 @@
 		background-color: rgb(255, 127, 191);
 	}
 	.textcard {
-		width: 80vw;
-		height: 100%;
-		justify-content: left;
-		display: flex;
-		overflow: hidden;
+		
+		white-space: pre-wrap;
+		word-wrap: break-word;
+		
 	}
 	.trackcard {
 		height: 13.5rem;
