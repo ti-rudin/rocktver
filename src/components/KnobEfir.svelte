@@ -80,7 +80,7 @@
 			load_efir();
 		}}
 	>
-		Запустить
+		СТАРТ
 	</button>
 {:else}
 	<button
