@@ -127,7 +127,7 @@
 </script>
 
 <LogoComponent />
-<h1 class="mx-auto max-w-2xl text-2xl">Все участники отборочного тура</h1>
+<h1 class="mx-auto max-w-2xl text-2xl">Все участники</h1>
 
 <div class="w-full ">
 	{#each bands as band}
@@ -159,7 +159,7 @@
 							<p class="pl-4">{band.attributes.small_text}</p>
 						</div>
 					</div>
-					<div class="mb-2 h-1 border-b border-white/30" />
+					
 					<div class="flex flex-col">
 						{#each band.attributes.artists.data as artist}
 						<div class="flex">

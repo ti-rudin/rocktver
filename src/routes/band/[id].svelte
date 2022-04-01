@@ -130,6 +130,7 @@
 	import LogoComponent from '../../components/LogoComponent.svelte';
 	import { onDestroy, onMount } from 'svelte';
 	import { isAuthenticated, user } from '$lib/stores/auth';
+	import { goto } from '$app/navigation';
 	export let status, isshowgo, band_on_scene;
 	export let concert, concertid, show_name, have_spisok, actual_spisok_pesen, ploschadka;
 
@@ -223,10 +224,10 @@
 <div class="mt-1 w-full ">
 	<div
 		aria-label="card 1"
-		class="mx-auto max-w-2xl cursor-pointer rounded-lg bg-blue-400/70 p-6 shadow ring-yellow-400 transition-all hover:ring-2 focus:outline-none dark:bg-blue-500 "
+		class="mx-auto max-w-2xl rounded bg-blue-400/70 p-6 shadow  dark:bg-blue-500 "
 	>
 		<div
-			class="flex"
+			class="flex cursor-pointer rounded ring-yellow-400 transition-all hover:ring-2 focus:outline-none"
 			on:click={() => {
 				goto('/band/' + launch.attributes.band_name);
 			}}
@@ -256,7 +257,11 @@
 		<div class="flex flex-col">
 			{#if launch.attributes.artists.data[0]}
 				{#each artists as artist}
-					<div class="flex">
+					<div class="flex cursor-pointer rounded ring-yellow-400 transition-all hover:ring-2 focus:outline-none"
+					on:click={() => {
+						goto('/person/' + artist.attributes.name);
+					}}
+					>
 						<img
 							class="mr-2 mb-1 h-14 w-14 rounded-full "
 							src={'https://admin.rocktver.ru' + artist.attributes.avatar.data.attributes.url}

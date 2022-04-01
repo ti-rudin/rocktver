@@ -20,8 +20,8 @@
 	<slot />
 </main>
 
-<footer class="mx-auto mt-4 mb-4 flex  border-t max-w-2xl flex-col items-start justify-center">
-	
+<footer class="mx-auto mt-4 mb-4 flex border-white/30 border-t  max-w-2xl flex-col items-start justify-center">
+
 	<div class="flex w-full p-4">
 		<div class="flex flex-col">
 			<a href="/" class="pt-4"> Главная </a>
@@ -68,7 +68,7 @@
 		<a href="/feedback" class="pb-2 mx-auto feedback"> Отзывы и предложения </a>
 		<div class="mx-auto flex">
 		<div class="lblock text-right">2022 РОКТВЕРЬ</div>
-		<a href="/privacy" class="ml-3 lblock text-sm pt-1"> Политика конфиденциальности</a>
+		<a href="/privacy" class="ml-3 lblock text-sm pt-1"> Условия использования</a>
 		</div>
 	</div>
 </footer>
@@ -78,7 +78,7 @@
 		color: orange;
 	}
 	  	.lblock {
-		width: 50%;
+		width: auto;
 	}
 	.container_develop a {
 		display: block;
