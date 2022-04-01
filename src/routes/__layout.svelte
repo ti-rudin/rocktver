@@ -78,7 +78,7 @@
 		color: orange;
 	}
 	  	.lblock {
-		width: 40vw;
+		width: 50%;
 	}
 	.container_develop a {
 		display: block;
