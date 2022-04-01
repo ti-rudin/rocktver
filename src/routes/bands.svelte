@@ -162,18 +162,20 @@
 					<div class="mb-2 h-1 border-b border-white/30" />
 					<div class="flex flex-col">
 						{#each band.attributes.artists.data as artist}
-							<div class="flex">
-								<p class="lblock  mt-3 border-b border-white/30 text-right">
-									{artist.attributes.role}
-								</p>
-								<img
-									class="ml-4 mr-2 mb-4 h-12 w-12 rounded-full "
-									src={'https://admin.rocktver.ru' + artist.attributes.avatar.data.attributes.url}
-									alt=""
-								/>
+						<div class="flex">
+							<img
+							class="mr-2 mb-1 h-12 w-12 rounded-full "
+							src={'https://admin.rocktver.ru' + artist.attributes.avatar.data.attributes.url}
+							alt=""
+						/>
+						<p class="lblock  mt-1 border-t border-white/30">{artist.attributes.name}</p>
+							<p class="lblock dark:text-gray-300 text-gray-700 ml-1 mt-1 border-t border-white/30 text-left">
+								{artist.attributes.role}
+							</p>
+						
 
-								<p class="lblock  mt-3 border-b border-white/30">{artist.attributes.name}</p>
-							</div>
+							
+						</div>
 						{/each}
 					</div>
 				{/if}
