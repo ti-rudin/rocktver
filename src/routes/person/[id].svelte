@@ -103,16 +103,17 @@ import { goto } from '$app/navigation';
 		).innerHTML = VK.Share.button(false,{type: "round", text: "Поделиться"});
 	});
 	$: imgurl = imgurl;
-	export let s;
+	export let s, s2;
 
 	$: s = 'http://vk.com/share.php?url=https://dev--rocktver.netlify.app/person/' + String(launch.attributes.name) + '&image='+ imgurl + '&noparse=true';
+	$: s2 = 'http://vk.com/share.php?url=https://dev--rocktver.netlify.app/person/' + String(launch.attributes.name) + '&image=https://admin.rocktver.ru/uploads/rf_A_v0_Imk_NU_3f1957f5b7.jpg';
 
 	//$: console.log(imgurl);
 </script>
 
 <svelte:head>
 
-	<meta property="image"  content={imgurl} />
+	<meta property="image"  content='https://admin.rocktver.ru/uploads/rf_A_v0_Imk_NU_3f1957f5b7.jpg' />
 
 
 
@@ -124,12 +125,12 @@ import { goto } from '$app/navigation';
 	<meta property="og:title" content={launch.attributes.name + ' - УЧАСТНИК РОК-ОПОЛЧЕНИЯ 2022'} />
 	<meta name="Description" content={'Я участник музыкального праздника для честных людей!'} />
 	<meta property="og:description" content={'Я участник музыкального праздника для честных людей!'} />
-	<meta property="og:image" content={imgurl} />
+	<meta property="og:image" content='https://admin.rocktver.ru/uploads/rf_A_v0_Imk_NU_3f1957f5b7.jpg' />
 	<meta name="twitter:card" content="summary" />
 
 	<meta name="twitter:title" content={launch.attributes.name + ' - УЧАСТНИК РОК-ОПОЛЧЕНИЯ 2022'} />
 	<meta name="twitter:description" content={'Я участник музыкального праздника для честных людей!'} />
-	<meta name="twitter:image" content={imgurl} />
+	<meta name="twitter:image" content='https://admin.rocktver.ru/uploads/rf_A_v0_Imk_NU_3f1957f5b7.jpg' />
 
 </svelte:head>
 
@@ -154,7 +155,7 @@ import { goto } from '$app/navigation';
 			aria-label="card 1"
 			class="mx-auto max-w-2xl cursor-pointer rounded-lg bg-blue-400/70 p-6 shadow ring-yellow-400 transition-all hover:ring-2 focus:outline-none dark:bg-blue-500 "
 		
-			href = {s}
+			href = {s2}
 
 		>
 			ghjhg
