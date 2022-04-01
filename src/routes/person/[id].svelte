@@ -95,7 +95,7 @@
 		).innerHTML = VK.Share.button('https://dev--rocktver.netlify.app/person/' + String(launch.attributes.name), {
 			type: 'round_nocount',
 			text: 'Поделиться',
-			image: imgurl,
+			image: 'https://dev--rocktver.netlify.app/person/' + imgurl,
 			noparse: true
 		});
 	});
