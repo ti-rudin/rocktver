@@ -78,6 +78,9 @@
 			//link.download = 'my-image-name.jpeg';
 			//link.href = dataUrl;
 			//link.click();
+
+			//http://vk.com/share.php?url={$url}&title={$titleVk}&description={$desc}&image={$image}&noparse=true
+			//http://vk.com/share.php?url={$url}&image={$image}&noparse=true
 		});
 	}
 
@@ -85,28 +88,49 @@
 		htmlToImage.toJpeg(htmlimg, { quality: 0.95 }).then(function (dataUrl) {
 			//console.log(dataUrl)
 			imgurl = dataUrl;
+			//fetch('')
 		});
 	}
-	
+
+	let s = 'http://vk.com/share.php?url=https://dev--rocktver.netlify.app/person/' + String(launch.attributes.name) + '&image='+ imgurl + '&noparse=true';
+	const postres =  fetch(s, {
+			method: 'GET',
+			headers: {
+				'Content-Type': 'application/json'
+			}
+		});
 	onMount(() => {
 		repost();
+		//console.log(imgurl);
 		document.getElementById(
 			'vk_share_button'
-		).innerHTML = VK.Share.button('https://dev--rocktver.netlify.app/person/' + String(launch.attributes.name), {
-			type: 'round_nocount',
-			text: 'Поделиться',
-			image: 'https://dev--rocktver.netlify.app/person/' + imgurl,
-			noparse: true
-		});
+		).innerHTML = VK.Share.button(false,{type: "round", text: "Сохранить"});
 	});
+	$: imgurl = imgurl;
+	//$: console.log(imgurl);
 </script>
 
 <svelte:head>
-	<meta property="og:url" content={'https://dev--rocktver.netlify.app/person/' + launch.attributes.name} />
-	<meta property="og:title" content={launch.attributes.name + ' - РОКОПОЛЧЕНИЕ 2022'} />
-    <meta property="og:image"  content={imgurl} />
-	<meta property="twitter:image"  content={imgurl} />
+
 	<meta property="image"  content={imgurl} />
+
+
+
+
+	<title>{launch.attributes.name + ' - УЧАСТНИК РОК-ОПОЛЧЕНИЯ 2022'}</title>
+	<link rel="canonical" href={'https://dev--rocktver.netlify.app/person/' + launch.attributes.name} />
+	<meta property="og:url" content={'https://dev--rocktver.netlify.app/person/' + launch.attributes.name}/>
+	<meta property="og:type" content="article" />
+	<meta property="og:title" content={launch.attributes.name + ' - УЧАСТНИК РОК-ОПОЛЧЕНИЯ 2022'} />
+	<meta name="Description" content={'Я участник музыкального праздника для честных людей!'} />
+	<meta property="og:description" content={'Я участник музыкального праздника для честных людей!'} />
+	<meta property="og:image" content={imgurl} />
+	<meta name="twitter:card" content="summary" />
+
+	<meta name="twitter:title" content={launch.attributes.name + ' - УЧАСТНИК РОК-ОПОЛЧЕНИЯ 2022'} />
+	<meta name="twitter:description" content={'Я участник музыкального праздника для честных людей!'} />
+	<meta name="twitter:image" content={imgurl} />
+
 </svelte:head>
 
 <LogoComponent />
@@ -130,7 +154,7 @@
 			aria-label="card 1"
 			class="mx-auto max-w-2xl cursor-pointer rounded-lg bg-blue-400/70 p-6 shadow ring-yellow-400 transition-all hover:ring-2 focus:outline-none dark:bg-blue-500 "
 			on:click={() => {
-				
+			
 			}}
 		>
 			ghjhg
