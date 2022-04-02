@@ -100,7 +100,7 @@ import { goto } from '$app/navigation';
 		//console.log(imgurl);
 		document.getElementById(
 			'vk_share_button'
-		).innerHTML = VK.Share.button(false,{type: "round", text: "Поделиться"});
+		).innerHTML = VK.Share.button(false,{type: "round", text: "Поделиться", image:"https://admin.rocktver.ru/uploads/rf_A_v0_Imk_NU_3f1957f5b7.jpg", noparse:true});
 	});
 	$: imgurl = imgurl;
 	export let s, s2;
@@ -154,12 +154,12 @@ import { goto } from '$app/navigation';
 		<a
 			aria-label="card 1"
 			class="mx-auto max-w-2xl cursor-pointer rounded-lg bg-blue-400/70 p-6 shadow ring-yellow-400 transition-all hover:ring-2 focus:outline-none dark:bg-blue-500 "
-		
-			href = {s2}
+			href="https://vk.com/share.php?url=https://rocktver.ru/person/Антон%20Невзоров&image=http://admin.rocktver.ru/uploads/rf_A_v0_Imk_NU_3f1957f5b7.jpg&noparse=true"
+			
 
 		>
 			ghjhg
-	</a>
+		</a>
 	</div>
 	<div class="mx-auto text-gray-900 dark:text-white">
 		<h1>Персона</h1>
