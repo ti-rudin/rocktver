@@ -79,7 +79,7 @@
 	launch = launches.filter((launch) => launch.attributes.name == id)[0];
 	bands = launch.attributes.bands.data;
 
-	$: imgurl = imgurl;
+
 	function download() {
 		var link = document.createElement('a');
 		link.download = launch.attributes.name + '-in-RockTver.jpeg';
@@ -104,7 +104,7 @@
 		document.getElementById('vk_share_button').innerHTML = VK.Share.button(false, {
 			type: 'round',
 			text: 'Поделиться',
-			image: 'https://admin.rocktver.ru/uploads/rf_A_v0_Imk_NU_3f1957f5b7.jpg',
+			image: imgurl,
 			noparse: true
 		});
 	});
@@ -130,7 +130,7 @@
 <svelte:head>
 	<meta
 		property="image"
-		content="https://admin.rocktver.ru/uploads/rf_A_v0_Imk_NU_3f1957f5b7.jpg"
+		content={imgurl}
 	/>
 
 	<title>{launch.attributes.name + ' - УЧАСТНИК РОК-ОПОЛЧЕНИЯ 2022'}</title>
@@ -145,7 +145,7 @@
 	/>
 	<meta
 		property="og:image"
-		content="https://admin.rocktver.ru/uploads/rf_A_v0_Imk_NU_3f1957f5b7.jpg"
+		content={imgurl}
 	/>
 	<meta name="twitter:card" content="summary" />
 
@@ -156,7 +156,7 @@
 	/>
 	<meta
 		name="twitter:image"
-		content="https://admin.rocktver.ru/uploads/rf_A_v0_Imk_NU_3f1957f5b7.jpg"
+		content={imgurl}
 	/>
 </svelte:head>
 <LogoComponent />
