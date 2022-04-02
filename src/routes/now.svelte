@@ -160,7 +160,7 @@
 			aria-label="card 1"
 			class="mx-auto mt-1 max-w-2xl rounded-lg bg-red-400/40 p-4 shadow ring-yellow-400 transition-all hover:ring-2 focus:outline-none dark:bg-red-500"
 			on:click={() => {
-				goto('/concert/' + status.event_id);
+				goto('/concert/' + status.concert_id);
 			}}
 		>
 			<div class="flex cursor-pointer items-center border-b border-gray-200 pb-6 ">

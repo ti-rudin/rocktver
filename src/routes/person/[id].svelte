@@ -100,7 +100,7 @@ import { goto } from '$app/navigation';
 		//console.log(imgurl);
 		document.getElementById(
 			'vk_share_button'
-		).innerHTML = VK.Share.button(false,{type: "round", text: "Поделиться", image:"https://admin.rocktver.ru/uploads/rf_A_v0_Imk_NU_3f1957f5b7.jpg"});
+		).innerHTML = VK.Share.button(false,{type: "round", text: "Поделиться", image:"https://admin.rocktver.ru/uploads/rf_A_v0_Imk_NU_3f1957f5b7.jpg", noparse:true});
 	});
 	$: imgurl = imgurl;
 	export let s, s2;
