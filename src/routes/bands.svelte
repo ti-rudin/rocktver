@@ -134,11 +134,11 @@
 		<div class="mt-3 w-full  ">
 			<div
 				aria-label="card 1"
-				class="mx-auto max-w-2xl cursor-pointer rounded-lg bg-blue-400/70 p-6 shadow ring-yellow-400 transition-all hover:ring-2 focus:outline-none dark:bg-blue-500 "
+				class="mx-auto max-w-2xl cursor-pointer rounded-lg bg-blue-400/70 p-6 shadow transition-all  dark:bg-blue-500 "
 			>
 				{#if band}
 					<div
-						class="flex"
+						class="flex cursor-pointer rounded ring-yellow-400 transition-all hover:ring-2 focus:outline-none"
 						on:click={() => {
 							goto('/band/' + band.attributes.band_name);
 						}}
@@ -162,7 +162,10 @@
 					
 					<div class="flex flex-col">
 						{#each band.attributes.artists.data as artist}
-						<div class="flex">
+						<div class="flex cursor-pointer rounded ring-yellow-400 transition-all hover:ring-2 focus:outline-none"
+						on:click={() => {
+							goto('/person/' + artist.attributes.name);
+						}}>
 							<img
 							class="mr-2 mb-1 h-12 w-12 rounded-full "
 							src={'https://admin.rocktver.ru' + artist.attributes.avatar.data.attributes.url}

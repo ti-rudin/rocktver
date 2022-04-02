@@ -249,18 +249,18 @@
 		</div>
 		<div class="mx-auto my-3">
 			<div class="textcard">
-			{launch.attributes.big_text}
+				{launch.attributes.big_text}
 			</div>
 		</div>
 
-	
 		<div class="flex flex-col">
 			{#if launch.attributes.artists.data[0]}
 				{#each artists as artist}
-					<div class="flex cursor-pointer rounded ring-yellow-400 transition-all hover:ring-2 focus:outline-none"
-					on:click={() => {
-						goto('/person/' + artist.attributes.name);
-					}}
+					<div
+						class="flex cursor-pointer rounded ring-yellow-400 transition-all hover:ring-2 focus:outline-none"
+						on:click={() => {
+							goto('/person/' + artist.attributes.name);
+						}}
 					>
 						<img
 							class="mr-2 mb-1 h-14 w-14 rounded-full "
@@ -340,14 +340,13 @@
 			class="mx-auto flex rounded bg-blue-100/30 p-6 shadow focus:outline-none dark:bg-blue-500"
 		>
 			<div class="textcard">
-			{launch.attributes.spisok[index].text}
+				{launch.attributes.spisok[index].text}
 			</div>
 		</div>
 	</div>
 {/if}
 
 <style>
-
 	.prem {
 		color: rgb(235, 222, 46);
 		position: absolute;
@@ -356,10 +355,8 @@
 		background-color: rgb(255, 127, 191);
 	}
 	.textcard {
-		
 		white-space: pre-wrap;
 		word-wrap: break-word;
-		
 	}
 	.trackcard {
 		height: 13.5rem;
