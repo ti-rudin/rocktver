@@ -260,7 +260,7 @@
 					<div class="flex cursor-pointer rounded ring-yellow-400 transition-all hover:ring-2 focus:outline-none"
 					on:click={() => {
 							goto('/person/' + artist.attributes.name);
-					}}
+					}}>
 
 						<img
 							class="mr-2 mb-1 h-14 w-14 rounded-full "
