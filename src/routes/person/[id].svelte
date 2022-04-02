@@ -73,8 +73,8 @@
 
 	export let launches, launch, id, htmlimg, imgurl, bands, site;
 
-	//site = "https://rocktver.ru/person/";
-	site = 'https://dev--rocktver.netlify.app/person/';
+	site = "https://rocktver.ru/person/";
+	//site = 'https://dev--rocktver.netlify.app/person/';
 
 	launch = launches.filter((launch) => launch.attributes.name == id)[0];
 	bands = launch.attributes.bands.data;
