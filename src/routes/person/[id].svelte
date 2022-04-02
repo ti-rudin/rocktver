@@ -166,7 +166,7 @@
 			bind:this={htmlimg}
 			class="maskpic flex  p-4 flex-col bg-white text-black dark:bg-gray-900 dark:text-white"
 		>
-		<div class="w-full"></div>
+	
 			
 
 			<h2 class="urlonscreen mx-auto max-w-sm text-center">
@@ -179,14 +179,14 @@
 				</div>
 				<h2 class="name mr-auto ml-3">{launch.attributes.name}</h2>
 			</div>
-			<h2 class="role mx-auto max-w-sm text-center">{launch.attributes.role}</h2>
+			<h2 class="role mx-auto w-full text-center">{launch.attributes.role}</h2>
 			{#if bands}
 				{#each bands as band}
 					<h2 class="mx-auto">Участник команды</h2>
-					<div class="my-3  mx-auto ">
+					<div class="my-3 ">
 						<div
 							aria-label="card 1"
-							class="mx-auto  rounded-lg bg-blue-400/80 p-6 shadow dark:bg-blue-500/80 "
+							class="rounded-lg bg-blue-400/80 p-6 w-full shadow dark:bg-blue-500/80 "
 						>
 							<div
 								class="flex cursor-pointer rounded ring-yellow-400 transition-all hover:ring-2 focus:outline-none"
@@ -208,7 +208,7 @@
 										{band.attributes.town ? band.attributes.town : ''}
 									</h1>
 									<h1
-										class="max-w-sm pl-4 text-lg text-gray-800 focus:outline-none dark:text-white"
+										class="pl-4 text-lg text-gray-800 focus:outline-none dark:text-white"
 									>
 										{band.attributes.small_text}
 									</h1>
@@ -270,6 +270,7 @@
 <style>
 	.maskpic {
 		max-width: fit-content;
+		min-width: 27rem;
 	}
 	#vk_share_button {
 		transform: scale(1.8);
