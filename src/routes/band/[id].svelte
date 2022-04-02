@@ -259,7 +259,7 @@
 				{#each artists as artist}
 					<div class="flex cursor-pointer rounded ring-yellow-400 transition-all hover:ring-2 focus:outline-none"
 					on:click={() => {
-						goto('/person/' + artist.attributes.name);
+						//goto('/person/' + artist.attributes.name);
 					}}
 					>
 						<img
