@@ -154,7 +154,7 @@ import { goto } from '$app/navigation';
 		<a
 			aria-label="card 1"
 			class="mx-auto max-w-2xl cursor-pointer rounded-lg bg-blue-400/70 p-6 shadow ring-yellow-400 transition-all hover:ring-2 focus:outline-none dark:bg-blue-500 "
-			href="https://vk.com/share.php?url=https://rocktver.ru/person//Антон%20Невзоров&image=https://admin.rocktver.ru/uploads/rf_A_v0_Imk_NU_3f1957f5b7.jpg"
+			href="https://vk.com/share.php?url=https://rocktver.ru/person/Антон%20Невзоров&image=http://admin.rocktver.ru/uploads/rf_A_v0_Imk_NU_3f1957f5b7.jpg&noparse=true"
 			
 
 		>
