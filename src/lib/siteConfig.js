@@ -16,4 +16,10 @@ import { writable } from 'svelte/store';
 
 export const isDarkFlag = writable();
 export const isMngr = writable();
-export const isAdmin = writable();
+//export const isAdmin = writable();
+
+import { browser } from '$app/env';
+const isAdmin_defaultValue = false;
+const isAdmin_initialValue = browser ? window.localStorage.getItem('isad') ?? isAdmin_defaultValue : isAdmin_defaultValue;
+ 
+export const isAdmin = writable(isAdmin_initialValue);

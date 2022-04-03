@@ -3,6 +3,9 @@
 	import { isDarkFlag } from '$lib/siteConfig';
 	import LogoComponent from '../components/LogoComponent.svelte';
 
+	import { browser } from '$app/env';
+ //isAuthenticated = browser ? window.localStorage.getItem('isAuthenticated') ?? isAuthenticated_defaultValue : isAuthenticated_defaultValue;
+ 
 
 
 	function getit(response) {
@@ -20,6 +23,8 @@
 				if (r.response) {
 					//alert(r.response.sex);
 					$isAuthenticated = true;
+					localStorage.setItem('isAuthenticated', JSON.stringify(true));
+					
 					console.log(r.response);
 					let user_data = {
 						id: r.response[0]['id'],
@@ -32,6 +37,7 @@
 						sex: r.response[0].sex ? r.response[0].sex:"не указано"
 					};
 					user.set(user_data);
+					localStorage.setItem('user', JSON.stringify(user_data));
 					ym(88086612,'reachGoal','vk-auth');
 					LogRocket.identify(r.response[0]['id'], {
 						name: r.response[0]['first_name'] + ' ' + r.response[0]['last_name'],

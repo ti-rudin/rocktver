@@ -7,6 +7,10 @@
 	import NavLink from './NavLink.svelte';
 	import { isAuthenticated, user } from '$lib/stores/auth';
 
+	import { browser } from '$app/env';
+ $isAuthenticated = browser ? window.localStorage.getItem('isAuthenticated') ?? 'false' : 'false';
+ $user = browser ? JSON.parse(window.localStorage.getItem('user')) ?? '' : '';
+
 	let isDark = false;
 	$isDarkFlag = false;
 	if (typeof localStorage !== 'undefined') {

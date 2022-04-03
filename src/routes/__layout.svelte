@@ -6,6 +6,8 @@
 	import { isAuthenticated, user } from '$lib/stores/auth';
 	import { onMount } from 'svelte';
 
+	import { browser } from '$app/env';
+  
 	onMount(() => {
 		VK.init({ apiId: 8083840 });
 	});
