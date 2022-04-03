@@ -24,7 +24,7 @@ const rehypePlugins = [
 ];
 
 const allowedPosters = ['ti-rudin','AlexNovikov23'];
-const publishedTags = ['chagelog'];
+const publishedTags = ['changelog'];
 let allBlogposts = [];
 // let etag = null // todo - implmement etag header
 ``;
