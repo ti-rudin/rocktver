@@ -1,6 +1,7 @@
 <script>
 	import {
-		isDarkFlag
+		isDarkFlag,
+		isAdmin
 	} from '$lib/siteConfig';
 
 	import MobileMenu from './MobileMenu.svelte';
@@ -8,8 +9,9 @@
 	import { isAuthenticated, user } from '$lib/stores/auth';
 
 	import { browser } from '$app/env';
- $isAuthenticated = browser ? window.localStorage.getItem('isAuthenticated') ?? 'false' : 'false';
+ $isAuthenticated = browser ? window.localStorage.getItem('isAuthenticated') ?? false : false;
  $user = browser ? JSON.parse(window.localStorage.getItem('user')) ?? '' : '';
+ $isAdmin = browser ? JSON.parse(window.localStorage.getItem('isad')) ?? false : false
 
 	let isDark = false;
 	$isDarkFlag = false;

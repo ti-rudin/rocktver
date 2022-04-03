@@ -88,6 +88,10 @@
 	on:click={() => {
 		VK.Auth.logout(getit);
 		$isAuthenticated = false;
+		$user = {};
+		localStorage.setItem('user', JSON.stringify($user));
+		localStorage.setItem('isAuthenticated', JSON.stringify(false));
+		
 	}}
 >
 	<p class="mx-auto">Выйти</p>
