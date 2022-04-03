@@ -195,7 +195,7 @@
 								}}
 							>
 								<img
-									class="w-1/3 h-20 rounded shadow"
+									class="w-24 h-24 rounded shadow"
 									src={'https://admin.rocktver.ru' + band.attributes.group_logo.data.attributes.url}
 									alt=""
 								/>
@@ -289,7 +289,7 @@
 	.name {
 		color: red;
 		max-width: fit-content;
-		bottom: 6.5rem;
+		bottom: 6rem;
 		position: relative;
 		z-index: 100;
 		font-weight: bold;
