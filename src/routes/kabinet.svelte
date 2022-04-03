@@ -60,7 +60,7 @@
 	<div class="flex justify-center">
 		<!-- Card -->
 		<div
-			class="delay-50 group flex w-auto rounded-lg bg-gray-800 p-5 duration-100 hover:bg-gray-700"
+			class="delay-50 group flex w-auto rounded-lg bg-gray-800 p-5"
 		>
 			<!-- Image Cover -->
 			<img class="h-28 w-28 w-full rounded shadow" src={$user.photo} alt={$user.name} />
@@ -76,11 +76,18 @@
 		</div>
 	</div>
 	<a
-		class="tomain m-5 mx-auto cursor-pointer rounded-lg bg-yellow-400/95 p-2 px-3 text-black ring-yellow-800 transition-all hover:ring-2 dark:bg-yellow-800/95 dark:text-white"
+		class="tomain delay-50 duration-100 dark:hover:bg-blue-700/50 m-5 mx-auto cursor-pointer rounded-lg p-2 px-3 ring-yellow-800 transition-all hover:ring-2 bg-blue-400/50 shadow dark:bg-blue-500/20  text-gray-800 focus:outline-none dark:text-gray-300 "
+		id="logout_button"
+		href="/concert/1"
+	>
+		<p class="mx-auto">Перейти на страницу отборочного концерта</p>
+	</a>
+	<a
+		class="tomain  delay-50 duration-100 dark:hover:bg-blue-700/50 mx-auto cursor-pointer rounded-lg p-2 px-3 ring-yellow-800 transition-all hover:ring-2 bg-blue-400/50 shadow dark:bg-blue-500/20 text-gray-800 focus:outline-none dark:text-gray-300 "
 		id="logout_button"
 		href="/now"
 	>
-		<p class="mx-auto">Перейти на страницу прямого эфир </p>
+		<p class="mx-auto">Перейти на страницу прямого эфира </p>
 	</a>
 	<div
 	class="logoutbut m-5 mx-auto cursor-pointer rounded-lg bg-red-400/95 p-2 px-3 text-white ring-red-800 transition-all hover:ring-2 dark:bg-red-800/95 dark:text-white"
@@ -138,7 +145,7 @@
 
 <style>
 	.tomain {
-		width: 200px;
+		width: 250px;
 		font-size: 20px;
 		text-align: center;
 		text-decoration: none;
