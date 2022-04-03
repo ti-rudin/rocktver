@@ -48,7 +48,7 @@
 		});
 		if (res.ok) {
 			const { data } = await res.json();
-			console.log('concert - ' + data);
+			//console.log('concert - ' + data);
 
 			return {
 				props: {
@@ -140,7 +140,7 @@
 		fetch(apiurl, requestOptions)
 			.then((response) => response.json())
 			.then((result) => {
-				console.log(result.id);
+				//console.log(result.id);
 				if (result.id == 'admin') {
 					isAdmin = true;
 				}
@@ -160,7 +160,7 @@
 		fetch('https://api.rocktver.ru/get-efir/', requestOptions)
 			.then((response) => response.json())
 			.then((result) => {
-				console.log(result);
+				//console.log(result);
 				state = result;
 				return result;
 			})

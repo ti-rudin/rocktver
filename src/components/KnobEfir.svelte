@@ -15,7 +15,7 @@
 		fetch('https://api.rocktver.ru/get-efir/', requestOptions)
 			.then((response) => response.json())
 			.then((result) => {
-				console.log(result);
+				//console.log(result);
 				status = result;
 				isshowgo = status.is_show_go;
                 concertid = status.concert_id;

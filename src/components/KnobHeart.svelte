@@ -40,7 +40,7 @@
 	function sendlike() {
 		issend = true;
 		sendliketoserver({ u: user, now: now, efir: efir });
-		console.log('now' + now);
+		//console.log('now' + now);
 		//setTimeout(function () {
 		//	issend = true;
 		//}, 800);

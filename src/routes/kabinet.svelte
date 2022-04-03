@@ -25,7 +25,7 @@
 					$isAuthenticated = true;
 					localStorage.setItem('isAuthenticated', JSON.stringify(true));
 					
-					console.log(r.response);
+					//console.log(r.response);
 					let user_data = {
 						id: r.response[0]['id'],
 						bdate: r.response[0]['bdate'] ? r.response[0]['bdate']:"не указано",

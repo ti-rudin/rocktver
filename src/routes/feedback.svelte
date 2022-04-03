@@ -1,4 +1,6 @@
-
+<script context="module">
+    export const prerender = true;
+</script>
 
     <iframe class="feedback " style="width=100% border: 0;" frameborder="0" src="http://reformal.ru/widget/985718"></iframe>
 

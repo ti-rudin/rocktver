@@ -11,8 +11,8 @@
 
 	function change_timeline(event, state, concert) {
 
-		console.log(event);
-		console.log(state);
+		//console.log(event);
+		//console.log(state);
 		let myHeaders = new Headers();
 		myHeaders.append('Content-Type', 'application/json');
 	

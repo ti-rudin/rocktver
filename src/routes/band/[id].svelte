@@ -170,7 +170,7 @@
 	}
 
 	$: if (band_on_scene == launch.id) {
-		console.log('re');
+		//console.log('re');
 		isonscene = true;
 	} else {
 		isonscene = false;

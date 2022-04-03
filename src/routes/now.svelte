@@ -42,8 +42,8 @@
 		artists = status.now_on_scene.artists;
 		logobandurl = 'https://admin.rocktver.ru' + status.now_on_scene.bandlogo;
 
-		console.log(now);
-		console.log(status);
+		//console.log(now);
+		//console.log(status);
 		if (now.now_event_id !== 'null') {
 			displaylikes = true;
 		}
@@ -284,6 +284,7 @@
 	</h1>
 	<div class="mt-1 w-full ">
 		<div
+		in:scale={{ duration: 300 }}
 			aria-label="card 1"
 			class="mx-auto max-w-2xl  rounded-lg bg-blue-400/70 p-6 shadow  dark:bg-blue-500 "
 		>

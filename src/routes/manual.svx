@@ -30,7 +30,7 @@
 		});
 		if (res.ok) {
 			const { data } = await res.json();
-			console.log(data);
+			//console.log(data);
 			
 			//let bandsdata = data.bands.data;
 			//let bandsobj = [];

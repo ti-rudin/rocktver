@@ -1,6 +1,5 @@
 <script context="module">
 	export async function load({ params, fetch }) {
-
 		const res = await fetch('https://admin.rocktver.ru/graphql', {
 			method: 'POST',
 			headers: {
@@ -49,13 +48,12 @@
 		});
 		if (res.ok) {
 			const { data } = await res.json();
-			console.log("concert - "+data);
+			console.log('concert - ' + data);
 
 			return {
 				props: {
 					concert: data.concert.data,
-					timeline: data.concert.data.attributes.spisok,
-
+					timeline: data.concert.data.attributes.spisok
 				}
 			};
 		}
@@ -64,15 +62,13 @@
 			error: new Error(`Error fetching GraphQL data`)
 		};
 	}
-
 </script>
 
 <script>
-		import { onDestroy, onMount } from 'svelte';
+	import { onDestroy, onMount } from 'svelte';
 	export let concert, timeline, state;
 	//console.log(this.artists.data[0].attributes.name)
 
-	
 	import dateFormat, { masks } from 'dateformat';
 	import { i18n } from 'dateformat';
 	i18n.dayNames = [
@@ -117,14 +113,15 @@
 		'Ноября',
 		'Декабря'
 	];
-	
+
 	import KnobEfir from '../../components/KnobEfir.svelte';
 	import KnobTimeline from '../../components/KnobTimeline.svelte';
 	import LogoComponent from '../../components/LogoComponent.svelte';
 
 	import { isAuthenticated, user } from '$lib/stores/auth';
-	import { isDarkFlag, isMngr, isAdmin } from '$lib/siteConfig';
+	import { isDarkFlag, isMngr } from '$lib/siteConfig';
 
+	let isAdmin = false;
 	let apiurl = 'https://api.rocktver.ru/getuserdata';
 
 	async function loaduser(userid) {
@@ -145,15 +142,11 @@
 			.then((result) => {
 				console.log(result.id);
 				if (result.id == 'admin') {
-					$isAdmin = true;
+					isAdmin = true;
 				}
 				return result.id;
 			})
 			.catch((error) => console.log('error', error));
-	}
-
-	if ($isAuthenticated) {
-		loaduser($user.id);
 	}
 
 	async function load_open_status() {
@@ -174,20 +167,22 @@
 			.catch((error) => console.log('error', error));
 	}
 	onMount(() => {
-		load_open_status();
+		loaduser($user.id);
 	});
 	$: state = state;
+	load_open_status();
 </script>
+
 <LogoComponent />
 {#if $isAuthenticated}
-	{#if $isAdmin}
+	{#if isAdmin}
 		<div
 			class="mx-auto my-3 flex max-w-2xl  flex-col rounded p-6  shadow ring-1 ring-yellow-600 focus:outline-none"
 		>
 			<h1 class="mx-auto mb-2 text-xl">Администрирование</h1>
-			
+
 			<div class="mx-auto">
-				<KnobEfir idtogo={concert.id} user = {$user.id}/>
+				<KnobEfir idtogo={concert.id} user={$user.id} />
 			</div>
 		</div>
 	{/if}
@@ -256,83 +251,83 @@
 </div>
 <div class="relative mx-auto w-10/12 py-2 md:w-9/12 lg:w-7/12">
 	<div class="mt-10 border-l-2">
-		{#each timeline as event,i}
-			{#if event.open_speache || event.finish_speache}
-				<div 
-					class="items-left relative ml-10 mb-10 flex transform cursor-pointer flex-col space-y-4 rounded bg-blue-600 px-6 py-4 text-white transition hover:-translate-y-2 md:flex-row md:space-y-0"
-				>
-					<div
-						class="absolute -left-10 z-10 mt-2 h-5 w-5 -translate-x-2/4 transform rounded-full bg-blue-600 md:mt-2"
-					/>
-					<div class="absolute -left-10 z-0 h-1 w-10 bg-blue-300 md:top-8" />
-
-					<!-- Content that showing in the box -->
-					<div  class="flex-auto">
-						<h1 class="text-lg">
-							{event.start_time.split(':00.000')[0]}
-						</h1>
-						<h1 class="text-xl font-bold">{event.title}</h1>
-					</div>
-					{#if $isAuthenticated}
-						{#if $isAdmin}
-						<KnobTimeline user = {$user.id} event_i = {i} event={event} concert = {concert}/>
-						{/if}
-					{/if}
-				</div>
-			{:else if event.tech_pause}
-				<div
-					class="relative ml-10 mb-10 flex transform cursor-pointer flex-col items-left space-y-4 rounded bg-yellow-600 px-6 py-4 text-white transition hover:-translate-y-2 md:flex-row md:space-y-0"
-				>
-					<div
-						class="absolute -left-10 z-10 mt-2 h-5 w-5 -translate-x-2/4 transform rounded-full bg-yellow-600 md:mt-2"
-					/>
-					<div class="absolute -left-10 md:top-8 z-0 h-1 w-10 bg-yellow-600" />
-
-					<!-- Content that showing in the box -->
-					<div class="flex-auto">
-						<h1 class="text-lg">
-							{event.start_time.split(':00.000')[0]}
-						</h1>
-						{#if event.band.data}
-							<h1 class="text-xl font-bold">{event.band.data.attributes.band_name}</h1>
-						{:else}
-							<h1 class="text-xl font-bold">{event.title}</h1>
-						{/if}
-					</div>
-					{#if $isAuthenticated}
-						{#if $isAdmin}
-						<KnobTimeline user = {$user.id} event_i = {i} event={event} concert = {concert}/>
-						{/if}
-					{/if}
-				</div>
-			{:else if event.slovo_vedusch}
-				<div
-					class="relative ml-10 mb-10 flex transform cursor-pointer flex-col items-left space-y-4 rounded bg-green-600 px-6 py-4 text-white transition hover:-translate-y-2 md:flex-row md:space-y-0"
-				>
-					<div
-						class="absolute -left-10 z-10 mt-2 h-5 w-5 -translate-x-2/4 transform rounded-full bg-green-600 md:mt-2"
-					/>
-					<div class="absolute -left-10 md:top-8 z-0 h-1 w-10 bg-green-600" />
-
-					<!-- Content that showing in the box -->
-					<div class="flex-auto">
-						<h1 class="text-lg">
-							{event.start_time.split(':00.000')[0]}
-						</h1>
-						{#if event.band.data}
-							<h1 class="text-xl font-bold">{event.band.data.attributes.band_name}</h1>
-						{:else}
-							<h1 class="text-xl font-bold">{event.title}</h1>
-						{/if}
-					</div>
-					{#if $isAuthenticated}
-						{#if $isAdmin}
-						<KnobTimeline user = {$user.id} event_i = {i} event={event} concert = {concert}/>
-						{/if}
-					{/if}
-				</div>
-			{:else if $isAdmin}
 		
+			{#each timeline as event, i}
+				{#if event.open_speache || event.finish_speache}
+					<div
+						class="items-left relative ml-10 mb-10 flex transform cursor-pointer flex-col space-y-4 rounded bg-blue-600 px-6 py-4 text-white transition hover:-translate-y-2 md:flex-row md:space-y-0"
+					>
+						<div
+							class="absolute -left-10 z-10 mt-2 h-5 w-5 -translate-x-2/4 transform rounded-full bg-blue-600 md:mt-2"
+						/>
+						<div class="absolute -left-10 z-0 h-1 w-10 bg-blue-300 md:top-8" />
+
+						<!-- Content that showing in the box -->
+						<div class="flex-auto">
+							<h1 class="text-lg">
+								{event.start_time.split(':00.000')[0]}
+							</h1>
+							<h1 class="text-xl font-bold">{event.title}</h1>
+						</div>
+						{#if $isAuthenticated}
+							{#if isAdmin}
+								<KnobTimeline user={$user.id} event_i={i} {event} {concert} />
+							{/if}
+						{/if}
+					</div>
+				{:else if event.tech_pause}
+					<div
+						class="relative ml-10 mb-10 flex transform cursor-pointer flex-col items-left space-y-4 rounded bg-yellow-600 px-6 py-4 text-white transition hover:-translate-y-2 md:flex-row md:space-y-0"
+					>
+						<div
+							class="absolute -left-10 z-10 mt-2 h-5 w-5 -translate-x-2/4 transform rounded-full bg-yellow-600 md:mt-2"
+						/>
+						<div class="absolute -left-10 md:top-8 z-0 h-1 w-10 bg-yellow-600" />
+
+						<!-- Content that showing in the box -->
+						<div class="flex-auto">
+							<h1 class="text-lg">
+								{event.start_time.split(':00.000')[0]}
+							</h1>
+							{#if event.band.data}
+								<h1 class="text-xl font-bold">{event.band.data.attributes.band_name}</h1>
+							{:else}
+								<h1 class="text-xl font-bold">{event.title}</h1>
+							{/if}
+						</div>
+						{#if $isAuthenticated}
+							{#if isAdmin}
+								<KnobTimeline user={$user.id} event_i={i} {event} {concert} />
+							{/if}
+						{/if}
+					</div>
+				{:else if event.slovo_vedusch}
+					<div
+						class="relative ml-10 mb-10 flex transform cursor-pointer flex-col items-left space-y-4 rounded bg-green-600 px-6 py-4 text-white transition hover:-translate-y-2 md:flex-row md:space-y-0"
+					>
+						<div
+							class="absolute -left-10 z-10 mt-2 h-5 w-5 -translate-x-2/4 transform rounded-full bg-green-600 md:mt-2"
+						/>
+						<div class="absolute -left-10 md:top-8 z-0 h-1 w-10 bg-green-600" />
+
+						<!-- Content that showing in the box -->
+						<div class="flex-auto">
+							<h1 class="text-lg">
+								{event.start_time.split(':00.000')[0]}
+							</h1>
+							{#if event.band.data}
+								<h1 class="text-xl font-bold">{event.band.data.attributes.band_name}</h1>
+							{:else}
+								<h1 class="text-xl font-bold">{event.title}</h1>
+							{/if}
+						</div>
+						{#if $isAuthenticated}
+							{#if isAdmin}
+								<KnobTimeline user={$user.id} event_i={i} {event} {concert} />
+							{/if}
+						{/if}
+					</div>
+				{:else if isAdmin}
 					<div
 						class="bandurl relative ml-10 mb-10 flex transform cursor-pointer flex-col items-left space-y-4 rounded bg-pink-600 px-6 py-4 text-white dark:text-white transition hover:-translate-y-2 md:flex-row md:space-y-0"
 					>
@@ -353,19 +348,18 @@
 							{/if}
 						</div>
 
-						<KnobTimeline user = {$user.id} event_i = {i} event={event} concert = {concert}/>
+						<KnobTimeline user={$user.id} event_i={i} {event} {concert} />
 					</div>
 				{:else}
-					<a
+					<div
 						class="bandurl relative ml-10 mb-10 flex transform cursor-pointer flex-col items-left space-y-4 rounded bg-pink-600 px-6 py-4 text-white dark:text-white transition hover:-translate-y-2 md:flex-row md:space-y-0"
-						href={'/band/' + event.band.data.attributes.band_name}
+						
 					>
 						<div
 							class="absolute -left-10 z-10 mt-2 h-5 w-5 -translate-x-2/4 transform rounded-full bg-pink-600 md:mt-2"
 						/>
 						<div class="absolute -left-10 md:top-8 z-0 h-1 w-10 bg-pink-600" />
 
-						
 						<div class="flex-auto">
 							<h1 class="text-lg">
 								{event.start_time.split(':00.000')[0]}
@@ -376,10 +370,10 @@
 								<h1 class="text-xl font-bold">{event.title}</h1>
 							{/if}
 						</div>
-					</a>
-		
-			{/if}
-		{/each}
+					</div>
+				{/if}
+			{/each}
+	
 	</div>
 </div>
 
