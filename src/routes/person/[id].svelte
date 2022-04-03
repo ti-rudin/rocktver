@@ -164,7 +164,7 @@
 	<div class="mx-auto">
 		<div
 			bind:this={htmlimg}
-			class="maskpic flex  p-4 flex-col bg-white text-black dark:bg-gray-900 dark:text-white"
+			class="maskpic flex  mx-auto p-4 flex-col bg-white text-black dark:bg-gray-900 dark:text-white"
 		>
 	
 			
@@ -173,8 +173,8 @@
 				{'rocktver.ru/person/' + launch.attributes.name}
 			</h2>
 
-			<div aria-label="card 1" class="mx-auto max-w-sm rounded-lg p-0">
-				<div class="mx-auto">
+			<div aria-label="card 1" class="mx-auto rounded-lg">
+				<div class="">
 					<Ramka1 img={imguserurl} />
 				</div>
 				<h2 class="name mr-auto ml-3">{launch.attributes.name}</h2>
@@ -183,10 +183,10 @@
 			{#if bands}
 				{#each bands as band}
 					<h2 class="mx-auto">Участник команды</h2>
-					<div class="my-3 ">
+					<div class="mx-auto my-3 w-4/5">
 						<div
 							aria-label="card 1"
-							class="rounded-lg bg-blue-400/80 p-6 w-full shadow dark:bg-blue-500/80 "
+							class="rounded-lg bg-blue-400/80 p-4 shadow dark:bg-blue-500/80 "
 						>
 							<div
 								class="flex cursor-pointer rounded ring-yellow-400 transition-all hover:ring-2 focus:outline-none"
@@ -195,7 +195,7 @@
 								}}
 							>
 								<img
-									class="w-30 h-28  rounded shadow"
+									class="w-1/3 h-20 rounded shadow"
 									src={'https://admin.rocktver.ru' + band.attributes.group_logo.data.attributes.url}
 									alt=""
 								/>
@@ -208,7 +208,7 @@
 										{band.attributes.town ? band.attributes.town : ''}
 									</h1>
 									<h1
-										class="pl-4 text-lg text-gray-800 focus:outline-none dark:text-white"
+										class="pl-4  text-sm text-gray-800 focus:outline-none dark:text-white"
 									>
 										{band.attributes.small_text}
 									</h1>
@@ -276,7 +276,7 @@
 		transform: scale(1.8);
 		position: relative;
 		width: 1rem;
-		left: -5rem;
+		left: -4.7rem;
 		margin-left: auto;
 		margin-right: auto;
 	}
@@ -285,7 +285,7 @@
 	}
 	.name {
 		color: red;
-		width: 15rem;
+		max-width: fit-content;
 		bottom: 6.5rem;
 		position: relative;
 		z-index: 100;

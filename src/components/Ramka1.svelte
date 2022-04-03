@@ -4,7 +4,7 @@
 </script>
 
 
-<svg width="360" height="403" viewBox="0 0 360 403" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<svg width="340"  viewBox="0 0 360 403" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
     <rect x="9" y="10" width="283" height="283" fill="url(#pattern0)"/>
     <path d="M38 0H352C356.418 0 360 3.58172 360 8V393H38V0Z" fill="url(#pattern1)"/>
     <path d="M0 8C0 3.58172 3.58172 0 8 0H40V393H0V8Z" fill="url(#pattern2)"/>
