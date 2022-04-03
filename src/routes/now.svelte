@@ -313,20 +313,23 @@
 				
 				<div class="flex flex-col pt-2">
 					{#each artists as artist}
-						<div class="flex">
-							<img
-							class="mr-2 mb-1 h-12 w-12 rounded-full "
+					<div class="flex cursor-pointer rounded ring-yellow-400 transition-all hover:ring-2 focus:outline-none"
+					on:click={() => {
+							goto('/person/' + artist.attributes.name);
+					}}>
+
+						<img
+							class="mr-2 mb-1 h-14 w-14 rounded-full "
 							src={'https://admin.rocktver.ru' + artist.attributes.avatar.data.attributes.url}
 							alt=""
 						/>
 						<p class="lblock  mt-1 border-t border-white/30">{artist.attributes.name}</p>
-							<p class="lblock dark:text-gray-300 text-gray-700 ml-1 mt-1 border-t border-white/30 text-left">
-								{artist.attributes.role}
-							</p>
-						
-
-							
-						</div>
+						<p
+							class="lblock ml-1 mt-1 border-t border-white/30 text-left text-gray-700 dark:text-gray-300"
+						>
+							{artist.attributes.role}
+						</p>
+					</div>
 					{/each}
 				</div>
 			{:else}
