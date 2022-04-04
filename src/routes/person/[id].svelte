@@ -60,6 +60,7 @@
 			error: new Error(`Error fetching GraphQL data`)
 		};
 	}
+	export const prerender = true;
 </script>
 
 <script>

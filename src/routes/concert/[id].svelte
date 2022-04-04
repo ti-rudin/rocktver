@@ -62,6 +62,7 @@
 			error: new Error(`Error fetching GraphQL data`)
 		};
 	}
+	export const prerender = true;
 </script>
 
 <script>
@@ -117,7 +118,7 @@
 	import KnobEfir from '../../components/KnobEfir.svelte';
 	import KnobTimeline from '../../components/KnobTimeline.svelte';
 	import LogoComponent from '../../components/LogoComponent.svelte';
-
+	import { goto } from '$app/navigation';
 	import { isAuthenticated, user } from '$lib/stores/auth';
 	import { isDarkFlag, isMngr } from '$lib/siteConfig';
 
@@ -353,7 +354,9 @@
 				{:else}
 					<div
 						class="bandurl relative ml-10 mb-10 flex transform cursor-pointer flex-col items-left space-y-4 rounded bg-pink-600 px-6 py-4 text-white dark:text-white transition hover:-translate-y-2 md:flex-row md:space-y-0"
-						
+						on:click={() => {
+							goto('/band/' + event.band.data.attributes.band_name);
+						}}
 					>
 						<div
 							class="absolute -left-10 z-10 mt-2 h-5 w-5 -translate-x-2/4 transform rounded-full bg-pink-600 md:mt-2"

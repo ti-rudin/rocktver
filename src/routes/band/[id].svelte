@@ -94,7 +94,7 @@
 		});
 		if (res.ok) {
 			const { data } = await res.json();
-			console.log(data);
+			//console.log(data);
 			let bandsdata = data.bands.data;
 			let bandsobj = [];
 			//транспонируем масив
@@ -123,6 +123,7 @@
 			error: new Error(`Error fetching GraphQL data`)
 		};
 	}
+	export const prerender = true;
 </script>
 
 <script>
@@ -212,7 +213,7 @@
 
 	$: if ($isAuthenticated) {
 		let userid = $user.id;
-		console.log('index' + userid);
+		//console.log('index' + userid);
 
 		change_track(userid, index);
 	}

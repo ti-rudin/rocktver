@@ -279,7 +279,7 @@
 		</div>
 	{/if}
 {/if}
-	<h1 class="mx-auto max-w-2xl pl-4 text-xl text-gray-800 focus:outline-none dark:text-white">
+	<h1 class="mx-auto max-w-2xl mt-3 text-xl text-gray-800 focus:outline-none dark:text-white">
 		Сейчас на сцене
 	</h1>
 	<div class="mt-1 w-full ">
@@ -356,10 +356,11 @@
 		</div>
 	</div>
 
+
+	{#if have_spisok}
 	<h1 class="mx-auto max-w-2xl pt-2 pl-4 text-xl text-gray-800 focus:outline-none dark:text-white">
 		Сейчас звучит
 	</h1>
-	{#if have_spisok}
 		<section class="" style="--gap: {gap}px; --width: {width}" tab-index="0">
 			<ul
 				class="pb-0"

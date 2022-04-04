@@ -82,7 +82,7 @@
 
 {#if !issend}
 	{#key 1}
-		<div class="w-full flex animate-pulse">
+		<div class="mx-auto flex animate-pulse rounded-lg bg-blue-400/50 shadow dark:bg-blue-500/20  ">
 			<div class=ml-auto></div>
 			<button on:click={sendlike} class="like-btn m-6  rounded-full bg-pink-400/50  p-4">
 				<svg
@@ -107,7 +107,7 @@
 				</svg>
 			</button>
 			
-			<div class=mr-auto><h1 class="like-btn text-left animate-none pl-2 pt-11 text-4xl">
+			<div class=mr-auto><h1 class="like-btn text-left animate-none pr-5 pt-11 text-4xl">
 				{now.now_event_likes}
 			</h1></div>
 			
