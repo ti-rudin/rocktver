@@ -17,3 +17,4 @@ import { writable } from 'svelte/store';
 export const isDarkFlag = writable();
 export const isMngr = writable();
 export const isAdmin = writable();
+export const screenmode = writable();

@@ -3,6 +3,7 @@
 
 	import '../tailwind.css';
 	import Nav from '../components/Nav.svelte';
+	import { screenmode } from '$lib/siteConfig';
 	import { isAuthenticated, user } from '$lib/stores/auth';
 	import { onMount } from 'svelte';
 
@@ -21,6 +22,7 @@
 <main class="flex flex-col justify-center bg-gray-50 px-4 dark:bg-gray-900 sm:px-8">
 	<slot />
 </main>
+{#if !$screenmode}
 
 <footer class="mx-auto mt-4 mb-4 flex border-white/30 border-t  max-w-2xl flex-col items-start justify-center">
 
@@ -74,7 +76,7 @@
 		</div>
 	</div>
 </footer>
-
+{/if}
 <style>
 	.feedback{
 		color: orange;

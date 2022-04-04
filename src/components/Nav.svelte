@@ -1,17 +1,14 @@
 <script>
-	import {
-		isDarkFlag,
-		isAdmin
-	} from '$lib/siteConfig';
+	import { isDarkFlag, isAdmin, screenmode } from '$lib/siteConfig';
 
 	import MobileMenu from './MobileMenu.svelte';
 	import NavLink from './NavLink.svelte';
 	import { isAuthenticated, user } from '$lib/stores/auth';
 
 	import { browser } from '$app/env';
- $isAuthenticated = browser ? window.localStorage.getItem('isAuthenticated') ?? false : false;
- $user = browser ? JSON.parse(window.localStorage.getItem('user')) ?? '' : '';
- $isAdmin = browser ? JSON.parse(window.localStorage.getItem('isad')) ?? false : false
+	$isAuthenticated = browser ? window.localStorage.getItem('isAuthenticated') ?? false : false;
+	$user = browser ? JSON.parse(window.localStorage.getItem('user')) ?? '' : '';
+	$isAdmin = browser ? JSON.parse(window.localStorage.getItem('isad')) ?? false : false;
 
 	let isDark = false;
 	$isDarkFlag = false;
@@ -37,14 +34,19 @@
 			$isDarkFlag = true;
 		}
 	}
+
+	
 </script>
 
 <nav
 	class="relative mx-auto flex w-full max-w-2xl items-center justify-between border-gray-200
-	bg-gray-50 bg-opacity-60 pt-3 text-gray-900 dark:border-gray-700 dark:bg-gray-900
-	dark:text-gray-100 pb-4"
->
+	bg-gray-50 bg-opacity-60 pt-3 pb-4 text-gray-900 dark:border-gray-700
+	dark:bg-gray-900 dark:text-gray-100" 
+ >
+ {#if !$screenmode}
+
 	<MobileMenu />
+
 	<ul class="ml-[-0.60rem] flex">
 		<li>
 			<NavLink href="/">Главная</NavLink>
@@ -56,8 +58,8 @@
 			<NavLink href="/now">Эфир</NavLink>
 		</li>
 	</ul>
+	{/if}
 	<div class="flex items-center space-x-4">
-	
 		<!-- Github 
 		<a
 			class="rounded-lg text-gray-700 hover:bg-yellow-200 dark:text-gray-200
@@ -82,12 +84,12 @@
 			</svg>
 		</a>
 		-->
-
+		{#if !$screenmode}
+		
 		<a
 			class="ml-1 flex h-9 items-center justify-center rounded-lg bg-yellow-400 px-3 text-black ring-yellow-400 transition-all
 			hover:ring-2 dark:bg-yellow-800 dark:text-white"
 			href="https://che-tver.timepad.ru/event/1900315/"
-		
 		>
 			{#if isDark}
 				Купить билет
@@ -95,6 +97,62 @@
 				Купить билет
 			{/if}
 		</a>
+		{#if $isAuthenticated}
+		<a href="/kabinet">
+			<img class="h-10 w-10 rounded-full" src={$user.photo} alt={$user.name} id={$user.id} />
+		</a>
+	{:else}
+		<a
+			class="ml-1 flex h-9 items-center justify-center rounded-lg bg-yellow-400 px-1 text-black ring-yellow-400 transition-all
+	hover:ring-2 dark:bg-yellow-800 dark:text-white"
+			href="/kabinet"
+		>
+			{#if isDark}
+				<svg
+					width="32px"
+					height="32px"
+					viewBox="0 0 24 24"
+					fill="none"
+					xmlns="http://www.w3.org/2000/svg"
+				>
+					<path
+						d="M12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2Z"
+						fill="#FFC3BC"
+					/>
+					<path
+						d="M12.0001 6C10.3433 6 9.00012 7.34315 9.00012 9C9.00012 10.6569 10.3433 12 12.0001 12C13.657 12 15.0001 10.6569 15.0001 9C15.0001 7.34315 13.657 6 12.0001 6Z"
+						fill="#152C70"
+					/>
+					<path
+						d="M17.8948 16.5528C18.0356 16.8343 18.0356 17.1657 17.8948 17.4473C17.9033 17.4297 17.8941 17.4487 17.8941 17.4487L17.8933 17.4502L17.8918 17.4532L17.8883 17.46L17.8801 17.4756C17.874 17.4871 17.8667 17.5004 17.8582 17.5155C17.841 17.5458 17.8187 17.5832 17.7907 17.6267C17.7348 17.7138 17.6559 17.8254 17.5498 17.9527C17.337 18.208 17.0164 18.5245 16.555 18.8321C15.623 19.4534 14.1752 20 12.0002 20C8.31507 20 6.76562 18.4304 6.26665 17.7115C5.96476 17.2765 5.99819 16.7683 6.18079 16.4031C6.91718 14.9303 8.42247 14 10.0691 14H13.7643C15.5135 14 17.1125 14.9883 17.8948 16.5528Z"
+						fill="#152C70"
+					/>
+				</svg>
+			{:else}
+				<svg
+					width="32px"
+					height="32px"
+					viewBox="0 0 24 24"
+					fill="none"
+					xmlns="http://www.w3.org/2000/svg"
+				>
+					<path
+						d="M12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2Z"
+						fill="#FFE6B5"
+					/>
+					<path
+						d="M12.0001 6C10.3433 6 9.00012 7.34315 9.00012 9C9.00012 10.6569 10.3433 12 12.0001 12C13.657 12 15.0001 10.6569 15.0001 9C15.0001 7.34315 13.657 6 12.0001 6Z"
+						fill="#152C70"
+					/>
+					<path
+						d="M17.8948 16.5528C18.0356 16.8343 18.0356 17.1657 17.8948 17.4473C17.9033 17.4297 17.8941 17.4487 17.8941 17.4487L17.8933 17.4502L17.8918 17.4532L17.8883 17.46L17.8801 17.4756C17.874 17.4871 17.8667 17.5004 17.8582 17.5155C17.841 17.5458 17.8187 17.5832 17.7907 17.6267C17.7348 17.7138 17.6559 17.8254 17.5498 17.9527C17.337 18.208 17.0164 18.5245 16.555 18.8321C15.623 19.4534 14.1752 20 12.0002 20C8.31507 20 6.76562 18.4304 6.26665 17.7115C5.96476 17.2765 5.99819 16.7683 6.18079 16.4031C6.91718 14.9303 8.42247 14 10.0691 14H13.7643C15.5135 14 17.1125 14.9883 17.8948 16.5528Z"
+						fill="#152C70"
+					/>
+				</svg>
+			{/if}
+		</a>
+	{/if}
+		{/if}
 		<button
 			aria-label="Toggle Dark Mode"
 			class="ml-1 flex h-9 w-9 items-center justify-center rounded-lg bg-yellow-400 ring-yellow-400
@@ -135,34 +193,45 @@
 			{/if}
 		</button>
 
-		{#if $isAuthenticated}
-		<a href="/kabinet">
-			<img class="rounded-full w-10 h-10" src={$user.photo} alt={$user.name} id={$user.id} />
-		</a>
-		{:else}
-			<a
-				class="ml-1 flex h-9 items-center justify-center rounded-lg bg-yellow-400 px-1 text-black ring-yellow-400 transition-all
-		hover:ring-2 dark:bg-yellow-800 dark:text-white"
-				href="/kabinet"
+	
+		<div
+			
+			class="ml-1 flex h-9 w-9 cursor-pointer items-center justify-center rounded-lg bg-yellow-400 ring-yellow-400
+			transition-all hover:ring-2 dark:bg-yellow-800"
+			on:click={() => $screenmode = !$screenmode}
+		>
+			{#if isDark}
+
+				<svg
+				class="w-5 h-5 "
+				fill="white"
+					
+					version="1.1"
+					viewBox="100 0 500 500"
+					xmlns="http://www.w3.org/2000/svg"
 				>
-				{#if isDark}	
-			<svg width="32px" height="32px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-				<path d="M12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2Z" fill="#FFC3BC"/>
-				<path d="M12.0001 6C10.3433 6 9.00012 7.34315 9.00012 9C9.00012 10.6569 10.3433 12 12.0001 12C13.657 12 15.0001 10.6569 15.0001 9C15.0001 7.34315 13.657 6 12.0001 6Z" fill="#152C70"/>
-				<path d="M17.8948 16.5528C18.0356 16.8343 18.0356 17.1657 17.8948 17.4473C17.9033 17.4297 17.8941 17.4487 17.8941 17.4487L17.8933 17.4502L17.8918 17.4532L17.8883 17.46L17.8801 17.4756C17.874 17.4871 17.8667 17.5004 17.8582 17.5155C17.841 17.5458 17.8187 17.5832 17.7907 17.6267C17.7348 17.7138 17.6559 17.8254 17.5498 17.9527C17.337 18.208 17.0164 18.5245 16.555 18.8321C15.623 19.4534 14.1752 20 12.0002 20C8.31507 20 6.76562 18.4304 6.26665 17.7115C5.96476 17.2765 5.99819 16.7683 6.18079 16.4031C6.91718 14.9303 8.42247 14 10.0691 14H13.7643C15.5135 14 17.1125 14.9883 17.8948 16.5528Z" fill="#152C70"/>
+					<path
+						d="m518 56h-336c-30.867 0-56 25.109-56 56v246.4c0 30.891 25.133 56 56 56h156.8v67.199l-78.402 0.003906c-6.1797 0-11.199 5.0156-11.199 11.199 0 6.1836 5.0195 11.199 11.199 11.199h179.2c6.1836 0 11.199-5.0195 11.199-11.199 0-6.1836-5.0195-11.199-11.199-11.199h-78.398v-67.199h156.8c30.867 0 56-25.109 56-56v-246.4c0-30.891-25.133-56-56-56zm33.602 302.4c0 18.523-15.074 33.602-33.602 33.602h-336c-18.523 0-33.602-15.074-33.602-33.602v-246.4c0-18.523 15.074-33.602 33.602-33.602h336c18.523 0 33.602 15.074 33.602 33.602z"
+					/>
 				</svg>
-				{:else}
-				<svg width="32px" height="32px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-					<path d="M12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2Z" fill="#FFE6B5"/>
-					<path d="M12.0001 6C10.3433 6 9.00012 7.34315 9.00012 9C9.00012 10.6569 10.3433 12 12.0001 12C13.657 12 15.0001 10.6569 15.0001 9C15.0001 7.34315 13.657 6 12.0001 6Z" fill="#152C70"/>
-					<path d="M17.8948 16.5528C18.0356 16.8343 18.0356 17.1657 17.8948 17.4473C17.9033 17.4297 17.8941 17.4487 17.8941 17.4487L17.8933 17.4502L17.8918 17.4532L17.8883 17.46L17.8801 17.4756C17.874 17.4871 17.8667 17.5004 17.8582 17.5155C17.841 17.5458 17.8187 17.5832 17.7907 17.6267C17.7348 17.7138 17.6559 17.8254 17.5498 17.9527C17.337 18.208 17.0164 18.5245 16.555 18.8321C15.623 19.4534 14.1752 20 12.0002 20C8.31507 20 6.76562 18.4304 6.26665 17.7115C5.96476 17.2765 5.99819 16.7683 6.18079 16.4031C6.91718 14.9303 8.42247 14 10.0691 14H13.7643C15.5135 14 17.1125 14.9883 17.8948 16.5528Z" fill="#152C70"/>
-					</svg>
-				{/if}
-			</a>
-		{/if}
+			{:else}
+
+				<svg
+				class="w-5 h-5 text-gray-800 dark:text-gray-200"
+				fill="black"
+				stroke="currentColor"
+					version="1.1"
+					viewBox="100 0 500 500"
+					xmlns="http://www.w3.org/2000/svg"
+				>
+					<path
+						d="m518 56h-336c-30.867 0-56 25.109-56 56v246.4c0 30.891 25.133 56 56 56h156.8v67.199l-78.402 0.003906c-6.1797 0-11.199 5.0156-11.199 11.199 0 6.1836 5.0195 11.199 11.199 11.199h179.2c6.1836 0 11.199-5.0195 11.199-11.199 0-6.1836-5.0195-11.199-11.199-11.199h-78.398v-67.199h156.8c30.867 0 56-25.109 56-56v-246.4c0-30.891-25.133-56-56-56zm33.602 302.4c0 18.523-15.074 33.602-33.602 33.602h-336c-18.523 0-33.602-15.074-33.602-33.602v-246.4c0-18.523 15.074-33.602 33.602-33.602h336c18.523 0 33.602 15.074 33.602 33.602z"
+					/>
+				</svg>
+			{/if}
+			</div>
 	</div>
 </nav>
 
 <style>
-
 </style>
