@@ -326,6 +326,7 @@
 
 							<div class="mx-auto" />
 						</div>
+						
 						{#if item.is_premiere}
 							<div class="prem border-1 ml-10 rounded-xl px-2 text-lg">ПРЕМЬЕРА</div>
 						{/if}
@@ -366,7 +367,12 @@
 		color: red;
 		display: flex;
 		justify-content: center;
+		opacity: 0;
 	}
+	.active .like{
+		opacity: 1;
+	}
+
 	.like-btn {
 		color: red;
 		display: flex;

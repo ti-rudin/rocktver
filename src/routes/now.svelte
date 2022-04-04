@@ -499,12 +499,17 @@
 		color: #ca327e;
 		display: flex;
 		justify-content: center;
+		opacity: 0;
+	}
+	.active .like{
+		opacity: 1;
 	}
 	.like-btn {
 		color: red;
 		display: flex;
 		justify-content: center;
 		height: 3.1rem;
+		
 	}
 	.like-btn-nonauth {
 		color: red;
