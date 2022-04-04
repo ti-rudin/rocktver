@@ -58,6 +58,7 @@
         
           style={`width:${imageWidth}px; margin: 0 ${imageSpacing}px; cursor:pointer; background: transparent`}
           on:mouseover={stopAutoPlay}
+          
           on:mouseout={startAutoPlay}
           on:click={window.location.href = image.url}
           animate:flip={{duration: speed, easing: sineIn}}/>

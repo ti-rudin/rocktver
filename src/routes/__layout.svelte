@@ -98,12 +98,7 @@
 		text-align: left;
 		color: #465ee0;
 	}
-	.cub_containerdark {
-		width: 40px;
-		height: 40px;
-		text-align: left;
-		color: rgb(0, 8, 51);
-	}
+
 	.cub_container p {
 		font-size: 12px;
 		line-height: 14px;

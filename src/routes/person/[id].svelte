@@ -284,9 +284,7 @@
 		margin-left: auto;
 		margin-right: auto;
 	}
-	.pic {
-		background-repeat: no-repeat;
-	}
+
 	.name {
 		color: red;
 		max-width: fit-content;

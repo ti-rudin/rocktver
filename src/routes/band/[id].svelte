@@ -133,7 +133,8 @@
 	import { isAuthenticated, user } from '$lib/stores/auth';
 	import { goto } from '$app/navigation';
 	export let status, isshowgo, band_on_scene;
-	export let concert, concertid, show_name, have_spisok, actual_spisok_pesen, ploschadka;
+	//export let concert, bands
+	export let concertid, show_name, have_spisok, actual_spisok_pesen, ploschadka;
 
 	export let now, efir;
 	async function load_open_status() {
@@ -156,7 +157,7 @@
 		load_open_status();
 	});
 
-	export let isonscene, launches, launch, id, spisok, artists, bands;
+	export let isonscene, launches, launch, id, spisok, artists;
 
 	launch = launches.filter((launch) => launch.attributes.band_name == id)[0];
 

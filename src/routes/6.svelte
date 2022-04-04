@@ -239,52 +239,5 @@ import {flip} from "svelte/animate";
         border: 1px solid blue;
         margin: 0.15em 0;
     }
-	ul {
-		list-style: none;
-		margin: 0;
-		padding: 0;
-		display: flex;
-		gap: var(--gap);
-		width: 100%;
-		height: 100%;
-		min-width: 0;
-		/* 		position: relative; */
-	}
-	ul li {
-		flex: 1 0 var(--width);
-		width: var(--width);
-		max-width: 100%;
-		height: 100%;
-		position: relative;
-		
-	}
-	ul li:before {
-		content: attr(id);
-		position: absolute;
-		padding: 1rem;
-		z-index: 1;
-	}
-	ul li img {
-		width: 100%;
-		width: auto;
-		height: 100%;
-		display: flex;
-		object-fit: cover;
-		max-width: 100%;
-		will-change: transform;
-	}
-	nav,
-	label {
-		display: flex;
-		justify-content: start;
-		margin: 1rem 0;
-		flex-wrap: wrap;
-		align-items: center;
-	}
-	.active {
-		color: red;
-	}
-	input {
-		margin: 0;
-	}
+
 </style>

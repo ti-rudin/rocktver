@@ -140,7 +140,7 @@
 	{/if}
 </div>
 
-<style lang="postcss">
+<style>
 	.burger {
 		transition: opacity 300ms ease;
 		border: 0;

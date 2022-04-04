@@ -122,7 +122,8 @@
 <script>
 	import { goto } from '$app/navigation';
 	import LogoComponent from '../components/LogoComponent.svelte';
-	export let concerts, bands, artists;
+	//export let concerts
+	export let bands;
 	//console.log(this.artists.data[0].attributes.name)
 	$: launches = launches;
 </script>

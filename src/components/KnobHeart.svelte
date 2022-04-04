@@ -9,7 +9,8 @@
 	let timersend;
 	export let tim = 5;
 	export let eventobj;
-	export let index;
+	//export let index;
+
 	export let now;
 	export let user;
 	export let efir;
@@ -140,9 +141,7 @@
 		fill: #ff8d8d;
 	}
 
-	.like-btn.active path {
-		fill: #ec3e3e;
-	}
+
 	.tim {
 		color: #ec3e3e;
 	}

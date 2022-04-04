@@ -12,10 +12,11 @@
 		scrollPos = 0;
 	export let now;
 	export let efir;
+
+	//export let concert, timeline
 	export let isshowgo,
 		band_on_scene,
-		concert,
-		timeline,
+		
 		status,
 		concertid,
 		show_name,
