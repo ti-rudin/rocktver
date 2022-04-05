@@ -74,12 +74,11 @@
 
 	export let launches, launch, id, htmlimg, imgurl, bands, site;
 
-	site = "https://rocktver.ru/person/";
+	site = 'https://rocktver.ru/person/';
 	//site = 'https://dev--rocktver.netlify.app/person/';
 
 	launch = launches.filter((launch) => launch.attributes.name == id)[0];
 	bands = launch.attributes.bands.data;
-
 
 	function download() {
 		var link = document.createElement('a');
@@ -129,10 +128,7 @@
 </script>
 
 <svelte:head>
-	<meta
-		property="image"
-		content={imgurl}
-	/>
+	<meta property="image" content={imgurl} />
 
 	<title>{launch.attributes.name + ' - УЧАСТНИК РОК-ОПОЛЧЕНИЯ 2022'}</title>
 	<link rel="canonical" href={site + launch.attributes.name} />
@@ -144,10 +140,7 @@
 		property="og:description"
 		content={'Я участник музыкального праздника для честных людей!'}
 	/>
-	<meta
-		property="og:image"
-		content={imgurl}
-	/>
+	<meta property="og:image" content={imgurl} />
 	<meta name="twitter:card" content="summary" />
 
 	<meta name="twitter:title" content={launch.attributes.name + ' - УЧАСТНИК РОК-ОПОЛЧЕНИЯ 2022'} />
@@ -155,27 +148,27 @@
 		name="twitter:description"
 		content={'Я участник музыкального праздника для честных людей!'}
 	/>
-	<meta
-		name="twitter:image"
-		content={imgurl}
-	/>
+	<meta name="twitter:image" content={imgurl} />
 </svelte:head>
 <LogoComponent />
 {#if launch}
+
+	{#if imgurl}
+		<div class="mx-auto max-w-2xl">
+			<img class="" src={imgurl} alt="" />
+		</div>
+	{:else}
 	<div class="mx-auto">
 		<div
 			bind:this={htmlimg}
-			class="maskpic flex  mx-auto p-4 flex-col bg-white text-black dark:bg-gray-900 dark:text-white"
+			class="maskpic mx-auto  flex flex-col bg-white p-4 text-black dark:bg-gray-900 dark:text-white"
 		>
-	
-			
-
 			<h2 class="urlonscreen mx-auto max-w-sm text-center">
 				{'rocktver.ru/person/' + launch.attributes.name}
 			</h2>
 
 			<div aria-label="card 1" class="mx-auto rounded-lg">
-				<div class="">
+				<div class="readypic">
 					<Ramka1 img={imguserurl} />
 				</div>
 				<h2 class="name mr-auto ml-3">{launch.attributes.name}</h2>
@@ -196,7 +189,7 @@
 								}}
 							>
 								<img
-									class="w-24 h-24 rounded shadow"
+									class="h-24 w-auto rounded shadow"
 									src={'https://admin.rocktver.ru' + band.attributes.group_logo.data.attributes.url}
 									alt=""
 								/>
@@ -208,9 +201,7 @@
 									<h1 class="pl-4 text-lg text-pink-600 focus:outline-none dark:text-pink-300">
 										{band.attributes.town ? band.attributes.town : ''}
 									</h1>
-									<h1
-										class="pl-4  text-sm text-gray-800 focus:outline-none dark:text-white"
-									>
+									<h1 class="pl-4  text-sm text-gray-800 focus:outline-none dark:text-white">
 										{band.attributes.small_text}
 									</h1>
 								</div>
@@ -220,6 +211,7 @@
 			{/if}
 		</div>
 	</div>
+	{/if}
 	<div class="mt-3 w-full">
 		<div
 			aria-label="card 1"
@@ -235,7 +227,7 @@
 				class="mx-auto mb-2 max-w-xs cursor-pointer rounded-lg bg-blue-400/70 p-4 text-center shadow ring-1 ring-yellow-400 transition-all hover:ring-2 focus:outline-none dark:bg-blue-300/40 "
 				on:click={() => {
 					download();
-					ym(88086612,'reachGoal','download pic');
+					ym(88086612, 'reachGoal', 'download pic');
 				}}
 			>
 				Скачать открытку
@@ -253,9 +245,13 @@
 				Помогите узнать о нас как можно больше широкому кругу людей!
 			</div>
 
-			<div class="pb-4 pt-2" id="vk_share_button" on:click={() => {
-				ym(88086612,'reachGoal','repost pic');
-			}} />
+			<div
+				class="pb-4 pt-2"
+				id="vk_share_button"
+				on:click={() => {
+					ym(88086612, 'reachGoal', 'repost pic');
+				}}
+			/>
 		</div>
 	</div>
 {:else}
@@ -272,6 +268,8 @@
 {/if}
 
 <style>
+	.readypic {
+	}
 	.maskpic {
 		max-width: fit-content;
 		min-width: 27rem;
@@ -322,6 +320,5 @@
 
 		font-size: 1.1rem;
 		line-height: 1.4rem;
-
 	}
 </style>
