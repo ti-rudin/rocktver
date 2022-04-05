@@ -32,6 +32,7 @@ $c2: rando($dots);
 	transform: translate(-100%,-100%);
 	transition: height 5s ease-out, width 5s ease-out;
 	width: 10px;
+	z-index: 0;
 }
 
 

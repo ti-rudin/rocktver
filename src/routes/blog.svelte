@@ -18,6 +18,14 @@
 			maxage: 60 // 1 minute
 		};
 	}
+	import {
+		SITE_URL,
+		SITE_TITLE,
+		SITE_DESCRIPTION,
+		DEFAULT_OG_IMAGE,
+		isDarkFlag
+	} from '$lib/siteConfig';
+	export const prerender = true;
 </script>
 
 <script>
@@ -48,28 +56,35 @@
 </script>
 
 <svelte:head>
-	<title>Swyxkit Blog Index</title>
-	<meta name="description" content="Latest Hacker News stories in the {list} category" />
+	<title>{SITE_TITLE}</title>
+	<link rel="canonical" href={SITE_URL} />
+	<meta property="og:url" content={SITE_URL} />
+	<meta property="og:type" content="article" />
+	<meta property="og:title" content={SITE_TITLE} />
+	<meta name="Description" content={SITE_DESCRIPTION} />
+	<meta property="og:description" content={SITE_DESCRIPTION} />
+	<meta property="og:image" content={DEFAULT_OG_IMAGE} />
+	<meta name="twitter:card" content="summary" />
+	<meta name="twitter:creator" content={'@' + SITE_TITLE} />
+	<meta name="twitter:title" content={SITE_TITLE} />
+	<meta name="twitter:description" content={SITE_DESCRIPTION} />
+	<meta name="twitter:image" content={DEFAULT_OG_IMAGE} />
 </svelte:head>
 
 <svelte:window on:keyup={focusSearch} />
 
-<section class="mx-auto mb-16 flex max-w-2xl flex-col items-start justify-center px-4 sm:px-8">
-	<h1 class="mb-4 text-3xl font-bold tracking-tight text-black dark:text-white md:text-5xl">
-		Blog
+<section class="mx-auto mb-16 flex max-w-2xl flex-col items-start justify-center">
+	<h1 class="mb-4 text-3xl tracking-tight text-black dark:text-white md:text-3xl">
+		Журнал изменений
 	</h1>
-	<p class="mb-4 text-gray-600 dark:text-gray-400">
-		Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laborum sunt reprehenderit alias rerum
-		dolor impedit. In total, I've written {items.length} articles on my blog. Use the search below to
-		filter by title.
-	</p>
+	<p class="mb-4 text-gray-600 dark:text-gray-400">Публикуем историю наших мытарств</p>
 	<div class="relative mb-4 w-full">
 		<input
 			aria-label="Search articles"
 			type="text"
 			bind:value={search}
 			bind:this={inputEl}
-			placeholder="Hit / to search"
+			placeholder="Поиск по заголовкам"
 			class="block w-full rounded-md border border-gray-200 bg-white px-4 py-2 text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-900 dark:bg-gray-800 dark:text-gray-100"
 		/><svg
 			class="absolute right-3 top-3 h-5 w-5 text-gray-400 dark:text-gray-300"
@@ -86,21 +101,22 @@
 		>
 	</div>
 	{#if !search}
-		<h3 class="mt-8 mb-4 text-2xl font-bold tracking-tight text-black dark:text-white md:text-4xl">
-			Most Popular
+		<h3 class="mt-8 mb-4 text-xl  tracking-tight text-black dark:text-white md:text-3xl">
+			В закрепе
 		</h3>
-		<IndexCard href="/foo" title="Hardcoded Blogpost # 1" stringData="106,255 views">
-			Just a hardcorded blogpost or you can use the metadata up to you
+		<IndexCard
+			href="/manual"
+			title="Руководство для менеджеров выступающих групп"
+			stringData=""
+		>
+			В рамках проведения отборочных музыкального праздника «Рок ОполЧение» и основного мероприятия
+			будет работать веб-приложение, используя которое, зрители смогут видеть основную информацию о
+			выступающих группах и играющих на сцене треках, а также оценивать понравившиеся им композиции.
 		</IndexCard>
-		<IndexCard href="/welcome" title="Welcome to Swyxkit" stringData="106,255 views">
-			Just a hardcorded blogpost or you can use the metadata up to you
-		</IndexCard>
-		<IndexCard href="/moo" title="Hardcoded Blogpost # 3" stringData="106,255 views">
-			Just a hardcorded blogpost or you can use the metadata up to you
-		</IndexCard>
+	
 
-		<h3 class="mt-8 mb-4 text-2xl font-bold tracking-tight text-black dark:text-white md:text-4xl">
-			All Posts
+		<h3 class="mt-8 mb-4 text-xl tracking-tight text-black dark:text-white md:text-3xl">
+			Журнал
 		</h3>
 	{/if}
 	{#if list.length}
@@ -123,7 +139,7 @@
 			<div class="flex justify-center">
 				<button
 					on:click={() => (isTruncated = false)}
-					class="inline-block rounded bg-blue-100 p-4 text-lg font-bold tracking-tight text-black hover:text-yellow-900 dark:bg-blue-900 dark:text-white hover:dark:text-yellow-200 md:text-2xl"
+					class="inline-block rounded bg-blue-100 py-4 text-lg font-bold tracking-tight text-black hover:text-yellow-900 dark:bg-blue-900 dark:text-white hover:dark:text-yellow-200 md:text-2xl"
 				>
 					Load More Posts...
 				</button>

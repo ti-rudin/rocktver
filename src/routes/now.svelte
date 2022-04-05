@@ -451,10 +451,11 @@
 		</div>
 	{/if}
 {:else}
-	<div class="w-full mt-4">
+<Flower />
+	<div class="z-10 w-full mt-4">
 		<div
 			aria-label="card 1"
-			class="mx-auto max-w-2xl rounded-lg bg-blue-400/40 p-6 shadow focus:outline-none dark:bg-blue-500"
+			class="mx-auto max-w-2xl rounded-lg bg-blue-400/40 p-6 shadow focus:outline-none dark:bg-blue-500/50"
 		>
 			<div class="flex items-center pb-2">
 				<div class="flex w-full items-start justify-between">
@@ -463,14 +464,15 @@
 							tabindex="0"
 							class="pt-2 text-xl text-gray-800 focus:outline-none dark:text-gray-200"
 						>
-							Наверное, никто ничего не показывает в эфире) А может что-то пошло не так с этими интернетами, попробуйте перезагрузить страницу.
-							<Flower />
+							Виджет выключен или что-то пошло не так с этими интернетами.<br/>Попробуйте перезагрузить страницу.
+							
 						</h1>
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
+
 {/if}
 
 <style>

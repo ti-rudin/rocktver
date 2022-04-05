@@ -2,9 +2,12 @@
 	import LogoComponent from '../components/LogoComponent.svelte';
 </script>
 
-<LogoComponent />
-<h1 class="mx-auto max-w-2xl text-2xl">Информация для спонсоров</h1>
 
+<div class="mx-auto w-full max-w-2xl">
+    <img class="mx-auto w-full" src="/poster_event_1900315.jpg" alt="РОКОПОЛЧЕНИЕ  2022" />
+</div>
+
+<h1 class="mx-auto max-w-2xl text-2xl m-3">Информация для спонсоров</h1>
 <div class="mx-auto mt-3 w-full max-w-2xl">
 	Этим летом (29 и 30 июля) состоится уже третий по счёту музыкальный праздник «Рок ОполЧение 2022»,
 	под знамёнами которого соберутся многочисленные музыкальные коллективы. Мероприятие будет очень
@@ -50,8 +53,8 @@
 </ul>
 <div class="mx-auto mt-3 w-full max-w-2xl">
 	По вопросам сотрудничества обращайтесь к организаторам: <br />
-    Игорь Поляков +7(910) 647-11-28, garrygmbh@gmail.com) <br />
-    Владимир Доронкин +7(910) 530-72-98, doronkin.vi@gmail.com)
+	Игорь Поляков +7(910) 647-11-28, garrygmbh@gmail.com) <br />
+	Владимир Доронкин +7(910) 530-72-98, doronkin.vi@gmail.com)
 </div>
 
 <style>

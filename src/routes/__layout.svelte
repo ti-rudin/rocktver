@@ -19,18 +19,18 @@
 <div class="flex flex-col justify-center bg-gray-50 px-4 dark:bg-gray-900 ">
 	<Nav />
 </div>
-<main class="flex flex-col justify-center bg-gray-50 px-4 dark:bg-gray-900 sm:px-8">
+<main class=" flex flex-col justify-center bg-gray-50 px-4 dark:bg-gray-900 sm:px-8">
 	<slot />
 </main>
 {#if !$screenmode}
 
-<footer class="mx-auto mt-4 mb-4 flex border-white/30 border-t  max-w-2xl flex-col items-start justify-center">
+<footer class="z-10 mx-auto px-4  my-4 flex border-white/30 border-t  max-w-2xl flex-col items-start justify-center">
 
-	<div class="flex w-full p-4">
+	<div class="flex w-full">
 		<div class="flex flex-col">
 			<a href="/" class="pt-4"> Главная </a>
 			<a href="/now" class="pt-4"> Эфир </a>
-			<a href="/" class="pt-4"> Спонсорам </a>
+			<a href="/sponsoram" class="pt-4"> Спонсорам </a>
 
 		</div>
 		<div class="ml-4 flex flex-col">
@@ -41,11 +41,11 @@
 	
 
 		<div class="mx-auto" />
-		<div class="container_develop pb-0 pl-20">
+		<div class="container_develop pb-0 pl-20 flex flex-col space-between">
 			<a href="http://ti-units.ru/"
 			
 		
-			>
+			 >
 				<div class="cub_container">
 					<div class="front side">
 						<svg
@@ -66,12 +66,14 @@
 					<div class="right side"><p>Создание<br />и поддержка<br />Ti-UNITS.RU</p></div>
 				</div>
 			</a>
+			<div my-auto>&nbsp;</div>
+			<a href="/blog" class="pt-4">Журнал </a>
 		</div>
 	</div>
 	<div class="flex flex-col w-full  mt-1">
 		<a href="/feedback" class="pb-2 mx-auto feedback"> Отзывы и предложения </a>
 		<div class="mx-auto flex">
-		<div class="lblock text-right">2022 РОКТВЕРЬ</div>
+		<div class="lblock text-right">2022<a class="px-1" href="/rights">©</a>РОКТВЕРЬ</div>
 		<a href="/privacy" class="ml-3 lblock text-sm pt-1"> Условия использования</a>
 		</div>
 	</div>
