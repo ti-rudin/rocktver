@@ -4,9 +4,7 @@
 	import LogoComponent from '../components/LogoComponent.svelte';
 
 	import { browser } from '$app/env';
- //isAuthenticated = browser ? window.localStorage.getItem('isAuthenticated') ?? isAuthenticated_defaultValue : isAuthenticated_defaultValue;
- 
-
+	//isAuthenticated = browser ? window.localStorage.getItem('isAuthenticated') ?? isAuthenticated_defaultValue : isAuthenticated_defaultValue;
 
 	function getit(response) {
 		if (response.session) {
@@ -24,44 +22,40 @@
 					//alert(r.response.sex);
 					$isAuthenticated = true;
 					localStorage.setItem('isAuthenticated', JSON.stringify(true));
-					
+
 					//console.log(r.response);
 					let user_data = {
 						id: r.response[0]['id'],
-						bdate: r.response[0]['bdate'] ? r.response[0]['bdate']:"не указано",
+						bdate: r.response[0]['bdate'] ? r.response[0]['bdate'] : 'не указано',
 						name: r.response[0]['first_name'] + ' ' + r.response[0]['last_name'],
 						photo: r.response[0].photo_max,
-						city: r.response[0]['city'] ? r.response[0]['city'].title:"не указано",
-						country: r.response[0]['country'] ? r.response[0]['country'].title:"не указано",
+						city: r.response[0]['city'] ? r.response[0]['city'].title : 'не указано',
+						country: r.response[0]['country'] ? r.response[0]['country'].title : 'не указано',
 						followers_count: r.response[0].followers_count,
-						sex: r.response[0].sex ? r.response[0].sex:"не указано"
+						sex: r.response[0].sex ? r.response[0].sex : 'не указано'
 					};
 					user.set(user_data);
 					localStorage.setItem('user', JSON.stringify(user_data));
-					ym(88086612,'reachGoal','vk-auth');
+					ym(88086612, 'reachGoal', 'vk-auth');
 					LogRocket.identify(r.response[0]['id'], {
 						name: r.response[0]['first_name'] + ' ' + r.response[0]['last_name'],
 						vk_id: r.response[0]['id'],
-						city: r.response[0]['city'] ? r.response[0]['city'].title : "не указано",
-					})
-					 
-
+						city: r.response[0]['city'] ? r.response[0]['city'].title : 'не указано'
+					});
 				}
 			}
 		);
 	}
-
-	
+	export let flag;
+	$: flag = $isAuthenticated;
 </script>
 
-{#if $isAuthenticated}
-<LogoComponent/>
+{#if flag}
+	<LogoComponent />
 	<p class="slogan mx-auto mb-5">Спасибо, что Вы с нами!</p>
 	<div class="flex justify-center">
 		<!-- Card -->
-		<div
-			class="delay-50 group flex w-auto rounded-lg bg-gray-800 p-5"
-		>
+		<div class="delay-50 group flex w-auto rounded-lg bg-gray-800 p-5">
 			<!-- Image Cover -->
 			<img class="h-28 w-28 w-full rounded shadow" src={$user.photo} alt={$user.name} />
 			<div class="mx-10 flex flex-col">
@@ -76,33 +70,32 @@
 		</div>
 	</div>
 	<a
-		class="tomain delay-50 duration-100 dark:hover:bg-blue-700/50 m-5 mx-auto cursor-pointer rounded-lg p-2 px-3 ring-yellow-800 transition-all hover:ring-2 bg-blue-400/50 shadow dark:bg-blue-500/20  text-gray-800 focus:outline-none dark:text-gray-300 "
+		class="tomain delay-50 m-5 mx-auto cursor-pointer rounded-lg bg-blue-400/50 p-2 px-3 text-gray-800 shadow ring-yellow-800 transition-all duration-100 hover:ring-2 focus:outline-none  dark:bg-blue-500/20 dark:text-gray-300 dark:hover:bg-blue-700/50 "
 		id="logout_button"
 		href="/concert/1"
 	>
 		<p class="mx-auto">Перейти на страницу отборочного концерта</p>
 	</a>
 	<a
-		class="tomain  delay-50 duration-100 dark:hover:bg-blue-700/50 mx-auto cursor-pointer rounded-lg p-2 px-3 ring-yellow-800 transition-all hover:ring-2 bg-blue-400/50 shadow dark:bg-blue-500/20 text-gray-800 focus:outline-none dark:text-gray-300 "
+		class="tomain  delay-50 mx-auto cursor-pointer rounded-lg bg-blue-400/50 p-2 px-3 text-gray-800 shadow ring-yellow-800 transition-all duration-100 hover:ring-2 focus:outline-none dark:bg-blue-500/20 dark:text-gray-300 dark:hover:bg-blue-700/50 "
 		id="logout_button"
 		href="/now"
 	>
-		<p class="mx-auto">Перейти на страницу прямого эфира </p>
+		<p class="mx-auto">Перейти на страницу прямого эфира</p>
 	</a>
 	<div
-	class="logoutbut m-5 mx-auto cursor-pointer rounded-lg bg-red-400/95 p-2 px-3 text-white ring-red-800 transition-all hover:ring-2 dark:bg-red-800/95 dark:text-white"
-	id="logout_button"
-	on:click={() => {
-		VK.Auth.logout(getit);
-		$isAuthenticated = false;
-		$user = {};
-		localStorage.setItem('user', JSON.stringify($user));
-		localStorage.setItem('isAuthenticated', JSON.stringify(false));
-		
-	}}
->
-	<p class="mx-auto">Выйти</p>
-</div>
+		class="logoutbut m-5 mx-auto cursor-pointer rounded-lg bg-red-400/95 p-2 px-3 text-white ring-red-800 transition-all hover:ring-2 dark:bg-red-800/95 dark:text-white"
+		id="logout_button"
+		on:click={() => {
+			VK.Auth.logout(getit);
+			$isAuthenticated = false;
+			//$user = {};
+			//localStorage.setItem('user', JSON.stringify($user));
+			//localStorage.setItem('isAuthenticated', JSON.stringify(false));
+		}}
+	>
+		<p class="mx-auto">Выйти</p>
+	</div>
 {:else}
 	<h1 class="txt mx-auto text-lg mt-3 mb-2 bg-white text-black dark:bg-gray-900 dark:text-white">
 		Авторизуйтесь без лишних анкет.
@@ -117,7 +110,7 @@
 		class="loginbut cursor-pointer p-3 mx-auto mb-8 flex w-full max-w-2xl flex-col items-start rounded-lg bg-yellow-400/50 px-3 text-black ring-yellow-400 transition-all hover:ring-2 dark:bg-yellow-800/25 dark:text-white"
 		id="login_button"
 		on:click={() => {
-			ym(88086612,'reachGoal','vk-auth-start');
+			ym(88086612, 'reachGoal', 'vk-auth-start');
 			VK.Auth.login(getit);
 		}}
 	>
