@@ -24,24 +24,22 @@
 </main>
 {#if !$screenmode}
 
-<footer class="z-10 mx-auto px-4  my-4 flex border-white/30 border-t  max-w-2xl flex-col items-start justify-center">
+<footer class="z-10 mx-auto flex  max-w-2xl flex-col   items-start justify-center">
 
-	<div class="flex w-full">
+	<div class="flex w-full border-white/30 border-t px-4 sm:px-0">
+
 		<div class="flex flex-col">
 			<a href="/" class="pt-4"> Главная </a>
 			<a href="/now" class="pt-4"> Эфир </a>
 			<a href="/sponsoram" class="pt-4"> Спонсорам </a>
-
 		</div>
 		<div class="ml-4 flex flex-col">
 			<a href="/bands" class="pt-4"> Участники </a>
 			<a href="/manual" class="pt-4"> Инструкция </a>
 			<a href="/kabinet" class="pt-4"> Кабинет </a>
 		</div>
-	
-
 		<div class="mx-auto" />
-		<div class="container_develop pb-0 pl-20 flex flex-col space-between">
+		<div class="container_develop pb-0 pl-10 flex flex-col space-between">
 			<a href="http://ti-units.ru/"
 			
 		
@@ -63,12 +61,13 @@
 							/>
 						</svg>
 					</div>
-					<div class="right side"><p>Создание<br />и поддержка<br />Ti-UNITS.RU</p></div>
+					<div class="right side text-right pr-8"><p>Создание<br />и поддержка<br />Ti-UNITS.RU</p></div>
 				</div>
 			</a>
 			<div my-auto>&nbsp;</div>
 			<a href="/blog" class="pt-4">Журнал </a>
 		</div>
+
 	</div>
 	<div class="flex flex-col w-full  mt-1">
 		<a href="/feedback" class="pb-2 mx-auto feedback"> Отзывы и предложения </a>
@@ -108,7 +107,8 @@
 		line-height: 14px;
 	}
 	.cub_container {
-		margin: 20px auto 0;
+		margin-left: 20px;
+		margin-top: 20px;
 		-webkit-transition: ease-in-out 0.4s all;
 		transition: ease-in-out 0.4s all;
 		-webkit-transform-style: preserve-3d;
@@ -130,9 +130,10 @@
 		
 	}
 	.cub_container .right {
-		padding: 0;
-		margin: 0 -5em;
-		width: 180px;
+		
+		right: 15rem;
+		text-align: right;
+		width: 130px;
 		-webkit-transform: translateX(40px) translateZ(10px) rotateY(90deg);
 		transform: translateX(40px) translateZ(10px) rotateY(90deg);
 	}
