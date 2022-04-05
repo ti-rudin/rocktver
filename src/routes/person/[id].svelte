@@ -158,7 +158,7 @@
 			<img class="" src={imgurl} alt="" />
 		</div>
 	{:else}
-	<div class="mx-auto">
+	<div class="mx-auto max-w-xl">
 		<div
 			bind:this={htmlimg}
 			class="maskpic mx-auto  flex flex-col bg-white p-4 text-black dark:bg-gray-900 dark:text-white"
