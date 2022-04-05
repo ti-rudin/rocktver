@@ -161,7 +161,7 @@
 
 	launch = launches.filter((launch) => launch.attributes.band_name == id)[0];
 
-	$: efir = efir;
+	//$: efir = efir;
 
 	if (launch.attributes.spisok) {
 		spisok = launch.attributes.spisok;
@@ -213,6 +213,7 @@
 	}
 
 	$: if ($isAuthenticated) {
+		
 		let userid = $user.id;
 		//console.log('index' + userid);
 
@@ -282,6 +283,7 @@
 	</div>
 </div>
 {#if launch.attributes.spisok[0]}
+{launch.attributes.spisok[0].id}
 	<h1 class="mx-auto mt-3 text-2xl ">Программа выступления</h1>
 	<section style="--gap: {gap}px; --width: {width}" tab-index="0">
 		<ul
@@ -299,12 +301,12 @@
 			}}
 		>
 			{#each spisok as item, i}
-				<li class:active={i === index} class="">
+				<li class:active={i === spisok[index]} class="">
 					<div
 						class="transform-all trackcard justify-top relative mt-3 mb-2 flex cursor-pointer flex-col items-center rounded-xl border-2 border-slate-100 bg-gradient-to-r from-blue-400 to-pink-500 p-3 shadow-lg transition-all hover:scale-105"
 					>
 						<div class="text-center text-2xl text-slate-200">
-							<div>{item.name}</div>
+							<div>{item.name}{item.id}</div>
 						</div>
 						<div class="flex w-full flex-col text-left">
 							<div class="mx-auto" />

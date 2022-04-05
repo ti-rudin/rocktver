@@ -170,8 +170,8 @@
 	onMount(() => {
 		loaduser($user.id);
 	});
-	$: state = state;
-	load_open_status();
+	//$: state = state;
+	//load_open_status();
 </script>
 
 <LogoComponent />
