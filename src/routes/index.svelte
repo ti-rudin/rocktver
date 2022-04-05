@@ -198,6 +198,8 @@
 	.ramka{
 		text-decoration: none;
 		cursor: pointer;
+		padding-top: 1.4rem;
+		padding-bottom: 1rem;
 	}
 	.otbor {
 		font: bold 20px Arial, sans-serif;
