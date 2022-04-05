@@ -121,7 +121,7 @@
 	import { goto } from '$app/navigation';
 	import { isAuthenticated, user } from '$lib/stores/auth';
 	import { isDarkFlag, isMngr } from '$lib/siteConfig';
-
+	import { getEfir, getNow } from '../../components/api.js';
 	let isAdmin = false;
 	let apiurl = 'https://api.rocktver.ru/getuserdata';
 
@@ -151,27 +151,13 @@
 	}
 
 	async function load_open_status() {
-		let myHeaders = new Headers();
-		myHeaders.append('Content-Type', 'application/json');
-		let requestOptions = {
-			method: 'GET',
-			headers: myHeaders
-		};
-
-		fetch('https://api.rocktver.ru/get-efir/', requestOptions)
-			.then((response) => response.json())
-			.then((result) => {
-				//console.log(result);
-				state = result;
-				return result;
-			})
-			.catch((error) => console.log('error', error));
+		state = await getEfir();
 	}
 	onMount(() => {
 		loaduser($user.id);
 	});
-	//$: state = state;
-	//load_open_status();
+	$: state = state;
+	load_open_status();
 </script>
 
 <LogoComponent />
