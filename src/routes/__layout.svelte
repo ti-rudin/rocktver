@@ -24,7 +24,7 @@
 </main>
 {#if !$screenmode}
 
-<footer class="z-10 mx-auto flex  max-w-2xl flex-col   items-start justify-center">
+<footer class="z-10 mx-auto flex mb-4  max-w-2xl flex-col   items-start justify-center">
 
 	<div class="flex w-full border-white/30 border-t px-4 sm:px-0">
 
