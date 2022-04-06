@@ -222,6 +222,8 @@
 		<li>Male User by Ralf Schmitzer from NounProject.com</li>
 		<li>Like by Icongeek26 from NounProject.com</li>
 		<li>Display by Ralf Schmitzer from NounProject.com</li>
+		<li>Radio Wave by Ben Avery from NounProject.com</li>
+		
 	</ul>
     <ul>
 		<h1 class="mt-3 mx-auto max-w-2xl text-lg">Иллюстрации</h1>
