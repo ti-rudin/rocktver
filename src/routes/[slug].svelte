@@ -72,19 +72,22 @@
 		class="bg flex w-full justify-between sm:flex-col sm:items-start md:flex-row md:items-center"
 	>
 		<p class="flex items-center text-sm text-gray-700 dark:text-gray-300">РОКТВЕРЬ</p>
-		
+
 		<p class="min-w-32 flex items-center text-sm text-gray-600 dark:text-gray-400 md:mt-0">
-		
 			{new Date(json.date).toISOString().slice(0, 10)}
 		</p>
-	
 	</div>
 	<div
 		class="-mx-1 my-2 flex h-1 w-[90vw] bg-gradient-to-r from-yellow-400 via-red-500 to-pink-500 sm:mx-0 sm:w-full"
 	/>
-
+	<a
+		class="flex h-9 items-center justify-center rounded-lg bg-yellow-400 px-3 text-black ring-yellow-400 transition-all
+			hover:ring-2 dark:bg-yellow-800 dark:text-white"
+		href="/blog"
+	>
+	Журнал
+	</a>
 	<div class="prose mt-6 mb-6 w-full max-w-none dark:prose-invert">
 		{@html json.content}
 	</div>
 </article>
-

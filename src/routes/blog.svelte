@@ -101,7 +101,7 @@
 		>
 	</div>
 	{#if !search}
-		<h3 class="mt-8 mb-4 text-xl  tracking-tight text-black dark:text-white md:text-3xl">
+		<h3 class="mt-3 text-xl  tracking-tight text-blue-500/80 md:text-3xl">
 			В закрепе
 		</h3>
 		<IndexCard
@@ -115,14 +115,13 @@
 		</IndexCard>
 	
 
-		<h3 class="mt-8 mb-4 text-xl tracking-tight text-black dark:text-white md:text-3xl">
-			Журнал
-		</h3>
+	
 	{/if}
 	{#if list.length}
-		<ul class="">
+		<ul class="mt-6">
 			{#each list as item}
 				<li class="mb-8 text-lg">
+					<hr>
 					<!-- <code class="mr-4">{item.data.date}</code> -->
 					<IndexCard
 						href={item.slug}
