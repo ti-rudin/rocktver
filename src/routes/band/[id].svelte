@@ -220,7 +220,7 @@
 		change_track(userid, index);
 	}
 		//$: console.log("launch"+launch.attributes.spisok[index].text);
-		$: console.log("spisok[index] - "+JSON.stringify(spisok[index]));
+		//$: console.log("spisok[index] - "+JSON.stringify(spisok[index]));
 		
 </script>
 
