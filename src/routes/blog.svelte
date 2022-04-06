@@ -15,7 +15,7 @@
 		const items = await res.json();
 		return {
 			props: { items },
-			maxage: 60 // 1 minute
+			maxage: 2022 // 1 minute
 		};
 	}
 	import {
@@ -120,7 +120,7 @@
 	{#if list.length}
 		<ul class="mt-6">
 			{#each list as item}
-				<li class="mb-8 text-lg">
+				<li class="pb-8 text-lg dark:hover:bg-blue-700/10 no-underline focus:outline-none">
 					<hr>
 					<!-- <code class="mr-4">{item.data.date}</code> -->
 					<IndexCard
