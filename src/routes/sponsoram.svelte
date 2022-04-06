@@ -56,7 +56,8 @@
 <style>
 	.red{
 		color:red;
-		font-size: 1.5rem;
+		font-size: 1.2rem;
+		font-weight: bold;
 	}
 	li {
 		margin-left: 2rem;
