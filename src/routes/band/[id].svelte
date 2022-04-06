@@ -219,7 +219,9 @@
 
 		change_track(userid, index);
 	}
-	//	$: console.log("launch"+launch.attributes.spisok[index].text);
+		//$: console.log("launch"+launch.attributes.spisok[index].text);
+		$: console.log("spisok[index] - "+JSON.stringify(spisok[index]));
+		
 </script>
 
 <LogoComponent />
@@ -283,7 +285,6 @@
 	</div>
 </div>
 {#if launch.attributes.spisok[0]}
-{launch.attributes.spisok[0].id}
 	<h1 class="mx-auto mt-3 text-2xl ">Программа выступления</h1>
 	<section style="--gap: {gap}px; --width: {width}" tab-index="0">
 		<ul
@@ -301,12 +302,13 @@
 			}}
 		>
 			{#each spisok as item, i}
-				<li class:active={i === spisok[index]} class="">
+		
+				<li class:active={i === index} class="">
 					<div
 						class="transform-all trackcard justify-top relative mt-3 mb-2 flex cursor-pointer flex-col items-center rounded-xl border-2 border-slate-100 bg-gradient-to-r from-blue-400 to-pink-500 p-3 shadow-lg transition-all hover:scale-105"
 					>
 						<div class="text-center text-2xl text-slate-200">
-							<div>{item.name}{item.id}</div>
+							<div>{item.name}</div>
 						</div>
 						<div class="flex w-full flex-col text-left">
 							<div class="mx-auto" />
