@@ -152,12 +152,13 @@
 	export let band_rtid, artists;
 </script>
 
+
 {#if isshowgo}
-	<div class="w-full pb-2">
+	<div class="w-full pb-2 z-10 ">
 		<div
 			transition:scale={{ duration: 300 }}
 			aria-label="card 1"
-			class="mx-auto mt-1 max-w-2xl rounded-lg bg-red-400/40 p-4 shadow ring-yellow-400 transition-all hover:ring-2 focus:outline-none dark:bg-red-500"
+			class="mx-auto mt-1 max-w-2xl rounded-lg bg-red-400/40 p-4 shadow ring-yellow-400 transition-all hover:ring-2 focus:outline-none dark:bg-red-500/70 "
 			on:click={() => {
 				goto('/concert/' + status.concert_id);
 			}}
@@ -281,9 +282,10 @@
 		<div
 			in:scale={{ duration: 300 }}
 			aria-label="card 1"
-			class="mx-auto max-w-2xl  rounded-lg bg-blue-400/70 p-6 shadow  dark:bg-blue-500 "
+			class="mx-auto max-w-2xl  rounded-lg bg-blue-400/70 p-6 shadow  dark:bg-blue-500/50 "
 		>
 			{#if status.now_on_scene.band_rtid}
+			
 				<div
 					class="flex cursor-pointer rounded ring-yellow-400 transition-all hover:ring-2 focus:outline-none"
 					on:click={() => {
@@ -326,6 +328,7 @@
 					{/each}
 				</div>
 			{:else}
+		
 				<div class="flex items-center pb-2">
 					<div class="flex w-full items-start justify-between">
 						<div class="mx-auto">
@@ -443,7 +446,7 @@
 		</div>
 	{/if}
 {:else}
-	<Flower />
+<div class="opacity-90"><Flower /></div>
 	<div class="z-10 w-full mt-4">
 		<div
 			aria-label="card 1"
@@ -456,8 +459,7 @@
 							tabindex="0"
 							class="pt-2 text-xl text-gray-800 focus:outline-none dark:text-gray-200"
 						>
-							Виджет выключен или что-то пошло не так с этими интернетами.<br />Попробуйте
-							перезагрузить страницу.
+							Виджет "Сейчас в эфире" выключен
 						</h1>
 					</div>
 				</div>
