@@ -215,7 +215,7 @@
 	>
 </div>
 
-<h1 class="mt-3 mx-auto text-center text-2xl">Авторские права на используемые технологии и материалы</h1>
+<h1 class="mt-3 mx-auto text-center text-2xl">Используемые технологии и материалы</h1>
 <div class="mx-auto w-full max-w-2xl">
 	<ul>
 		<h1 class="m-3 mx-auto max-w-2xl text-lg">Иконки</h1>
