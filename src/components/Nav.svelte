@@ -81,15 +81,13 @@
 		-->
 		{#if !$screenmode}
 			<a
-				class="ml-1 flex h-9 items-center justify-center rounded-lg bg-yellow-400 px-3 text-black ring-yellow-400 transition-all
+				class="ml-1 flex h-9 pt-1 text-center  rounded-lg bg-yellow-400 px-3 text-black ring-yellow-400 transition-all
 			hover:ring-2 dark:bg-yellow-800 dark:text-white"
 				href="https://che-tver.timepad.ru/event/1900315/"
 			>
-				{#if isDark}
-					Купить билет
-				{:else}
-					Купить билет
-				{/if}
+			
+					Билет
+				
 			</a>
 			{#if $isAuthenticated}
 				<a href="/kabinet">
