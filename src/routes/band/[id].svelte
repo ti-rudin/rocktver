@@ -159,16 +159,18 @@
 
 	export let isonscene, launches, launch, id, spisok, artists;
 
-	launch = launches.filter((launch) => launch.attributes.band_name == id)[0];
+	$: launch = launches.filter((launch) => launch.attributes.band_name == id)[0];
 
 	//$: efir = efir;
 
-	if (launch.attributes.spisok) {
+	$: if (launch.attributes.spisok) {
 		spisok = launch.attributes.spisok;
 	}
 
-	if (launch.attributes.artists) {
+	$: if (launch.attributes.artists) {
 		artists = launch.attributes.artists.data;
+	} else {
+		artists = false;
 	}
 
 	$: if (band_on_scene == launch.id) {
@@ -222,6 +224,7 @@
 		//$: console.log("launch"+launch.attributes.spisok[index].text);
 		//$: console.log("spisok[index] - "+JSON.stringify(spisok[index]));
 		
+	
 </script>
 
 <LogoComponent />
@@ -259,7 +262,7 @@
 		</div>
 
 		<div class="flex flex-col">
-			{#if launch.attributes.artists.data[0]}
+			{#if artists}
 				{#each artists as artist}
 
 					<div class="flex cursor-pointer rounded ring-yellow-400 transition-all hover:ring-2 focus:outline-none"
