@@ -7,79 +7,46 @@
 	import { browser } from '$app/env';
 	let apiurl = 'https://api.rocktver.ru';
 	//isAuthenticated = browser ? window.localStorage.getItem('isAuthenticated') ?? isAuthenticated_defaultValue : isAuthenticated_defaultValue;
-	function logauth(ud) {
+
+
+	export let flag, qrurl;
+	$: flag = $isAuthenticated;
+	$: qrurl = apiurl+'/qrcode-register?id='+ $user.id
+    import { onMount } from 'svelte';
+
+	function register(x) {
 		let myHeaders = new Headers();
 		myHeaders.append('Content-Type', 'application/json');
 
-		let raw = JSON.stringify({ user: ud });
+		let raw = JSON.stringify({user: x});
 
 		let requestOptions = {
 			method: 'POST',
 			headers: myHeaders,
-			body: raw
+			body: raw,
 		};
 
-		fetch(apiurl+'/log-auth', requestOptions)
+		fetch('https://api.rocktver.ru/lotereya-register/', requestOptions)
 			.then((response) => response.json())
 			.then((result) => {
-				console.log(result);
 				
-				//return result;
+				return result;
 			})
 			.catch((error) => console.log('error', error));
+
 	}
-	function getit(response) {
-		if (response.session) {
-			var id = response.session.mid;
-		}
-		VK.Api.call(
-			'users.get',
-			{
-				uids: id,
-				fields: 'photo_max, first_name,last_name, sex, bdate, city, country, followers_count',
-				v: '5.131'
-			},
-			function (r) {
-				if (r.response) {
-					//alert(r.response.sex);
-					$isAuthenticated = true;
-					localStorage.setItem('isAuthenticated', JSON.stringify(true));
 
-					//console.log(r.response);
-					let user_data = {
-						id: r.response[0]['id'],
-						bdate: r.response[0]['bdate'] ? r.response[0]['bdate'] : 'не указано',
-						name: r.response[0]['first_name'] + ' ' + r.response[0]['last_name'],
-						photo: r.response[0].photo_max,
-						city: r.response[0]['city'] ? r.response[0]['city'].title : 'не указано',
-						country: r.response[0]['country'] ? r.response[0]['country'].title : 'не указано',
-						followers_count: r.response[0].followers_count,
-						sex: r.response[0].sex ? r.response[0].sex : 'не указано'
-					};
-					user.set(user_data);
 
-					logauth(user_data);
 
-					localStorage.setItem('user', JSON.stringify(user_data));
+onMount(() => {
+ register($user)
+});
 
-					ym(88086612, 'reachGoal', 'vk-auth');
-					LogRocket.identify(r.response[0]['id'], {
-						name: r.response[0]['first_name'] + ' ' + r.response[0]['last_name'],
-						vk_id: r.response[0]['id'],
-						city: r.response[0]['city'] ? r.response[0]['city'].title : 'не указано'
-					});
-				}
-			}
-		);
-	}
-	export let flag, qrurl;
-	$: flag = $isAuthenticated;
-	$: qrurl = apiurl+'/qrcode-register?id='+ $user.id
 </script>
 
 {#if flag}
 	<LogoComponent />
-	<p class="slogan mx-auto mb-5">Спасибо, что Вы с нами!</p>
+	<p class="slogan mx-auto mb-5">Вы зарегистрированны для участия в лотерее!</p>
 	<div class="flex justify-center">
 		<!-- Card -->
 		<div class="delay-50 group flex w-auto rounded-lg bg-gray-800 p-5">
@@ -101,44 +68,11 @@
 		
 	</div>
 
-	<div class="mx-auto hidden">
+	<div class="mx-auto">
 		<QRCode codeValue={qrurl} squareSize=200/>
 	</div>
 	<div class="mx-auto text-lg mt-2">Лотерея для гостей клуба BIG BEN!</div>
-	<a
-		class="tomain delay-50 mb-3 mx-auto cursor-pointer rounded-lg bg-yellow-400/50 p-2 px-3 text-gray-800 shadow ring-yellow-800 transition-all duration-100 hover:ring-2 focus:outline-none  dark:bg-yellow-500/70 dark:text-gray-200 dark:hover:bg-blue-700/50 "
-		id="logout_button"
-		href="/lotereya"
-	>
-		<p class="mx-auto">Участвовать в лотерее</p>
-	</a>
-	<a
-		class="tomain delay-50 m-5 mx-auto cursor-pointer rounded-lg bg-blue-400/50 p-2 px-3 text-gray-800 shadow ring-yellow-800 transition-all duration-100 hover:ring-2 focus:outline-none  dark:bg-blue-500/20 dark:text-gray-300 dark:hover:bg-blue-700/50 "
-		id="logout_button"
-		href="/concert/1"
-	>
-		<p class="mx-auto">Перейти на страницу отборочного концерта</p>
-	</a>
-	<a
-		class="tomain  delay-50 mx-auto cursor-pointer rounded-lg bg-blue-400/50 p-2 px-3 text-gray-800 shadow ring-yellow-800 transition-all duration-100 hover:ring-2 focus:outline-none dark:bg-blue-500/20 dark:text-gray-300 dark:hover:bg-blue-700/50 "
-		id="logout_button"
-		href="/now"
-	>
-		<p class="mx-auto">Перейти на страницу прямого эфира</p>
-	</a>
-	<div
-		class="logoutbut m-5 mx-auto cursor-pointer rounded-lg bg-red-400/95 p-2 px-3 text-white ring-red-800 transition-all hover:ring-2 dark:bg-red-800/95 dark:text-white"
-		id="logout_button"
-		on:click={() => {
-			VK.Auth.logout(getit);
-			$isAuthenticated = false;
-			//$user = {};
-			//localStorage.setItem('user', JSON.stringify($user));
-			//localStorage.setItem('isAuthenticated', JSON.stringify(false));
-		}}
-	>
-		<p class="mx-auto">Выйти</p>
-	</div>
+
 {:else}
 	<h1 class="txt mx-auto text-lg mt-3 mb-2 bg-white text-black dark:bg-gray-900 dark:text-white">
 		Авторизуйтесь без лишних анкет.
