@@ -122,10 +122,10 @@
 	import LogoComponent from '../../components/LogoComponent.svelte';
 	import { goto } from '$app/navigation';
 	import { isAuthenticated, user } from '$lib/stores/auth';
-	import { isDarkFlag, isMngr } from '$lib/siteConfig';
+	import { isDarkFlag, isMngr, isAdmin } from '$lib/siteConfig';
 	import { getEfir, getNow } from '../../components/api.js';
 import Bands from '../bands.svelte';
-	let isAdmin = false;
+	//$isAdmin = false;
 	let bandslikes = [];
 	let apiurl = 'https://api.rocktver.ru';
 
@@ -147,7 +147,7 @@ import Bands from '../bands.svelte';
 			.then((result) => {
 				//console.log(result.id);
 				if (result.id == 'admin') {
-					isAdmin = true;
+					$isAdmin = true;
 				}
 				return result.id;
 			})
@@ -185,11 +185,12 @@ import Bands from '../bands.svelte';
 	});
 	$: state = state;
 	load_open_status();
+
 </script>
 
 <LogoComponent />
 {#if $isAuthenticated}
-	{#if isAdmin}
+	{#if $isAdmin}
 		<div
 			class="mx-auto my-3 flex max-w-2xl  flex-col rounded p-6  shadow ring-1 ring-yellow-600 focus:outline-none"
 		>
@@ -283,7 +284,7 @@ import Bands from '../bands.svelte';
 						<h1 class="text-xl font-bold">{event.title}</h1>
 					</div>
 					{#if $isAuthenticated}
-						{#if isAdmin}
+						{#if $isAdmin}
 							<KnobTimeline user={$user.id} event_i={i} {event} {concert} />
 						{/if}
 					{/if}
@@ -309,7 +310,7 @@ import Bands from '../bands.svelte';
 						{/if}
 					</div>
 					{#if $isAuthenticated}
-						{#if isAdmin}
+						{#if $isAdmin}
 							<KnobTimeline user={$user.id} event_i={i} {event} {concert} />
 						{/if}
 					{/if}
@@ -335,12 +336,12 @@ import Bands from '../bands.svelte';
 						{/if}
 					</div>
 					{#if $isAuthenticated}
-						{#if isAdmin}
+						{#if $isAdmin}
 							<KnobTimeline user={$user.id} event_i={i} {event} {concert} />
 						{/if}
 					{/if}
 				</div>
-			{:else if isAdmin}
+			{:else if ($isAdmin&&$isAuthenticated)}
 				<div
 					class="bandurl relative ml-10 mb-10 flex transform cursor-pointer flex-col items-left space-y-4 rounded bg-pink-600 px-6 py-4 text-white dark:text-white transition hover:-translate-y-2 md:flex-row md:space-y-0"
 				>

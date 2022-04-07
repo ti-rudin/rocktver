@@ -1,6 +1,8 @@
 <script>
+	import { onDestroy, onMount } from 'svelte';
 	import { isAuthenticated, user } from '$lib/stores/auth';
-	import { isDarkFlag } from '$lib/siteConfig';
+	import { isDarkFlag, isMngr, isAdmin } from '$lib/siteConfig';
+	
 	import LogoComponent from '../components/LogoComponent.svelte';
 	import QRCode from '../components/QRJS.svelte'
 
@@ -43,6 +45,7 @@
 				if (r.response) {
 					//alert(r.response.sex);
 					$isAuthenticated = true;
+				
 					localStorage.setItem('isAuthenticated', JSON.stringify(true));
 
 					//console.log(r.response);
@@ -59,7 +62,7 @@
 					user.set(user_data);
 
 					logauth(user_data);
-
+					loaduser($user.id);
 					localStorage.setItem('user', JSON.stringify(user_data));
 
 					ym(88086612, 'reachGoal', 'vk-auth');
@@ -72,6 +75,35 @@
 			}
 		);
 	}
+	async function loaduser(userid) {
+		let myHeaders = new Headers();
+		myHeaders.append('Content-Type', 'application/json');
+
+		let raw = JSON.stringify({ id: userid });
+
+		let requestOptions = {
+			method: 'POST',
+			headers: myHeaders,
+			body: raw,
+			redirect: 'follow'
+		};
+
+		fetch(apiurl+'/getuserdata', requestOptions)
+			.then((response) => response.json())
+			.then((result) => {
+				//console.log(result.id);
+				if (result.id == 'admin') {
+					$isAdmin = true;
+				}
+				return result.id;
+			})
+			.catch((error) => console.log('error', error));
+	}
+	$isAdmin = false;
+	onMount(() => {
+		
+		
+	});
 	export let flag, qrurl;
 	$: flag = $isAuthenticated;
 	$: qrurl = apiurl+'/qrcode-register?id='+ $user.id
@@ -132,6 +164,7 @@
 		on:click={() => {
 			VK.Auth.logout(getit);
 			$isAuthenticated = false;
+			$isAdmin = false;
 			//$user = {};
 			//localStorage.setItem('user', JSON.stringify($user));
 			//localStorage.setItem('isAuthenticated', JSON.stringify(false));

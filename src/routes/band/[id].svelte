@@ -131,6 +131,7 @@
 	import LogoComponent from '../../components/LogoComponent.svelte';
 	import { onDestroy, onMount } from 'svelte';
 	import { isAuthenticated, user } from '$lib/stores/auth';
+	import { isDarkFlag, isMngr, isAdmin } from '$lib/siteConfig';
 	import { goto } from '$app/navigation';
 	export let status, isshowgo, band_on_scene;
 	//export let concert, bands
@@ -140,7 +141,7 @@
 	async function load_open_status() {
 		now = await getNow();
 		efir = await getEfir2($user);
-		index = Number(now.now_track_id);
+		//index = Number(now.now_track_id);
 		status = efir;
 		isshowgo = status.is_show_go;
 		have_spisok = status.now_on_scene.have_spisok;
@@ -190,7 +191,7 @@
 		scrollPos = 0;
 
 	function change_track(userid, x) {
-		if (userid == launch.attributes.mngr_id) {
+		if( (userid == launch.attributes.mngr_id) || $isAdmin) {
 			//console.log('launch'+launch.attributes.mngr_id );
 
 			let myHeaders = new Headers();
