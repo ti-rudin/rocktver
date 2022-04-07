@@ -146,7 +146,7 @@
 	<h2
 		class="txt mx-auto max-w-sm justify-center mt-3 mb-5 bg-white text-black dark:bg-gray-900 dark:text-white"
 	>
-		После авторизации Вы сможете голосовать в виджете прямого эфира.
+	После авторизации Вы сможете голосовать в виджете прямого эфира, а также участвовать в лотерее
 	</h2>
 
 	<div

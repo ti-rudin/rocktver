@@ -46,7 +46,7 @@ onMount(() => {
 
 {#if flag}
 	<LogoComponent />
-	<p class="slogan mx-auto mb-5">Вы зарегистрированны для участия в лотерее!</p>
+	<p class="slogan mx-auto mb-5">Вы зарегистрированы для участия в лотерее!</p>
 	<div class="flex justify-center">
 		<!-- Card -->
 		<div class="delay-50 group flex w-auto rounded-lg bg-gray-800 p-5">
@@ -67,11 +67,12 @@ onMount(() => {
 		</div>
 		
 	</div>
-
+    <div class="mx-auto text-lg mt-2">Лотерея для гостей клуба BIG BEN!</div>
 	<div class="mx-auto">
 		<QRCode codeValue={qrurl} squareSize=200/>
 	</div>
-	<div class="mx-auto text-lg mt-2">Лотерея для гостей клуба BIG BEN!</div>
+	
+    <div class="mx-auto text-center text-lg mt-2">Результаты розыгрыша будут оглашены в заключительной части мероприятия.</div>
 
 {:else}
 	<h1 class="txt mx-auto text-lg mt-3 mb-2 bg-white text-black dark:bg-gray-900 dark:text-white">
@@ -80,7 +81,7 @@ onMount(() => {
 	<h2
 		class="txt mx-auto max-w-sm justify-center mt-3 mb-5 bg-white text-black dark:bg-gray-900 dark:text-white"
 	>
-		После авторизации Вы сможете голосовать в виджете прямого эфира.
+		После авторизации Вы сможете участвовать в лотерее, а также голосовать в виджете прямого эфира
 	</h2>
 
 	<div
