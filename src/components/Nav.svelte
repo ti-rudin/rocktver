@@ -583,7 +583,7 @@
 		padding: 4px 8px;
 		font-size: 13px;
 		border-radius: 4px;
-		
+		z-index:900
 		
 	}
 	#tooltip2 {
@@ -593,6 +593,7 @@
 		padding: 4px 8px;
 		font-size: 13px;
 		border-radius: 4px;
+		z-index:900
 	}
 	#tooltip3 {
 		background: #333;
@@ -601,6 +602,7 @@
 		padding: 4px 8px;
 		font-size: 13px;
 		border-radius: 4px;
+		z-index:900
 	}
 	#tooltip4 {
 		background: #333;
@@ -609,6 +611,7 @@
 		padding: 4px 8px;
 		font-size: 13px;
 		border-radius: 4px;
+		z-index:900
 	}
 	#tooltip5 {
 		background: #333;
@@ -617,6 +620,7 @@
 		padding: 4px 8px;
 		font-size: 13px;
 		border-radius: 4px;
+		z-index:900
 	}
 
 </style>

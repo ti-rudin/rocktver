@@ -83,7 +83,7 @@
 
 {#if !issend}
 	{#key 1}
-		<div on:click={sendlike} class="mx-auto cursor-pointer flex animate-pulse rounded-lg bg-blue-400/50 shadow dark:bg-blue-500/20  ">
+		<div on:click={sendlike} class="mx-auto cursor-pointer  flex animate-pulse rounded-lg bg-blue-400/50 shadow dark:bg-blue-500/20  ">
 			<div class=ml-auto></div>
 			<button  class="like-btn m-6  rounded-full bg-pink-400/50  p-4">
 				<svg

@@ -207,7 +207,7 @@ import Bands from '../bands.svelte';
 <div class="w-full ">
 	<div
 		aria-label="card 1"
-		class="mx-auto max-w-2xl rounded bg-red-400/40 p-6 shadow focus:outline-none dark:bg-red-500"
+		class="mx-auto max-w-2xl rounded bg-orange-400/40 p-6 shadow focus:outline-none dark:bg-red-500"
 	>
 		<div class="flex items-center border-b border-gray-200 pb-6">
 			<div class="flex w-full items-start justify-between">
