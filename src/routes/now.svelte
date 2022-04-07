@@ -374,7 +374,8 @@
 				}}
 			>
 				{#each actual_spisok_pesen as item, i}
-					<li class:active={i === index} class="">
+					<li class:active={i == index} class="">
+					
 						<div
 							class="transform-all trackcard justify-top relative mt-3 mb-2 flex cursor-pointer flex-col items-center rounded-xl border-2 border-slate-100 bg-gradient-to-r from-blue-400 to-pink-500 p-3 shadow-lg transition-all hover:scale-105"
 						>

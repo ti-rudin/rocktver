@@ -127,7 +127,7 @@
 </script>
 
 <script>
-	import { getEfir, getNow } from '../../components/api.js';
+	import { getEfir2, getNow } from '../../components/api.js';
 	import LogoComponent from '../../components/LogoComponent.svelte';
 	import { onDestroy, onMount } from 'svelte';
 	import { isAuthenticated, user } from '$lib/stores/auth';
@@ -139,8 +139,8 @@
 	export let now, efir;
 	async function load_open_status() {
 		now = await getNow();
-		efir = await getEfir();
-		index = now.now_track_id;
+		efir = await getEfir2($user);
+		index = Number(now.now_track_id);
 		status = efir;
 		isshowgo = status.is_show_go;
 		have_spisok = status.now_on_scene.have_spisok;
@@ -219,7 +219,7 @@
 		let userid = $user.id;
 		//console.log('index' + userid);
 
-		change_track(userid, index);
+		change_track(userid, +index);
 	}
 		//$: console.log("launch"+launch.attributes.spisok[index].text);
 		//$: console.log("spisok[index] - "+JSON.stringify(spisok[index]));
@@ -306,7 +306,7 @@
 		>
 			{#each spisok as item, i}
 		
-				<li class:active={i === index} class="">
+				<li class:active={i == index} class="">
 					<div
 						class="transform-all trackcard justify-top relative mt-3 mb-2 flex cursor-pointer flex-col items-center rounded-xl border-2 border-slate-100 bg-gradient-to-r from-blue-400 to-pink-500 p-3 shadow-lg transition-all hover:scale-105"
 					>
@@ -340,20 +340,24 @@
 						{/if}
 					</div>
 				</li>
-			{/each}
-		</ul>
-	</section>
-
+			
+		
+				{/each}
+			</ul>
+		</section>
 	<div class="mx-auto mt-2 max-w-2xl">
 		<div
 			aria-label="card 1"
 			class="mx-auto flex rounded bg-blue-100/30 p-6 shadow focus:outline-none dark:bg-blue-500"
 		>
 			<div class="textcard">
-				{launch.attributes.spisok[index].text}
+				{spisok[index].text}
 			</div>
 		</div>
 	</div>
+	
+
+
 {/if}
 
 <style>
