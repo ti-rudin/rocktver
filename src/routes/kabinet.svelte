@@ -2,10 +2,32 @@
 	import { isAuthenticated, user } from '$lib/stores/auth';
 	import { isDarkFlag } from '$lib/siteConfig';
 	import LogoComponent from '../components/LogoComponent.svelte';
+	import QRCode from '../components/QRJS.svelte'
 
 	import { browser } from '$app/env';
+	let apiurl = 'https://api.rocktver.ru';
 	//isAuthenticated = browser ? window.localStorage.getItem('isAuthenticated') ?? isAuthenticated_defaultValue : isAuthenticated_defaultValue;
+	function logauth(ud) {
+		let myHeaders = new Headers();
+		myHeaders.append('Content-Type', 'application/json');
 
+		let raw = JSON.stringify({ user: ud });
+
+		let requestOptions = {
+			method: 'POST',
+			headers: myHeaders,
+			body: raw
+		};
+
+		fetch(apiurl+'/log-auth', requestOptions)
+			.then((response) => response.json())
+			.then((result) => {
+				console.log(result);
+				
+				//return result;
+			})
+			.catch((error) => console.log('error', error));
+	}
 	function getit(response) {
 		if (response.session) {
 			var id = response.session.mid;
@@ -35,7 +57,11 @@
 						sex: r.response[0].sex ? r.response[0].sex : 'не указано'
 					};
 					user.set(user_data);
+
+					logauth(user_data);
+
 					localStorage.setItem('user', JSON.stringify(user_data));
+
 					ym(88086612, 'reachGoal', 'vk-auth');
 					LogRocket.identify(r.response[0]['id'], {
 						name: r.response[0]['first_name'] + ' ' + r.response[0]['last_name'],
@@ -46,8 +72,9 @@
 			}
 		);
 	}
-	export let flag;
+	export let flag, qrurl;
 	$: flag = $isAuthenticated;
+	$: qrurl = apiurl+'/qrcode-register?id='+ $user.id
 </script>
 
 {#if flag}
@@ -66,8 +93,15 @@
 				<p class="mt-2 text-sm font-bold text-gray-400">Страна: {$user.country}</p>
 				<p class="mt-2 text-sm font-bold text-gray-400">Город: {$user.city}</p>
 				<p class="mt-2 text-sm font-bold text-gray-400">ВК ID: {$user.id}</p>
+	
+
 			</div>
+			
 		</div>
+		
+	</div>
+	<div class="mx-auto">
+		<QRCode codeValue={qrurl} squareSize=200/>
 	</div>
 	<a
 		class="tomain delay-50 m-5 mx-auto cursor-pointer rounded-lg bg-blue-400/50 p-2 px-3 text-gray-800 shadow ring-yellow-800 transition-all duration-100 hover:ring-2 focus:outline-none  dark:bg-blue-500/20 dark:text-gray-300 dark:hover:bg-blue-700/50 "
