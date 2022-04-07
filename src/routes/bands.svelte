@@ -116,7 +116,7 @@
 			error: new Error(`Error fetching GraphQL data`)
 		};
 	}
-	export const prerender = true;
+	//export const prerender = true;
 </script>
 
 <script>

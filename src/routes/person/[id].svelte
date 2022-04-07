@@ -154,7 +154,7 @@
 {#if launch}
 
 	{#if imgurl}
-		<div class="mx-auto max-w-2xl">
+		<div class="mx-auto max-w-xl">
 			<img class="" src={imgurl} alt="" />
 		</div>
 	{:else}

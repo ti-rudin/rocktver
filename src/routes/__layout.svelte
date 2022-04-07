@@ -23,7 +23,7 @@
 	<slot />
 </main>
 {#if !$screenmode}
-	<footer class="z-10 mx-auto mb-4 flex  max-w-2xl flex-col   items-start justify-center">
+	<footer class="z-20 mx-auto mb-4 flex  max-w-2xl flex-col   items-start justify-center">
 		<div class="flex w-full border-t border-white/30 px-4 sm:px-0">
 			<div class="flex flex-col">
 				<a href="/" class="pt-4"> Главная </a>
