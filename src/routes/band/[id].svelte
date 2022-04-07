@@ -131,6 +131,7 @@
 	import LogoComponent from '../../components/LogoComponent.svelte';
 	import { onDestroy, onMount } from 'svelte';
 	import { isAuthenticated, user } from '$lib/stores/auth';
+	import { isDarkFlag, isMngr, isAdmin } from '$lib/siteConfig';
 	import { goto } from '$app/navigation';
 	export let status, isshowgo, band_on_scene;
 	//export let concert, bands
@@ -140,7 +141,7 @@
 	async function load_open_status() {
 		now = await getNow();
 		efir = await getEfir2($user);
-		index = Number(now.now_track_id);
+		//index = Number(now.now_track_id);
 		status = efir;
 		isshowgo = status.is_show_go;
 		have_spisok = status.now_on_scene.have_spisok;
@@ -190,41 +191,39 @@
 		scrollPos = 0;
 
 	function change_track(userid, x) {
-		let myHeaders = new Headers();
-		myHeaders.append('Content-Type', 'application/json');
+		if( (userid == launch.attributes.mngr_id) || $isAdmin) {
+			//console.log('launch'+launch.attributes.mngr_id );
 
-		let raw = JSON.stringify({
-			userid: userid,
-			track_i: x,
-			bandid: launch.id,
-			cmd: 'change-track'
-		});
+			let myHeaders = new Headers();
+			myHeaders.append('Content-Type', 'application/json');
 
-		let requestOptions2 = {
-			method: 'POST',
-			headers: myHeaders,
-			body: raw
-		};
+			let raw = JSON.stringify({
+				userid: userid,
+				track_i: x,
+				bandid: launch.id,
+				cmd: 'change-track'
+			});
 
-		fetch('https://api.rocktver.ru/change-track', requestOptions2)
-			.then((response) => response.json())
-			.then((result) => {
-				return result;
-			})
-			.catch((error) => console.log('error', error));
+			let requestOptions2 = {
+				method: 'POST',
+				headers: myHeaders,
+				body: raw
+			};
+
+			fetch('https://api.rocktver.ru/change-track', requestOptions2)
+				.then((response) => response.json())
+				.then((result) => {
+					return result;
+				})
+				.catch((error) => console.log('error', error));
+		}
 	}
 
 	$: if ($isAuthenticated) {
 		
-		let userid = $user.id;
-		//console.log('index' + userid);
-
-		change_track(userid, +index);
+		change_track($user.id, +index);
 	}
-		//$: console.log("launch"+launch.attributes.spisok[index].text);
-		//$: console.log("spisok[index] - "+JSON.stringify(spisok[index]));
-		
-	
+
 </script>
 
 <LogoComponent />
@@ -264,12 +263,12 @@
 		<div class="flex flex-col">
 			{#if artists}
 				{#each artists as artist}
-
-					<div class="flex cursor-pointer rounded ring-yellow-400 transition-all hover:ring-2 focus:outline-none"
-					on:click={() => {
+					<div
+						class="flex cursor-pointer rounded ring-yellow-400 transition-all hover:ring-2 focus:outline-none"
+						on:click={() => {
 							goto('/person/' + artist.attributes.name);
-					}}>
-
+						}}
+					>
 						<img
 							class="mr-2 mb-1 h-14 w-14 rounded-full "
 							src={'https://admin.rocktver.ru' + artist.attributes.avatar.data.attributes.url}
@@ -305,7 +304,6 @@
 			}}
 		>
 			{#each spisok as item, i}
-		
 				<li class:active={i == index} class="">
 					<div
 						class="transform-all trackcard justify-top relative mt-3 mb-2 flex cursor-pointer flex-col items-center rounded-xl border-2 border-slate-100 bg-gradient-to-r from-blue-400 to-pink-500 p-3 shadow-lg transition-all hover:scale-105"
@@ -334,17 +332,15 @@
 
 							<div class="mx-auto" />
 						</div>
-						
+
 						{#if item.is_premiere}
 							<div class="prem border-1 ml-10 rounded-xl px-2 text-lg">ПРЕМЬЕРА</div>
 						{/if}
 					</div>
 				</li>
-			
-		
-				{/each}
-			</ul>
-		</section>
+			{/each}
+		</ul>
+	</section>
 	<div class="mx-auto mt-2 max-w-2xl">
 		<div
 			aria-label="card 1"
@@ -355,9 +351,6 @@
 			</div>
 		</div>
 	</div>
-	
-
-
 {/if}
 
 <style>
@@ -381,7 +374,7 @@
 		justify-content: center;
 		opacity: 0;
 	}
-	.active .like{
+	.active .like {
 		opacity: 1;
 	}
 

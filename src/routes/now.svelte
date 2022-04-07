@@ -276,7 +276,7 @@
 		{/if}
 	{/if}
 	<h1 class="mx-auto mt-3 max-w-2xl text-xl text-gray-800 focus:outline-none dark:text-white">
-		Сейчас на сцене
+		{#if status.now_on_scene.band_rtid}Сейчас на сцене{/if}
 	</h1>
 	<div class="mt-1 w-full ">
 		<div
