@@ -2,7 +2,7 @@
 	import { isAuthenticated, user } from '$lib/stores/auth';
 	import { isDarkFlag } from '$lib/siteConfig';
 	import LogoComponent from '../components/LogoComponent.svelte';
-	import QRCode from '../components/QRJS.svelte'
+	//import QRCode from '../components/QRJS.svelte'
 
 	import { browser } from '$app/env';
 	let apiurl = 'https://api.rocktver.ru';
@@ -67,13 +67,19 @@ onMount(() => {
 		</div>
 		
 	</div>
-    <div class="mx-auto text-lg mt-2">Лотерея для гостей клуба BIG BEN!</div>
+    <div class="mx-auto text-center text-lg mt-2">Лотерея для гостей клуба <nobr>BIG BEN!</nobr></div>
 	<div class="mx-auto">
-		<QRCode codeValue={qrurl} squareSize=200/>
+
 	</div>
 	
-    <div class="mx-auto text-center text-lg mt-2">Результаты розыгрыша будут оглашены в заключительной части мероприятия.</div>
-
+    <div class="mx-auto text-center text-lg mt-2">Розыгрыш в заключительной части мероприятия.</div>
+	<a
+		class="tomain mt-4 delay-50 mb-3 mx-auto cursor-pointer rounded-lg bg-yellow-400/50 p-2 px-3 text-gray-800 shadow ring-yellow-800 transition-all duration-100 hover:ring-2 focus:outline-none  dark:bg-yellow-500/70 dark:text-gray-200 dark:hover:bg-blue-700/50 "
+		id="logout_button"
+		href="/lotereya"
+	>
+		<p class="mx-auto">На страницу лотерии</p>
+	</a>
 {:else}
 	<h1 class="txt mx-auto text-lg mt-3 mb-2 bg-white text-black dark:bg-gray-900 dark:text-white">
 		Авторизуйтесь без лишних анкет.

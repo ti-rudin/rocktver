@@ -34,11 +34,11 @@
 			$isDarkFlag = true;
 		}
 	}
-	import { createPopperActions } from 'svelte-popperjs';
-	const [popperRef, popperContent] = createPopperActions();
-	const popperOptions = {
-		modifiers: [{ name: 'offset', options: { offset: [0, 8] } }]
-	};
+	//import { createPopperActions } from 'svelte-popperjs';
+	//const [popperRef, popperContent] = createPopperActions();
+	//const popperOptions = {
+	//	modifiers: [{ name: 'offset', options: { offset: [0, 8] } }]
+	//};
 
 	let showTooltip1 = false;
 	let showTooltip2 = false;
@@ -61,6 +61,9 @@
 			</li>
 			<li>
 				<NavLink href="/bands">Участники</NavLink>
+			</li>
+			<li>
+				<NavLink href="/lotereya">Лотерея</NavLink>
 			</li>
 		</ul>
 	{/if}
@@ -94,14 +97,13 @@
 				class="ml-1 flex h-9 rounded-lg bg-yellow-400  px-3 pt-1 text-center text-black ring-yellow-400 transition-all
 			hover:ring-2 dark:bg-yellow-800 dark:text-white"
 				href="https://che-tver.timepad.ru/event/1900315/"
-				use:popperRef
-				on:mouseenter={() => (showTooltip1 = true)}
-				on:mouseleave={() => (showTooltip1 = false)}
+				
+		
 			>
 				Билет
 			</a>
 			{#if showTooltip1}
-				<div id="tooltip1" use:popperContent={popperOptions}>
+				<div id="tooltip1" >
 					Переход на timepad.ru
 					<div id="arrow" data-popper-arrow />
 				</div>
@@ -109,14 +111,13 @@
 			{#if $isAuthenticated}
 				<a
 					href="/kabinet"
-					use:popperRef
-					on:mouseenter={() => (showTooltip2 = true)}
-					on:mouseleave={() => (showTooltip2 = false)}
+					
+		
 				>
 					<img class="h-10 w-10 rounded-full" src={$user.photo} alt={$user.name} id={$user.id} />
 				</a>
 				{#if showTooltip2}
-					<div id="tooltip2" use:popperContent={popperOptions}>
+					<div id="tooltip2" >
 						Личный кабинет
 						<div id="arrow" data-popper-arrow />
 					</div>
@@ -126,12 +127,11 @@
 					class="ml-1 flex h-9 items-center justify-center rounded-lg bg-yellow-400 px-1 text-black ring-yellow-400 transition-all
 	hover:ring-2 dark:bg-yellow-800 dark:text-white"
 					href="/kabinet"
-					use:popperRef
-					on:mouseenter={() => (showTooltip2 = true)}
-					on:mouseleave={() => (showTooltip2 = false)}
+					
+				
 				>
 				{#if showTooltip2}
-					<div id="tooltip2" use:popperContent={popperOptions}>
+					<div id="tooltip2" >
 						Личный кабинет
 						<div id="arrow" data-popper-arrow />
 					</div>
@@ -187,12 +187,11 @@
 			class="ml-1 flex h-9 items-center justify-center rounded-lg bg-yellow-400 px-1 text-black ring-yellow-400 transition-all
 	hover:ring-2 dark:bg-yellow-800 dark:text-white"
 			href="/now"
-			use:popperRef
-					on:mouseenter={() => (showTooltip3 = true)}
-					on:mouseleave={() => (showTooltip3 = false)}
+			
+				
 		>
 		{#if showTooltip3}
-		<div id="tooltip3" use:popperContent={popperOptions}>
+		<div id="tooltip3" >
 			Прямой эфир
 			<div id="arrow" data-popper-arrow />
 		</div>
@@ -486,12 +485,11 @@
 			class="ml-1 flex h-9 w-9 items-center justify-center rounded-lg bg-yellow-400 ring-yellow-400
 			transition-all hover:ring-2 dark:bg-yellow-800"
 			on:click={toggleDarkMode}
-			use:popperRef
-					on:mouseenter={() => (showTooltip4 = true)}
-					on:mouseleave={() => (showTooltip4 = false)}
+			
+			
 		>
 		{#if showTooltip4}
-		<div id="tooltip4" use:popperContent={popperOptions}>
+		<div id="tooltip4" >
 			Переключение темы
 			<div id="arrow" data-popper-arrow />
 		</div>
@@ -535,12 +533,11 @@
 			class="ml-1 flex h-9 w-9 cursor-pointer items-center justify-center rounded-lg bg-yellow-400 ring-yellow-400
 			transition-all hover:ring-2 dark:bg-yellow-800"
 			on:click={() => ($screenmode = !$screenmode)}
-			use:popperRef
-			on:mouseenter={() => (showTooltip5 = true)}
-			on:mouseleave={() => (showTooltip5 = false)}
+			
+			
 		>
 		{#if showTooltip5}
-		<div id="tooltip5" use:popperContent={popperOptions}>
+		<div id="tooltip5" >
 			Переключение в режим экрана
 			<div id="arrow" data-popper-arrow />
 		</div>

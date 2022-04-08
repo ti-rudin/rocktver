@@ -44,3 +44,4 @@ export async function getEfir2(user) {
 	const res = await fetch('https://api.rocktver.ru/get-efir2', requestOptions)
 	return await res.json()	
 }
+

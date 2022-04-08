@@ -2,16 +2,25 @@
 	import { isAuthenticated, user } from '$lib/stores/auth';
 	import { isDarkFlag } from '$lib/siteConfig';
 	import LogoComponent from '../components/LogoComponent.svelte';
-	import QRCode from '../components/QRJS.svelte';
 
 	import { browser } from '$app/env';
 	let apiurl = 'https://api.rocktver.ru';
 	//isAuthenticated = browser ? window.localStorage.getItem('isAuthenticated') ?? isAuthenticated_defaultValue : isAuthenticated_defaultValue;
 
-	export let flag, qrurl, playedusers;
+	export let flag, qrurl, playedusers, index, leader, leaderview, played, sec;
+	played = false;
+	leaderview = false;
+	sec = 4;
+
+	leader = {};
+	index = -1;
+
+	let timerId;
+	let timerCount;
+
 	$: flag = $isAuthenticated;
 	$: qrurl = apiurl + '/qrcode-register?id=' + $user.id;
-	import { onMount } from 'svelte';
+	import { onDestroy, onMount } from 'svelte';
 
 	function register(x) {
 		let myHeaders = new Headers();
@@ -33,6 +42,46 @@
 			.catch((error) => console.log('error', error));
 	}
 
+	function stop() {
+		clearInterval(timerId);
+		clearInterval(timerCount);
+		leaderview = true;
+		played = false;
+		leader = playedusers[index];
+		sec = 4;
+	}
+	function play() {
+		leaderview = false;
+		leader = {};
+		played = true;
+		timerId = setInterval(function () {
+			index = index + 1;
+			if (index >= playedusers.length) {
+				index = 0;
+			}
+		}, 130);
+
+		sec = sec - 1;
+		timerCount = setInterval(function () {
+			sec = sec - 1;
+			if (sec == 0) {
+				stop();
+			}
+		}, 1000);
+	}
+
+	function plus() {
+		sec = sec + 1;
+	}
+	function minus() {
+		sec = sec - 1;
+		if (sec == 0) {
+			sec = 1;
+		}
+	}
+
+	$: if (sec <1) { sec = 2};
+
 	async function getplayedusers() {
 		let myHeaders = new Headers();
 		myHeaders.append('Content-Type', 'application/json');
@@ -50,6 +99,7 @@
 			.then((result) => {
 				console.log(result);
 				playedusers = result;
+				kolvo = playedusers.length;
 			})
 			.catch((error) => console.log('error', error));
 	}
@@ -58,89 +108,118 @@
 		getplayedusers();
 	});
 	$: playedusers = playedusers;
+
+	export let kolvo;
+
+	onDestroy(() => {
+		clearInterval(timerId);
+	});
 </script>
 
-
-{#if flag}
-	<LogoComponent />
-	<p class="slogan mx-auto mb-5">Зарегистрированные участники лотерии</p>
-	{#if playedusers}
-	{#each playedusers as user}
-
-
-		<div class="flex justify-center my-2">
-			<!-- Card -->
-			<div class="delay-50 group flex w-auto rounded-lg bg-gray-800 p-5">
-				<!-- Image Cover -->
-				<img class="h-28 w-28 w-full rounded shadow" src={user.photo} alt={user.name} />
-				<div class="mx-10 flex flex-col">
-					<!-- Title -->
-					<h3 class="font-bold text-gray-200">{user.name}</h3>
-	
-					<!-- Description -->
-					<p class="mt-2 text-sm font-bold text-gray-400">Страна: {user.country}</p>
-					<p class="mt-2 text-sm font-bold text-gray-400">Город: {user.city}</p>
-					<p class="mt-2 text-sm font-bold text-gray-400">ВК ID: {user.id}</p>
-				</div>
-			</div>
-		</div>
-	{/each}
-{/if}
-	
-
-
-	<div class="mx-auto mt-2 text-lg">Лотерея для гостей клуба BIG BEN!</div>
-	<div class="mx-auto">
-		<QRCode codeValue={qrurl} squareSize="200" />
+<LogoComponent />
+{#if kolvo}
+	<p class=" mx-auto mb-5 text-center text-xl">
+		Количество зарегистрированных участников - <span class="slogan">{kolvo}</span> чел.
+	</p>
+	<div class=" mx-auto mb-5 text-center text-xl">
+		<a href="/kabinet">Войдите</a>, чтобы участвовать в розыгрыше!
 	</div>
-
-	<div class="mx-auto mt-2 text-center text-lg">
-		Результаты розыгрыша будут оглашены в заключительной части мероприятия.
+{/if}
+{#if !played}
+	<div class="count mx-auto flex h-10">
+		<div
+			class="delay-50  mx-auto cursor-pointer rounded-lg bg-green-400/50 p-1 px-3 text-gray-800
+			shadow ring-orange-800 transition-all duration-100 hover:bg-green-500/90 hover:ring-2 focus:outline-none  dark:bg-orange-500/70 
+			dark:text-gray-300  dark:hover:bg-orange-400/90 "
+			on:click={minus}
+		>
+			<p class="mx-auto">-</p>
+		</div>
+		<div class="w-2" />
+		<div
+			class=" delay-50 mx-auto rounded-lg bg-green-400/10 p-1 px-3
+			 text-gray-800 shadow ring-yellow-800 transition-all duration-100 
+			  focus:outline-none dark:bg-green-500/10 dark:text-gray-300 "
+		>
+			<p class="mx-auto">{sec}</p>
+		</div>
+		<div class="w-2" />
+		<div
+			class="delay-50  mx-auto cursor-pointer rounded-lg bg-green-400/50 p-1 px-3 text-gray-800
+			shadow ring-orange-800 transition-all duration-100 hover:bg-green-500/90 hover:ring-2 focus:outline-none  dark:bg-orange-500/70 
+			dark:text-gray-300  dark:hover:bg-orange-400/90 "
+			on:click={plus}
+		>
+			<p class="mx-auto">+</p>
+		</div>
+	</div>
+	<div
+		class="tomain  delay-50 mx-auto cursor-pointer rounded-lg bg-green-400/50 p-2 px-3 text-gray-800 shadow ring-yellow-800 transition-all duration-100 hover:bg-green-500/90 hover:ring-2 focus:outline-none dark:bg-green-500/50 dark:text-gray-300 dark:hover:bg-green-500/90"
+		on:click={play}
+	>
+		<p class="mx-auto">Старт</p>
 	</div>
 {:else}
-	<h1 class="txt mx-auto text-lg mt-3 mb-2 bg-white text-black dark:bg-gray-900 dark:text-white">
-		Авторизуйтесь без лишних анкет.
-	</h1>
-	<h2
-		class="txt mx-auto max-w-sm justify-center mt-3 mb-5 bg-white text-black dark:bg-gray-900 dark:text-white"
-	>
-		После авторизации Вы сможете участвовать в лотерее, а также голосовать в виджете прямого эфира
-	</h2>
+	<div class="count mx-auto flex h-10">
+		<div
+			class=" delay-50 mx-auto rounded-lg bg-green-400/10 p-1 px-3
+		 text-gray-800 shadow ring-yellow-800 transition-all duration-100 
+		  focus:outline-none dark:bg-green-500/10 dark:text-gray-300 "
+		>
+			<p class="mx-auto">{sec}</p>
+		</div>
+	</div>
 
 	<div
-		class="loginbut cursor-pointer p-3 mx-auto mb-8 flex w-full max-w-2xl flex-col items-start rounded-lg bg-yellow-400/50 px-3 text-black ring-yellow-400 transition-all hover:ring-2 dark:bg-yellow-800/25 dark:text-white"
-		id="login_button"
-		on:click={() => {
-			ym(88086612, 'reachGoal', 'vk-auth-start');
-			VK.Auth.login(getit);
-		}}
+		class="tomain  delay-50 mx-auto cursor-pointer rounded-lg bg-red-400/50 p-2 px-3 text-gray-800 shadow ring-yellow-800 transition-all duration-100 hover:ring-2 focus:outline-none dark:bg-red-500/50 dark:text-gray-300 hover:bg-red-500/90 dark:hover:bg-red-500/90"
+		on:click={stop}
 	>
-		<p class="mx-auto">Войти с помощью</p>
-		<svg
-			class="mx-auto mt-5 opacity-100"
-			width="48"
-			height="48"
-			viewBox="0 0 48 48"
-			fill="none"
-			xmlns="http://www.w3.org/2000/svg"
-		>
-			<path
-				d="M0 23.04C0 12.1788 0 6.74826 3.37413 3.37413C6.74826 0 12.1788 0 23.04 0H24.96C35.8212 0 41.2517 0 44.6259 3.37413C48 6.74826 48 12.1788 48 23.04V24.96C48 35.8212 48 41.2517 44.6259 44.6259C41.2517 48 35.8212 48 24.96 48H23.04C12.1788 48 6.74826 48 3.37413 44.6259C0 41.2517 0 35.8212 0 24.96V23.04Z"
-				fill="#0077FF"
+		<p class="mx-auto">Стоп</p>
+	</div>
+{/if}
+{#if leaderview}
+	<h3 class="slogan mt-4 font-bold">Победитель</h3>
+	<div class="delay-50 group mx-auto flex rounded-lg bg-gray-800/80 p-5">
+		<!-- Image Cover -->
+
+		<img class="h-28 w-28 w-full rounded shadow" src={leader.photo} alt={leader.name} />
+		<div class="mx-10 flex flex-col">
+			<!-- Title -->
+			<h3 class="font-bold text-gray-200">{leader.name}</h3>
+
+			<!-- Description -->
+			<p class="mt-2 text-sm font-bold text-gray-400">Страна: {leader.country}</p>
+			<p class="mt-2 text-sm font-bold text-gray-400">Город: {leader.city}</p>
+			<!-- <p class="mt-2 text-sm font-bold text-gray-400">ВК ID: {leader.id}</p> -->
+		</div>
+	</div>
+{/if}
+{#if playedusers}
+	<div class="my-2 mx-auto flex max-w-2xl flex-wrap justify-center">
+		{#each playedusers as user, i}
+			<img
+				class:active={i == index}
+				class="delay-50 m-2 h-28 w-28 rounded-full rounded-full bg-blue-800/40 p-2"
+				src={user.photo}
+				alt={user.name}
 			/>
-			<path
-				d="M25.54 34.5801C14.6 34.5801 8.3601 27.0801 8.1001 14.6001H13.5801C13.7601 23.7601 17.8 27.6401 21 28.4401V14.6001H26.1602V22.5001C29.3202 22.1601 32.6398 18.5601 33.7598 14.6001H38.9199C38.0599 19.4801 34.4599 23.0801 31.8999 24.5601C34.4599 25.7601 38.5601 28.9001 40.1201 34.5801H34.4399C33.2199 30.7801 30.1802 27.8401 26.1602 27.4401V34.5801H25.54Z"
-				fill="white"
-			/>
-		</svg>
-		<p class="mx-auto">Вконтакте</p>
+		{/each}
 	</div>
 {/if}
 
 <style>
+	.count {
+		font-size: 21px;
+		width: auto;
+	}
+	.active {
+		background-color: #ff2e17;
+	}
+
 	.tomain {
-		width: 250px;
+		width: 200px;
 		font-size: 20px;
+		margin-top: 1rem;
 		text-align: center;
 		text-decoration: none;
 	}

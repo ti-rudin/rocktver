@@ -4,7 +4,7 @@
 	import { isDarkFlag, isMngr, isAdmin } from '$lib/siteConfig';
 	
 	import LogoComponent from '../components/LogoComponent.svelte';
-	import QRCode from '../components/QRJS.svelte'
+
 
 	import { browser } from '$app/env';
 	let apiurl = 'https://api.rocktver.ru';
@@ -133,9 +133,7 @@
 		
 	</div>
 
-	<div class="mx-auto hidden">
-		<QRCode codeValue={qrurl} squareSize=200/>
-	</div>
+
 	<div class="mx-auto text-lg mt-2">Лотерея для гостей клуба BIG BEN!</div>
 	<a
 		class="tomain delay-50 mb-3 mx-auto cursor-pointer rounded-lg bg-yellow-400/50 p-2 px-3 text-gray-800 shadow ring-yellow-800 transition-all duration-100 hover:ring-2 focus:outline-none  dark:bg-yellow-500/70 dark:text-gray-200 dark:hover:bg-blue-700/50 "

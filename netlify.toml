@@ -6,7 +6,9 @@
 [functions]
   directory = "functions"
   node_bundler = "esbuild"
-  external_node_modules = ["mdsvex"]
+  external_node_modules = ["mdsvex", "svelte-popperjs"]
+
+  
 
 [build.environment]
   NODE_VERSION = "14"
