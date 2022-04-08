@@ -69,11 +69,7 @@ onMount(() => {
 	</div>
     <div class="mx-auto text-lg mt-2">Лотерея для гостей клуба BIG BEN!</div>
 	<div class="mx-auto">
-		<!--
 
-		
-		<QRCode codeValue={qrurl} squareSize=200/>
-		-->
 	</div>
 	
     <div class="mx-auto text-center text-lg mt-2">Результаты розыгрыша будут оглашены в заключительной части мероприятия.</div>
