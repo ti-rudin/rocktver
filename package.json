@@ -76,6 +76,7 @@
 		"svelte-markdown": "^0.2.2",
 		"svelte-particles": "^1.42.4",
 		"svelte-video-player": "^1.2.5",
-		"svelte-video-player-kit": "^1.2.8"
+		"svelte-video-player-kit": "^1.2.8",
+		"svelte-popperjs": "^1.2.8"
 	}
 }
