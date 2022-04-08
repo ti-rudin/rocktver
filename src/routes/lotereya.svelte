@@ -81,7 +81,6 @@
 	}
 
 	$: if (sec <1) { sec = 2};
-
 	async function getplayedusers() {
 		let myHeaders = new Headers();
 		myHeaders.append('Content-Type', 'application/json');
