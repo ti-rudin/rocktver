@@ -2,7 +2,7 @@
 	import { isAuthenticated, user } from '$lib/stores/auth';
 	import { isDarkFlag } from '$lib/siteConfig';
 	import LogoComponent from '../components/LogoComponent.svelte';
-	import QRCode from '../components/QRJS.svelte'
+	//import QRCode from '../components/QRJS.svelte'
 
 	import { browser } from '$app/env';
 	let apiurl = 'https://api.rocktver.ru';
@@ -69,7 +69,11 @@ onMount(() => {
 	</div>
     <div class="mx-auto text-lg mt-2">Лотерея для гостей клуба BIG BEN!</div>
 	<div class="mx-auto">
+		<!--
+
+		
 		<QRCode codeValue={qrurl} squareSize=200/>
+		-->
 	</div>
 	
     <div class="mx-auto text-center text-lg mt-2">Результаты розыгрыша будут оглашены в заключительной части мероприятия.</div>
