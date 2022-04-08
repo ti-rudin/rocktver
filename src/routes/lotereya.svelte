@@ -80,7 +80,7 @@
 		}
 	}
 
-	$: sec = sec;
+	$: if (sec <1) { sec = 2};
 
 	async function getplayedusers() {
 		let myHeaders = new Headers();
@@ -187,7 +187,7 @@
 			<!-- Description -->
 			<p class="mt-2 text-sm font-bold text-gray-400">Страна: {leader.country}</p>
 			<p class="mt-2 text-sm font-bold text-gray-400">Город: {leader.city}</p>
-			<p class="mt-2 text-sm font-bold text-gray-400">ВК ID: {leader.id}</p>
+			<!-- <p class="mt-2 text-sm font-bold text-gray-400">ВК ID: {leader.id}</p> -->
 		</div>
 	</div>
 {/if}
