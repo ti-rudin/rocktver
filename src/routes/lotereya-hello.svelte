@@ -2,101 +2,78 @@
 	import { isAuthenticated, user } from '$lib/stores/auth';
 	import { isDarkFlag } from '$lib/siteConfig';
 	import LogoComponent from '../components/LogoComponent.svelte';
-	import QRCode from '../components/QRJS.svelte';
+	import QRCode from '../components/QRJS.svelte'
 
 	import { browser } from '$app/env';
 	let apiurl = 'https://api.rocktver.ru';
 	//isAuthenticated = browser ? window.localStorage.getItem('isAuthenticated') ?? isAuthenticated_defaultValue : isAuthenticated_defaultValue;
 
-	export let flag, qrurl, playedusers;
+
+	export let flag, qrurl;
 	$: flag = $isAuthenticated;
-	$: qrurl = apiurl + '/qrcode-register?id=' + $user.id;
-	import { onMount } from 'svelte';
+	$: qrurl = apiurl+'/qrcode-register?id='+ $user.id
+    import { onMount } from 'svelte';
 
 	function register(x) {
 		let myHeaders = new Headers();
 		myHeaders.append('Content-Type', 'application/json');
 
-		let raw = JSON.stringify({ user: x });
+		let raw = JSON.stringify({user: x});
 
 		let requestOptions = {
 			method: 'POST',
 			headers: myHeaders,
-			body: raw
+			body: raw,
 		};
 
 		fetch('https://api.rocktver.ru/lotereya-register/', requestOptions)
 			.then((response) => response.json())
 			.then((result) => {
+				
 				return result;
 			})
 			.catch((error) => console.log('error', error));
+
 	}
 
-	async function getplayedusers() {
-		let myHeaders = new Headers();
-		myHeaders.append('Content-Type', 'application/json');
 
-		//let raw = JSON.stringify({user: x});
 
-		let requestOptions = {
-			method: 'GET',
-			headers: myHeaders
-			//body: raw,
-		};
+onMount(() => {
+ register($user)
+});
 
-		fetch('https://api.rocktver.ru/lotereya-getplayedusers/', requestOptions)
-			.then((response) => response.json())
-			.then((result) => {
-				console.log(result);
-				playedusers = result;
-			})
-			.catch((error) => console.log('error', error));
-	}
-
-	onMount(() => {
-		getplayedusers();
-	});
-	$: playedusers = playedusers;
 </script>
-
 
 {#if flag}
 	<LogoComponent />
-	<p class="slogan mx-auto mb-5">Зарегистрированные участники лотерии</p>
-	{#if playedusers}
-	{#each playedusers as user}
+	<p class="slogan mx-auto mb-5">Вы зарегистрированы для участия в лотерее!</p>
+	<div class="flex justify-center">
+		<!-- Card -->
+		<div class="delay-50 group flex w-auto rounded-lg bg-gray-800 p-5">
+			<!-- Image Cover -->
+			<img class="h-28 w-28 w-full rounded shadow" src={$user.photo} alt={$user.name} />
+			<div class="mx-10 flex flex-col">
+				<!-- Title -->
+				<h3 class="font-bold text-gray-200">{$user.name}</h3>
 
-
-		<div class="flex justify-center my-2">
-			<!-- Card -->
-			<div class="delay-50 group flex w-auto rounded-lg bg-gray-800 p-5">
-				<!-- Image Cover -->
-				<img class="h-28 w-28 w-full rounded shadow" src={user.photo} alt={user.name} />
-				<div class="mx-10 flex flex-col">
-					<!-- Title -->
-					<h3 class="font-bold text-gray-200">{user.name}</h3>
+				<!-- Description -->
+				<p class="mt-2 text-sm font-bold text-gray-400">Страна: {$user.country}</p>
+				<p class="mt-2 text-sm font-bold text-gray-400">Город: {$user.city}</p>
+				<p class="mt-2 text-sm font-bold text-gray-400">ВК ID: {$user.id}</p>
 	
-					<!-- Description -->
-					<p class="mt-2 text-sm font-bold text-gray-400">Страна: {user.country}</p>
-					<p class="mt-2 text-sm font-bold text-gray-400">Город: {user.city}</p>
-					<p class="mt-2 text-sm font-bold text-gray-400">ВК ID: {user.id}</p>
-				</div>
+
 			</div>
+			
 		</div>
-	{/each}
-{/if}
-	
-
-
-	<div class="mx-auto mt-2 text-lg">Лотерея для гостей клуба BIG BEN!</div>
+		
+	</div>
+    <div class="mx-auto text-lg mt-2">Лотерея для гостей клуба BIG BEN!</div>
 	<div class="mx-auto">
-		<QRCode codeValue={qrurl} squareSize="200" />
+		<QRCode codeValue={qrurl} squareSize=200/>
 	</div>
+	
+    <div class="mx-auto text-center text-lg mt-2">Результаты розыгрыша будут оглашены в заключительной части мероприятия.</div>
 
-	<div class="mx-auto mt-2 text-center text-lg">
-		Результаты розыгрыша будут оглашены в заключительной части мероприятия.
-	</div>
 {:else}
 	<h1 class="txt mx-auto text-lg mt-3 mb-2 bg-white text-black dark:bg-gray-900 dark:text-white">
 		Авторизуйтесь без лишних анкет.
@@ -136,6 +113,7 @@
 		<p class="mx-auto">Вконтакте</p>
 	</div>
 {/if}
+
 
 <style>
 	.tomain {

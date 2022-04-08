@@ -158,7 +158,7 @@
 		<div
 			transition:scale={{ duration: 300 }}
 			aria-label="card 1"
-			class="mx-auto mt-1 max-w-2xl rounded-lg bg-red-400/40 p-4 shadow ring-yellow-400 transition-all hover:ring-2 focus:outline-none dark:bg-red-500/70 "
+			class="mx-auto mt-1 max-w-2xl rounded-lg bg-orange-400/40 p-4 shadow ring-yellow-400 transition-all hover:ring-2 focus:outline-none dark:bg-red-500/70 "
 			on:click={() => {
 				goto('/concert/' + status.concert_id);
 			}}
@@ -217,7 +217,7 @@
 		{:else}
 			<div class="mx-auto flex mt-4">
 				<div
-					class="cursor-pointer  ml-4 p-2 pb-0 mx-auto flex w-full max-w-2xl flex-col items-start rounded-lg bg-yellow-400/50 px-3 text-black ring-yellow-400 transition-all hover:ring-2 dark:bg-yellow-800/25 dark:text-white"
+					class="cursor-pointer ring-1 ring-yellow-500 ml-4 p-2 pb-0 mx-auto flex w-full max-w-2xl flex-col items-start rounded-lg bg-yellow-400/50 px-3 text-black  transition-all hover:ring-2 dark:bg-orange-500/50 dark:text-white"
 					id="login_button"
 					on:click={() => {
 						ym(88086612, 'reachGoal', 'vk-auth-start');
