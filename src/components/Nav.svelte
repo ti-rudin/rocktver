@@ -34,7 +34,7 @@
 			$isDarkFlag = true;
 		}
 	}
-	import { createPopperActions } from 'svelte-popperjs';
+	import { createPopperActions } from '/home/ubuntu/rocktver/node_modules/svelte-popperjs/dist/index';
 	const [popperRef, popperContent] = createPopperActions();
 	const popperOptions = {
 		modifiers: [{ name: 'offset', options: { offset: [0, 8] } }]
