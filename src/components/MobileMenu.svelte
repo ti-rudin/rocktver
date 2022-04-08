@@ -60,7 +60,7 @@
 	</button>
 	{#if isOpen}
 		<ul
-			class="menu absolute flex flex-col bg-gray-50 text-2xl  uppercase dark:bg-gray-900"
+			class="menu absolute flex flex-col bg-gray-50 text-xl  uppercase dark:bg-gray-900"
 			class:menuRendered={isMenuRendered}
 		>
 			<li
@@ -96,28 +96,7 @@
 					href="/now">Сейчас в эфире</a
 				>
 			</li>
-			<li
-				class="border-b border-gray-300 font-semibold text-gray-900 dark:border-gray-700 dark:text-gray-100"
-				style="transition-delay: 150ms;"
-			>
-				<a
-					class="flex w-auto pb-4"
-					sveltekit:prefetch
-					on:click={() => setTimeout(() => (isOpen = false), 300)}
-					href="/manual">Инструкция</a
-				>
-			</li>
-			<li
-				class="border-b border-gray-300 font-semibold text-gray-900 dark:border-gray-700 dark:text-gray-100"
-				style="transition-delay: 150ms;"
-			>
-				<a
-					class="flex w-auto pb-4"
-					sveltekit:prefetch
-					on:click={() => setTimeout(() => (isOpen = false), 300)}
-					href="/feedback">Отзывы и предложения</a
-				>
-			</li>
+
 			<li
 			class="border-b border-gray-300 font-semibold text-gray-900 dark:border-gray-700 dark:text-gray-100"
 			style="transition-delay: 150ms;"
@@ -126,9 +105,22 @@
 				class="flex w-auto pb-4"
 				sveltekit:prefetch
 				on:click={() => setTimeout(() => (isOpen = false), 300)}
-				href="/blog">Журнал</a
+				href="/manual">Инструкция</a
 			>
 		</li>
+
+			<li
+				class="border-b border-gray-300 font-semibold text-gray-900 dark:border-gray-700 dark:text-gray-100"
+				style="transition-delay: 150ms;"
+			>
+				<a
+					class="flex w-auto pb-4"
+					sveltekit:prefetch
+					on:click={() => setTimeout(() => (isOpen = false), 300)}
+					href="/lotereya">Лотерея</a
+				>
+			</li>
+			<div class="h-10" />
 			<li
 			class="border-b border-gray-300 font-semibold text-gray-900 dark:border-gray-700 dark:text-gray-100"
 			style="transition-delay: 150ms;"
@@ -141,17 +133,6 @@
 			>
 		</li>
 	
-	<li
-	class="border-b border-gray-300 font-semibold text-gray-900 dark:border-gray-700 dark:text-gray-100"
-	style="transition-delay: 150ms;"
->
-	<a
-		class="flex w-auto pb-4"
-		sveltekit:prefetch
-		on:click={() => setTimeout(() => (isOpen = false), 300)}
-		href="/lotereya">Лотерея</a
-	>
-</li>
 
 			<!--
 			<li
@@ -196,11 +177,11 @@
 		padding: 0 180px 0 4px;
 		margin: 0;
 		padding-top: 24px;
-		width: 100%;
+		width: 94vw;
 		height: 99vh;
 		z-index: 1000;
 		opacity: 0;
-		left: 0;
+		left: -2px;
 		transition: opacity 300ms ease, transform 300ms ease;
 	}
 
