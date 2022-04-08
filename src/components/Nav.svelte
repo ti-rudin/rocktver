@@ -62,6 +62,9 @@
 			<li>
 				<NavLink href="/bands">Участники</NavLink>
 			</li>
+			<li>
+				<NavLink href="/lotereya">Лотерея</NavLink>
+			</li>
 		</ul>
 	{/if}
 	<div class="flex items-center space-x-4">
