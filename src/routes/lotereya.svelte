@@ -2,7 +2,7 @@
 	import { isAuthenticated, user } from '$lib/stores/auth';
 	import { isDarkFlag } from '$lib/siteConfig';
 	import LogoComponent from '../components/LogoComponent.svelte';
-	import QRCode from '../components/QRJS.svelte';
+
 
 
 	import { browser } from '$app/env';
