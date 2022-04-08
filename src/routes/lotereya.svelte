@@ -119,8 +119,11 @@
 <LogoComponent />
 {#if kolvo}
 	<p class=" mx-auto mb-5 text-center text-xl">
-		Зарегистрированные участники лотерии - <span class="slogan">{kolvo}</span> чел.
+		Количество зарегистрированных участников - <span class="slogan">{kolvo}</span> чел.
 	</p>
+	<div class=" mx-auto mb-5 text-center text-xl">
+		<a href="/kabinet">Войдите</a>, чтобы участвовать в розыгрыше!
+	</div>
 {/if}
 {#if !played}
 	<div class="count mx-auto flex h-10">
