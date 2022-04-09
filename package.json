@@ -1,7 +1,7 @@
 {
 	"name": "ti-events-rocktver",
 	"private": true,
-	"version": "1.0",
+	"version": "1.0.1",
 	"scripts": {
 		"start": "svelte-kit dev",
 		"build": "svelte-kit build",
