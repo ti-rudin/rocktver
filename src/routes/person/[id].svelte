@@ -176,7 +176,7 @@
 			<h2 class="role mx-auto w-full text-center">{launch.attributes.role}</h2>
 			{#if bands}
 				{#each bands as band}
-					<h2 class="mx-auto break-normal">Участник команды</h2>
+					<h2 class="mx-auto break-normal"><nobr>Участник команды</nobr></h2>
 					<div class="mx-auto my-3 w-4/5">
 						<div
 							aria-label="card 1"

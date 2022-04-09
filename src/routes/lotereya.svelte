@@ -54,6 +54,7 @@
 		leaderview = false;
 		leader = {};
 		played = true;
+
 		timerId = setInterval(function () {
 			index = index + 1;
 			if (index >= playedusers.length) {
@@ -112,7 +113,14 @@
 
 	onDestroy(() => {
 		clearInterval(timerId);
+		clearInterval(timerupdate);
+		clearInterval(timerCount);
+
+
 	});
+	const timerupdate = setInterval(function () {
+		getplayedusers();
+	}, 2000);
 </script>
 
 <LogoComponent />

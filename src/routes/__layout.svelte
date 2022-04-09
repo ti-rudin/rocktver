@@ -37,7 +37,7 @@
 			</div>
 			<div class="mx-auto" />
 			<div class="container_develop space-between flex flex-col pb-0 pl-10">
-				<a href="http://ti-units.ru/">
+				<a href="/ti">
 					<div class="cub_container">
 						<div class="front side">
 							<svg
