@@ -116,7 +116,7 @@
 			error: new Error(`Error fetching GraphQL data`)
 		};
 	}
-	export const prerender = true;
+	//export const prerender = true;
 </script>
 
 <script>
@@ -139,7 +139,7 @@
 				class="mx-auto max-w-2xl cursor-pointer rounded-lg bg-blue-400/70 p-6 shadow ring-yellow-400 transition-all  dark:bg-blue-500 "
 			>
 				{#if band}
-					<a sveltekit:prefetch
+					<div
 						class="flex cursor-pointer rounded ring-yellow-400 transition-all hover:ring-2 focus:outline-none"
 						on:click={() => {
 							goto('/band/' + band.attributes.band_name);
@@ -160,11 +160,11 @@
 							</h1>
 							<p class="pl-4">{band.attributes.small_text}</p>
 						</div>
-					</a>
+					</div>
 					
 					<div class="flex flex-col">
 						{#each band.attributes.artists.data as artist}
-						<a sveltekit:prefetch class="flex cursor-pointer rounded ring-yellow-400 transition-all hover:ring-2 focus:outline-none"
+						<div class="flex cursor-pointer rounded ring-yellow-400 transition-all hover:ring-2 focus:outline-none"
 						on:click={() => {
 							goto('/person/' + artist.attributes.name);
 						}}>
@@ -180,7 +180,7 @@
 						
 
 							
-						</a>
+						</div>
 						{/each}
 					</div>
 				{/if}
@@ -192,9 +192,5 @@
 <style>
 	.lblock {
 		width: 40vw;
-	}
-	a{
-		text-decoration: none;
-		color: currentColor
 	}
 </style>

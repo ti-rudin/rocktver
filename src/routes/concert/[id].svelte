@@ -243,7 +243,7 @@ import Bands from '../bands.svelte';
 {/if}
 
 <!--- more free and premium Tailwind CSS components at https://tailwinduikit.com/ --->
-<div class="w-full ">
+<div class="w-full  ">
 	<div
 		aria-label="card 1"
 		class="mx-auto max-w-2xl rounded bg-orange-400/40 p-6 shadow focus:outline-none dark:bg-red-500"
@@ -302,7 +302,7 @@ import Bands from '../bands.svelte';
 </div>
 {#if concert.attributes.zhuri.data}
 
-<div class="mt-2 w-full ">
+<div class="mt-5 w-full ">
 	<div
 		aria-label="card 1"
 		class="mx-auto max-w-2xl rounded bg-blue-400/70 p-6 shadow  dark:bg-blue-500 "
@@ -361,12 +361,12 @@ import Bands from '../bands.svelte';
 	</div>
 </div>
 {/if}
-<div class="relative mx-auto w-10/12 py-2 md:w-9/12 lg:w-7/12">
-	<div class="mt-10 border-l-2 border-gray-400">
+<div class="relative mx-auto  w-full max-w-2xl ">
+	<div class="mt-5 border-l-2 border-gray-400">
 		{#each timeline as event, i}
 			{#if event.open_speache || event.finish_speache}
 				<div
-					class="items-left relative ml-10 mb-10 flex transform cursor-pointer flex-col space-y-4 rounded bg-blue-600 px-6 py-4 text-white transition hover:-translate-y-2 md:flex-row md:space-y-0"
+					class="items-left relative ml-10 mb-5 flex transform cursor-pointer flex-col space-y-4 rounded bg-blue-600 px-6 py-4 text-white transition hover:-translate-y-2 md:flex-row md:space-y-0"
 				>
 					<div
 						class="absolute -left-10 z-10 mt-2 h-5 w-5 -translate-x-2/4 transform rounded-full bg-blue-600 md:mt-2"
@@ -388,7 +388,7 @@ import Bands from '../bands.svelte';
 				</div>
 			{:else if event.tech_pause}
 				<div
-					class="relative ml-10 mb-10 flex transform cursor-pointer flex-col items-left space-y-4 rounded bg-yellow-600 px-6 py-4 text-white transition hover:-translate-y-2 md:flex-row md:space-y-0"
+					class="relative ml-10 mb-5 flex transform cursor-pointer flex-col items-left space-y-4 rounded bg-yellow-600 px-6 py-4 text-white transition hover:-translate-y-2 md:flex-row md:space-y-0"
 				>
 					<div
 						class="absolute -left-10 z-10 mt-2 h-5 w-5 -translate-x-2/4 transform rounded-full bg-yellow-600 md:mt-2"
@@ -414,7 +414,7 @@ import Bands from '../bands.svelte';
 				</div>
 			{:else if event.slovo_vedusch}
 				<div
-					class="relative ml-10 mb-10 flex transform cursor-pointer flex-col items-left space-y-4 rounded bg-green-600 px-6 py-4 text-white transition hover:-translate-y-2 md:flex-row md:space-y-0"
+					class="relative ml-10 mb-5 flex transform cursor-pointer flex-col items-left space-y-4 rounded bg-green-600 px-6 py-4 text-white transition hover:-translate-y-2 md:flex-row md:space-y-0"
 				>
 					<div
 						class="absolute -left-10 z-10 mt-2 h-5 w-5 -translate-x-2/4 transform rounded-full bg-green-600 md:mt-2"
@@ -440,7 +440,7 @@ import Bands from '../bands.svelte';
 				</div>
 			{:else if ($isAdmin&&$isAuthenticated)}
 				<div
-					class="bandurl relative ml-10 mb-10 flex transform cursor-pointer flex-col items-left space-y-4 rounded bg-pink-600 px-6 py-4 text-white dark:text-white transition hover:-translate-y-2 md:flex-row md:space-y-0"
+					class="bandurl relative ml-10 mb-5 flex transform cursor-pointer flex-col items-left space-y-4 rounded bg-pink-600 px-6 py-4 text-white dark:text-white transition hover:-translate-y-2 md:flex-row md:space-y-0"
 				>
 					<div
 						class="absolute -left-10 z-10 mt-2 h-5 w-5 -translate-x-2/4 transform rounded-full bg-pink-600 md:mt-2"
@@ -463,7 +463,7 @@ import Bands from '../bands.svelte';
 				</div>
 			{:else}
 				<a sveltekit:prefetch
-					class="bandurl relative ml-10 mb-10 flex transform cursor-pointer flex-col items-left space-y-4 rounded bg-pink-600 pl-6 pr-3 pb-4 text-white dark:text-white transition hover:-translate-y-2 md:flex-row md:space-y-0"
+					class="bandurl relative ml-10 mb-5 flex transform cursor-pointer flex-col items-left space-y-4 rounded bg-pink-600 pl-6 pr-3 pb-4 text-white dark:text-white transition hover:-translate-y-2 md:flex-row md:space-y-0"
 					on:click={() => {
 						goto('/band/' + event.band.data.attributes.band_name);
 					}}
