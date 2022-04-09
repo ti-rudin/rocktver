@@ -12,7 +12,7 @@
 package = "@netlify/plugin-sitemap"
 
   [plugins.inputs]
-  buildDir = "build"
+  buildDir = "static"
   
 
 [build.environment]
