@@ -19,7 +19,7 @@
 <div class="flex flex-col justify-center bg-white/70 px-4 dark:bg-gray-400/10 ">
 	<Nav />
 </div>
-<main class=" flex flex-col justify-center bg-gray-100/50 px-4 pb-4 pt-3 dark:bg-gray-900 sm:px-8">
+<main class=" flex flex-col justify-center bg-gray-100/50 px-4 pb-4 pt-3 dark:bg-gray-900 sm:px-8 transition-all ">
 	<slot />
 </main>
 {#if !$screenmode}

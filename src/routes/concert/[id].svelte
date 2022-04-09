@@ -11,37 +11,72 @@
             concert (id:` +
 					params.id +
 					`)  {
-              data {
-                id
-                attributes {
-                  start_date
-                  show_name
-				  ploschadka
-				  bilet_ot
-				  url_website
-                  spisok (pagination:{pageSize:100}){
-                    ... on ComponentBandsTimeline {
-                      id
-                      band{
-						  
-                        data{
-							id
-                          attributes{
-							  
-                            band_name
-                          }
-                        }
-                      }
-                      tech_pause
-                      open_speache
-                      finish_speache
-					  start_time
-           			 title
-         			 slovo_vedusch
-                    }
+						data {
+      id
+      attributes {
+        start_date
+        show_name
+        ploschadka
+        bilet_ot
+        zhuri {
+          data {
+            attributes {
+              band_name
+              town
+              small_text
+              big_text
+              group_logo {
+                data {
+                  attributes {
+                    url
                   }
                 }
               }
+              group_link_vk
+              group_link_rocktver
+              mngr_id
+              time_on_scene
+              artists {
+                data {
+                  attributes {
+                    name
+                    avatar {
+                      data {
+                        attributes {
+                          url
+                        }
+                      }
+                    }
+                    role
+                    vk_link
+                  }
+                }
+              }
+            }
+          }
+        }
+        url_website
+        spisok(pagination: { pageSize: 100 }) {
+          ... on ComponentBandsTimeline {
+            id
+            band {
+              data {
+                id
+                attributes {
+                  band_name
+                }
+              }
+            }
+            tech_pause
+            open_speache
+            finish_speache
+            start_time
+            title
+            slovo_vedusch
+          }
+        }
+      }
+    }
             }
           }`
 			})
@@ -67,7 +102,8 @@
 
 <script>
 	import { onDestroy, onMount } from 'svelte';
-	export let concert, timeline, state;
+	export let concert, timeline, state, artists;
+	$: artists = concert.attributes.zhuri.data.attributes.artists.data;
 
 	//console.log(this.artists.data[0].attributes.name)
 
@@ -209,9 +245,9 @@ import Bands from '../bands.svelte';
 		aria-label="card 1"
 		class="mx-auto max-w-2xl rounded bg-orange-400/40 p-6 shadow focus:outline-none dark:bg-red-500"
 	>
-		<div class="flex items-center border-b border-gray-200 pb-6">
+		<div class="flex items-center border-b border-gray-500 dark:border-gray-200 pb-3">
 			<div class="flex w-full items-start justify-between">
-				<div class="w-full pl-3">
+				<div class="w-full ">
 					<h1 tabindex="0" class="text-2xl text-black focus:outline-none dark:text-gray-200">
 						{concert.attributes.show_name}
 					</h1>
@@ -240,11 +276,8 @@ import Bands from '../bands.svelte';
 			</div>
 		</div>
 		<div class="px-2">
-			<p
-				tabindex="0"
-				class="py-4 text-sm leading-5 text-gray-600 focus:outline-none dark:text-gray-200"
-			/>
-			<div tabindex="0" class="flex flex-col focus:outline-none">
+			
+			<div tabindex="0" class="flex flex-col focus:outline-none mt-1">
 				<div class="mb-3 py-2 px-4  text-center text-lg leading-3 text-black dark:text-white">
 					Концертная площадка
 				</div>
@@ -257,10 +290,68 @@ import Bands from '../bands.svelte';
 				>
 					{concert.attributes.ploschadka}
 				</a>
-				<div class="my-3 py-2 px-4  text-center text-lg leading-3 text-black dark:text-white">
+				<div class="mt-3 pt-2 px-4  text-center text-lg leading-3 text-black dark:text-white">
 					{concert.attributes.bilet_ot}
 				</div>
 			</div>
+		</div>
+	</div>
+</div>
+<div class="mt-2 w-full ">
+	<div
+		aria-label="card 1"
+		class="mx-auto max-w-2xl rounded bg-blue-400/70 p-6 shadow  dark:bg-blue-500 "
+	>
+		<div
+			class="flex cursor-pointer rounded ring-yellow-400 transition-all hover:ring-2 focus:outline-none"
+			on:click={() => {
+				goto('/band/' + concert.attributes.zhuri.data.attributes.band_name);
+			}}
+		>
+			<img
+				class=" h-28 w-28 w-full rounded shadow"
+				src={'https://admin.rocktver.ru' + concert.attributes.zhuri.data.attributes.group_logo.data.attributes.url}
+				alt=""
+			/>
+			<div>
+				<h1 class="pl-4 text-xl text-gray-800 focus:outline-none dark:text-white">
+					{concert.attributes.zhuri.data.attributes.band_name}
+				</h1>
+
+				<h1 class="pl-4 text-lg text-pink-600 focus:outline-none dark:text-pink-300">
+					{concert.attributes.zhuri.data.attributes.town}
+				</h1>
+			</div>
+		</div>
+		<div class="mx-auto my-3">
+			<div class="textcard">
+				{concert.attributes.zhuri.data.attributes.big_text}
+			</div>
+		</div>
+
+		<div class="flex flex-col">
+			{#if artists}
+				{#each artists as artist}
+					<div
+						class="flex cursor-pointer rounded ring-yellow-400 transition-all hover:ring-2 focus:outline-none"
+						on:click={() => {
+							goto('/person/' + artist.attributes.name);
+						}}
+					>
+						<img
+							class="mr-2 mb-1 h-14 w-14 rounded-full "
+							src={'https://admin.rocktver.ru' + artist.attributes.avatar.data.attributes.url}
+							alt=""
+						/>
+						<p class="lblock  mt-1 border-t border-white/30">{artist.attributes.name}</p>
+						<p
+							class="lblock ml-1 mt-1 border-t border-white/30 text-left text-gray-700 dark:text-gray-300"
+						>
+							{artist.attributes.role}
+						</p>
+					</div>
+				{/each}
+			{/if}
 		</div>
 	</div>
 </div>
@@ -428,5 +519,8 @@ import Bands from '../bands.svelte';
 	.bandurl:hover {
 		text-decoration: none;
 		color: white;
+	}
+	.lblock {
+		width: 40vw;
 	}
 </style>
