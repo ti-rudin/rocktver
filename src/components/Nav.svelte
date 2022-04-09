@@ -93,7 +93,7 @@
 		</a>
 		-->
 		{#if !$screenmode}
-			<a
+			<a 
 				class="ml-1 flex h-9 rounded-lg bg-yellow-400  px-3 pt-1 text-center text-black ring-yellow-400 transition-all
 			hover:ring-2 dark:bg-yellow-800 dark:text-white"
 				href="https://che-tver.timepad.ru/event/1900315/"
@@ -123,7 +123,7 @@
 					</div>
 				{/if}
 			{:else}
-				<a
+				<a sveltekit:prefetch
 					class="ml-1 flex h-9 items-center justify-center rounded-lg bg-yellow-400 px-1 text-black ring-yellow-400 transition-all
 	hover:ring-2 dark:bg-yellow-800 dark:text-white"
 					href="/kabinet"

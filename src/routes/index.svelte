@@ -108,7 +108,7 @@
 	ЧЕстный праздник для ЧЕстных людей
 </h1>
 
-<a href = "/concert/1" class="ramka flex sm:p-4 mx-auto my-2 text-center flex-col rounded ring-yellow-600  ring-1 hover:ring-4">
+<a sveltekit:prefetch href = "/concert/1" class="ramka flex sm:p-4 mx-auto my-2 text-center flex-col rounded ring-yellow-600  ring-1 hover:ring-4">
 	<h1 class="otbor mx-auto ">Отборочный тур</h1>
 	<h2 class="mx-auto mt-2  text-center text-black  dark:text-white">
 		Дата проведения:
@@ -152,7 +152,7 @@
 </a>
 
 
-<a href = "/concert/2" class="ramka flex sm:p-4 mx-auto my-2 text-center flex-col rounded ring-yellow-600  ring-1 hover:ring-4">
+<a sveltekit:prefetch href = "/concert/2" class="ramka flex sm:p-4 mx-auto my-2 text-center flex-col rounded ring-yellow-600  ring-1 hover:ring-4">
 	<h2 class="mx-auto mt-2  text-center text-black  dark:text-white">
 		Дата проведения:
 	</h2>

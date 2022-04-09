@@ -26,14 +26,14 @@
 	<footer class="z-20 w-full mb-4 flex   flex-col  bg-gray-300 dark:bg-black/20 items-start justify-center">
 		<div class="flex w-full  mx-auto max-w-2xl  px-4 sm:px-0">
 			<div class="flex flex-col">
-				<a href="/" class="pt-4"> Главная </a>
-				<a href="/now" class="pt-4"> Эфир </a>
-				<a href="/sponsoram" class="pt-4"> Спонсорам </a>
+				<a sveltekit:prefetch href="/" class="pt-4"> Главная </a>
+				<a sveltekit:prefetch href="/now" class="pt-4"> Эфир </a>
+				<a sveltekit:prefetch href="/sponsoram" class="pt-4"> Спонсорам </a>
 			</div>
 			<div class="ml-4 flex flex-col">
-				<a href="/bands" class="pt-4"> Участники </a>
-				<a href="/manual" class="pt-4"> Инструкция </a>
-				<a href="/kabinet" class="pt-4"> Кабинет </a>
+				<a sveltekit:prefetch href="/bands" class="pt-4"> Участники </a>
+				<a sveltekit:prefetch href="/manual" class="pt-4"> Инструкция </a>
+				<a sveltekit:prefetch href="/kabinet" class="pt-4"> Кабинет </a>
 			</div>
 			<div class="mx-auto" />
 			<div class="container_develop space-between flex flex-col pb-0 pl-10">
@@ -68,7 +68,7 @@
 			<a href="/feedback" class="feedback mx-auto pb-2"> Отзывы и предложения </a>
 			<div class="mx-auto mt-2 flex">
 				<div class="lblock  text-right">2022<a class="px-1" href="/rights">©</a>РОКТВЕРЬ</div>
-				<a href="/privacy" class="lblock ml-3 pt-1 text-sm"> Условия использования</a>
+				<a sveltekit:prefetch href="/privacy" class="lblock ml-3 pt-1 text-sm"> Условия использования</a>
 			</div>
 		</div>
 	</footer>

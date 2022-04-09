@@ -284,7 +284,7 @@ import Bands from '../bands.svelte';
 				<div class="mb-3 py-2 px-4  text-center text-lg leading-3 text-black dark:text-white">
 					Концертная площадка
 				</div>
-				<a
+				<a sveltekit:prefetch
 					href={concert.attributes.url_website}
 					target="blank"
 					tabindex="0"
@@ -337,7 +337,7 @@ import Bands from '../bands.svelte';
 		<div class="flex flex-col">
 			{#if artists}
 				{#each artists as artist}
-					<div
+					<div 
 						class="flex cursor-pointer rounded ring-yellow-400 transition-all hover:ring-2 focus:outline-none"
 						on:click={() => {
 							goto('/person/' + artist.attributes.name);
@@ -462,7 +462,7 @@ import Bands from '../bands.svelte';
 					<KnobTimeline user={$user.id} event_i={i} {event} {concert} />
 				</div>
 			{:else}
-				<div
+				<a sveltekit:prefetch
 					class="bandurl relative ml-10 mb-10 flex transform cursor-pointer flex-col items-left space-y-4 rounded bg-pink-600 pl-6 pr-3 pb-4 text-white dark:text-white transition hover:-translate-y-2 md:flex-row md:space-y-0"
 					on:click={() => {
 						goto('/band/' + event.band.data.attributes.band_name);
@@ -511,7 +511,7 @@ import Bands from '../bands.svelte';
 							{/if}
 						</div>
 					</div>
-				</div>
+				</a>
 			{/if}
 		{/each}
 	</div>
