@@ -103,7 +103,10 @@
 <script>
 	import { onDestroy, onMount } from 'svelte';
 	export let concert, timeline, state, artists;
-	$: artists = concert.attributes.zhuri.data.attributes.artists.data;
+	$: if (concert.attributes.zhuri.data) {
+		artists = concert.attributes.zhuri.data.attributes.artists.data;
+	}
+	
 
 	//console.log(this.artists.data[0].attributes.name)
 
@@ -297,6 +300,8 @@ import Bands from '../bands.svelte';
 		</div>
 	</div>
 </div>
+{#if concert.attributes.zhuri.data}
+
 <div class="mt-2 w-full ">
 	<div
 		aria-label="card 1"
@@ -355,6 +360,7 @@ import Bands from '../bands.svelte';
 		</div>
 	</div>
 </div>
+{/if}
 <div class="relative mx-auto w-10/12 py-2 md:w-9/12 lg:w-7/12">
 	<div class="mt-10 border-l-2 border-gray-400">
 		{#each timeline as event, i}
