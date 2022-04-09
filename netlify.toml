@@ -8,13 +8,6 @@
   node_bundler = "esbuild"
   external_node_modules = ["mdsvex", "svelte-popperjs"]
 
-[[plugins]]
-package = "@netlify/plugin-sitemap"
-
-  [plugins.inputs]
-  buildDir = "build"
-  
-
 [build.environment]
   NODE_VERSION = "14"
   ## https://github.com/sveltejs/kit/issues/2687
