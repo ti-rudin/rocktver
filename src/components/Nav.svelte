@@ -48,9 +48,9 @@
 </script>
 
 <nav
-	class="relative mx-auto flex w-full max-w-2xl items-center justify-between border-gray-200
-	bg-gray-50 bg-opacity-60 pt-3 pb-4 text-gray-900 dark:border-gray-700
-	dark:bg-gray-900 dark:text-gray-100"
+	class="relative mx-auto flex w-full max-w-2xl items-center justify-between 
+	 bg-opacity-60 pt-3 pb-4 text-gray-900 
+	 dark:text-gray-100"
 >
 	{#if !$screenmode}
 		<MobileMenu />

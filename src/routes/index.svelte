@@ -98,22 +98,22 @@
 </svelte:head>
 
 <LogoComponent/>
-<h2 class="mx-auto mt-5 bg-white text-center text-black dark:bg-gray-900 dark:text-white">
+<h2 class="mx-auto mt-5  text-center ">
 	Cемейный музыкальный праздник на открытом воздухе, объединяющий честных людей.
 </h2>
-<h2 class="mx-auto mt-5 bg-white text-center text-black dark:bg-gray-900 dark:text-white">
+<h2 class="mx-auto mt-5 ">
 	Девиз мероприятия:
 </h2>
-<h1 class="slogan mx-auto bg-white text-black dark:bg-gray-900 dark:text-white">
+<h1 class="slogan mx-auto  text-black  dark:text-white">
 	ЧЕстный праздник для ЧЕстных людей
 </h1>
 
 <a href = "/concert/1" class="ramka flex sm:p-4 mx-auto my-2 text-center flex-col rounded ring-yellow-600  ring-1 hover:ring-4">
-	<h1 class="otbor mx-auto bg-white text-black dark:bg-gray-900 dark:text-white">Отборочный тур</h1>
-	<h2 class="mx-auto mt-2 bg-white text-center text-black dark:bg-gray-900 dark:text-white">
+	<h1 class="otbor mx-auto ">Отборочный тур</h1>
+	<h2 class="mx-auto mt-2  text-center text-black  dark:text-white">
 		Дата проведения:
 	</h2>
-	<h1 class="adr mx-auto bg-white text-black dark:bg-gray-900 dark:text-white">10 апреля 2022</h1>
+	<h1 class="adr mx-auto  text-black  dark:text-white">10 апреля 2022</h1>
 
 	<div
 		class="mx-auto flex max-w-4xl flex-col items-start justify-center border-gray-200 px-0 pb-16 dark:border-gray-700"
@@ -141,22 +141,22 @@
 		</div>
 	</div>
 
-	<h2 class="mx-auto mt-5 bg-white text-center text-black dark:bg-gray-900 dark:text-white">
+	<h2 class="mx-auto mt-5  text-center">
 		Место проведения:
 	</h2>
 
-	<h1 class="adr mx-auto bg-white text-black dark:bg-gray-900 dark:text-white">
+	<h1 class="adr mx-auto  text-black  dark:text-white">
 		КЛУБ BIG BEN
 	</h1>
-	<h1 class="otbor mx-auto bg-white text-black dark:bg-gray-900 dark:text-white">Вход бесплатный</h1>
+	<h1 class="otbor mx-auto  text-black  dark:text-white">Вход бесплатный</h1>
 </a>
 
 
 <a href = "/concert/2" class="ramka flex sm:p-4 mx-auto my-2 text-center flex-col rounded ring-yellow-600  ring-1 hover:ring-4">
-	<h2 class="mx-auto mt-2 bg-white text-center text-black dark:bg-gray-900 dark:text-white">
+	<h2 class="mx-auto mt-2  text-center text-black  dark:text-white">
 		Дата проведения:
 	</h2>
-	<h1 class="adr mx-auto bg-white text-black dark:bg-gray-900 dark:text-white">29-30 июля 2022</h1>
+	<h1 class="adr mx-auto  text-black  dark:text-white">29-30 июля 2022</h1>
 
 	<div
 		class="mx-auto flex max-w-4xl flex-col items-start justify-center border-gray-200 px-0 pb-16 dark:border-gray-700"
@@ -184,11 +184,11 @@
 		</div>
 	</div>
 
-	<h2 class="mx-auto mt-5 bg-white text-center text-black dark:bg-gray-900 dark:text-white">
+	<h2 class="mx-auto mt-5  text-center text-black  dark:text-white">
 		Место проведения:
 	</h2>
 
-	<h1 class="adr mx-auto bg-white text-black dark:bg-gray-900 dark:text-white">
+	<h1 class="adr mx-auto  text-black  dark:text-white">
 		Тверская область, д. Тутань (на берегу р. Тьма)
 	</h1>
 </a>

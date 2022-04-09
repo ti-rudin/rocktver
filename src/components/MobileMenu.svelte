@@ -155,7 +155,7 @@
 	{/if}
 </div>
 
-<style>
+<style lang="scss">
 	.burger {
 		transition: opacity 300ms ease;
 		border: 0;
@@ -177,11 +177,14 @@
 		padding: 0 180px 0 4px;
 		margin: 0;
 		padding-top: 24px;
-		width: 94vw;
+		padding-left: 19px;
+		width: calc(99vw - 4px);
+		left: -16px;
 		height: 99vh;
 		z-index: 1000;
 		opacity: 0;
-		left: -2px;
+		top:4.3rem;
+		
 		transition: opacity 300ms ease, transform 300ms ease;
 	}
 
