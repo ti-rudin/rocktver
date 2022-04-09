@@ -8,6 +8,11 @@
   node_bundler = "esbuild"
   external_node_modules = ["mdsvex", "svelte-popperjs"]
 
+[[plugins]]
+package = "@netlify/plugin-sitemap"
+
+  [plugins.inputs]
+  buildDir = "build"
   
 
 [build.environment]
