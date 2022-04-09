@@ -265,7 +265,7 @@ import Bands from '../bands.svelte';
 	</div>
 </div>
 <div class="relative mx-auto w-10/12 py-2 md:w-9/12 lg:w-7/12">
-	<div class="mt-10 border-l-2">
+	<div class="mt-10 border-l-2 border-gray-400">
 		{#each timeline as event, i}
 			{#if event.open_speache || event.finish_speache}
 				<div

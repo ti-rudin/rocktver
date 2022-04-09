@@ -78,7 +78,7 @@
 	//site = 'https://dev--rocktver.netlify.app/person/';
 
 	launch = launches.filter((launch) => launch.attributes.name == id)[0];
-	bands = launch.attributes.bands.data;
+	$: bands = launch.attributes.bands.data;
 
 	function download() {
 		var link = document.createElement('a');

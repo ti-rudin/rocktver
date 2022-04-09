@@ -217,7 +217,7 @@
 		{:else}
 			<div class="mx-auto flex mt-4">
 				<div
-					class="cursor-pointer ring-1 ring-yellow-500 ml-4 p-2 pb-0 mx-auto flex w-full max-w-2xl flex-col items-start rounded-lg bg-yellow-400/50 px-3 text-black  transition-all hover:ring-2 dark:bg-orange-500/50 dark:text-white"
+					class="cursor-pointer ring-1 ring-yellow-500 ml-4 p-2 pb-0 mx-auto flex w-full max-w-2xl flex-col items-start rounded-lg bg-yellow-400/50 px-3 text-black  transition-all hover:ring-2 dark:bg-orange-500/60 dark:text-white"
 					id="login_button"
 					on:click={() => {
 						ym(88086612, 'reachGoal', 'vk-auth-start');
@@ -267,7 +267,7 @@
 								/>
 							</svg>
 						</button>
-						<h1 tabindex="0" class="text-red-600 mx-auto pl-2 pt-5 text-xl">
+						<h1 tabindex="0" class="text-red-400 mx-auto pl-2 pt-5 text-xl">
 							{now.now_event_likes}
 						</h1>
 					</div>
@@ -303,7 +303,7 @@
 						</h1>
 					</div>
 				</div>
-				<p class="">{status.now_on_scene.small_text}</p>
+				<p class="my-2 text-lg">{status.now_on_scene.small_text}</p>
 
 				<div class="flex flex-col pt-2">
 					{#each artists as artist}

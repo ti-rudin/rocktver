@@ -98,10 +98,10 @@
 </svelte:head>
 
 <LogoComponent/>
-<h2 class="mx-auto mt-5  text-center ">
+<h2 class="mx-auto mt-1  text-center ">
 	Cемейный музыкальный праздник на открытом воздухе, объединяющий честных людей.
 </h2>
-<h2 class="mx-auto mt-5 ">
+<h2 class="mx-auto mt-3 ">
 	Девиз мероприятия:
 </h2>
 <h1 class="slogan mx-auto  text-black  dark:text-white">

@@ -19,12 +19,12 @@
 <div class="flex flex-col justify-center bg-white/70 px-4 dark:bg-gray-400/10 ">
 	<Nav />
 </div>
-<main class=" flex flex-col justify-center bg-gray-100/50 px-4 pb-4 dark:bg-gray-900 sm:px-8">
+<main class=" flex flex-col justify-center bg-gray-100/50 px-4 pb-4 pt-3 dark:bg-gray-900 sm:px-8">
 	<slot />
 </main>
 {#if !$screenmode}
-	<footer class="z-20 w-full mb-4 flex   flex-col  bg-gray-300 dark:bg-gray-900 items-start justify-center">
-		<div class="flex w-full  mx-auto max-w-2xl border-t  px-4 sm:px-0">
+	<footer class="z-20 w-full mb-4 flex   flex-col  bg-gray-300 dark:bg-black/20 items-start justify-center">
+		<div class="flex w-full  mx-auto max-w-2xl  px-4 sm:px-0">
 			<div class="flex flex-col">
 				<a href="/" class="pt-4"> Главная </a>
 				<a href="/now" class="pt-4"> Эфир </a>
