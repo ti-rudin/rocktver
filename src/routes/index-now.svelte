@@ -460,7 +460,7 @@
 							tabindex="0"
 							class="pt-2 text-xl text-gray-800 focus:outline-none dark:text-gray-200"
 						>
-							Начало концерта в 17-15, клуб BIG BEN
+							Виджет прямого эфира выключен
 						</h1>
 					</div>
 				</div>
