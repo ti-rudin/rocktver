@@ -40,8 +40,13 @@
 		have_spisok = status.now_on_scene.have_spisok;
 		band_rtid = status.now_on_scene.band_rtid;
 		artists = status.now_on_scene.artists;
-		logobandurl = 'https://admin.rocktver.ru' + status.now_on_scene.bandlogo;
 
+		
+		if (status.now_on_scene.bandlogo != '') {
+			logobandurl = 'https://admin.rocktver.ru' + status.now_on_scene.bandlogo
+		} else {
+			logobandurl = 'https://rocktver.ru/rock-band-icon-9.jpg'
+		}
 		console.log(now);
 		//console.log(status);
 		if (now.now_event_id !== 'null') {
