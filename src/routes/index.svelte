@@ -1,6 +1,5 @@
-<script>
-	//import { goto } from '$app/navigation';
+<script context="module">
+	import { goto } from '$app/navigation';
 	//goto('/rockopolchenie22');
-	//goto('/concert/3');
-	window.location.href = '/concert/3'
+	goto('/concert/3');
 </script>
