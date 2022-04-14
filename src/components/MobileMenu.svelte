@@ -98,18 +98,6 @@
 			</li>
 
 			<li
-			class="border-b border-gray-300 font-semibold text-gray-900 dark:border-gray-700 dark:text-gray-100"
-			style="transition-delay: 150ms;"
-		>
-			<a
-				class="flex w-auto pb-4"
-				sveltekit:prefetch
-				on:click={() => setTimeout(() => (isOpen = false), 300)}
-				href="/manual">Инструкция</a
-			>
-		</li>
-
-			<li
 				class="border-b border-gray-300 font-semibold text-gray-900 dark:border-gray-700 dark:text-gray-100"
 				style="transition-delay: 150ms;"
 			>
@@ -122,16 +110,16 @@
 			</li>
 			<div class="h-5" />
 			<li
-			class="border-b border-gray-300 font-semibold text-gray-900 dark:border-gray-700 dark:text-gray-100"
-			style="transition-delay: 150ms;"
-		>
-			<a
-				class="flex w-auto pb-4"
-				sveltekit:prefetch
-				on:click={() => setTimeout(() => (isOpen = false), 300)}
-				href="/ti">О приложении</a
+				class="border-b border-gray-300 font-semibold text-gray-900 dark:border-gray-700 dark:text-gray-100"
+				style="transition-delay: 150ms;"
 			>
-		</li>
+				<a
+					class="flex w-auto pb-4"
+					sveltekit:prefetch
+					on:click={() => setTimeout(() => (isOpen = false), 300)}
+					href="/ti">О приложении</a
+				>
+			</li>
 			<li
 			class="border-b border-gray-300 font-semibold text-gray-900 dark:border-gray-700 dark:text-gray-100"
 			style="transition-delay: 150ms;"
@@ -140,10 +128,20 @@
 				class="flex w-auto pb-4"
 				sveltekit:prefetch
 				on:click={() => setTimeout(() => (isOpen = false), 300)}
-				href="/sponsoram">Спонсорам</a
+				href="/blog">Журнал изменений</a
 			>
 		</li>
-	
+			<li
+				class="border-b border-gray-300 font-semibold text-gray-900 dark:border-gray-700 dark:text-gray-100"
+				style="transition-delay: 150ms;"
+			>
+				<a
+					class="flex w-auto pb-4"
+					sveltekit:prefetch
+					on:click={() => setTimeout(() => (isOpen = false), 300)}
+					href="/sponsoram">Спонсорам</a
+				>
+			</li>
 
 			<!--
 			<li
@@ -194,8 +192,8 @@
 		height: 99vh;
 		z-index: 1000;
 		opacity: 0;
-		top:4.3rem;
-		
+		top: 4.3rem;
+
 		transition: opacity 300ms ease, transform 300ms ease;
 	}
 
