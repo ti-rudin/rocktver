@@ -239,11 +239,21 @@
 				goto('/band/' + launch.attributes.band_name);
 			}}
 		>
+			{#if launch.attributes.group_logo.data}
 			<img
 				class=" h-28 w-28 w-full rounded shadow"
 				src={'https://admin.rocktver.ru' + launch.attributes.group_logo.data.attributes.url}
 				alt=""
 			/>
+			{:else}
+			<img
+				class=" h-28 w-28 w-full rounded shadow"
+				src="/rock-band-icon-9.jpg"
+				alt=""
+			/>
+
+			{/if}
+
 			<div>
 				<h1 class="pl-4 text-xl text-gray-800 focus:outline-none dark:text-white">
 					{launch.attributes.band_name}
@@ -256,7 +266,10 @@
 		</div>
 		<div class="mx-auto my-3">
 			<div class="textcard">
+				{#if launch.attributes.big_text}
 				{launch.attributes.big_text}
+				{/if}
+				
 			</div>
 		</div>
 

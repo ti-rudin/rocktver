@@ -145,11 +145,15 @@
 							goto('/band/' + band.attributes.band_name);
 						}}
 					>
-						<img
-							class="mb-4 h-28 w-28 w-full rounded shadow"
-							src={'https://admin.rocktver.ru' + band.attributes.group_logo.data.attributes.url}
-							alt=""
-						/>
+						{#if band.attributes.group_logo.data}
+							<img
+								class=" h-28 w-28 w-full rounded shadow"
+								src={'https://admin.rocktver.ru' + band.attributes.group_logo.data.attributes.url}
+								alt=""
+							/>
+						{:else}
+							<img class=" h-28 w-28 w-full rounded shadow" src="/rock-band-icon-9.jpg" alt="" />
+						{/if}
 						<div>
 							<h1 class="pl-4 text-2xl text-gray-800 focus:outline-none dark:text-white">
 								{band.attributes.band_name}
@@ -158,29 +162,33 @@
 							<h1 class="pl-4 text-xl text-pink-600 focus:outline-none dark:text-pink-300">
 								{band.attributes.town}
 							</h1>
+							{#if band.attributes.small_text}
 							<p class="pl-4">{band.attributes.small_text}</p>
-						</div>
-					</div>
-					
-					<div class="flex flex-col">
-						{#each band.attributes.artists.data as artist}
-						<div class="flex cursor-pointer rounded ring-yellow-400 transition-all hover:ring-2 focus:outline-none"
-						on:click={() => {
-							goto('/person/' + artist.attributes.name);
-						}}>
-							<img
-							class="mr-2 mb-1 h-12 w-12 rounded-full "
-							src={'https://admin.rocktver.ru' + artist.attributes.avatar.data.attributes.url}
-							alt=""
-						/>
-						<p class="lblock  mt-1 border-t border-white/30">{artist.attributes.name}</p>
-							<p class="lblock dark:text-gray-300 text-gray-700 ml-1 mt-1 border-t border-white/30 text-left">
-								{artist.attributes.role}
-							</p>
-						
-
+							{/if}
 							
 						</div>
+					</div>
+
+					<div class="flex flex-col">
+						{#each band.attributes.artists.data as artist}
+							<div
+								class="flex cursor-pointer rounded ring-yellow-400 transition-all hover:ring-2 focus:outline-none"
+								on:click={() => {
+									goto('/person/' + artist.attributes.name);
+								}}
+							>
+								<img
+									class="mr-2 mb-1 h-12 w-12 rounded-full "
+									src={'https://admin.rocktver.ru' + artist.attributes.avatar.data.attributes.url}
+									alt=""
+								/>
+								<p class="lblock  mt-1 border-t border-white/30">{artist.attributes.name}</p>
+								<p
+									class="lblock ml-1 mt-1 border-t border-white/30 text-left text-gray-700 dark:text-gray-300"
+								>
+									{artist.attributes.role}
+								</p>
+							</div>
 						{/each}
 					</div>
 				{/if}
