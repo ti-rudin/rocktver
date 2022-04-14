@@ -67,7 +67,7 @@ onMount(() => {
 		</div>
 		
 	</div>
-    <div class="mx-auto text-center text-lg mt-2">Лотерея для гостей клуба <nobr>BIG BEN!</nobr></div>
+    <div class="mx-auto text-center text-lg mt-2">Лотерея для гостей  <nobr>маук "ГЦКиД" Бежецк!</nobr></div>
 	<div class="mx-auto">
 
 	</div>

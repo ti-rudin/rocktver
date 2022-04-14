@@ -154,7 +154,7 @@
 
 
 {#if isshowgo}
-	<div class="w-full pb-2 z-10 ">
+	<div class="w-full mb-2 pb-2 z-10 ">
 		<div
 			transition:scale={{ duration: 300 }}
 			aria-label="card 1"
@@ -210,7 +210,7 @@
 			</div>
 		</div>
 	</div>
-	<LogoComponent />
+
 	{#if displaylikes}
 		{#if $isAuthenticated}
 			<KnobHeart user={$user} {now} {efir} eventobj={{ status }} {index} />

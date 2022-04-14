@@ -82,7 +82,7 @@
 					class="flex w-auto pb-4"
 					sveltekit:prefetch
 					on:click={() => setTimeout(() => (isOpen = false), 300)}
-					href="/bands">Участники</a
+					href="/bands">Команды</a
 				>
 			</li>
 			<li

@@ -60,7 +60,7 @@
 				<NavLink href="/">Главная</NavLink>
 			</li>
 			<li>
-				<NavLink href="/bands">Участники</NavLink>
+				<NavLink href="/bands">Команды</NavLink>
 			</li>
 			<li>
 				<NavLink href="/lotereya">Лотерея</NavLink>
@@ -93,49 +93,37 @@
 		</a>
 		-->
 		{#if !$screenmode}
-			<a 
+			<a
 				class="ml-1 flex h-9 rounded-lg bg-yellow-400  px-3 pt-1 text-center text-black ring-yellow-400 transition-all
 			hover:ring-2 dark:bg-yellow-800 dark:text-white"
 				href="https://che-tver.timepad.ru/event/1900315/"
-				
-		
 			>
 				Билет
 			</a>
 			{#if showTooltip1}
-				<div id="tooltip1" >
+				<div id="tooltip1">
 					Переход на timepad.ru
 					<div id="arrow" data-popper-arrow />
 				</div>
 			{/if}
 			{#if $isAuthenticated}
-				<a
-					href="/kabinet"
-					
-		
-				>
+				<a href="/kabinet">
 					<img class="h-10 w-10 rounded-full" src={$user.photo} alt={$user.name} id={$user.id} />
 				</a>
 				{#if showTooltip2}
-					<div id="tooltip2" >
+					<div id="tooltip2">
 						Личный кабинет
 						<div id="arrow" data-popper-arrow />
 					</div>
 				{/if}
 			{:else}
-				<a sveltekit:prefetch
+				<a
+					sveltekit:prefetch
 					class="ml-1 flex h-9 items-center justify-center rounded-lg bg-yellow-400 px-1 text-black ring-yellow-400 transition-all
 	hover:ring-2 dark:bg-yellow-800 dark:text-white"
 					href="/kabinet"
-					
-				
 				>
-				{#if showTooltip2}
-					<div id="tooltip2" >
-						Личный кабинет
-						<div id="arrow" data-popper-arrow />
-					</div>
-				{/if}
+
 					{#if isDark}
 						<svg
 							width="32px"
@@ -187,15 +175,13 @@
 			class="ml-1 flex h-9 items-center justify-center rounded-lg bg-yellow-400 px-1 text-black ring-yellow-400 transition-all
 	hover:ring-2 dark:bg-yellow-800 dark:text-white"
 			href="/now"
-			
-				
 		>
-		{#if showTooltip3}
-		<div id="tooltip3" >
-			Прямой эфир
-			<div id="arrow" data-popper-arrow />
-		</div>
-	{/if}
+			{#if showTooltip3}
+				<div id="tooltip3">
+					Прямой эфир
+					<div id="arrow" data-popper-arrow />
+				</div>
+			{/if}
 			{#if isDark}
 				<svg
 					width="32"
@@ -485,16 +471,14 @@
 			class="ml-1 flex h-9 w-9 items-center justify-center rounded-lg bg-yellow-400 ring-yellow-400
 			transition-all hover:ring-2 dark:bg-yellow-800"
 			on:click={toggleDarkMode}
-			
-			
 		>
-		{#if showTooltip4}
-		<div id="tooltip4" >
-			Переключение темы
-			<div id="arrow" data-popper-arrow />
-		</div>
-	{/if}
-		
+			{#if showTooltip4}
+				<div id="tooltip4">
+					Переключение темы
+					<div id="arrow" data-popper-arrow />
+				</div>
+			{/if}
+
 			{#if isDark}
 				<svg
 					xmlns="http://www.w3.org/2000/svg"
@@ -533,15 +517,13 @@
 			class="ml-1 flex h-9 w-9 cursor-pointer items-center justify-center rounded-lg bg-yellow-400 ring-yellow-400
 			transition-all hover:ring-2 dark:bg-yellow-800"
 			on:click={() => ($screenmode = !$screenmode)}
-			
-			
 		>
-		{#if showTooltip5}
-		<div id="tooltip5" >
-			Переключение в режим экрана
-			<div id="arrow" data-popper-arrow />
-		</div>
-		{/if}
+			{#if showTooltip5}
+				<div id="tooltip5">
+					Переключение в режим экрана
+					<div id="arrow" data-popper-arrow />
+				</div>
+			{/if}
 			{#if isDark}
 				<svg
 					class="h-5 w-5 "
@@ -580,8 +562,7 @@
 		padding: 4px 8px;
 		font-size: 13px;
 		border-radius: 4px;
-		z-index:900
-		
+		z-index: 900;
 	}
 	#tooltip2 {
 		background: #333;
@@ -590,7 +571,7 @@
 		padding: 4px 8px;
 		font-size: 13px;
 		border-radius: 4px;
-		z-index:900
+		z-index: 900;
 	}
 	#tooltip3 {
 		background: #333;
@@ -599,7 +580,7 @@
 		padding: 4px 8px;
 		font-size: 13px;
 		border-radius: 4px;
-		z-index:900
+		z-index: 900;
 	}
 	#tooltip4 {
 		background: #333;
@@ -608,7 +589,7 @@
 		padding: 4px 8px;
 		font-size: 13px;
 		border-radius: 4px;
-		z-index:900
+		z-index: 900;
 	}
 	#tooltip5 {
 		background: #333;
@@ -617,7 +598,6 @@
 		padding: 4px 8px;
 		font-size: 13px;
 		border-radius: 4px;
-		z-index:900
+		z-index: 900;
 	}
-
 </style>

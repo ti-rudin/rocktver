@@ -227,7 +227,7 @@ import Bands from '../bands.svelte';
 
 </script>
 
-<LogoComponent />
+
 {#if $isAuthenticated}
 	{#if $isAdmin}
 		<div

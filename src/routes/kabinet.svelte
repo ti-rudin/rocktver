@@ -134,7 +134,7 @@
 	</div>
 
 
-	<div class="mx-auto text-lg mt-2">Лотерея для гостей клуба BIG BEN!</div>
+	<div class="mx-auto text-lg mt-2">Лотерея для гостей маук "ГЦКиД" Бежецк!</div>
 	<a
 		class="tomain delay-50 mb-3 mx-auto cursor-pointer rounded-lg bg-yellow-400/50 p-2 px-3 text-gray-800 shadow ring-yellow-800 transition-all duration-100 hover:ring-2 focus:outline-none  dark:bg-yellow-500/70 dark:text-gray-200 dark:hover:bg-blue-700/50 "
 		id="logout_button"
@@ -145,9 +145,9 @@
 	<a
 		class="tomain delay-50 m-5 mx-auto cursor-pointer rounded-lg bg-blue-400/50 p-2 px-3 text-gray-800 shadow ring-yellow-800 transition-all duration-100 hover:ring-2 focus:outline-none  dark:bg-blue-500/20 dark:text-gray-300 dark:hover:bg-blue-700/50 "
 		id="logout_button"
-		href="/concert/1"
+		href="/concert/3"
 	>
-		<p class="mx-auto">Перейти на страницу отборочного концерта</p>
+		<p class="mx-auto">Перейти на страницу концерта</p>
 	</a>
 	<a
 		class="tomain  delay-50 mx-auto cursor-pointer rounded-lg bg-blue-400/50 p-2 px-3 text-gray-800 shadow ring-yellow-800 transition-all duration-100 hover:ring-2 focus:outline-none dark:bg-blue-500/20 dark:text-gray-300 dark:hover:bg-blue-700/50 "
@@ -163,9 +163,9 @@
 			VK.Auth.logout(getit);
 			$isAuthenticated = false;
 			$isAdmin = false;
-			//$user = {};
-			//localStorage.setItem('user', JSON.stringify($user));
-			//localStorage.setItem('isAuthenticated', JSON.stringify(false));
+			$user = {};
+			localStorage.removeItem('user');
+			localStorage.removeItem('isAuthenticated');
 		}}
 	>
 		<p class="mx-auto">Выйти</p>

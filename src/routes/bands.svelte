@@ -129,7 +129,7 @@
 </script>
 
 <LogoComponent />
-<h1 class="mx-auto max-w-2xl text-2xl">Все участники</h1>
+<h1 class="mx-auto max-w-2xl text-2xl">Все команды</h1>
 
 <div class="w-full ">
 	{#each bands as band}

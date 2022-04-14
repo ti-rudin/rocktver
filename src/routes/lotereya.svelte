@@ -124,14 +124,18 @@
 </script>
 
 <LogoComponent />
+<h1 class="mx-auto max-w-2xl text-2xl">Разыгрываем билеты на 29, 30 июля</h1>
+<div class=" mx-auto mb-5 text-center text-xl">
+	<a href="/kabinet">Войдите</a>, чтобы участвовать в розыгрыше!
+</div>
+
 {#if kolvo}
 	<p class=" mx-auto mb-5 text-center text-xl">
 		Количество зарегистрированных участников - <span class="slogan">{kolvo}</span> чел.
 	</p>
-	<div class=" mx-auto mb-5 text-center text-xl">
-		<a href="/kabinet">Войдите</a>, чтобы участвовать в розыгрыше!
-	</div>
+	
 {/if}
+<h1 class="mx-auto max-w-lg mt-3 mb-1 text-lg">Таймер</h1>
 {#if !played}
 	<div class="count mx-auto flex h-10">
 		<div
