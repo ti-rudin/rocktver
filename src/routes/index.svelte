@@ -1,6 +1,8 @@
-<script context="module">
+<script>
+	import { onMount } from 'svelte';
 
-	window.location.href = '/rockopolchenie22'
-	//window.location.href = '/concert/3'
+	onMount(() => {
+		//window.location.href = '/concert/3'
+		window.location.href = '/rockopolchenie22';
+	});
 </script>
-
