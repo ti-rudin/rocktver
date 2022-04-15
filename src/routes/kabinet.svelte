@@ -171,11 +171,11 @@
 		<p class="mx-auto">Выйти</p>
 	</div>
 {:else}
-	<h1 class="txt mx-auto text-lg mt-3 mb-2 bg-white text-black dark:bg-gray-900 dark:text-white">
+	<h1 class="txt mx-auto text-lg mt-3 mb-2 ">
 		Авторизуйтесь без лишних анкет.
 	</h1>
 	<h2
-		class="txt mx-auto max-w-sm justify-center mt-3 mb-5 bg-white text-black dark:bg-gray-900 dark:text-white"
+		class="txt mx-auto max-w-sm justify-center mt-3 mb-5 "
 	>
 	После авторизации Вы сможете голосовать в виджете прямого эфира, а также участвовать в лотерее
 	</h2>
