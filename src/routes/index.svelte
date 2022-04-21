@@ -3,6 +3,6 @@
 
 	onMount(() => {
 		//window.location.href = '/concert/3'
-		window.location.href = '/concert/3';
+		window.location.href = '/rockopolchenie22';
 	});
 </script>
