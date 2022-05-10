@@ -29,8 +29,8 @@
 		}
 	});
 
-	const target_date = new Date(2022, 6, 29, 10, 0, 0);
-	const target_date2 = new Date(2022, 3, 10, 18, 0, 0); // set the countdown date
+	const target_date = new Date(2022, 6, 29, 17, 25, 0);
+	const target_date2 = new Date(2022, 6, 30, 14, 10, 0); // set the countdown date
 	let days, hours, minutes, seconds; // variables for time units
 	let days2, hours2, minutes2, seconds2;
 	getCountdown();
@@ -112,10 +112,11 @@
 
 
 <a sveltekit:prefetch href = "/concert/2" class="ramka flex sm:p-4 mx-auto my-2 text-center flex-col rounded ring-yellow-600  ring-1 hover:ring-4">
+	
 	<h2 class="mx-auto mt-2  text-center text-black  dark:text-white">
-		Дата проведения:
+		День 1
 	</h2>
-	<h1 class="adr mx-auto  text-black  dark:text-white">29-30 июля 2022</h1>
+	<h1 class="adr mx-auto  text-black  dark:text-white">29 июля 2022</h1>
 
 	<div
 		class="mx-auto flex max-w-4xl flex-col items-start justify-center border-gray-200 px-0 pb-16 dark:border-gray-700"
@@ -152,23 +153,46 @@
 	</h1>
 </a>
 
-<a sveltekit:prefetch href = "/concert/1" class="ramka flex sm:p-4 mx-auto my-2 text-center flex-col rounded ring-yellow-600  ring-1 hover:ring-4">
-	<h1 class="otbor mx-auto ">Отборочный тур</h1>
+<a sveltekit:prefetch href = "/concert/4" class="ramka flex sm:p-4 mx-auto my-2 text-center flex-col rounded ring-yellow-600  ring-1 hover:ring-4">
+
 	<h2 class="mx-auto mt-2  text-center text-black  dark:text-white">
-		Дата проведения:
+		День 2
 	</h2>
-	<h1 class="adr mx-auto  text-black  dark:text-white">10 апреля 2022</h1>
+	<h1 class="adr mx-auto  text-black  dark:text-white">30 июля 2022</h1>
 
-	
+	<div
+		class="mx-auto flex max-w-4xl flex-col items-start justify-center border-gray-200 px-0 pb-16 dark:border-gray-700"
+	>
+		<div class="flex flex-col-reverse items-start sm:flex-row">
+			<div class="countdown">
+				<div class="tiles">
+					<span>{days2}</span>
+					<span>{hours2}</span>
+					<span>{minutes2}</span>
+					<span>{seconds2}</span>
+				</div>
+				<div class="labels">
+					<li>Дней</li>
+					<li>Часов</li>
+					<li>Мин</li>
+					<li>Сек</li>
+				</div>
+			</div>
+			<!-- <div
 
-	<h2 class="mx-auto mt-5  text-center">
+				class="w-[80px] h-[80px] rounded-full sm:w-[176px] sm:h-[136px] relative mb-8 sm:mb-0 mr-auto bg-cyan-300 bg-opacity-25"
+			/> 
+		-->
+		</div>
+	</div>
+
+	<h2 class="mx-auto mt-5  text-center text-black  dark:text-white">
 		Место проведения:
 	</h2>
 
 	<h1 class="adr mx-auto  text-black  dark:text-white">
-		КЛУБ BIG BEN
+		Тверская область, д. Тутань (на берегу р. Тьма)
 	</h1>
-	
 </a>
 
 <style>
