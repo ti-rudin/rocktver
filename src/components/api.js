@@ -29,7 +29,7 @@ export async function getEfir() {
 
 
 export async function getEfir2(user) {
-	let myHeaders = new Headers();
+	const myHeaders = new Headers();
 	myHeaders.append('Content-Type', 'application/json');
 
 	let raw = JSON.stringify({ user: user });
