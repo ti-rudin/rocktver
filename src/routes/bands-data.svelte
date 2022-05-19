@@ -28,6 +28,7 @@
         group_link_rocktver
         mngr_id
         time_on_scene
+        lotereya_text
         artists {
           data {
             attributes {
@@ -75,6 +76,7 @@
 				  id
                 attributes {
                   band_name
+                  lotereya_text
 				  
                 }
               }

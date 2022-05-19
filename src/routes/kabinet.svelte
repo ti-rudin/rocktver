@@ -134,14 +134,7 @@
 	</div>
 
 
-	<div class="mx-auto text-lg mt-2">Лотерея для гостей маук "ГЦКиД" Бежецк!</div>
-	<a
-		class="tomain delay-50 mb-3 mx-auto cursor-pointer rounded-lg bg-yellow-400/50 p-2 px-3 text-gray-800 shadow ring-yellow-800 transition-all duration-100 hover:ring-2 focus:outline-none  dark:bg-yellow-500/70 dark:text-gray-200 dark:hover:bg-blue-700/50 "
-		id="logout_button"
-		href="/lotereya-hello"
-	>
-		<p class="mx-auto">Участвовать в лотерее</p>
-	</a>
+
 	<a
 		class="tomain delay-50 m-5 mx-auto cursor-pointer rounded-lg bg-blue-400/50 p-2 px-3 text-gray-800 shadow ring-yellow-800 transition-all duration-100 hover:ring-2 focus:outline-none  dark:bg-blue-500/20 dark:text-gray-300 dark:hover:bg-blue-700/50 "
 		id="logout_button"
