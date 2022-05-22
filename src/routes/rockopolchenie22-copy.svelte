@@ -111,8 +111,11 @@
 
 
 
-<div class="ramka flex sm:p-4 mx-auto my-2 text-center flex-col rounded ring-yellow-600  ring-1 hover:ring-4">
+<a sveltekit:prefetch href = "/concert/2" class="ramka flex sm:p-4 mx-auto my-2 text-center flex-col rounded ring-yellow-600  ring-1 hover:ring-4">
 	
+	<h2 class="mx-auto mt-2  text-center text-black  dark:text-white">
+		День 1
+	</h2>
 	<h1 class="adr mx-auto  text-black  dark:text-white">29 июля 2022</h1>
 
 	<div
@@ -148,17 +151,55 @@
 	<h1 class="adr mx-auto  text-black  dark:text-white">
 		Тверская область, д. Тутань (на берегу р. Тьма)
 	</h1>
-</div>
-<div class="mx-auto w-full max-w-2xl">
-	<img class="mx-auto w-full" src="/rockopolchenie-2022.jpg" alt="РОКОПОЛЧЕНИЕ  2022" />
-</div>
+</a>
 
+<a sveltekit:prefetch href = "/concert/4" class="ramka flex sm:p-4 mx-auto my-2 text-center flex-col rounded ring-yellow-600  ring-1 hover:ring-4">
+
+	<h2 class="mx-auto mt-2  text-center text-black  dark:text-white">
+		День 2
+	</h2>
+	<h1 class="adr mx-auto  text-black  dark:text-white">30 июля 2022</h1>
+
+	<div
+		class="mx-auto flex max-w-4xl flex-col items-start justify-center border-gray-200 px-0 pb-16 dark:border-gray-700"
+	>
+		<div class="flex flex-col-reverse items-start sm:flex-row">
+			<div class="countdown">
+				<div class="tiles">
+					<span>{days2}</span>
+					<span>{hours2}</span>
+					<span>{minutes2}</span>
+					<span>{seconds2}</span>
+				</div>
+				<div class="labels">
+					<li>Дней</li>
+					<li>Часов</li>
+					<li>Мин</li>
+					<li>Сек</li>
+				</div>
+			</div>
+			<!-- <div
+
+				class="w-[80px] h-[80px] rounded-full sm:w-[176px] sm:h-[136px] relative mb-8 sm:mb-0 mr-auto bg-cyan-300 bg-opacity-25"
+			/> 
+		-->
+		</div>
+	</div>
+
+	<h2 class="mx-auto mt-5  text-center text-black  dark:text-white">
+		Место проведения:
+	</h2>
+
+	<h1 class="adr mx-auto  text-black  dark:text-white">
+		Тверская область, д. Тутань (на берегу р. Тьма)
+	</h1>
+</a>
 
 <style>
 
 	.ramka{
 		text-decoration: none;
-		
+		cursor: pointer;
 		padding-top: 1.4rem;
 		padding-bottom: 1rem;
 	}
