@@ -90,7 +90,7 @@
 
     $: imguserurl = $user.photo;
 
-	$: username = $user.name;
+	$: username = String(()=>{$user.name + ' - УЧАСТhggНИК РОК-ОПОЛЧЕНИЯ 2022'});
 
 	//$: console.log(imgurl);
 </script>
@@ -102,19 +102,19 @@
 	<link rel="canonical" href={site} />
 	<meta property="og:url" content={site} />
 	<meta property="og:type" content="article" />
-	<meta property="og:title" content={$user.name+'- УЧАСpppТНИК РОК-ОПОЛЧЕНИЯ 2022'} />
-	<meta name="Description" content='Я участник музыкального праздника для честных людей!' />
+	<meta property="og:title" content={username} />
+	<meta name="Description" content="Я участник музыкального праздника для честных людей!" />
 	<meta
 		property="og:description"
-		content='Я участник музыкального праздника для честных людей!'
+		content="Я участник музыкального праздника для честных людей!"
 	/>
 	<meta property="og:image" content={imgurl} />
 	<meta name="twitter:card" content="summary" />
 
-	<meta name="twitter:title" content={username + ' - УЧАСТhggНИК РОК-ОПОЛЧЕНИЯ 2022'} />
+	<meta name="twitter:title" content={username} />
 	<meta
 		name="twitter:description"
-		content='Я участник музыкального праздника для честных людей!'
+		content="Я участник музыкального праздника для честных людей!"
 	/>
 	<meta name="twitter:image" content={imgurl} />
 </svelte:head>
