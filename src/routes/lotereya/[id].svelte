@@ -82,7 +82,7 @@
 			type: 'round',
 			text: 'Поделиться',
 			image: imgurl,
-			noparse: true
+			noparse: false
 		});
 	});
 	$: imgurl = imgurl;
