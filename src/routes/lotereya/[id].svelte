@@ -78,7 +78,8 @@
 		//console.log(imgurl);
 		document.getElementById('vk_share_button').innerHTML = VK.Share.button(
 			{ 
-				image: imgurl, 
+				image: imgurl,
+				title: usernametitle,  
 				noparse: false 
 			},
 			{
@@ -88,11 +89,11 @@
 		);
 	});
 	$: imgurl = imgurl;
-	export let imguserurl, username;
+	export let imguserurl, usernametitle;
 
 	$: imguserurl = $user.photo;
 
-	$: username = $user.name + ' - УЧАСТНИК РОК-ОПОЛЧЕНИЯ 2022';
+	$: usernametitle = $user.name + ' - УЧАСТНИК РОК-ОПОЛЧЕНИЯ 2022';
 
 	//$: console.log(imgurl);
 </script>
@@ -104,13 +105,13 @@
 	<link rel="canonical" href={site} />
 	<meta property="og:url" content={site} />
 	<meta property="og:type" content="article" />
-	<meta property="og:title" content={username} />
+	<meta property="og:title" content={usernametitle} />
 	<meta name="Description" content="Я участник музыкального праздника для честных людей!" />
 	<meta property="og:description" content="Я участник музыкального праздника для честных людей!" />
 	<meta property="og:image" content={imgurl} />
 	<meta name="twitter:card" content="summary" />
 
-	<meta name="twitter:title" content={username} />
+	<meta name="twitter:title" content={usernametitle} />
 	<meta name="twitter:description" content="Я участник музыкального праздника для честных людей!" />
 	<meta name="twitter:image" content={imgurl} />
 </svelte:head>
