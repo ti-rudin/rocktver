@@ -78,7 +78,7 @@
 		//console.log(imgurl);
 		document.getElementById('vk_share_button').innerHTML = VK.Share.button(
 			{ 
-				
+				image: 'https://sun9-29.userapi.com/impf/q0YUDMRxLVh1PWEuMRtqEWFKJHmzuaLyxVAvlQ/z9ooMo_VrxM.jpg?size=1590x530&quality=95&crop=0,0,1878,626&sign=6a931efb4a9aededeeee6981eead1a41&type=cover_group',
 				title: usernametitle,  
 				noparse: false,
 				url: 'https://rocktver.ru' 
