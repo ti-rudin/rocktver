@@ -46,8 +46,7 @@
 	import { onDestroy, onMount } from 'svelte';
 	import { goto } from '$app/navigation';
 
-    import { isAuthenticated, user } from '$lib/stores/auth';
-
+	import { isAuthenticated, user } from '$lib/stores/auth';
 
 	export let launches, launch, id, htmlimg, imgurl, bands, site;
 
@@ -55,7 +54,6 @@
 	//site = 'https://dev--rocktver.netlify.app/person/';
 
 	launch = launches.filter((launch) => launch.attributes.loter_id == id)[0];
-
 
 	function download() {
 		var link = document.createElement('a');
@@ -78,12 +76,21 @@
 	onMount(() => {
 		postprepare();
 		//console.log(imgurl);
-		document.getElementById('vk_share_button').innerHTML = VK.Share.button('https://rocktver.ru', {type: 'link'});
+		document.getElementById('vk_share_button').innerHTML = VK.Share.button(
+			{ 
+				image: imgurl, 
+				noparse: false 
+			},
+			{
+				type: 'round',
+				text: 'Поделиться'
+			}
+		);
 	});
 	$: imgurl = imgurl;
-	export let  imguserurl, username;
+	export let imguserurl, username;
 
-    $: imguserurl = $user.photo;
+	$: imguserurl = $user.photo;
 
 	$: username = $user.name + ' - УЧАСТНИК РОК-ОПОЛЧЕНИЯ 2022';
 
@@ -93,52 +100,40 @@
 <svelte:head>
 	<meta property="image" content={imgurl} />
 
-	<title>{$user.name}  - УЧАСТНИК РОК-ОПОЛЧЕНИЯ 2022</title>
+	<title>{$user.name} - УЧАСТНИК РОК-ОПОЛЧЕНИЯ 2022</title>
 	<link rel="canonical" href={site} />
 	<meta property="og:url" content={site} />
 	<meta property="og:type" content="article" />
 	<meta property="og:title" content={username} />
 	<meta name="Description" content="Я участник музыкального праздника для честных людей!" />
-	<meta
-		property="og:description"
-		content="Я участник музыкального праздника для честных людей!"
-	/>
+	<meta property="og:description" content="Я участник музыкального праздника для честных людей!" />
 	<meta property="og:image" content={imgurl} />
 	<meta name="twitter:card" content="summary" />
 
 	<meta name="twitter:title" content={username} />
-	<meta
-		name="twitter:description"
-		content="Я участник музыкального праздника для честных людей!"
-	/>
+	<meta name="twitter:description" content="Я участник музыкального праздника для честных людей!" />
 	<meta name="twitter:image" content={imgurl} />
 </svelte:head>
 <LogoComponent />
 {#if isAuthenticated}
-
-
 	{#if imgurl}
 		<div class="mx-auto max-w-xl">
 			<img class="" src={imgurl} alt="" />
 		</div>
 	{:else}
-	<div class="mx-auto max-w-xl">
-		<div
-			bind:this={htmlimg}
-			class="maskpic mx-auto  flex flex-col bg-white p-4 text-black dark:bg-gray-900 dark:text-white"
-		>
-			
-
-			<div aria-label="card 1" class="mx-auto rounded-lg">
-				<div class="readypic">
-					<Ramka1 img={imguserurl} />
+		<div class="mx-auto max-w-xl">
+			<div
+				bind:this={htmlimg}
+				class="maskpic mx-auto  flex flex-col bg-white p-4 text-black dark:bg-gray-900 dark:text-white"
+			>
+				<div aria-label="card 1" class="mx-auto rounded-lg">
+					<div class="readypic">
+						<Ramka1 img={imguserurl} />
+					</div>
+					<h2 class="name mr-auto ml-3">{$user.name}</h2>
 				</div>
-				<h2 class="name mr-auto ml-3">{$user.name}</h2>
 			</div>
-			
-		
 		</div>
-	</div>
 	{/if}
 	<div class="mt-3 w-full">
 		<div
@@ -152,7 +147,7 @@
 
 			<div
 				aria-label="card 1"
-				class="mx-auto mb-2 max-w-[60%] text-xl cursor-pointer rounded-lg bg-blue-400/70 p-2 text-center shadow ring-1 ring-yellow-400 transition-all hover:ring-2 focus:outline-none dark:bg-blue-300/40 "
+				class="mx-auto mb-2 max-w-[60%] cursor-pointer rounded-lg bg-blue-400/70 p-2 text-center text-xl shadow ring-1 ring-yellow-400 transition-all hover:ring-2 focus:outline-none dark:bg-blue-300/40 "
 				on:click={() => {
 					download();
 					ym(88086612, 'reachGoal', 'download pic');
