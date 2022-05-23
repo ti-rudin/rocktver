@@ -42,6 +42,10 @@ onMount(() => {
  register($user)
 });
 
+
+ 
+
+
 </script>
 
 {#if flag}
@@ -82,7 +86,7 @@ onMount(() => {
 	</a>
 {:else}
 	<h1 class="txt mx-auto text-lg mt-3 mb-2 bg-white text-black dark:bg-gray-900 dark:text-white">
-		Авторизуйтесь без лишних анкет.
+		Для участия в розыгрыше билетов, авторизуйтесь в соцсети ВК
 	</h1>
 	<h2
 		class="txt mx-auto max-w-sm justify-center mt-3 mb-5 bg-white text-black dark:bg-gray-900 dark:text-white"

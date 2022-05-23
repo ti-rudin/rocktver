@@ -12,7 +12,14 @@
       id
       attributes {
         band_name
-		lotereya_text
+		lotereya{
+          data{
+            attributes{
+              title
+              loter_id
+            }
+          }
+        }
         town
         small_text
         big_text
@@ -75,7 +82,6 @@
                 id
                 attributes {
                   band_name
-				  lotereya_text
                   
                 }
               }
@@ -226,6 +232,9 @@
 		change_track($user.id, +index);
 	}
 
+	let loterurl;
+	$: loterurl = '/lotereya/'+launch.attributes.lotereya.data.attributes.loter_id;
+
 //$: console.log(launch.attributes)
 </script>
 
@@ -236,8 +245,8 @@
 		aria-label="card 1"
 		class="mx-auto max-w-2xl rounded bg-blue-400/70 p-6 shadow  dark:bg-blue-500 "
 	>
-	<h1 class="pl-4 text-xl text-gray-800 focus:outline-none dark:text-white">
-		Выиграйте билет, участвуя в лотерее {JSON.stringify(launch.attributes.lotereya_text)}
+	<h1 class="pl-4 text-xl text-center text-gray-800 focus:outline-none dark:text-white">
+		{launch.attributes.lotereya.data.attributes.title}
 	</h1>
 
 	</div>
@@ -245,7 +254,7 @@
 	<a
 		class="tomain mx-auto delay-50 my-3  cursor-pointer rounded-lg bg-yellow-400/50 p-2 px-3 text-gray-800 shadow ring-yellow-800 transition-all duration-100 hover:ring-2 focus:outline-none  dark:bg-yellow-500/70 dark:text-gray-200 dark:hover:bg-blue-700/50 "
 		
-		href="/lotereya-hello"
+		href={loterurl}
 	>
 		<p class="mx-auto">Участвовать в лотерее</p>
 	</a>
