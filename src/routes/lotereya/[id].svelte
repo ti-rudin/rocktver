@@ -90,7 +90,7 @@
 
     $: imguserurl = $user.photo;
 
-	$: username = String(()=>{$user.name + ' - УЧАСТhggНИК РОК-ОПОЛЧЕНИЯ 2022'});
+	$: username = $user.name + ' - УЧАСТНИК РОК-ОПОЛЧЕНИЯ 2022';
 
 	//$: console.log(imgurl);
 </script>
