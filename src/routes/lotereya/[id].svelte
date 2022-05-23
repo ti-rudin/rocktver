@@ -78,9 +78,9 @@
 		//console.log(imgurl);
 		document.getElementById('vk_share_button').innerHTML = VK.Share.button(
 			{ 
-				image: 'https://sun9-29.userapi.com/impf/q0YUDMRxLVh1PWEuMRtqEWFKJHmzuaLyxVAvlQ/z9ooMo_VrxM.jpg?size=1590x530&quality=95&crop=0,0,1878,626&sign=6a931efb4a9aededeeee6981eead1a41&type=cover_group',
+				image: '2930.jpeg',
 				title: usernametitle,  
-				noparse: false,
+				noparse: true,
 				url: 'https://rocktver.ru' 
 			},
 			{
@@ -94,7 +94,7 @@
 
 	$: imguserurl = $user.photo;
 
-	$: usernametitle = $user.name + ' - УЧАСТНИК РОК-ОПОЛЧЕНИЯ 2022';
+	$: usernametitle = $user.name + ' - Я участвую в розыгрыше билета на РОК-ОПОЛЧЕНИЕ 2022';
 
 	//$: console.log(imgurl);
 </script>
