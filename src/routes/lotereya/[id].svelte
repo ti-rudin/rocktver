@@ -78,7 +78,7 @@
 		//console.log(imgurl);
 		document.getElementById('vk_share_button').innerHTML = VK.Share.button(
 			{ 
-				image: '2930.jpeg',
+				image: 'https://rocktver.ru/2930.jpeg',
 				title: usernametitle,  
 				noparse: true,
 				url: 'https://rocktver.ru' 
