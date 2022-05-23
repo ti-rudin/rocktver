@@ -78,12 +78,13 @@
 		//console.log(imgurl);
 		document.getElementById('vk_share_button').innerHTML = VK.Share.button(
 			{ 
-				image: imgurl,
+				//image: imgurl,
 				title: usernametitle,  
-				noparse: false 
+				noparse: true,
+				url: 'https://rocktver.ru' 
 			},
 			{
-				type: 'round',
+				type: 'round_nocount',
 				text: 'Поделиться'
 			}
 		);
