@@ -86,11 +86,11 @@
 		});
 	});
 	$: imgurl = imgurl;
-	export let  imguserurl;
+	export let  imguserurl, username;
 
     $: imguserurl = $user.photo;
 
-	
+	$: username = $user.name;
 
 	//$: console.log(imgurl);
 </script>
@@ -111,7 +111,7 @@
 	<meta property="og:image" content={imgurl} />
 	<meta name="twitter:card" content="summary" />
 
-	<meta name="twitter:title" content={$user.name + ' - УЧАСТhggНИК РОК-ОПОЛЧЕНИЯ 2022'} />
+	<meta name="twitter:title" content={username + ' - УЧАСТhggНИК РОК-ОПОЛЧЕНИЯ 2022'} />
 	<meta
 		name="twitter:description"
 		content='Я участник музыкального праздника для честных людей!'
