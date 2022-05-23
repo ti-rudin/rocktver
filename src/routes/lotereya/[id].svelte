@@ -98,11 +98,11 @@
 <svelte:head>
 	<meta property="image" content={imgurl} />
 
-	<title>{$user.name}  - УЧАСТkНИК РОК-ОПОЛЧЕНИЯ 2022</title>
+	<title>{$user.name}  - УЧАСТНИК РОК-ОПОЛЧЕНИЯ 2022</title>
 	<link rel="canonical" href={site} />
 	<meta property="og:url" content={site} />
 	<meta property="og:type" content="article" />
-	<meta property="og:title" content={$user.name+'- УЧАСТНИК РОК-ОПОЛЧЕНИЯ 2022'} />
+	<meta property="og:title" content={$user.name+'- УЧАСpppТНИК РОК-ОПОЛЧЕНИЯ 2022'} />
 	<meta name="Description" content='Я участник музыкального праздника для честных людей!' />
 	<meta
 		property="og:description"
@@ -111,7 +111,7 @@
 	<meta property="og:image" content={imgurl} />
 	<meta name="twitter:card" content="summary" />
 
-	<meta name="twitter:title" content={$user.name + ' - УЧАСТНИК РОК-ОПОЛЧЕНИЯ 2022'} />
+	<meta name="twitter:title" content={$user.name + ' - УЧАСТhggНИК РОК-ОПОЛЧЕНИЯ 2022'} />
 	<meta
 		name="twitter:description"
 		content='Я участник музыкального праздника для честных людей!'
