@@ -82,7 +82,7 @@
 			type: 'round',
 			text: 'Поделиться',
 			image: imgurl,
-			noparse: false
+			noparse: true
 		});
 	});
 	$: imgurl = imgurl;
@@ -98,15 +98,15 @@
 <svelte:head>
 	<meta property="image" content={imgurl} />
 
-	<title>{$user.name + ' - УЧАСТНИК РОК-ОПОЛЧЕНИЯ 2022'}</title>
+	<title>{$user.name}  - УЧАСТkНИК РОК-ОПОЛЧЕНИЯ 2022</title>
 	<link rel="canonical" href={site} />
 	<meta property="og:url" content={site} />
 	<meta property="og:type" content="article" />
-	<meta property="og:title" content={$user.name + ' - УЧАСТНИК РОК-ОПОЛЧЕНИЯ 2022'} />
-	<meta name="Description" content={'Я участник музыкального праздника для честных людей!'} />
+	<meta property="og:title" content={$user.name+'- УЧАСТНИК РОК-ОПОЛЧЕНИЯ 2022'} />
+	<meta name="Description" content='Я участник музыкального праздника для честных людей!' />
 	<meta
 		property="og:description"
-		content={'Я участник музыкального праздника для честных людей!'}
+		content='Я участник музыкального праздника для честных людей!'
 	/>
 	<meta property="og:image" content={imgurl} />
 	<meta name="twitter:card" content="summary" />
@@ -114,7 +114,7 @@
 	<meta name="twitter:title" content={$user.name + ' - УЧАСТНИК РОК-ОПОЛЧЕНИЯ 2022'} />
 	<meta
 		name="twitter:description"
-		content={'Я участник музыкального праздника для честных людей!'}
+		content='Я участник музыкального праздника для честных людей!'
 	/>
 	<meta name="twitter:image" content={imgurl} />
 </svelte:head>
