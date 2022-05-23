@@ -78,12 +78,7 @@
 	onMount(() => {
 		postprepare();
 		//console.log(imgurl);
-		document.getElementById('vk_share_button').innerHTML = VK.Share.button(false, {
-			type: 'round',
-			text: 'Поделиться',
-			image: imgurl,
-			noparse: false
-		});
+		document.getElementById('vk_share_button').innerHTML = VK.Share.button('https://rocktver.ru', {type: 'link'});
 	});
 	$: imgurl = imgurl;
 	export let  imguserurl, username;
