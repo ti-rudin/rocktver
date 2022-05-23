@@ -80,7 +80,7 @@
 			{ 
 				image: imgurl,
 				title: usernametitle,  
-				noparse: true,
+				noparse: false,
 				url: 'https://rocktver.ru' 
 			},
 			{
