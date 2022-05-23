@@ -51,7 +51,7 @@
 
 	export let launches, launch, id, htmlimg, imgurl, bands, site;
 
-	site = 'https://rocktver.ru/person/';
+	site = 'https://rocktver.ru/';
 	//site = 'https://dev--rocktver.netlify.app/person/';
 
 	launch = launches.filter((launch) => launch.attributes.loter_id == id)[0];
@@ -59,7 +59,7 @@
 
 	function download() {
 		var link = document.createElement('a');
-		link.download = launch.attributes.name + '-in-RockTver.jpeg';
+		link.download = $user.name + '-in-RockTver.jpeg';
 		link.href = imgurl;
 		link.click();
 
@@ -82,14 +82,14 @@
 			type: 'round',
 			text: 'Поделиться',
 			image: imgurl,
-			noparse: true
+			noparse: false
 		});
 	});
 	$: imgurl = imgurl;
 	export let  imguserurl;
 
     $: imguserurl = $user.photo;
-$: launch.attributes.name = $user.name
+
 	
 
 	//$: console.log(imgurl);
@@ -98,11 +98,11 @@ $: launch.attributes.name = $user.name
 <svelte:head>
 	<meta property="image" content={imgurl} />
 
-	<title>{launch.attributes.name + ' - УЧАСТНИК РОК-ОПОЛЧЕНИЯ 2022'}</title>
-	<link rel="canonical" href={site + launch.attributes.name} />
-	<meta property="og:url" content={site + launch.attributes.name} />
+	<title>{$user.name + ' - УЧАСТНИК РОК-ОПОЛЧЕНИЯ 2022'}</title>
+	<link rel="canonical" href={site} />
+	<meta property="og:url" content={site} />
 	<meta property="og:type" content="article" />
-	<meta property="og:title" content={launch.attributes.name + ' - УЧАСТНИК РОК-ОПОЛЧЕНИЯ 2022'} />
+	<meta property="og:title" content={$user.name + ' - УЧАСТНИК РОК-ОПОЛЧЕНИЯ 2022'} />
 	<meta name="Description" content={'Я участник музыкального праздника для честных людей!'} />
 	<meta
 		property="og:description"
@@ -111,7 +111,7 @@ $: launch.attributes.name = $user.name
 	<meta property="og:image" content={imgurl} />
 	<meta name="twitter:card" content="summary" />
 
-	<meta name="twitter:title" content={launch.attributes.name + ' - УЧАСТНИК РОК-ОПОЛЧЕНИЯ 2022'} />
+	<meta name="twitter:title" content={$user.name + ' - УЧАСТНИК РОК-ОПОЛЧЕНИЯ 2022'} />
 	<meta
 		name="twitter:description"
 		content={'Я участник музыкального праздника для честных людей!'}
