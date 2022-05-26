@@ -248,14 +248,14 @@
 
 	$: imguserurl = $user.photo;
 
-	$: usernametitle = $user.name + ' - Я участвую в розыгрыше билета на РОК-ОПОЛЧЕНИЕ 2022';
+	$: usernametitle = 'Я собираюсь на Рок ОполЧЕние 2022';
 
 	//$: console.log(imgurl);
 	if (flag) {
 		document.getElementById('vk_share_button').innerHTML = VK.Share.button(
 			{
-				image: 'https://rocktver.ru/rockopolchenie-2022.jpg',
-				title: usernametitle,
+				image: 'https://rocktver.ru/rockopolchenie2022.jpg',
+				title: 'Я собираюсь на Рок ОполЧЕние 2022',
 				noparse: true,
 				url: 'https://vk.com/rock_opolchenie2022'
 			},
@@ -276,13 +276,13 @@
 	<meta property="og:url" content={site} />
 	<meta property="og:type" content="article" />
 	<meta property="og:title" content={usernametitle} />
-	<meta name="Description" content="Я участник музыкального праздника для честных людей!" />
-	<meta property="og:description" content="Я участник музыкального праздника для честных людей!" />
+	<meta name="Description" content="Я собираюсь на Рок ОполЧЕние 2022" />
+	<meta property="og:description" content="Я собираюсь на Рок ОполЧЕние 2022" />
 	<meta property="og:image" content={imgurl} />
 	<meta name="twitter:card" content="summary" />
 
 	<meta name="twitter:title" content={usernametitle} />
-	<meta name="twitter:description" content="Я участник музыкального праздника для честных людей!" />
+	<meta name="twitter:description" content="Я собираюсь на Рок ОполЧЕние 2022" />
 	<meta name="twitter:image" content={imgurl} />
 </svelte:head>
 <LogoComponent />
