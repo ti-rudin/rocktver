@@ -8,7 +8,7 @@ onMount(() => {
     //console.log(imgurl);
     document.getElementById('vk_share_button').innerHTML = VK.Share.button(
         {
-            image: 'https://rocktver.ru/rockopolchenie-2022.jpg',
+            image: 'https://rocktver.ru/rockopolchenie2022.jpg',
             title: usernametitle,
             noparse: true,
             url: 'https://vk.com/rock_opolchenie2022'
@@ -48,8 +48,8 @@ function register(x) {
         class="mx-auto max-w-2xl rounded-lg bg-blue-400/50 pb-3 shadow dark:bg-blue-500/20 "
     >
         <div class=" mx-auto p-4 text-center text-gray-800 focus:outline-none dark:text-white">
-            <div class="mx-auto w-56">
-                <img class="mx-auto w-full" src="/rockopolchenie-2022.jpg" alt="РОКОПОЛЧЕНИЕ  2022" />
+            <div class="mx-auto w-72">
+                <img class="mx-auto w-full" src="/rockopolchenie2022.jpg" alt="РОКОПОЛЧЕНИЕ  2022" />
             </div>
         </div>
 
