@@ -278,12 +278,12 @@
 	<meta property="og:title" content={usernametitle} />
 	<meta name="Description" content="Я собираюсь на Рок ОполЧЕние 2022" />
 	<meta property="og:description" content="Я собираюсь на Рок ОполЧЕние 2022" />
-	<meta property="og:image" content={imgurl} />
+	<meta property="og:image" content='https://rocktver.ru/rockopolchenie2022.jpg' />
 	<meta name="twitter:card" content="summary" />
 
 	<meta name="twitter:title" content={usernametitle} />
 	<meta name="twitter:description" content="Я собираюсь на Рок ОполЧЕние 2022" />
-	<meta name="twitter:image" content={imgurl} />
+	<meta name="twitter:image" content='https://rocktver.ru/rockopolchenie2022.jpg' />
 </svelte:head>
 <LogoComponent />
 <div class="mt-1 w-full ">
