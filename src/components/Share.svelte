@@ -42,7 +42,7 @@ function register(x) {
 	}
 </script>
 
-<div class="mt-3 w-64 ">
+<div class="mt-3 ">
     <div
         aria-label="card 1"
         class="mx-auto max-w-2xl rounded-lg bg-blue-400/50 pb-3 shadow dark:bg-blue-500/20 "
