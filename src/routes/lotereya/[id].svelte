@@ -144,7 +144,9 @@
 			.then((response) => response.json())
 			.then((result) => {
 				console.log(result);
-				playedusers = result;
+				playedusers = result.filter(function (el){
+					return el.loterid == launch.attributes.loter_id
+				});
 				kolvo = playedusers.length;
 			})
 			.catch((error) => console.log('error', error));
@@ -298,7 +300,7 @@
 		class="mx-auto max-w-2xl  rounded-lg bg-blue-800/40 p-6 shadow  transition-all  focus:outline-none dark:bg-blue-600/80 "
 	>
 		
-		<h1 class="text-xl mx-auto">Для участия в розыгрыше авторизуйтесь через ВК и нажмите кнопку "Поделиться".</h1>
+		<h1 class="text-xl mx-auto">Для участия в розыгрыше авторизуйтесь через ВК и разместите информацию о нашем празднике на своей странице.</h1>
 	</div>
 </div>
 {#if $isAuthenticated}
@@ -321,7 +323,7 @@
 	
 	</div>
 	<div class="mx-auto">
-		<Share usernametitle={usernametitle} />
+		<Share usernametitle={usernametitle} loterid={launch.attributes.loter_id}/>
 	</div>
 	
 {:else}
@@ -561,7 +563,6 @@
 		position: relative;
 		bottom: 0.6rem;
 		z-index: 100;
-
 		font-size: 0.9rem;
 		line-height: 1.4rem;
 	}

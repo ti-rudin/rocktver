@@ -1,7 +1,7 @@
 <script>
 	import { onDestroy, onMount } from 'svelte';
-
-    export let usernametitle;
+	import { isAuthenticated, user } from '$lib/stores/auth';
+    export let usernametitle, loterid;
    
 onMount(() => {
 
@@ -19,6 +19,27 @@ onMount(() => {
         }
     );
 });
+function register(x) {
+		let myHeaders = new Headers();
+		myHeaders.append('Content-Type', 'application/json');
+
+		let raw = JSON.stringify({user: x});
+
+		let requestOptions = {
+			method: 'POST',
+			headers: myHeaders,
+			body: raw,
+		};
+
+		fetch('https://api.rocktver.ru/lotereya-register/?loterid='+loterid, requestOptions)
+			.then((response) => response.json())
+			.then((result) => {
+				
+				return result;
+			})
+			.catch((error) => console.log('error', error));
+
+	}
 </script>
 
 <div class="mt-3 w-64 ">
@@ -38,6 +59,7 @@ onMount(() => {
             
             on:click={() => {
                 ym(88086612, 'reachGoal', 'repost pic');
+                register($user)
             }}
         />
     </div>
