@@ -62,6 +62,7 @@ function register(x) {
                 register($user)
             }}
         />
+        <h1 class="text-xs mx-auto px-4">Обновите страницу, если при размещении поста возникла ошибка.</h1>
     </div>
 </div>
 <style>
