@@ -56,6 +56,7 @@
 	$: qrurl = apiurl + '/qrcode-register?id=' + $user.id;
 	import { onDestroy, onMount } from 'svelte';
 	import LogoComponent from '../../components/LogoComponent.svelte';
+	import Share from '../../components/Share.svelte';
 	import Ramka1 from '../../components/Ramka1.svelte';
 	import * as htmlToImage from 'html-to-image';
 	import { toPng, toJpeg, toSvg } from 'html-to-image';
@@ -149,9 +150,7 @@
 			.catch((error) => console.log('error', error));
 	}
 
-	onMount(() => {
-		getplayedusers();
-	});
+
 	$: playedusers = playedusers;
 
 	export let kolvo;
@@ -189,7 +188,7 @@
 			//fetch('')
 		});
 	}
-	import { browser } from '$app/env';
+
 
 	function getit(response) {
 		if (response.session) {
@@ -235,21 +234,13 @@
 		);
 	}
 	onMount(() => {
+		getplayedusers();
 		postprepare();
 		//console.log(imgurl);
-		document.getElementById('vk_share_button').innerHTML = VK.Share.button(
-			{
-				image: 'https://rocktver.ru/2930.jpeg',
-				title: usernametitle,
-				noparse: true,
-				url: 'https://rocktver.ru'
-			},
-			{
-				type: 'round_nocount',
-				text: 'Поделиться'
-			}
-		);
+
 	});
+
+
 	$: imgurl = imgurl;
 	export let imguserurl, usernametitle;
 
@@ -258,6 +249,21 @@
 	$: usernametitle = $user.name + ' - Я участвую в розыгрыше билета на РОК-ОПОЛЧЕНИЕ 2022';
 
 	//$: console.log(imgurl);
+	if (flag) {
+		document.getElementById('vk_share_button').innerHTML = VK.Share.button(
+			{
+				image: 'https://rocktver.ru/rockopolchenie-2022.jpg',
+				title: usernametitle,
+				noparse: true,
+				url: 'https://vk.com/rock_opolchenie2022'
+			},
+			{
+				type: 'round_nocount',
+				text: 'Поделиться'
+			}
+		);
+
+	}
 </script>
 
 <svelte:head>
@@ -281,14 +287,22 @@
 <div class="mt-1 w-full ">
 	<div
 		aria-label="card 1"
-		class="mx-auto max-w-2xl cursor-pointer rounded-lg bg-blue-400/70 p-6 shadow ring-yellow-400 transition-all hover:ring-2 focus:outline-none dark:bg-blue-500 "
+		class="mx-auto max-w-2xl  rounded-lg bg-blue-400/70 p-6 shadow transition-all  focus:outline-none dark:bg-blue-500/40 "
 	>
 		<h1 class="mx-auto text-2xl">{launch.attributes.title}</h1>
 	</div>
 </div>
-
+<div class="mt-4 w-full ">
+	<div
+		aria-label="card 1"
+		class="mx-auto max-w-2xl  rounded-lg bg-blue-800/40 p-6 shadow  transition-all  focus:outline-none dark:bg-blue-600/80 "
+	>
+		
+		<h1 class="text-xl mx-auto">Для участия в розыгрыше авторизуйтесь через ВК и нажмите кнопку "Поделиться".</h1>
+	</div>
+</div>
 {#if $isAuthenticated}
-	<p class="slogan mx-auto mb-5">Спасибо, что Вы с нами!</p>
+	<p class="slogan mx-auto my-4">Спасибо, что Вы с нами!</p>
 	<div class="flex justify-center">
 		<!-- Card -->
 		<div class="delay-50 group flex w-auto rounded-lg bg-gray-800 p-5">
@@ -304,27 +318,10 @@
 				<p class="mt-2 text-sm font-bold text-gray-400">ВК ID: {$user.id}</p>
 			</div>
 		</div>
+	
 	</div>
-
-	<div class="mt-3 w-48 ">
-		<div
-			aria-label="card 1"
-			class="mx-auto max-w-2xl rounded-lg bg-blue-400/50 pb-3 shadow dark:bg-blue-500/20 "
-		>
-			<div class=" mx-auto p-4 text-center text-gray-800 focus:outline-none dark:text-white">
-				<div class="mx-auto w-36">
-					<img class="mx-auto w-full" src="/rockopolchenie-2022.jpg" alt="РОКОПОЛЧЕНИЕ  2022" />
-				</div>
-			</div>
-
-			<div
-				class="pb-4 pt-2"
-				id="vk_share_button"
-				on:click={() => {
-					ym(88086612, 'reachGoal', 'repost pic');
-				}}
-			/>
-		</div>
+	<div class="mx-auto">
+		<Share usernametitle={usernametitle} />
 	</div>
 	
 {:else}
@@ -333,8 +330,10 @@
 		class="loginbut cursor-pointer p-3 mx-auto my-4 flex w-full max-w-2xl flex-col items-start rounded-lg bg-yellow-400/50 px-3 text-black ring-yellow-400 transition-all hover:ring-2 dark:bg-yellow-800/25 dark:text-white"
 		id="login_button"
 		on:click={() => {
+			
 			ym(88086612, 'reachGoal', 'vk-auth-start');
 			VK.Auth.login(getit);
+			
 		}}
 	 >
 		<p class="mx-auto">Войти с помощью</p>
@@ -359,20 +358,26 @@
 	</div>
 
 </div>
-	<div class="mt-1 w-full ">
-		<div
-			aria-label="card 1"
-			class="mx-auto max-w-2xl cursor-pointer rounded-lg bg-blue-400/70 p-6 shadow ring-yellow-400 transition-all hover:ring-2 focus:outline-none dark:bg-blue-500 "
-		>
-			
-			<h1 class="text-xl mx-auto">Для участия в розыгрыше авторизуйтесь через ВК и нажмите кнопку "Поделиться", чтобы разместить на своей странице информацию о нашем празднике.</h1>
+
+{/if}
+{#if playedusers}
+	<div class="my-2 mx-auto flex max-w-2xl flex-wrap justify-center">
+		{#each playedusers as user, i}
+		<div class="tooltip">
+			<img
+				class:active={i == index}
+				class="delay-50 m-2 h-28 w-28 rounded-full rounded-full bg-blue-800/40 p-2"
+				src={user.photo}
+				alt={user.name}
+			/>
+			<span class="tooltiptext">{user.name}</span>
 		</div>
+		{/each}
 	</div>
 {/if}
-
 {#if kolvo}
 	<p class=" mx-auto mb-5 text-center text-xl">
-		Количество зарегистрированных участников - <span class="slogan">{kolvo}</span> чел.
+		Зарегистрированные участники розыгрыша. <span class="slogan">{kolvo}</span> чел.
 	</p>
 {/if}
 <h1 class="mx-auto mt-3 mb-1 max-w-lg text-lg">Таймер</h1>
@@ -445,20 +450,41 @@
 		</div>
 	</div>
 {/if}
-{#if playedusers}
-	<div class="my-2 mx-auto flex max-w-2xl flex-wrap justify-center">
-		{#each playedusers as user, i}
-			<img
-				class:active={i == index}
-				class="delay-50 m-2 h-28 w-28 rounded-full rounded-full bg-blue-800/40 p-2"
-				src={user.photo}
-				alt={user.name}
-			/>
-		{/each}
-	</div>
-{/if}
+
 
 <style>
+
+	/* Tooltip container */
+.tooltip {
+  position: relative;
+  display: inline-block;
+  border-bottom: 1px dotted black; /* If you want dots under the hoverable text */
+}
+
+/* Tooltip text */
+.tooltip .tooltiptext {
+  visibility: hidden;
+  width: 120px;
+  background-color: black;
+  color: #fff;
+  text-align: center;
+  padding: 5px 0;
+  border-radius: 6px;
+ 
+  /* Position the tooltip text - see examples below! */
+  position: absolute;
+  z-index: 1;
+}
+
+/* Show the tooltip text when you mouse over the tooltip container */
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+}
+.tooltip .tooltiptext {
+  top: 80px;
+  left: 2px;
+}
+
 	.count {
 		font-size: 21px;
 		width: auto;
@@ -499,14 +525,7 @@
 		max-width: fit-content;
 		min-width: 27rem;
 	}
-	#vk_share_button {
-		transform: scale(1.8);
-		position: relative;
-		width: 1rem;
-		left: -4.7rem;
-		margin-left: auto;
-		margin-right: auto;
-	}
+
 
 	.name {
 		color: red;
