@@ -64,6 +64,7 @@
 	import { goto } from '$app/navigation';
 
 	import { isAuthenticated, user } from '$lib/stores/auth';
+	import { isDarkFlag, isMngr, isAdmin } from '$lib/siteConfig';
 
 	export let launches, launch, id, htmlimg, imgurl, bands, site;
 	function register(x) {
@@ -366,12 +367,14 @@
 	<div class="my-2 mx-auto flex max-w-2xl flex-wrap justify-center">
 		{#each playedusers as user, i}
 		<div class="tooltip">
+			<a href="https://vk.com/id{user.id}">
 			<img
 				class:active={i == index}
 				class="delay-50 m-2 h-28 w-28 rounded-full rounded-full bg-blue-800/40 p-2"
 				src={user.photo}
 				alt={user.name}
 			/>
+		</a>
 			<span class="tooltiptext">{user.name}</span>
 		</div>
 		{/each}
@@ -382,7 +385,12 @@
 		Зарегистрированные участники розыгрыша. <span class="slogan">{kolvo}</span> чел.
 	</p>
 {/if}
-<h1 class="mx-auto mt-3 mb-1 max-w-lg text-lg">Таймер</h1>
+
+{#if $isAuthenticated}
+	{#if $isAdmin}
+
+
+<h1 class="mx-auto mt-3 mb-1 max-w-lg text-lg">Таймер, сек</h1>
 {#if !played}
 	<div class="count mx-auto flex h-10">
 		<div
@@ -452,6 +460,10 @@
 		</div>
 	</div>
 {/if}
+
+	{/if}
+{/if}
+
 
 
 <style>

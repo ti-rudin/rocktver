@@ -1,3 +1,4 @@
+
 <script>
 	import { onDestroy, onMount } from 'svelte';
 	import { isAuthenticated, user } from '$lib/stores/auth';
@@ -7,6 +8,35 @@
 
 
 	import { browser } from '$app/env';
+
+
+
+	async function getplayedusers() {
+		let myHeaders = new Headers();
+		myHeaders.append('Content-Type', 'application/json');
+
+		//let raw = JSON.stringify({user: x});
+
+		let requestOptions = {
+			method: 'GET',
+			headers: myHeaders
+			//body: raw,
+		};
+
+		fetch('https://api.rocktver.ru/lotereya-getplayedusers/', requestOptions)
+			.then((response) => response.json())
+			.then((result) => {
+				//console.log(result);
+				launch = result.filter((launch) => launch.id == $user.id);
+				console.log(launch[0].loterid);
+				loterid = launch[0].loterid;
+				
+				
+			})
+			.catch((error) => console.log('error', error));
+	}
+	
+
 	let apiurl = 'https://api.rocktver.ru';
 	//isAuthenticated = browser ? window.localStorage.getItem('isAuthenticated') ?? isAuthenticated_defaultValue : isAuthenticated_defaultValue;
 	function logauth(ud) {
@@ -101,12 +131,20 @@
 	}
 	$isAdmin = false;
 	onMount(() => {
-		
+		getplayedusers();
 		
 	});
-	export let flag, qrurl;
+	export let flag, qrurl, playedusers, launch, userid, loterid;
 	$: flag = $isAuthenticated;
 	$: qrurl = apiurl+'/qrcode-register?id='+ $user.id
+	$: userid = $user.id;
+
+	//loterid = playedusers[0].loterid
+	$: if (flag) {
+		
+	
+		console.log(loterid);
+	}
 </script>
 
 {#if flag}
@@ -133,21 +171,29 @@
 		
 	</div>
 
-
+{#if loterid}
+<a
+class="tomain delay-50 m-5 mx-auto cursor-pointer rounded-lg bg-orange-400/70 p-2 px-3 text-gray-800 shadow ring-yellow-800 transition-all duration-100 hover:ring-2 focus:outline-none  dark:bg-orange-500/80 dark:text-gray-300 dark:hover:bg-blue-700/50 "
+id="logout_button"
+href="/lotereya/{loterid}"
+>
+<p class="mx-auto">Лотерея</p>
+</a>
+{/if}
 
 	<a
 		class="tomain delay-50 m-5 mx-auto cursor-pointer rounded-lg bg-blue-400/50 p-2 px-3 text-gray-800 shadow ring-yellow-800 transition-all duration-100 hover:ring-2 focus:outline-none  dark:bg-blue-500/20 dark:text-gray-300 dark:hover:bg-blue-700/50 "
 		id="logout_button"
 		href="/"
 	>
-		<p class="mx-auto">Перейти на главную страницу</p>
+		<p class="mx-auto">На главную</p>
 	</a>
 	<a
 		class="tomain  delay-50 mx-auto cursor-pointer rounded-lg bg-blue-400/50 p-2 px-3 text-gray-800 shadow ring-yellow-800 transition-all duration-100 hover:ring-2 focus:outline-none dark:bg-blue-500/20 dark:text-gray-300 dark:hover:bg-blue-700/50 "
 		id="logout_button"
 		href="/now"
 	>
-		<p class="mx-auto">Перейти на страницу прямого эфира</p>
+		<p class="mx-auto">Прямой эфир</p>
 	</a>
 	<div
 		class="logoutbut m-5 mx-auto cursor-pointer rounded-lg bg-red-400/95 p-2 px-3 text-white ring-red-800 transition-all hover:ring-2 dark:bg-red-800/95 dark:text-white"
