@@ -140,7 +140,7 @@
 			>
 				{#if band}
 					<div
-						class="flex cursor-pointer rounded ring-yellow-400 transition-all hover:ring-2 focus:outline-none"
+						class="flex mb-3 cursor-pointer rounded ring-yellow-400 transition-all hover:ring-2 focus:outline-none"
 						on:click={() => {
 							goto('/band/' + band.attributes.band_name);
 						}}
