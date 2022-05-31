@@ -233,13 +233,13 @@
 	}
 
 	let loterurl;
-	$: loterurl = '/lotereya/'+launch.attributes.lotereya.data.attributes.loter_id;
+	$: if (launch.attributes.lotereya.data) { loterurl = '/lotereya/'+launch.attributes.lotereya.data.attributes.loter_id }
 
 //$: console.log(launch.attributes)
 </script>
 
 <LogoComponent />
-
+{#if loterurl}
 <div class="mt-1 w-full ">
 	<div
 		aria-label="card 1"
@@ -258,7 +258,7 @@
 	>
 		<p class="mx-auto">Участвовать в лотерее</p>
 	</a>
-
+{/if}
 <div class="mt-1 w-full ">
 	<div
 		aria-label="card 1"
