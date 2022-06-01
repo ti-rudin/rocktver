@@ -376,7 +376,7 @@
 	<div class="my-2 mx-auto flex max-w-2xl flex-wrap justify-center">
 		{#each playedusers as user, i}
 		<div class="tooltip">
-			<a href="https://vk.com/id{user.id}">
+			<a href="https://vk.com/id{user.id}" target="blank">
 			<img
 				class:active={i == index}
 				class="delay-50 m-2 h-28 w-28 rounded-full rounded-full bg-blue-800/40 p-2"
