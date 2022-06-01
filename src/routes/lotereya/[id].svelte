@@ -298,10 +298,10 @@
 <div class="mt-4 w-full ">
 	<div
 		aria-label="card 1"
-		class="mx-auto max-w-2xl  rounded-lg bg-blue-800/40 p-6 shadow  transition-all  focus:outline-none dark:bg-blue-600/80 "
+		class="mx-auto max-w-2xl  rounded-lg bg-blue-500/70 p-6 shadow  transition-all  focus:outline-none dark:bg-blue-600/80 "
 	>
 		
-		<h1 class="text-xl mx-auto">Для участия в розыгрыше авторизуйтесь через ВК и разместите информацию о нашем празднике на своей странице.</h1>
+		<h1 class="text-xl mx-auto">Авторизуйтесь через ВК для начала регистрации в розыгрыше.</h1>
 	</div>
 </div>
 {#if $isAuthenticated}
@@ -322,6 +322,15 @@
 			</div>
 		</div>
 	
+	</div>
+	<div class="mt-4 w-full ">
+		<div
+			aria-label="card 1"
+			class="mx-auto max-w-2xl  rounded-lg bg-blue-500/70 p-6 shadow  transition-all  focus:outline-none dark:bg-blue-600/80 "
+		>
+			
+			<h1 class="text-xl mx-auto">Нажмите "Поделиться", чтобы принять участие в розыгрыше.</h1>
+		</div>
 	</div>
 	<div class="mx-auto">
 		<Share usernametitle={usernametitle} loterid={launch.attributes.loter_id}/>
