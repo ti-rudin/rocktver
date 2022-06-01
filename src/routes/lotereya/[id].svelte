@@ -396,7 +396,7 @@
 {/if}
 
 {#if $isAuthenticated}
-	{#if $isAdmin}
+	{#if ($isMngr || $isAdmin)}
 
 
 <h1 class="mx-auto mt-3 mb-1 max-w-lg text-lg">Таймер, сек</h1>

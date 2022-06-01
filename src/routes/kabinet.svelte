@@ -125,6 +125,9 @@
 				if (result.id == 'admin') {
 					$isAdmin = true;
 				}
+				if (result.id == 'mngr') {
+					$isMngr = true;
+				}
 				return result.id;
 			})
 			.catch((error) => console.log('error', error));
