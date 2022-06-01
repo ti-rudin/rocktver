@@ -329,7 +329,7 @@
 			class="mx-auto max-w-2xl  rounded-lg bg-blue-500/70 p-6 shadow  transition-all  focus:outline-none dark:bg-blue-600/80 "
 		>
 			
-			<h1 class="text-xl mx-auto">Нажмите "Поделиться", чтобы принять участие в розыгрыше.</h1>
+			<h1 class="text-xl mx-auto">Нажмите "Поделиться", чтобы принять участие в розыгрыше. Одновременно можно участвовать только в одной лотерее.</h1>
 		</div>
 	</div>
 	<div class="mx-auto">
