@@ -4,8 +4,7 @@ export const GH_USER_REPO = 'ti-rudin/rocktver'; // used for pulling github issu
 export const REPO_URL = 'https://github.com/' + GH_USER_REPO;
 export const SITE_TITLE = 'РОК-ОПОЛЧЕНИЕ 2022';
 export const SITE_DESCRIPTION = 'Музыкальный праздник РОК-ОПОЛЧЕНИЕ 2022';
-export const DEFAULT_OG_IMAGE =
-	'https://admin.rocktver.ru/uploads/thumbnail_180_59335eda76.png';
+export const DEFAULT_OG_IMAGE = 'https://rocktver.ru/rockopolchenie2022-2.jpg';
 
 //export const MY_YOUTUBE = 'https://youtube.com/swyxTV';
 
