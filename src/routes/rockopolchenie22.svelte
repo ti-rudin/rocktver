@@ -176,11 +176,7 @@ hover:ring-2 dark:bg-yellow-800 dark:text-white"
 		LINE UP
 	</a>
 </div>
-<div class="mx-auto mt-2 w-full max-w-2xl text-lg">
-	Для тур-агентов специальные условия. Вы можете включить в поездку Твери и Тверской области
-	уникальное предложение для своих клиентов: в качестве завершения программы - семейный рок
-	фестиваль!
-</div>
+
 <div class="mx-auto w-full max-w-2xl text-lg">Задачи которые мы ставим перед собой :</div>
 <div class="mx-auto w-full max-w-2xl">
 	<ul class="text-lg">
