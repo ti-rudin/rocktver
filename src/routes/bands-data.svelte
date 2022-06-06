@@ -28,7 +28,13 @@
         group_link_rocktver
         mngr_id
         time_on_scene
-        lotereya_text
+        lotereya{
+          data{
+            attributes{
+              title
+            }
+          }
+        }
         artists {
           data {
             attributes {
@@ -51,7 +57,7 @@
             text
             words_rights
             music_rights
-			year_born
+			
             is_premiere
             id
           }
@@ -76,7 +82,7 @@
 				  id
                 attributes {
                   band_name
-                  lotereya_text
+                 
 				  
                 }
               }

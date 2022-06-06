@@ -120,9 +120,7 @@
 	А так же на празднике выступят рок группы из Твери, Москвы, Санкт-Петербурга и Череповца со своим
 	творческим материалом.
 </div>
-<div class="mx-auto w-full max-w-2xl text-lg">
-	Лето, речка, отдых для всей семьи.
-</div>
+<div class="mx-auto w-full max-w-2xl text-lg">Лето, речка, отдых для всей семьи.</div>
 
 <div
 	class="ramka mx-auto my-2 flex flex-col rounded text-center ring-1 ring-yellow-600  hover:ring-4 sm:p-4"
@@ -164,37 +162,51 @@
 <div class="mx-auto w-full max-w-2xl">
 	<img class="mx-auto w-full" src="/rockopolchenie-2022.jpg" alt="РОКОПОЛЧЕНИЕ  2022" />
 </div>
-<div class="mx-auto w-full max-w-2xl text-lg mt-2">
-	Для тур-агентов специальные условия. Вы можете включить в поездку Твери и Тверской области уникальное предложение для своих клиентов: в качестве завершения программы - семейный рок фестиваль!
-
+<div class="mx-auto ">
+	<a sveltekit:prefetch
+		href="/concert/2"
+		class="lineupbut m-4 flex h-9 w-auto cursor-pointer rounded-lg bg-yellow-400 px-3 pt-1 text-center text-black ring-yellow-400 transition-all
+hover:ring-2 dark:bg-yellow-800 dark:text-white"
+	>
+		LINE UP
+	</a>
 </div>
-<div class="mx-auto w-full max-w-2xl text-lg">
-	Задачи которые мы ставим перед собой : 
+<div class="mx-auto mt-2 w-full max-w-2xl text-lg">
+	Для тур-агентов специальные условия. Вы можете включить в поездку Твери и Тверской области
+	уникальное предложение для своих клиентов: в качестве завершения программы - семейный рок
+	фестиваль!
 </div>
+<div class="mx-auto w-full max-w-2xl text-lg">Задачи которые мы ставим перед собой :</div>
 <div class="mx-auto w-full max-w-2xl">
 	<ul class="text-lg">
 		<li>развитие и популяризация рок культуры</li>
 		<li>развитие и укрепление межкультурных связей городов</li>
 		<li>мотивация молодежи к созидательной творческой деятельности</li>
-		<li>обмен творческим опытом, идеями, повышение творческого уровня и развитие
-			творческого потенциала музыкантов</li>
+		<li>
+			обмен творческим опытом, идеями, повышение творческого уровня и развитие творческого
+			потенциала музыкантов
+		</li>
 		<li>защита и популяризация традиционных семейных ценностей</li>
 	</ul>
 </div>
 <div class="mx-auto ">
-	<a href="/volonteram" 
-	class="m-4 flex h-9 rounded-lg bg-yellow-400 w-auto px-3 pt-1 text-center text-black ring-yellow-400 transition-all
-	hover:ring-2 dark:bg-yellow-800 dark:text-white"
-	>Волонтёрам</a>
-	<a href="/sponsoram" 
-	class="m-4 flex h-9 rounded-lg bg-yellow-400 w-auto px-3 pt-1 text-center text-black ring-yellow-400 transition-all
-	hover:ring-2 dark:bg-yellow-800 dark:text-white"
-	>Спонсорам</a>
-
-
+	<a sveltekit:prefetch
+		href="/volonteram"
+		class="m-4 flex h-9 w-auto rounded-lg bg-yellow-400 px-3 pt-1 text-center text-black ring-yellow-400 transition-all
+	hover:ring-2 dark:bg-yellow-800 dark:text-white">Волонтёрам</a
+	>
+	<a sveltekit:prefetch
+		href="/sponsoram"
+		class="m-4 flex h-9 w-auto rounded-lg bg-yellow-400 px-3 pt-1 text-center text-black ring-yellow-400 transition-all
+	hover:ring-2 dark:bg-yellow-800 dark:text-white">Спонсорам</a
+	>
 </div>
 
 <style>
+	.lineupbut {
+		font-size: 20px;
+		text-align: center;
+	}
 	ul {
 		padding-bottom: 1rem;
 	}
