@@ -49,7 +49,7 @@
 		<div class="flex w-full  mx-auto max-w-2xl  px-4 sm:px-0">
 			<div class="flex flex-col">
 				<a sveltekit:prefetch href="/" class="pt-4"> Главная </a>
-				<a sveltekit:prefetch href="/now" class="pt-4"> Эфир </a>
+				<a sveltekit:prefetch href="/volonteram" class="pt-4"> Волонтёрам </a>
 				<a sveltekit:prefetch href="/sponsoram" class="pt-4"> Спонсорам </a>
 			</div>
 			<div class="ml-4 flex flex-col">

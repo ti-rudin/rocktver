@@ -80,6 +80,7 @@
 		return (n < 10 ? '0' : '') + n;
 	}
 </script>
+
 <svelte:head>
 	<title>{SITE_TITLE}</title>
 	<link rel="canonical" href={SITE_URL} />
@@ -96,22 +97,36 @@
 	<meta name="twitter:image" content={DEFAULT_OG_IMAGE} />
 </svelte:head>
 
-<LogoComponent/>
-<h2 class="mx-auto mt-1  text-center ">
-	Cемейный музыкальный праздник на открытом воздухе, объединяющий честных людей.
+<LogoComponent />
+<h2 class="mx-auto my-2  max-w-2xl text-left text-lg">
+	Cемейный музыкальный праздник на открытом воздухе в Тверской области, который пройдет 29-го и
+	30-го июля 2022.
 </h2>
-<h2 class="mx-auto mt-3 ">
-	Девиз мероприятия:
-</h2>
-<h1 class="slogan mx-auto  text-black  dark:text-white">
-	ЧЕстный праздник для ЧЕстных людей
-</h1>
+<div class="mx-auto w-full max-w-2xl text-lg">
+	<h1 class="w-full text-left">Основной принцип праздника - <strong>забота о гостях.</strong></h1>
+	<h1 class="w-full text-left">В рамках этого:</h1>
+</div>
 
+<div class="mx-auto w-full max-w-2xl">
+	<ul class="text-lg">
+		<li>Проведена обработка территории от клещей</li>
+		<li>Подготовлена парковка для машин</li>
+		<li>Расчищена территория для палаток</li>
+		<li>Приглашены аниматоры для детей и их родителей</li>
+		<li>Профессиональные инструкторы проведут занятия для гостей</li>
+	</ul>
+</div>
+<div class="mx-auto w-full max-w-2xl text-lg">
+	А так же на празднике выступят рок группы из Твери, Москвы, Санкт-Петербурга и Череповца со своим
+	творческим материалом.
+</div>
+<div class="mx-auto w-full max-w-2xl text-lg">
+	Лето, речка, отдых для всей семьи.
+</div>
 
-
-
-<div class="ramka flex sm:p-4 mx-auto my-2 text-center flex-col rounded ring-yellow-600  ring-1 hover:ring-4">
-	
+<div
+	class="ramka mx-auto my-2 flex flex-col rounded text-center ring-1 ring-yellow-600  hover:ring-4 sm:p-4"
+>
 	<h1 class="adr mx-auto  text-black  dark:text-white">29 июля 2022</h1>
 
 	<div
@@ -140,9 +155,7 @@
 		</div>
 	</div>
 
-	<h2 class="mx-auto mt-5  text-center text-black  dark:text-white">
-		Место проведения:
-	</h2>
+	<h2 class="mx-auto mt-5  text-center text-black  dark:text-white">Место проведения:</h2>
 
 	<h1 class="adr mx-auto  text-black  dark:text-white">
 		Тверская область, д. Тутань (на берегу р. Тьма)
@@ -151,13 +164,49 @@
 <div class="mx-auto w-full max-w-2xl">
 	<img class="mx-auto w-full" src="/rockopolchenie-2022.jpg" alt="РОКОПОЛЧЕНИЕ  2022" />
 </div>
+<div class="mx-auto w-full max-w-2xl text-lg mt-2">
+	Для тур-агентов специальные условия. Вы можете включить в поездку Твери и Тверской области уникальное предложение для своих клиентов: в качестве завершения программы - семейный рок фестиваль!
 
+</div>
+<div class="mx-auto w-full max-w-2xl text-lg">
+	Задачи которые мы ставим перед собой : 
+</div>
+<div class="mx-auto w-full max-w-2xl">
+	<ul class="text-lg">
+		<li>развитие и популяризация рок культуры</li>
+		<li>развитие и укрепление межкультурных связей городов</li>
+		<li>мотивация молодежи к созидательной творческой деятельности</li>
+		<li>обмен творческим опытом, идеями, повышение творческого уровня и развитие
+			творческого потенциала музыкантов</li>
+		<li>защита и популяризация традиционных семейных ценностей</li>
+	</ul>
+</div>
+<div class="mx-auto ">
+	<a href="/volonteram" 
+	class="m-4 flex h-9 rounded-lg bg-yellow-400 w-auto px-3 pt-1 text-center text-black ring-yellow-400 transition-all
+	hover:ring-2 dark:bg-yellow-800 dark:text-white"
+	>Волонтёрам</a>
+	<a href="/sponsoram" 
+	class="m-4 flex h-9 rounded-lg bg-yellow-400 w-auto px-3 pt-1 text-center text-black ring-yellow-400 transition-all
+	hover:ring-2 dark:bg-yellow-800 dark:text-white"
+	>Спонсорам</a>
+
+
+</div>
 
 <style>
-
-	.ramka{
+	ul {
+		padding-bottom: 1rem;
+	}
+	li {
+		margin-left: 2rem;
+		padding-top: 0.5rem;
+		padding-left: 0.5rem;
+		list-style-type: circle;
+	}
+	.ramka {
 		text-decoration: none;
-		
+
 		padding-top: 1.4rem;
 		padding-bottom: 1rem;
 	}
