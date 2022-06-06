@@ -255,7 +255,7 @@ import Bands from '../bands.svelte';
 						{concert.attributes.show_name}
 					</h1>
 					<h1 tabindex="0" class="pt-2 text-xl text-gray-800 focus:outline-none dark:text-gray-200">
-						{dateFormat(concert.attributes.start_date, 'd mmmm, dddd')} - 30 Июля, Суббота
+						{dateFormat(concert.attributes.start_date, 'd mmmm, dddd')} — 30 Июля, Суббота
 					</h1>
 				</div>
 				<div role="img" aria-label="bookmark">
