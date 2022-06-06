@@ -3,11 +3,11 @@
 <h1 class="mx-auto mt-3 max-w-2xl text-center text-2xl">
 	Набор волонтеров на фестиваль «РокополЧЕние-2022» открыт до 10 июля 2022 года!
 </h1>
-<div class="mx-auto w-full max-w-4xl">
+<div class="mx-auto w-full max-w-2xl">
 	<h1 class="m-3 mr-auto max-w-2xl text-lg">Если вы хотите</h1>
 </div>
 
-<div class="mx-auto w-full max-w-4xl">
+<div class="mx-auto w-full max-w-2xl">
 	<ul class="text-lg">
 		<li>помочь «РокополЧЕнию» (а нам, конечно, это нужно),</li>
 		<li>
@@ -21,13 +21,13 @@
 
 </div>
 
-<div class="mx-auto w-full max-w-4xl">
+<div class="mx-auto w-full max-w-2xl">
 	<h1 class="m-3 mr-auto max-w-2xl text-lg">На все возникшие у вас вопросы ответит <br>Татьяна Анисимова – 8 (910)933-33-13 в ватсап-чате  для волонтёров.<br>
 		После распределения функционала на все ваши вопросы будут отвечать кураторы того или иного направления, к которому вы будете закреплены.
 		</h1>
 </div>
 
-<div class="mx-auto w-full max-w-4xl">
+<div class="mx-auto w-full max-w-2xl">
 	<h1 class="m-3 mr-auto max-w-2xl text-lg">Важно! Мы ищем именно помощников!<br>
 		Фестивальное волонтерство — работа не из легких.<br>
 		Конечно, есть время для отдыха и музыки.<br>
@@ -36,18 +36,18 @@
 		</h1>
 </div>
 
-<div class="mx-auto w-full max-w-4xl">
+<div class="mx-auto w-full max-w-2xl">
 	<h1 class="m-3 mr-auto max-w-2xl text-lg">Огромное спасибо всем волонтёрам, которые уже прислали свои заявки!</h1>
 </div>
 <div class="mx-auto ">
 	
 	<h1 class="mx-auto text-xl">__________________</h1>
 </div>
-<div class="mx-auto w-full max-w-4xl">
+<div class="mx-auto w-full max-w-2xl">
 	<h1 class="m-3 mr-auto max-w-2xl text-xl">Что ждёт волонтеров:</h1>
 </div>
 
-<div class="mx-auto w-full max-w-4xl">
+<div class="mx-auto w-full max-w-2xl">
 	
 	<ul class="text-lg">
 <li>Проживание в волонтерском лагере</li>
