@@ -462,7 +462,7 @@ import Bands from '../bands.svelte';
 					<KnobTimeline user={$user.id} event_i={i} {event} {concert} />
 				</div>
 			{:else}
-				<a sveltekit:prefetch
+				<div 
 					class="bandurl relative ml-10 mb-5 flex transform cursor-pointer flex-col items-left space-y-4 rounded bg-pink-600 pl-6 pr-3 pb-4 text-white dark:text-white transition hover:-translate-y-2 md:flex-row md:space-y-0"
 					on:click={() => {
 						goto('/band/' + event.band.data.attributes.band_name);
