@@ -139,10 +139,12 @@
 					<span>{seconds}</span>
 				</div>
 				<div class="labels">
+					<ul>
 					<li>Дней</li>
 					<li>Часов</li>
 					<li>Мин</li>
 					<li>Сек</li>
+				</ul>
 				</div>
 			</div>
 			<!-- <div
@@ -208,6 +210,7 @@ hover:ring-2 dark:bg-yellow-800 dark:text-white"
 </div>
 
 <style>
+
 	.lineupbut {
 		font-size: 20px;
 		text-align: center;
@@ -247,7 +250,7 @@ hover:ring-2 dark:bg-yellow-800 dark:text-white"
 	}
 
 	.countdown {
-		width: 330px;
+		width: 370px;
 		height: 95px;
 		text-align: center;
 		background: #222;
@@ -319,20 +322,22 @@ hover:ring-2 dark:bg-yellow-800 dark:text-white"
 	}
 
 	.countdown .labels {
-		width: 100%;
+		width: auto;
 		height: 25px;
 		text-align: center;
 		position: absolute;
 		bottom: 8px;
+		
 	}
 
 	.countdown .labels li {
-		width: 72px;
+		
 		font: bold 15px Arial, sans-serif;
 		color: #ff2e17;
 		text-shadow: 1px 1px 0px #000;
 		text-align: center;
 		text-transform: uppercase;
 		display: inline-block;
+		
 	}
 </style>
