@@ -223,9 +223,9 @@
 						sex: r.response[0].sex ? r.response[0].sex : 'не указано'
 					};
 					user.set(user_data);
-
+					
 					localStorage.setItem('user', JSON.stringify(user_data));
-
+					loaduser($user.id);
 					ym(88086612, 'reachGoal', 'vk-auth');
 					//LogRocket.identify(r.response[0]['id'], {
 					//	name: r.response[0]['first_name'] + ' ' + r.response[0]['last_name'],
@@ -235,6 +235,33 @@
 				}
 			}
 		);
+	}
+	async function loaduser(userid) {
+		let myHeaders = new Headers();
+		myHeaders.append('Content-Type', 'application/json');
+
+		let raw = JSON.stringify({ id: userid });
+
+		let requestOptions = {
+			method: 'POST',
+			headers: myHeaders,
+			body: raw,
+			redirect: 'follow'
+		};
+
+		fetch(apiurl+'/getuserdata', requestOptions)
+			.then((response) => response.json())
+			.then((result) => {
+				//console.log(result.id);
+				if (result.id == 'admin') {
+					$isAdmin = true;
+				}
+				if (result.id == 'mngr') {
+					$isMngr = true;
+				}
+				return result.id;
+			})
+			.catch((error) => console.log('error', error));
 	}
 	onMount(() => {
 		getplayedusers();
