@@ -18,43 +18,7 @@
         show_name
         ploschadka
         bilet_ot
-        zhuri {
-          data {
-            attributes {
-              band_name
-              town
-              small_text
-              big_text
-              group_logo {
-                data {
-                  attributes {
-                    url
-                  }
-                }
-              }
-              group_link_vk
-              group_link_rocktver
-              mngr_id
-              time_on_scene
-              artists {
-                data {
-                  attributes {
-                    name
-                    avatar {
-                      data {
-                        attributes {
-                          url
-                        }
-                      }
-                    }
-                    role
-                    vk_link
-                  }
-                }
-              }
-            }
-          }
-        }
+
         url_website
         spisok(pagination: { pageSize: 100 }) {
           ... on ComponentBandsTimeline {
