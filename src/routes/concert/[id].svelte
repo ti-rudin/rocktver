@@ -301,6 +301,7 @@ import Bands from '../bands.svelte';
 	</div>
 </div>
 
+
 <div class="relative mx-auto  w-full max-w-2xl ">
 	<div class="mt-5 border-l-2 border-gray-400">
 		{#each timeline as event, i}
