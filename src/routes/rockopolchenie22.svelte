@@ -162,13 +162,12 @@
 	</h1>
 </div>
 <div class="mx-auto w-full max-w-2xl">
-	<a sveltekit:prefetch href="/concert/2/">
+	<a href="/concert/2/">
 		<img class="mx-auto w-full" src="/rockopolchenie-2022.jpg" alt="РОКОПОЛЧЕНИЕ  2022" />
 	</a>
 </div>
 <div class="mx-auto ">
 	<a
-		sveltekit:prefetch
 		href="/concert/2/"
 		class="lineupbut m-4 flex h-9 w-auto cursor-pointer rounded-lg bg-yellow-400 px-3 pt-1 text-center text-black ring-yellow-400 transition-all
 hover:ring-2 dark:bg-yellow-800 dark:text-white"
