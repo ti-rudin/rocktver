@@ -29,8 +29,8 @@
 		}
 	});
 
-	const target_date = new Date(2022, 6, 29, 18, 00, 0);
-	const target_date2 = new Date(2022, 6, 30, 13, 30, 0); // set the countdown date
+	const target_date = new Date(2022, 6, 29, 18, 1, 0);
+	const target_date2 = new Date(2022, 6, 30, 14, 10, 0); // set the countdown date
 	let days, hours, minutes, seconds; // variables for time units
 	let days2, hours2, minutes2, seconds2;
 	getCountdown();
