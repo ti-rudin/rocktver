@@ -18,7 +18,6 @@
         show_name
         ploschadka
         bilet_ot
-
         url_website
         spisok(pagination: { pageSize: 100 }) {
           ... on ComponentBandsTimeline {
@@ -67,9 +66,7 @@
 <script>
 	import { onDestroy, onMount } from 'svelte';
 	export let concert, timeline, state, artists;
-	$: if (concert.attributes.zhuri.data) {
-		artists = concert.attributes.zhuri.data.attributes.artists.data;
-	}
+
 	
 
 	//console.log(this.artists.data[0].attributes.name)
