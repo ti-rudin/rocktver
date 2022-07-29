@@ -37,7 +37,6 @@
 		show_name = status.show_name;
 		band_on_scene = status.now_on_scene.band_rtid;
 		actual_spisok_pesen = status.now_on_scene.actual_spisok_pesen;
-		have_spisok = status.now_on_scene.have_spisok;
 		band_rtid = status.now_on_scene.band_rtid;
 		artists = status.now_on_scene.artists;
 
