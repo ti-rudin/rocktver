@@ -300,67 +300,7 @@ import Bands from '../bands.svelte';
 		</div>
 	</div>
 </div>
-{#if concert.attributes.zhuri.data}
 
-<div class="mt-5 w-full ">
-	<div
-		aria-label="card 1"
-		class="mx-auto max-w-2xl rounded bg-blue-400/70 p-6 shadow  dark:bg-blue-500 "
-	>
-		<div
-			class="flex cursor-pointer rounded ring-yellow-400 transition-all hover:ring-2 focus:outline-none"
-			on:click={() => {
-				goto('/band/' + concert.attributes.zhuri.data.attributes.band_name);
-			}}
-		>
-			<img
-				class=" h-28 w-28 w-full rounded shadow"
-				src={'https://admin.rocktver.ru' + concert.attributes.zhuri.data.attributes.group_logo.data.attributes.url}
-				alt=""
-			/>
-			<div>
-				<h1 class="pl-4 text-xl text-gray-800 focus:outline-none dark:text-white">
-					{concert.attributes.zhuri.data.attributes.band_name}
-				</h1>
-
-				<h1 class="pl-4 text-lg text-pink-600 focus:outline-none dark:text-pink-300">
-					{concert.attributes.zhuri.data.attributes.town}
-				</h1>
-			</div>
-		</div>
-		<div class="mx-auto my-3">
-			<div class="textcard">
-				{concert.attributes.zhuri.data.attributes.big_text}
-			</div>
-		</div>
-
-		<div class="flex flex-col">
-			{#if artists}
-				{#each artists as artist}
-					<div 
-						class="flex cursor-pointer rounded ring-yellow-400 transition-all hover:ring-2 focus:outline-none"
-						on:click={() => {
-							goto('/person/' + artist.attributes.name);
-						}}
-					>
-						<img
-							class="mr-2 mb-1 h-14 w-14 rounded-full "
-							src={'https://admin.rocktver.ru' + artist.attributes.avatar.data.attributes.url}
-							alt=""
-						/>
-						<p class="lblock  mt-1 border-t border-white/30">{artist.attributes.name}</p>
-						<p
-							class="lblock ml-1 mt-1 border-t border-white/30 text-left text-gray-700 dark:text-gray-300"
-						>
-							{artist.attributes.role}
-						</p>
-					</div>
-				{/each}
-			{/if}
-		</div>
-	</div>
-</div>
-{/if}
 <div class="relative mx-auto  w-full max-w-2xl ">
 	<div class="mt-5 border-l-2 border-gray-400">
 		{#each timeline as event, i}
