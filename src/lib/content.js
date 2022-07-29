@@ -23,8 +23,8 @@ const rehypePlugins = [
 	]
 ];
 
-const allowedPosters = ['ti-rudin'];
-const publishedTags = ['Published'];
+const allowedPosters = ['ti-rudin','AlexNovikov23'];
+const publishedTags = ['changelog'];
 let allBlogposts = [];
 // let etag = null // todo - implmement etag header
 ``;
@@ -72,7 +72,7 @@ export async function listContent() {
 export async function getContent(slug) {
 	// get all blogposts if not already done - or in development
 	if (dev || allBlogposts.length === 0) {
-		console.log('loading allBlogposts');
+		//console.log('loading allBlogposts');
 		allBlogposts = await listContent();
 		console.log('loaded ' + allBlogposts.length + ' blogposts');
 		if (!allBlogposts.length)

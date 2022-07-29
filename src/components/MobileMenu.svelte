@@ -60,7 +60,7 @@
 	</button>
 	{#if isOpen}
 		<ul
-			class="menu absolute flex flex-col bg-gray-50 text-2xl  uppercase dark:bg-gray-900"
+			class="menu absolute flex flex-col bg-gray-50 text-xl  uppercase dark:bg-gray-900"
 			class:menuRendered={isMenuRendered}
 		>
 			<li
@@ -75,16 +75,52 @@
 				>
 			</li>
 			<li
-			class="border-b border-gray-300 font-semibold text-gray-900 dark:border-gray-700 dark:text-gray-100"
-			style="transition-delay: 150ms;"
-		>
-			<a
-				class="flex w-auto pb-4"
-				sveltekit:prefetch
-				on:click={() => setTimeout(() => (isOpen = false), 300)}
-				href="/party">Участники</a
+				class="border-b border-gray-300 font-semibold text-gray-900 dark:border-gray-700 dark:text-gray-100"
+				style="transition-delay: 150ms;"
 			>
-		</li>
+				<a
+					class="flex w-auto pb-4"
+					sveltekit:prefetch
+					on:click={() => setTimeout(() => (isOpen = false), 300)}
+					href="/bands">Команды</a
+				>
+			</li>
+			<li
+				class="border-b border-gray-300 font-semibold text-gray-900 dark:border-gray-700 dark:text-gray-100"
+				style="transition-delay: 150ms;"
+			>
+				<a
+					class="flex w-auto pb-4"
+					sveltekit:prefetch
+					on:click={() => setTimeout(() => (isOpen = false), 300)}
+					href="/now">Сейчас в эфире</a
+				>
+			</li>
+
+			<div class="h-5" />
+
+			<li
+				class="border-b border-gray-300 font-semibold text-gray-900 dark:border-gray-700 dark:text-gray-100"
+				style="transition-delay: 150ms;"
+			>
+				<a
+					class="flex w-auto pb-4"
+					sveltekit:prefetch
+					on:click={() => setTimeout(() => (isOpen = false), 300)}
+					href="/volonteram">Волонтёрам</a
+				>
+			</li>
+			<li
+				class="border-b border-gray-300 font-semibold text-gray-900 dark:border-gray-700 dark:text-gray-100"
+				style="transition-delay: 150ms;"
+			>
+				<a
+					class="flex w-auto pb-4"
+					sveltekit:prefetch
+					on:click={() => setTimeout(() => (isOpen = false), 300)}
+					href="/sponsoram">Спонсорам</a
+				>
+			</li>
 
 			<!--
 			<li
@@ -107,7 +143,7 @@
 	{/if}
 </div>
 
-<style lang="postcss">
+<style lang="scss">
 	.burger {
 		transition: opacity 300ms ease;
 		border: 0;
@@ -129,11 +165,14 @@
 		padding: 0 180px 0 4px;
 		margin: 0;
 		padding-top: 24px;
-		width: 100%;
+		padding-left: 19px;
+		width: calc(99vw - 4px);
+		left: -16px;
 		height: 99vh;
 		z-index: 1000;
 		opacity: 0;
-		left: 0;
+		top: 4.3rem;
+
 		transition: opacity 300ms ease, transform 300ms ease;
 	}
 

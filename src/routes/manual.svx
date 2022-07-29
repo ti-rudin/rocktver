@@ -1,0 +1,82 @@
+<script context="module">
+	export async function load({ fetch }) {
+		const res = await fetch('https://admin.rocktver.ru/graphql', {
+			method: 'POST',
+			headers: {
+				'Content-Type': 'application/json'
+			},
+			body: JSON.stringify({
+				query: `{
+  publications(pagination: { pageSize: 100 }) {
+    data {
+      id
+      attributes {
+        zagolovok
+        small_text
+        big_text
+        preview_foto{
+          data{
+            attributes{
+              url
+            }
+          }
+        }
+      }
+    }
+  }
+}
+`
+			})
+		});
+		if (res.ok) {
+			const { data } = await res.json();
+			//console.log(data);
+			
+			//let bandsdata = data.bands.data;
+			//let bandsobj = [];
+			//bandsdata.forEach((band, id) => {
+			//	bandsobj[band.id] = band;
+			//});
+			//bandsobj = bandsobj.filter(function (el) {
+			//	return (el != null && el != '') || el === 0;
+			//});
+			//console.log('bands ---' + JSON.stringify(bandsobj));
+			return {
+				props: {
+					posts: data.publications.data,
+				}
+			};
+		}
+		return {
+			status: res.status,
+			error: new Error(`Error fetching GraphQL data`)
+		};
+	}
+</script>
+
+<script>
+	import { goto } from '$app/navigation';
+  import LogoComponent from '../components/LogoComponent.svelte';
+
+
+	export let posts, post;
+	console.log(posts[0].attributes.big_text)
+$: posts = posts;
+
+$: post = posts[0].attributes.big_text
+
+import snarkdown from 'snarkdown';
+let p;
+$: p = snarkdown(post);
+
+
+
+
+</script>
+
+
+
+{@html p}
+<iframe width="100%" height="360px"  src="https://www.youtube.com/embed/3u-1d2OkYmA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+
