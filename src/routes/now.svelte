@@ -13,6 +13,7 @@
 	export let now;
 	export let efir;
 
+
 	//export let concert, timeline
 	export let isshowgo,
 		band_on_scene,
@@ -56,7 +57,7 @@
 
 	const timerId = setInterval(function () {
 		getData($user);
-	}, 2000);
+	}, 1900);
 
 	onDestroy(() => {
 		clearInterval(timerId);
